@@ -37,15 +37,6 @@ public class SpringController {
         return "colecoes";
     }
 
-    // editoras
-
-    @GetMapping("/editoras")
-    public String editorasGet(Model model) throws StreamReadException, DatabindException, IOException {
-        BauDoZe bauDoZe = BauDoZe.getInstance();
-        model.addAttribute("editoras", bauDoZe.getEditoras());
-        return "editoras";
-    }
-
     // etiquetas
 
     @GetMapping("/etiquetas")

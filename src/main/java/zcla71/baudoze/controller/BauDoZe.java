@@ -21,12 +21,13 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.baudoze.view.editoras.EditorasPagina;
+import zcla71.baudoze.view.editoras.EditorasPaginaEditora;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
 import zcla71.baudoze.view.model.Atividades;
 import zcla71.baudoze.view.model.Colecoes;
-import zcla71.baudoze.view.model.Editoras;
 import zcla71.baudoze.view.model.Etiquetas;
 import zcla71.baudoze.view.model.Stats;
 import zcla71.baudoze.view.obras.ObrasPagina;
@@ -89,18 +90,23 @@ public class BauDoZe {
 
     // editoras
 
-    public Collection<Editoras> getEditoras() throws StreamReadException, DatabindException, IOException {
+    public EditorasPagina getEditoras() throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
         Collection<Editora> editoras = service.listaEditoras();
-        List<Editoras> result = new ArrayList<>();
+        EditorasPagina result = new EditorasPagina();
         for (Editora editora : editoras) {
-            result.add(new Editoras(editora));
+            EditorasPaginaEditora epEditora = new EditorasPaginaEditora();
+
+            epEditora.setNome(editora.getNome());
+            epEditora.setQtdLivros(service.listaLivros().stream().filter(l -> l.getIdsEditoras().contains(editora.getId())).toArray().length);
+
+            result.add(epEditora);
         }
 
         // Atualmente desnecessário, pois o DataTable já ordena
-        Collections.sort(result, new Comparator<Editoras>() {
+        Collections.sort(result, new Comparator<EditorasPaginaEditora>() {
             @Override
-            public int compare(Editoras o1, Editoras o2) {
+            public int compare(EditorasPaginaEditora o1, EditorasPaginaEditora o2) {
                 Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
                 return ptBrCollator.compare(o1.getNome(), o2.getNome());
             }

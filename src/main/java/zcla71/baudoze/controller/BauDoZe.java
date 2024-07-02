@@ -3,8 +3,6 @@ package zcla71.baudoze.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -19,6 +17,7 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.baudoze.view.atividades.AtividadesPaginaAtividade;
 import zcla71.baudoze.view.colecoes.ColecoesPagina;
 import zcla71.baudoze.view.colecoes.ColecoesPaginaColecao;
 import zcla71.baudoze.view.editoras.EditorasPagina;
@@ -28,7 +27,6 @@ import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
-import zcla71.baudoze.view.model.Atividades;
 import zcla71.baudoze.view.model.Stats;
 import zcla71.baudoze.view.obras.ObrasPagina;
 import zcla71.baudoze.view.obras.ObrasPaginaObra;
@@ -47,21 +45,27 @@ public class BauDoZe {
 
     // atividades
 
-    public Collection<Atividades> getAtividades() throws StreamReadException, DatabindException, IOException {
+    public Collection<AtividadesPaginaAtividade> getAtividades() throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
         Collection<Atividade> atividades = service.listaAtividades();
-        List<Atividades> result = new ArrayList<>();
+        List<AtividadesPaginaAtividade> result = new ArrayList<>();
         for (Atividade atividade : atividades) {
-            result.add(new Atividades(atividade));
+            AtividadesPaginaAtividade apAtividade = new AtividadesPaginaAtividade();
+
+            apAtividade.setData(atividade.getData());
+            apAtividade.setTipo(atividade.getTipo().getTexto());
+            apAtividade.setLivro(service.buscaLivroPorId(atividade.getIdLivro()).getTitulo());
+
+            result.add(apAtividade);
         }
 
-        // Atualmente desnecessário, pois o DataTable já ordena
-        Collections.sort(result, new Comparator<Atividades>() {
-            @Override
-            public int compare(Atividades a1, Atividades a2) {
-                return a2.getData().compareTo(a1.getData());
-            }
-        });
+        // // Atualmente desnecessário, pois o DataTable já ordena
+        // Collections.sort(result, new Comparator<AtividadesPaginaAtividade>() {
+        //     @Override
+        //     public int compare(AtividadesPaginaAtividade a1, AtividadesPaginaAtividade a2) {
+        //         return a2.getData().compareTo(a1.getData());
+        //     }
+        // });
 
         return result;
     }

@@ -19,15 +19,6 @@ public class SpringController {
         return statsGet(model);
     }
 
-    // atividades
-
-    @GetMapping("/atividades")
-    public String atividadesGet(Model model) throws StreamReadException, DatabindException, IOException {
-        BauDoZe bauDoZe = BauDoZe.getInstance();
-        model.addAttribute("atividades", bauDoZe.getAtividades());
-        return "atividades";
-    }
-
     // stats
 
     @GetMapping("/stats")

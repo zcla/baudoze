@@ -21,13 +21,14 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.baudoze.view.colecoes.ColecoesPagina;
+import zcla71.baudoze.view.colecoes.ColecoesPaginaColecao;
 import zcla71.baudoze.view.editoras.EditorasPagina;
 import zcla71.baudoze.view.editoras.EditorasPaginaEditora;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
 import zcla71.baudoze.view.model.Atividades;
-import zcla71.baudoze.view.model.Colecoes;
 import zcla71.baudoze.view.model.Etiquetas;
 import zcla71.baudoze.view.model.Stats;
 import zcla71.baudoze.view.obras.ObrasPagina;
@@ -68,22 +69,36 @@ public class BauDoZe {
 
     // colecoes
 
-    public Collection<Colecoes> getColecoes() throws StreamReadException, DatabindException, IOException {
+    public ColecoesPagina getColecoes() throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
         Collection<Colecao> colecoes = service.listaColecoes();
-        List<Colecoes> result = new ArrayList<>();
+        ColecoesPagina result = new ColecoesPagina();
         for (Colecao colecao : colecoes) {
-            result.add(new Colecoes(colecao));
+            ColecoesPaginaColecao cpColecao = new ColecoesPaginaColecao();
+
+            cpColecao.setNome(colecao.getNome());
+
+            Collection<String> idsLivros = colecao.getIdsLivros();
+            cpColecao.setQtdLivros(idsLivros.size());
+            cpColecao.setPaginas(0);
+            for (String idLivro : idsLivros) {
+                Livro livro = service.buscaLivroPorId(idLivro);
+                if (livro.getPaginas() != null) {
+                    cpColecao.setPaginas(cpColecao.getPaginas() + livro.getPaginas());
+                }
+            }
+    
+            result.add(cpColecao);
         }
 
-        // Atualmente desnecessário, pois o DataTable já ordena
-        Collections.sort(result, new Comparator<Colecoes>() {
-            @Override
-            public int compare(Colecoes c1, Colecoes c2) {
-                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-                return ptBrCollator.compare(c1.getNome(), c2.getNome());
-            }
-        });
+        // // Atualmente desnecessário, pois o DataTable já ordena
+        // Collections.sort(result, new Comparator<ColecoesPaginaColecao>() {
+        //     @Override
+        //     public int compare(ColecoesPaginaColecao c1, ColecoesPaginaColecao c2) {
+        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+        //         return ptBrCollator.compare(c1.getNome(), c2.getNome());
+        //     }
+        // });
 
         return result;
     }
@@ -103,14 +118,14 @@ public class BauDoZe {
             result.add(epEditora);
         }
 
-        // Atualmente desnecessário, pois o DataTable já ordena
-        Collections.sort(result, new Comparator<EditorasPaginaEditora>() {
-            @Override
-            public int compare(EditorasPaginaEditora o1, EditorasPaginaEditora o2) {
-                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-                return ptBrCollator.compare(o1.getNome(), o2.getNome());
-            }
-        });
+        // // Atualmente desnecessário, pois o DataTable já ordena
+        // Collections.sort(result, new Comparator<EditorasPaginaEditora>() {
+        //     @Override
+        //     public int compare(EditorasPaginaEditora o1, EditorasPaginaEditora o2) {
+        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+        //         return ptBrCollator.compare(o1.getNome(), o2.getNome());
+        //     }
+        // });
 
         return result;
     }

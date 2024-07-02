@@ -28,15 +28,6 @@ public class SpringController {
         return "atividades";
     }
 
-    // colecoes
-
-    @GetMapping("/colecoes")
-    public String colecoesGet(Model model) throws StreamReadException, DatabindException, IOException {
-        BauDoZe bauDoZe = BauDoZe.getInstance();
-        model.addAttribute("colecoes", bauDoZe.getColecoes());
-        return "colecoes";
-    }
-
     // etiquetas
 
     @GetMapping("/etiquetas")

@@ -28,15 +28,6 @@ public class SpringController {
         return "atividades";
     }
 
-    // etiquetas
-
-    @GetMapping("/etiquetas")
-    public String etiquetasGet(Model model) throws StreamReadException, DatabindException, IOException {
-        BauDoZe bauDoZe = BauDoZe.getInstance();
-        model.addAttribute("etiquetas", bauDoZe.getEtiquetas());
-        return "etiquetas";
-    }
-
     // stats
 
     @GetMapping("/stats")

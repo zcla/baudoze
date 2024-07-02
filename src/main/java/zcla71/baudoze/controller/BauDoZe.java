@@ -1,13 +1,11 @@
 package zcla71.baudoze.controller;
 
 import java.io.IOException;
-import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -25,11 +23,12 @@ import zcla71.baudoze.view.colecoes.ColecoesPagina;
 import zcla71.baudoze.view.colecoes.ColecoesPaginaColecao;
 import zcla71.baudoze.view.editoras.EditorasPagina;
 import zcla71.baudoze.view.editoras.EditorasPaginaEditora;
+import zcla71.baudoze.view.etiquetas.EtiquetasPagina;
+import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
 import zcla71.baudoze.view.model.Atividades;
-import zcla71.baudoze.view.model.Etiquetas;
 import zcla71.baudoze.view.model.Stats;
 import zcla71.baudoze.view.obras.ObrasPagina;
 import zcla71.baudoze.view.obras.ObrasPaginaObra;
@@ -132,22 +131,27 @@ public class BauDoZe {
 
     // etiquetas
 
-    public Collection<Etiquetas> getEtiquetas() throws StreamReadException, DatabindException, IOException {
+    public EtiquetasPagina getEtiquetas() throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
         Collection<Etiqueta> etiquetas = service.listaEtiquetas();
-        List<Etiquetas> result = new ArrayList<>();
+        EtiquetasPagina result = new EtiquetasPagina();
         for (Etiqueta etiqueta : etiquetas) {
-            result.add(new Etiquetas(etiqueta));
+            EtiquetasPaginaEtiqueta epEtiqueta = new EtiquetasPaginaEtiqueta();
+
+            epEtiqueta.setNome(etiqueta.getNome());
+            epEtiqueta.setQtdLivros(service.listaLivros().stream().filter(l -> l.getIdsEtiquetas().contains(etiqueta.getId())).toArray().length);
+    
+            result.add(epEtiqueta);
         }
 
-        // Atualmente desnecessário, pois o DataTable já ordena
-        Collections.sort(result, new Comparator<Etiquetas>() {
-            @Override
-            public int compare(Etiquetas o1, Etiquetas o2) {
-                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-                return ptBrCollator.compare(o1.getNome(), o2.getNome());
-            }
-        });
+        // // Atualmente desnecessário, pois o DataTable já ordena
+        // Collections.sort(result, new Comparator<EtiquetasPaginaEtiqueta>() {
+        //     @Override
+        //     public int compare(EtiquetasPaginaEtiqueta o1, EtiquetasPaginaEtiqueta o2) {
+        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+        //         return ptBrCollator.compare(o1.getNome(), o2.getNome());
+        //     }
+        // });
 
         return result;
     }

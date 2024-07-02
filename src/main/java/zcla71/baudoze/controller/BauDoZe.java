@@ -27,11 +27,11 @@ import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
-import zcla71.baudoze.view.model.Stats;
 import zcla71.baudoze.view.obras.ObrasPagina;
 import zcla71.baudoze.view.obras.ObrasPaginaObra;
 import zcla71.baudoze.view.pessoas.PessoasPagina;
 import zcla71.baudoze.view.pessoas.PessoasPaginaPessoa;
+import zcla71.baudoze.view.stats.StatsPagina;
 
 public class BauDoZe {
     private static BauDoZe instance;
@@ -330,9 +330,9 @@ public class BauDoZe {
 
     // stats
 
-    public Stats getStats() throws StreamReadException, DatabindException, IOException {
+    public StatsPagina getStats() throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
-        Stats result = new Stats(service.listaObras().size(),
+        StatsPagina result = new StatsPagina(service.listaObras().size(),
                 service.listaLivros().size(),
                 service.listaPessoas().size(),
                 service.listaEditoras().size(),

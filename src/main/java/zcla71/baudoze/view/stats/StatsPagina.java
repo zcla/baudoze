@@ -1,11 +1,11 @@
-package zcla71.baudoze.view.model;
+package zcla71.baudoze.view.stats;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Stats {
+public class StatsPagina {
     private Integer obras;
     private Integer livros;
     private Integer pessoas;

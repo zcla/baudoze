@@ -1,9 +1,13 @@
 package zcla71.baudoze.controller;
 
 import java.io.IOException;
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -59,13 +63,13 @@ public class BauDoZe {
             result.add(apAtividade);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<AtividadesPaginaAtividade>() {
-        //     @Override
-        //     public int compare(AtividadesPaginaAtividade a1, AtividadesPaginaAtividade a2) {
-        //         return a2.getData().compareTo(a1.getData());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<AtividadesPaginaAtividade>() {
+            @Override
+            public int compare(AtividadesPaginaAtividade a1, AtividadesPaginaAtividade a2) {
+                return a2.getData().compareTo(a1.getData());
+            }
+        });
 
         return result;
     }
@@ -94,14 +98,14 @@ public class BauDoZe {
             result.add(cpColecao);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<ColecoesPaginaColecao>() {
-        //     @Override
-        //     public int compare(ColecoesPaginaColecao c1, ColecoesPaginaColecao c2) {
-        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-        //         return ptBrCollator.compare(c1.getNome(), c2.getNome());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<ColecoesPaginaColecao>() {
+            @Override
+            public int compare(ColecoesPaginaColecao c1, ColecoesPaginaColecao c2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(c1.getNome(), c2.getNome());
+            }
+        });
 
         return result;
     }
@@ -121,14 +125,14 @@ public class BauDoZe {
             result.add(epEditora);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<EditorasPaginaEditora>() {
-        //     @Override
-        //     public int compare(EditorasPaginaEditora o1, EditorasPaginaEditora o2) {
-        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-        //         return ptBrCollator.compare(o1.getNome(), o2.getNome());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<EditorasPaginaEditora>() {
+            @Override
+            public int compare(EditorasPaginaEditora o1, EditorasPaginaEditora o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getNome(), o2.getNome());
+            }
+        });
 
         return result;
     }
@@ -148,14 +152,14 @@ public class BauDoZe {
             result.add(epEtiqueta);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<EtiquetasPaginaEtiqueta>() {
-        //     @Override
-        //     public int compare(EtiquetasPaginaEtiqueta o1, EtiquetasPaginaEtiqueta o2) {
-        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-        //         return ptBrCollator.compare(o1.getNome(), o2.getNome());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<EtiquetasPaginaEtiqueta>() {
+            @Override
+            public int compare(EtiquetasPaginaEtiqueta o1, EtiquetasPaginaEtiqueta o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getNome(), o2.getNome());
+            }
+        });
 
         return result;
     }
@@ -240,14 +244,14 @@ public class BauDoZe {
             result.add(lpLivro);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<LivrosPaginaLivro>() {
-        //     @Override
-        //     public int compare(LivrosPaginaLivro o1, LivrosPaginaLivro o2) {
-        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-        //         return ptBrCollator.compare(o1.getTitulo(), o2.getTitulo());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<LivrosPaginaLivro>() {
+            @Override
+            public int compare(LivrosPaginaLivro o1, LivrosPaginaLivro o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getTitulo(), o2.getTitulo());
+            }
+        });
 
         return result;
     }
@@ -281,14 +285,14 @@ public class BauDoZe {
             result.add(opObra);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<Obras>() {
-        //     @Override
-        //     public int compare(Obras o1, Obras o2) {
-        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-        //         return ptBrCollator.compare(o1.getTitulo(), o2.getTitulo());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<ObrasPaginaObra>() {
+            @Override
+            public int compare(ObrasPaginaObra o1, ObrasPaginaObra o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getTitulo(), o2.getTitulo());
+            }
+        });
 
         return result;
     }
@@ -316,14 +320,14 @@ public class BauDoZe {
             result.add(ppPessoa);
         }
 
-        // // Atualmente desnecessário, pois o DataTable já ordena
-        // Collections.sort(result, new Comparator<PessoasPaginaPessoa>() {
-        //     @Override
-        //     public int compare(PessoasPaginaPessoa p1, PessoasPaginaPessoa p2) {
-        //         Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-        //         return ptBrCollator.compare(p1.getNome(), p2.getNome());
-        //     }
-        // });
+        // TODO Testar
+        Collections.sort(result, new Comparator<PessoasPaginaPessoa>() {
+            @Override
+            public int compare(PessoasPaginaPessoa p1, PessoasPaginaPessoa p2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(p1.getNome(), p2.getNome());
+            }
+        });
 
         return result;
     }

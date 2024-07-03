@@ -29,6 +29,7 @@ import zcla71.baudoze.view.editoras.EditorasPaginaEditora;
 import zcla71.baudoze.view.etiquetas.EtiquetasPagina;
 import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroPagina;
+import zcla71.baudoze.view.livro.LivroPaginaObra;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
 import zcla71.baudoze.view.obras.ObrasPagina;
@@ -168,8 +169,49 @@ public class BauDoZe {
 
     public LivroPagina getLivro(String id) throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
+
         Livro livro = service.buscaLivroPorId(id);
-        LivroPagina result = new LivroPagina(livro);
+        LivroPagina result = new LivroPagina();
+        result.setId(livro.getId());
+        result.setTitulo(livro.getTitulo());
+        result.setObras(new ArrayList<>());
+        for (String idObra : livro.getIdsObras()) {
+            result.getObras().add(idObra);
+        }
+        result.setIsbn13(livro.getIsbn13());
+        result.setIsbn10(livro.getIsbn10());
+        result.setAno(livro.getAno());
+        result.setPaginas(livro.getPaginas());
+        result.setEdicao(livro.getEdicao());
+        result.setEditoras(new ArrayList<>());
+        for (String idEditora : livro.getIdsEditoras()) {
+            result.getEditoras().add(service.buscaEditoraPorId(idEditora).getNome());
+        }
+        result.setEtiquetas(new ArrayList<>());
+        for (String idEtiqueta : livro.getIdsEtiquetas()) {
+            result.getEtiquetas().add(service.buscaEtiquetaPorId(idEtiqueta).getNome());
+        }
+
+        Collection<Obra> obras = service.listaObras();
+        result.setListaObras(new ArrayList<>());
+        for (Obra obra : obras) {
+            LivroPaginaObra lpObra = new LivroPaginaObra();
+            lpObra.setId(obra.getId());
+            lpObra.setNome(obra.getTitulo());
+            if (obra.getIdsAutores().size() > 0) {
+                Pessoa autor = service.buscaPessoaPorId(obra.getIdsAutores().iterator().next());
+                lpObra.setNome(lpObra.getNome() + " (" + autor.getNome() + ")");
+            }
+            result.getListaObras().add(lpObra);
+        }
+        Collections.sort(result.getListaObras(), new Comparator<LivroPaginaObra>() {
+            @Override
+            public int compare(LivroPaginaObra o1, LivroPaginaObra o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getNome(), o2.getNome());
+            }
+        });
+
         return result;
     }
 

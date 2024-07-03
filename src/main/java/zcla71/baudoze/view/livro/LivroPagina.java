@@ -1,8 +1,8 @@
 package zcla71.baudoze.view.livro;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -26,36 +26,11 @@ public class LivroPagina extends Pagina {
     private String edicao;
     private Collection<String> editoras;
     private Collection<String> etiquetas;
-
-    public LivroPagina(Livro livro) throws StreamReadException, DatabindException, IOException {
-        Service service = Service.getInstance();
-        this.id = livro.getId();
-        this.titulo = livro.getTitulo();
-
-        this.obras = new ArrayList<>();
-        for (String idObra : livro.getIdsObras()) {
-            this.obras.add(idObra);
-        }
-
-        this.isbn13 = livro.getIsbn13();
-        this.isbn10 = livro.getIsbn10();
-        this.ano = livro.getAno();
-        this.paginas = livro.getPaginas();
-        this.edicao = livro.getEdicao();
-
-        this.editoras = new ArrayList<>();
-        for (String idEditora : livro.getIdsEditoras()) {
-            this.editoras.add(service.buscaEditoraPorId(idEditora).getNome());
-        }
-
-        this.etiquetas = new ArrayList<>();
-        for (String idEtiqueta : livro.getIdsEtiquetas()) {
-            this.etiquetas.add(service.buscaEtiquetaPorId(idEtiqueta).getNome());
-        }
-    }
+    private List<LivroPaginaObra> listaObras;
 
     @Override
     public boolean dadosValidos() {
+        // TODO Isso tem que estar em BauDoZe.setLivro()
         boolean result = true;
 
         if (estaVazio(titulo)) {
@@ -72,6 +47,7 @@ public class LivroPagina extends Pagina {
     }
 
     public Livro toLivro() throws StreamReadException, DatabindException, IOException {
+        // TODO Isso tem que estar em BauDoZe.setLivro()
         Service service = Service.getInstance();
 
         Livro result = null;

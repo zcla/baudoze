@@ -1,10 +1,11 @@
 package zcla71.baudoze.view;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import zcla71.baudoze.controller.ValidationException;
 
 @Data
 public abstract class Pagina {
@@ -22,37 +23,9 @@ public abstract class Pagina {
     }
 
     private Estado estadoPagina = Estado.READ;
-    private Collection<MensagemDeErro> mensagensDeErro;
+    private Map<String, ValidationException> exceptionMap;
 
     public Pagina() {
-        this.mensagensDeErro = new ArrayList<>();
-    }
-
-    public void adicionaMensagemDeErro(String campo, String mensagem) {
-        this.mensagensDeErro.add(new MensagemDeErro(campo, mensagem));
-    }
-
-    public boolean dadosValidos() {
-        return true;
-    }
-
-    public boolean estaVazio(Collection<String> value) {
-        if (value == null) {
-            return true;
-        }
-        if (value.size() == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean estaVazio(String value) {
-        if (value == null) {
-            return true;
-        }
-        if (value.trim().length() == 0) {
-            return true;
-        }
-        return false;
+        this.exceptionMap = new HashMap<>();
     }
 }

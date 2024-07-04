@@ -21,6 +21,7 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.baudoze.view.Pagina.Estado;
 import zcla71.baudoze.view.atividades.AtividadesPaginaAtividade;
 import zcla71.baudoze.view.colecoes.ColecoesPagina;
 import zcla71.baudoze.view.colecoes.ColecoesPaginaColecao;
@@ -28,6 +29,7 @@ import zcla71.baudoze.view.editoras.EditorasPagina;
 import zcla71.baudoze.view.editoras.EditorasPaginaEditora;
 import zcla71.baudoze.view.etiquetas.EtiquetasPagina;
 import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
+import zcla71.baudoze.view.livro.LivroForm;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livro.LivroPaginaObra;
 import zcla71.baudoze.view.livros.LivrosPagina;
@@ -40,6 +42,8 @@ import zcla71.baudoze.view.stats.StatsPagina;
 
 public class BauDoZe {
     private static BauDoZe instance;
+
+    // TODO Fazer testes unitários
 
     public static BauDoZe getInstance() {
         if (instance == null) {
@@ -215,14 +219,60 @@ public class BauDoZe {
         return result;
     }
 
-    public void setLivro(LivroPagina livroPagina) throws StreamReadException, DatabindException, IOException, RepositoryException {
-        Service service = Service.getInstance();
-        Livro livro = livroPagina.toLivro();
-        if (livro.getId() == null) {
-            service.incluiLivro(livro);
-        } else {
-            service.alteraLivro(livro);
+    public LivroPagina setLivro(String id, LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+        LivroPagina result = getLivro(id);
+        result.setTitulo(form.getTitulo());
+        result.setObras(form.getObras());
+
+        try {
+            Livro livro = validaLivro(id, result);
+            result.setEstadoPagina(null);
+            Service service = Service.getInstance();
+            if (livro.getId() == null) {
+                service.incluiLivro(livro);
+            } else {
+                service.alteraLivro(livro);
+            }
+        } catch (ValidationException e) {
+            for (ValidationException ve : e.getExceptions()) {
+                result.getExceptionMap().put(ve.getCampo(), ve);
+            }
+            result.setEstadoPagina(Estado.UPDATE);
         }
+
+        return result;
+    }
+
+    private Livro validaLivro(String id, LivroPagina livro) throws ValidationException, StreamReadException, DatabindException, IOException {
+        List<ValidationException> exceptions = new ArrayList<>();
+        
+        Livro result = null;
+        if (id == null) {
+            result = new Livro();
+        } else {
+            Service service = Service.getInstance();
+            result = service.buscaLivroPorId(id);
+        }
+
+        try {
+            ValidationUtils.checkNotEmpty(livro.getTitulo(), "Informe o título", "titulo");
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+        try {
+            ValidationUtils.checkNotEmpty(livro.getObras(), "Informe ao menos uma obra", "obras");
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+
+        if (exceptions.size() > 0) {
+            throw new ValidationException(exceptions);
+        }
+
+        result.setTitulo(livro.getTitulo());
+        result.setIdsObras(livro.getObras());
+
+        return result;
     }
 
     public LivrosPagina getLivros() throws StreamReadException, DatabindException, IOException {

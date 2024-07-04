@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.DatabindException;
 
 import zcla71.baudoze.controller.BauDoZe;
 import zcla71.baudoze.repository.model.RepositoryException;
-import zcla71.baudoze.view.Pagina.Estado;
 
 @Controller
 public class LivroController {
@@ -33,15 +32,7 @@ public class LivroController {
     public String livroPut(Model model, @PathVariable String id, @ModelAttribute LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
-        LivroPagina livro = bauDoZe.getLivro(id);
-        livro.setTitulo(form.getTitulo());
-        livro.setObras(form.getObras());
-        if (livro.dadosValidos()) {
-            bauDoZe.setLivro(livro);
-            livro.setEstadoPagina(null);
-        } else {
-            livro.setEstadoPagina(Estado.UPDATE);
-        }
+        LivroPagina livro = bauDoZe.setLivro(id, form);
 
         model.addAttribute("livro", livro);
 

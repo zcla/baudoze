@@ -31,10 +31,12 @@
             $("#actionCancelar").on('click', function(event) {
                 $('#fields').attr('disabled', true);
                 $('#actions').addClass('d-none');
-                window.location.reload();
+                window.location = window.location; // window.location.reload() dá problema após o submit
             });
 
-            if ($('#pageState').val() == 'UPDATE') {
+            // Estado da página
+
+            if ($('#estadoPagina').val() == 'UPDATE') {
                 $("#toolbarAlterar").click();
             }
         });

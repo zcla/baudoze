@@ -452,9 +452,9 @@
             // nSelectedText: 'selected',
             // allSelectedText: 'All selected',
             // resetButtonText: 'Reset',
-            nonSelectedText: 'Nenhum selecionado',
-            nSelectedText: 'selecionados',
-            allSelectedText: 'Todos selecionados',
+            nonSelectedText: 'Nenhum(a) selecionado(a)',
+            nSelectedText: 'selecionados(as)',
+            allSelectedText: 'Todos(as) selecionados(as)',
             resetButtonText: 'Limpar',
             // <<<
             numberDisplayed: 3,

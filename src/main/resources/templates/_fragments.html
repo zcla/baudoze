@@ -274,25 +274,18 @@
         });
     </script>
     <style>
-        table a {
-            text-decoration: none;
+        /*
+        Consertando um aparente bug do Bootstrap, que "esconde" os campos com .invalid-feedback
+        */
+
+        .invalid-feedback {
+            display: block !important;
         }
 
-        .tableCellShowAll {
-            width: 0;
-            white-space: nowrap;
-        }
-
-        .tableCellTruncate {
-            max-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .initiallyHidden {
-            display: none;
-        }
+        /*
+        Consertando a exibição dos selects múltiplos, feitos com o bootstrap-multiselect.js.
+        Colocar um <div class="multiselect-fixer"> "em volta" do select.
+        */
 
         .multiselect-fixer {
             position: relative;
@@ -309,6 +302,61 @@
 
         .multiselect-fixer>.multiselect-native-select>div.btn-group {
             width: 100%;
+        }
+
+        /*
+        Consertando um problema do bootstrap-multiselect.js.
+        Como o select fica invisível, tem que aplicar as propriedades de validação no button que o substitui.
+        */
+
+        select.is-invalid + div > button {
+            border-color: var(--bs-form-invalid-border-color);
+            padding-right: calc(1.5em + .75rem);
+            /* TODO Se descomentar, além de o ícone não aparecer, o botão de dropdown do select some.
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#dc3545'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#dc3545' stroke='none'/></svg>");
+            */
+            background-repeat: no-repeat;
+            background-position: right calc(.375em + .1875rem) center;
+            background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+        }
+
+        /*
+        .is-invalid ~ .invalid-feedback
+
+        color: var(--bs-form-invalid-color);
+        */
+
+        /*
+        Formatação dos links em tabelas
+        */
+
+        table a {
+            text-decoration: none;
+        }
+
+        /*
+        Para usar somente em tabelas com colunas cujo conteúdo deve ser truncado
+        */
+
+        /* Formatação das colunas que devem aparecer totalmente */
+        .tableCellShowAll {
+            width: 0;
+            white-space: nowrap;
+        }
+        /* Formatação das colunas cujo conteúdo deve ser truncado */
+        .tableCellTruncate {
+            max-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /*
+        Elementos que devem estar invisíveis quando a página é carregada
+        */
+
+        .initiallyHidden {
+            display: none;
         }
     </style>
 </head>

@@ -28,4 +28,11 @@ public abstract class Pagina {
     public Pagina() {
         this.exceptionMap = new HashMap<>();
     }
+
+    public String getExceptionMessage(String campo) {
+        if (this.exceptionMap.get(campo) != null) {
+            return this.exceptionMap.get(campo).getMessage();
+        }
+        return null;
+    }
 }

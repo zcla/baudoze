@@ -62,15 +62,17 @@
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="titulo" class="form-label">Título</label>
-                                    <input type="text" class="form-control" th:field="*{titulo}">
+                                    <input type="text" th:class="'form-control' + ${livro.exceptionMap.get('titulo') == null ? '' : ' is-invalid'}" th:field="*{titulo}">
+                                    <div id="titulo:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('titulo')}"></div>
                                 </div>
                                 <div class="col">
                                     <label for="obras" class="form-label">Obras</label>
                                     <div class="multiselect-fixer">
-                                        <select class="form-select" th:field="*{obras}" multiple="multiple">
+                                        <select th:class="'form-select' + ${livro.exceptionMap.get('obras') == null ? '' : ' is-invalid'}" th:field="*{obras}" multiple="multiple">
                                             <option th:each="obra:${livro.listaObras}" th:value="${obra.id}" th:text="${obra.nome}" th:selected="${livro.obras.contains(obra.id)}"></option>
                                         </select>
                                     </div>
+                                    <div id="obras:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('obras')}"></div>
                                 </div>
                             </div>
                             <div class="row mb-3">

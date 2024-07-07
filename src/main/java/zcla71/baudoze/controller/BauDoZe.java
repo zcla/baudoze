@@ -2,6 +2,7 @@ package zcla71.baudoze.controller;
 
 import java.io.IOException;
 import java.text.Collator;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -223,6 +224,14 @@ public class BauDoZe {
         LivroPagina result = getLivro(id);
         result.setTitulo(form.getTitulo());
         result.setObras(form.getObras());
+        result.setIsbn13(form.getIsbn13());
+        result.setIsbn10(form.getIsbn10());
+        if (result.getIsbn10() != null) {
+            result.setIsbn10(result.getIsbn10().toUpperCase());
+        }
+        result.setAno(form.getAno());
+        result.setPaginas(form.getPaginas());
+        result.setEdicao(form.getEdicao());
 
         try {
             Livro livro = validaLivro(id, result);
@@ -254,16 +263,56 @@ public class BauDoZe {
             result = service.buscaLivroPorId(id);
         }
 
+        // titulo
         try {
             ValidationUtils.checkNotEmpty(livro.getTitulo(), "Informe o título", "titulo");
         } catch (ValidationException e) {
             exceptions.add(e);
         }
+
+        // obras
         try {
             ValidationUtils.checkNotEmpty(livro.getObras(), "Informe ao menos uma obra", "obras");
         } catch (ValidationException e) {
             exceptions.add(e);
         }
+
+        // isbn13
+        try {
+            ValidationUtils.checkRegex(livro.getIsbn13(), "^[0-9]{13}$", "Código ISBN-13 inválido", "isbn13");
+            ValidationUtils.checkIsbn13(livro.getIsbn13(), "Código ISBN-13 inválido (dígito verificador)", "isbn13");
+            // TODO Só na inclusão: verificar se o código já está cadastrado
+            // TODO Colocar um checkbox para ignorar a verificação de código já cadastrado
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+
+        // isbn10
+        try {
+            ValidationUtils.checkRegex(livro.getIsbn10(), "^[0-9]{9}[0-9X]$", "Código ISBN-10 inválido", "isbn10");
+            ValidationUtils.checkIsbn10(livro.getIsbn10(), "Código ISBN-10 inválido (dígito verificador)", "isbn10");
+            // TODO Só na inclusão: verificar se o código já está cadastrado
+            // TODO Colocar um checkbox para ignorar a verificação de código já cadastrado
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+
+        // ano
+        try {
+            ValidationUtils.checkLessThanOrEqual(livro.getAno(), LocalDate.now().getYear(), "Ano inválido", "ano");
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+
+        // paginas
+        try {
+            ValidationUtils.checkNotEmpty(livro.getPaginas(), "Informe o número de páginas", "paginas");
+            ValidationUtils.checkMoreThanOrEqual(livro.getPaginas(), 1, "Número de páginas inválido", "paginas");
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+
+        // edicao (nada)
 
         if (exceptions.size() > 0) {
             throw new ValidationException(exceptions);
@@ -271,6 +320,11 @@ public class BauDoZe {
 
         result.setTitulo(livro.getTitulo());
         result.setIdsObras(livro.getObras());
+        result.setIsbn13(livro.getIsbn13());
+        result.setIsbn10(livro.getIsbn10());
+        result.setAno(livro.getAno());
+        result.setPaginas(livro.getPaginas());
+        result.setEdicao(livro.getEdicao());
 
         return result;
     }

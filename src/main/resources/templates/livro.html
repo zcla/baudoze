@@ -21,11 +21,7 @@
             // TODO toolbarExcluir
 
             $("#actionSalvar").on('click', function(event) {
-                // TODO limpar erros
-                // TODO spinner
-                // TODO chamada ajax
-                //   TODO ok -> reload
-                //   TODO erro -> mostrar erros
+                // TODO desabilitar botões + spinner
             });
 
             $("#actionCancelar").on('click', function(event) {
@@ -77,29 +73,34 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label for="titulo" class="form-label">ISBN-13</label>
-                                    <input type="text" class="form-control text-end" id="isbn13" th:value="${livro.isbn13}">
+                                    <label for="isbn13" class="form-label">ISBN-13</label>
+                                    <input type="text" th:class="'form-control text-end' + ${livro.exceptionMap.get('isbn13') == null ? '' : ' is-invalid'}" th:field="*{isbn13}">
+                                    <div id="isbn13:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('isbn13')}"></div>
                                 </div>
                                 <div class="col">
-                                    <label for="titulo" class="form-label">ISBN-10</label>
-                                    <input type="text" class="form-control text-end" id="isbn10" th:value="${livro.isbn10}">
+                                    <label for="isbn10" class="form-label">ISBN-10</label>
+                                    <input type="text" th:class="'form-control text-end' + ${livro.exceptionMap.get('isbn10') == null ? '' : ' is-invalid'}" th:field="*{isbn10}">
+                                    <div id="isbn10:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('isbn10')}"></div>
                                 </div>
                                 <div class="col">
-                                    <label for="titulo" class="form-label">Ano</label>
-                                    <input type="number" class="form-control text-end" id="ano" th:value="${livro.ano}">
+                                    <label for="ano" class="form-label">Ano</label>
+                                    <input type="number" th:class="'form-control text-end' + ${livro.exceptionMap.get('ano') == null ? '' : ' is-invalid'}" th:field="*{ano}">
+                                    <div id="ano:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('ano')}"></div>
                                 </div>
                                 <div class="col">
-                                    <label for="titulo" class="form-label">Páginas</label>
-                                    <input type="number" class="form-control text-end" id="paginas" min="1" th:value="${livro.paginas}">
+                                    <label for="paginas" class="form-label">Páginas</label>
+                                    <input type="number" min="1" th:class="'form-control text-end' + ${livro.exceptionMap.get('paginas') == null ? '' : ' is-invalid'}" th:field="*{paginas}">
+                                    <div id="paginas:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('paginas')}"></div>
                                 </div>
                                 <div class="col">
-                                    <label for="titulo" class="form-label">Edição</label>
-                                    <input type="text" class="form-control text-end" id="edicao" th:value="${livro.edicao}">
+                                    <label for="edicao" class="form-label">Edição</label>
+                                    <input type="text" th:class="'form-control text-end' + ${livro.exceptionMap.get('edicao') == null ? '' : ' is-invalid'}" th:field="*{edicao}">
+                                    <div id="edicao:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('edicao')}"></div>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label for="titulo" class="form-label">Editoras</label>
+                                    <label for="editora" class="form-label">Editoras</label>
                                     <ul class="list-group" th:each="editora:${livro.editoras}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" th:value="${editora}">
@@ -107,7 +108,7 @@
                                     </ul>
                                 </div>
                                 <div class="col">
-                                    <label for="titulo" class="form-label">Etiquetas</label>
+                                    <label for="etiqueta" class="form-label">Etiquetas</label>
                                     <ul class="list-group" th:each="etiqueta:${livro.etiquetas}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" th:value="${etiqueta}">

@@ -6,7 +6,11 @@ import lombok.Data;
 
 @Data
 public class LivroForm {
-    // private String id; // TODO Não deveria existir; vem na URL
     private String titulo;
     private Collection<String> obras;
+    private String isbn13;
+    private String isbn10;
+    private Integer ano;
+    private Integer paginas;
+    private String edicao;
 }

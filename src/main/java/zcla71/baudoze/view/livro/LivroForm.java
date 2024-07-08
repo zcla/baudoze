@@ -13,4 +13,6 @@ public class LivroForm {
     private Integer ano;
     private Integer paginas;
     private String edicao;
+    private Collection<String> editoras;
+    private Collection<String> etiquetas;
 }

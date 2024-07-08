@@ -10,6 +10,16 @@
                 enableFiltering: true
             });
 
+            $('#editoras').multiselect({
+                buttonTextAlignment: 'left',
+                enableFiltering: true
+            });
+
+            $('#etiquetas').multiselect({
+                buttonTextAlignment: 'left',
+                enableFiltering: true
+            });
+
             $('#ano').attr('max', new Date().getFullYear());
 
             $("#toolbarAlterar").on('click', function(event) {
@@ -100,20 +110,22 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label for="editora" class="form-label">Editoras</label>
-                                    <ul class="list-group" th:each="editora:${livro.editoras}">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" th:value="${editora}">
-                                        </div>
-                                    </ul>
+                                    <label for="editoras" class="form-label">Editoras</label>
+                                    <div class="multiselect-fixer">
+                                        <select th:class="'form-select' + ${livro.exceptionMap.get('editoras') == null ? '' : ' is-invalid'}" th:field="*{editoras}" multiple="multiple">
+                                            <option th:each="editora:${livro.listaEditoras}" th:value="${editora.id}" th:text="${editora.nome}" th:selected="${livro.editoras.contains(editora.id)}"></option>
+                                        </select>
+                                    </div>
+                                    <div id="editoras:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('editoras')}"></div>
                                 </div>
                                 <div class="col">
-                                    <label for="etiqueta" class="form-label">Etiquetas</label>
-                                    <ul class="list-group" th:each="etiqueta:${livro.etiquetas}">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" th:value="${etiqueta}">
-                                        </div>
-                                    </ul>
+                                    <label for="etiquetas" class="form-label">Etiquetas</label>
+                                    <div class="multiselect-fixer">
+                                        <select th:class="'form-select' + ${livro.exceptionMap.get('etiquetas') == null ? '' : ' is-invalid'}" th:field="*{etiquetas}" multiple="multiple">
+                                            <option th:each="etiqueta:${livro.listaEtiquetas}" th:value="${etiqueta.id}" th:text="${etiqueta.nome}" th:selected="${livro.etiquetas.contains(etiqueta.id)}"></option>
+                                        </select>
+                                    </div>
+                                    <div id="etiquetas:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('etiquetas')}"></div>
                                 </div>
                             </div>
                         </div>

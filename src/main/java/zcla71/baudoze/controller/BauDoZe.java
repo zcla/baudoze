@@ -32,6 +32,8 @@ import zcla71.baudoze.view.etiquetas.EtiquetasPagina;
 import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroForm;
 import zcla71.baudoze.view.livro.LivroPagina;
+import zcla71.baudoze.view.livro.LivroPaginaEditora;
+import zcla71.baudoze.view.livro.LivroPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroPaginaObra;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.livros.LivrosPaginaLivro;
@@ -190,11 +192,11 @@ public class BauDoZe {
         result.setEdicao(livro.getEdicao());
         result.setEditoras(new ArrayList<>());
         for (String idEditora : livro.getIdsEditoras()) {
-            result.getEditoras().add(service.buscaEditoraPorId(idEditora).getNome());
+            result.getEditoras().add(idEditora);
         }
         result.setEtiquetas(new ArrayList<>());
         for (String idEtiqueta : livro.getIdsEtiquetas()) {
-            result.getEtiquetas().add(service.buscaEtiquetaPorId(idEtiqueta).getNome());
+            result.getEtiquetas().add(idEtiqueta);
         }
 
         Collection<Obra> obras = service.listaObras();
@@ -217,6 +219,38 @@ public class BauDoZe {
             }
         });
 
+        Collection<Editora> editoras = service.listaEditoras();
+        result.setListaEditoras(new ArrayList<>());
+        for (Editora editora : editoras) {
+            LivroPaginaEditora lpEditora = new LivroPaginaEditora();
+            lpEditora.setId(editora.getId());
+            lpEditora.setNome(editora.getNome());
+            result.getListaEditoras().add(lpEditora);
+        }
+        Collections.sort(result.getListaEditoras(), new Comparator<LivroPaginaEditora>() {
+            @Override
+            public int compare(LivroPaginaEditora o1, LivroPaginaEditora o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getNome(), o2.getNome());
+            }
+        });
+
+        Collection<Etiqueta> etiquetas = service.listaEtiquetas();
+        result.setListaEtiquetas(new ArrayList<>());
+        for (Etiqueta etiqueta : etiquetas) {
+            LivroPaginaEtiqueta lpEtiqueta = new LivroPaginaEtiqueta();
+            lpEtiqueta.setId(etiqueta.getId());
+            lpEtiqueta.setNome(etiqueta.getNome());
+            result.getListaEtiquetas().add(lpEtiqueta);
+        }
+        Collections.sort(result.getListaEtiquetas(), new Comparator<LivroPaginaEtiqueta>() {
+            @Override
+            public int compare(LivroPaginaEtiqueta o1, LivroPaginaEtiqueta o2) {
+                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
+                return ptBrCollator.compare(o1.getNome(), o2.getNome());
+            }
+        });
+
         return result;
     }
 
@@ -232,6 +266,8 @@ public class BauDoZe {
         result.setAno(form.getAno());
         result.setPaginas(form.getPaginas());
         result.setEdicao(form.getEdicao());
+        result.setEditoras(form.getEditoras());
+        result.setEtiquetas(form.getEtiquetas());
 
         try {
             Livro livro = validaLivro(id, result);
@@ -314,6 +350,15 @@ public class BauDoZe {
 
         // edicao (nada)
 
+        // editoras
+        try {
+            ValidationUtils.checkNotEmpty(livro.getEditoras(), "Informe ao menos uma editora", "editoras");
+        } catch (ValidationException e) {
+            exceptions.add(e);
+        }
+
+        // etiquetas (nada)
+
         if (exceptions.size() > 0) {
             throw new ValidationException(exceptions);
         }
@@ -325,6 +370,8 @@ public class BauDoZe {
         result.setAno(livro.getAno());
         result.setPaginas(livro.getPaginas());
         result.setEdicao(livro.getEdicao());
+        result.setIdsEditoras(livro.getEditoras());
+        result.setIdsEtiquetas(livro.getEtiquetas());
 
         return result;
     }

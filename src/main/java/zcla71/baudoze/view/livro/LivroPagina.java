@@ -21,5 +21,7 @@ public class LivroPagina extends Pagina {
     private Collection<String> editoras;
     private Collection<String> etiquetas;
     private List<LivroPaginaObra> listaObras;
+    private List<LivroPaginaEditora> listaEditoras;
+    private List<LivroPaginaEtiqueta> listaEtiquetas;
     // TODO Mostrar também outras relações: coleções e atividades
 }

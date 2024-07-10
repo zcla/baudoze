@@ -101,7 +101,7 @@ public class Service {
     public Livro incluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException {
         this.repository.beginTransaction();
         Livro result = this.repository.getData().incluiLivro(livro);
-        Atividade atividade = new Atividade(); // Isso é controller ou serviço?
+        Atividade atividade = new Atividade(); // TODO Pensar: isso não deveria estar no BauDoZe (controller)? Caso positivo, o controle de transação também.
         atividade.setId(Repository.generateId());
         atividade.setTipo(AtividadeTipo.CADASTRO);
         atividade.setData(LocalDate.now());

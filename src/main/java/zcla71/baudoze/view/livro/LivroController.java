@@ -54,7 +54,6 @@ public class LivroController {
         if (livro.getExceptionMap().size() == 0) {
             redirectAttributes.addAttribute("id", livro.getId());
         }
-
         return "livro";
     }
 

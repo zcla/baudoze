@@ -7,14 +7,18 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-multiselect.css" rel="stylesheet">
     <link href="/css/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="/css/datatables/buttons.dataTables.min.css" rel="stylesheet">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap-multiselect.js"></script>
     <script src="/js/chart.umd.min.js"></script>
     <script src="/js/datatables/dataTables.min.js"></script>
     <script src="/js/datatables/dataTables.bootstrap5.min.js"></script>
+    <script src="/js/datatables/dataTables.buttons.min.js"></script>
+    <script src="/js/datatables/buttons.bootstrap5.min.js"></script>
     <script src="/js/datatables/intl.js"></script>
     <script>
+        DataTable.Buttons.defaults.dom.button.className = 'btn';
         const DATATABLE_COMMON_OPTIONS = {
             language: { // Adaptado de https://datatables.net/plug-ins/i18n/Portuguese-Brasil.html
                 emptyTable: "Nenhum registro encontrado",
@@ -265,6 +269,12 @@
             lengthMenu: [
                 [10, 20, 50, -1],
                 [10, 20, 50, 'Todos']
+            ],
+            layout: {
+                topStart: 'buttons'
+            },
+            buttons: [
+                'pageLength'
             ]
         };
         $(document).ready(function(){
@@ -321,6 +331,26 @@
         }
 
         /*
+        Formatação do botão pageLength, para ficar igual a um btn-secondary
+        */
+        .buttons-page-length {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #6c757d;
+            --bs-btn-border-color: #6c757d;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #5c636a;
+            --bs-btn-hover-border-color: #565e64;
+            --bs-btn-focus-shadow-rgb: 130, 138, 145;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #565e64;
+            --bs-btn-active-border-color: #51585e;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #6c757d;
+            --bs-btn-disabled-border-color: #6c757d;
+        }
+
+        /*
         Formatação dos links em tabelas
         */
 
@@ -351,6 +381,13 @@
 
         .initiallyHidden {
             display: none;
+        }
+
+        /*
+        Borda branca no texto (usada nas imagens dos botões)
+        */
+        .whiteBorder {
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
         }
     </style>
 </head>

@@ -154,13 +154,21 @@ public class LibibImport {
 
                         String added = line.getAdded().trim();
                         LocalDate ldAdded = LocalDate.parse(added, dateFormat);
-                        Atividade cadastro = new Atividade(AtividadeTipo.CADASTRO, ldAdded, livro.getId());
+                        Atividade cadastro = new Atividade();
+                        cadastro.setId(Repository.generateId());
+                        cadastro.setTipo(AtividadeTipo.CADASTRO);
+                        cadastro.setData(ldAdded);
+                        cadastro.setIdLivro(livro.getId());
                         repository.getData().getAtividades().add(cadastro);
 
                         String began = line.getBegan().trim();
                         if ((began != null) && (began.length() > 0)) {
                             LocalDate ldBegan = LocalDate.parse(began, dateFormat);
-                            Atividade inicioLeitura = new Atividade(AtividadeTipo.INICIO_LEITURA, ldBegan, livro.getId());
+                            Atividade inicioLeitura = new Atividade();
+                            inicioLeitura.setId(Repository.generateId());
+                            inicioLeitura.setTipo(AtividadeTipo.INICIO_LEITURA);
+                            inicioLeitura.setData(ldBegan);
+                            inicioLeitura.setIdLivro(livro.getId());
                             repository.getData().getAtividades().add(inicioLeitura);
                         }
 
@@ -170,7 +178,11 @@ public class LibibImport {
                             LocalDate ldCompleted = LocalDate.parse(completed, dateFormat);
                             switch (status) {
                                 case "Completed":
-                                    Atividade terminoLeitura = new Atividade(AtividadeTipo.TERMINO_LEITURA, ldCompleted, livro.getId());
+                                    Atividade terminoLeitura = new Atividade();
+                                    terminoLeitura.setId(Repository.generateId());
+                                    terminoLeitura.setTipo(AtividadeTipo.TERMINO_LEITURA);
+                                    terminoLeitura.setData(ldCompleted);
+                                    terminoLeitura.setIdLivro(livro.getId());
                                     repository.getData().getAtividades().add(terminoLeitura);
                                     break;
 

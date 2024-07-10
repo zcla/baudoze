@@ -177,26 +177,29 @@ public class BauDoZe {
     public LivroPagina getLivro(String id) throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
 
-        Livro livro = service.buscaLivroPorId(id);
         LivroPagina result = new LivroPagina();
-        result.setId(livro.getId());
-        result.setTitulo(livro.getTitulo());
         result.setObras(new ArrayList<>());
-        for (String idObra : livro.getIdsObras()) {
-            result.getObras().add(idObra);
-        }
-        result.setIsbn13(livro.getIsbn13());
-        result.setIsbn10(livro.getIsbn10());
-        result.setAno(livro.getAno());
-        result.setPaginas(livro.getPaginas());
-        result.setEdicao(livro.getEdicao());
         result.setEditoras(new ArrayList<>());
-        for (String idEditora : livro.getIdsEditoras()) {
-            result.getEditoras().add(idEditora);
-        }
         result.setEtiquetas(new ArrayList<>());
-        for (String idEtiqueta : livro.getIdsEtiquetas()) {
-            result.getEtiquetas().add(idEtiqueta);
+
+        if (id != null) {
+            Livro livro = service.buscaLivroPorId(id);
+            result.setId(livro.getId());
+            result.setTitulo(livro.getTitulo());
+            for (String idObra : livro.getIdsObras()) {
+                result.getObras().add(idObra);
+            }
+            result.setIsbn13(livro.getIsbn13());
+            result.setIsbn10(livro.getIsbn10());
+            result.setAno(livro.getAno());
+            result.setPaginas(livro.getPaginas());
+            result.setEdicao(livro.getEdicao());
+            for (String idEditora : livro.getIdsEditoras()) {
+                result.getEditoras().add(idEditora);
+            }
+            for (String idEtiqueta : livro.getIdsEtiquetas()) {
+                result.getEtiquetas().add(idEtiqueta);
+            }
         }
 
         Collection<Obra> obras = service.listaObras();
@@ -256,6 +259,10 @@ public class BauDoZe {
 
     public LivroPagina setLivro(String id, LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
         LivroPagina result = getLivro(id);
+        result.setEstadoPagina(Estado.CREATE);
+        if (id != null) {
+            result.setEstadoPagina(Estado.UPDATE); 
+        }
         result.setTitulo(form.getTitulo());
         result.setObras(form.getObras());
         result.setIsbn13(form.getIsbn13());
@@ -269,12 +276,14 @@ public class BauDoZe {
         result.setEditoras(form.getEditoras());
         result.setEtiquetas(form.getEtiquetas());
 
+        Estado estadoAnterior = result.getEstadoPagina();
         try {
             Livro livro = validaLivro(id, result);
             result.setEstadoPagina(null);
             Service service = Service.getInstance();
             if (livro.getId() == null) {
-                service.incluiLivro(livro);
+                livro = service.incluiLivro(livro);
+                result.setId(livro.getId());
             } else {
                 service.alteraLivro(livro);
             }
@@ -282,7 +291,7 @@ public class BauDoZe {
             for (ValidationException ve : e.getExceptions()) {
                 result.getExceptionMap().put(ve.getCampo(), ve);
             }
-            result.setEstadoPagina(Estado.UPDATE);
+            result.setEstadoPagina(estadoAnterior);
         }
 
         return result;

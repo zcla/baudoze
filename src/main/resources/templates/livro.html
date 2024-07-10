@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{_fragments::head}"></head>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             // Inicialização dos campos
 
             $('#obras').multiselect({
@@ -37,10 +37,18 @@
             $("#actionCancelar").on('click', function(event) {
                 $('#fields').attr('disabled', true);
                 $('#actions').addClass('d-none');
-                window.location = window.location; // window.location.reload() dá problema após o submit
+                if ($('#estadoPagina').val() == 'CREATE') {
+                    window.location = window.location + 's'; // volta pra lista de livros
+                } else {
+                    window.location = window.location; // window.location.reload() dá problema após o submit
+                }
             });
 
             // Estado da página
+
+            if ($('#estadoPagina').val() == 'CREATE') {
+                $("#toolbarAlterar").click();
+            }
 
             if ($('#estadoPagina').val() == 'UPDATE') {
                 $("#toolbarAlterar").click();
@@ -52,13 +60,13 @@
         <div class="container-fluid">
             <h1>Livro</h1>
             <div class="initialSpinner spinner-border"></div>
-            <form class="initiallyHidden" th:method="put" th:action="@{/livro/__${livro.id}__}" th:object="${livro}">
+            <form class="initiallyHidden" th:method="${livro.id == null ? 'post' : 'put'}" th:action="@{/livro__${livro.id == null ? '' : '/' + livro.id}__}" th:object="${livro}">
                 <input type="hidden" th:field="*{estadoPagina}">
                 <fieldset id="toolbar">
                     <div class="row">
                         <div class="col">
-                            <button id="toolbarAlterar" type="button" class="btn btn-primary">✏️ Alterar</button>
-                            <button id="toolbarExcluir" type="button" class="btn btn-danger" disabled>🗑 Excluir</button>
+                            <button id="toolbarAlterar" type="button" class="btn btn-primary"><span class="whiteBorder">✏️</span> Alterar</button>
+                            <button id="toolbarExcluir" type="button" class="btn btn-danger" disabled><span class="whiteBorder">🗑</span> Excluir</button>
                         </div>
                     </div>
                 </fieldset>
@@ -134,8 +142,8 @@
                 <fieldset id="actions" class="d-none">
                     <div class="row">
                         <div class="col">
-                            <button id="actionSalvar" type="submit" class="btn btn-success">✅ Salvar</button>
-                            <button id="actionCancelar" type="button" class="btn btn-secondary">❌ Cancelar</button>
+                            <button id="actionSalvar" type="submit" class="btn btn-success"><span class="whiteBorder">✅</span> Salvar</button>
+                            <button id="actionCancelar" type="button" class="btn btn-secondary"><span class="whiteBorder">❌</span> Cancelar</button>
                         </div>
                     </div>
                 </fieldset>

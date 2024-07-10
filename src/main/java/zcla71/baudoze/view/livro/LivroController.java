@@ -7,18 +7,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
 import zcla71.baudoze.controller.BauDoZe;
 import zcla71.baudoze.repository.model.RepositoryException;
+import zcla71.baudoze.view.Pagina.Estado;
 
 @Controller
 public class LivroController {
+    @GetMapping("/livro")
+    public String livroGet(Model model) throws StreamReadException, DatabindException, IOException {
+        BauDoZe bauDoZe = BauDoZe.getInstance();
+
+        LivroPagina livro = bauDoZe.getLivro(null);
+        livro.setEstadoPagina(Estado.CREATE);
+
+        model.addAttribute("livro", livro);
+
+        return "livro";
+    }
+
     @GetMapping("/livro/{id}")
-    public String livroGet(Model model, @PathVariable String id) throws StreamReadException, DatabindException, IOException {
+    public String livroGetId(Model model, @PathVariable String id) throws StreamReadException, DatabindException, IOException {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         LivroPagina livro = bauDoZe.getLivro(id);
@@ -28,8 +43,23 @@ public class LivroController {
         return "livro";
     }
 
+    @PostMapping("/livro")
+    public String livroPostId(Model model, @ModelAttribute LivroForm form, RedirectAttributes redirectAttributes) throws StreamReadException, DatabindException, IOException, RepositoryException {
+        BauDoZe bauDoZe = BauDoZe.getInstance();
+
+        LivroPagina livro = bauDoZe.setLivro(null, form);
+
+        model.addAttribute("livro", livro);
+
+        if (livro.getExceptionMap().size() == 0) {
+            redirectAttributes.addAttribute("id", livro.getId());
+        }
+
+        return "livro";
+    }
+
     @PutMapping("/livro/{id}")
-    public String livroPut(Model model, @PathVariable String id, @ModelAttribute LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public String livroPutId(Model model, @PathVariable String id, @ModelAttribute LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         LivroPagina livro = bauDoZe.setLivro(id, form);

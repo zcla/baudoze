@@ -4,6 +4,13 @@
     <script>
         $(document).ready( function () {
             const options = DATATABLE_COMMON_OPTIONS;
+            options.buttons.push({
+                text: '<span class="whiteBorder">➕</span> Incluir',
+                className: 'btn-primary',
+                action: function ( e, dt, node, config ) {
+                    window.location = "/livro";
+                }
+            });
             options.columnDefs = [
                 {
                     targets: 0,

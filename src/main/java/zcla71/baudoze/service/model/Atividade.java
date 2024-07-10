@@ -2,14 +2,12 @@ package zcla71.baudoze.service.model;
 
 import java.time.LocalDate;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Atividade {
     public enum AtividadeTipo {
         CADASTRO(1, "Cadastro", ""),
@@ -30,6 +28,7 @@ public class Atividade {
         }
     }
 
+    private String id;
     private AtividadeTipo tipo;
     private LocalDate data;
     private String idLivro;

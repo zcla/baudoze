@@ -1,6 +1,7 @@
 package zcla71.baudoze.service;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Collection;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -17,6 +18,7 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.baudoze.service.model.Atividade.AtividadeTipo;
 
 public class Service {
     private static final String JSON_FILE_LOCATION = "data/baudoze.json"; // TODO Jogar pro application.properties
@@ -96,10 +98,17 @@ public class Service {
         return this.repository.getData().buscaLivroPorId(id);
     }
 
-    public void incluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException {
+    public Livro incluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException {
         this.repository.beginTransaction();
-        this.repository.getData().incluiLivro(livro);
+        Livro result = this.repository.getData().incluiLivro(livro);
+        Atividade atividade = new Atividade(); // Isso é controller ou serviço?
+        atividade.setId(Repository.generateId());
+        atividade.setTipo(AtividadeTipo.CADASTRO);
+        atividade.setData(LocalDate.now());
+        atividade.setIdLivro(result.getId());
+        this.repository.getData().incluiAtividade(atividade);
         this.repository.commitTransaction();
+        return result;
     }
 
     public Collection<Livro> listaLivros() throws StreamReadException, DatabindException, IOException {

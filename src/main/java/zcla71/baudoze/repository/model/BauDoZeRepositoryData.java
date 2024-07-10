@@ -33,6 +33,14 @@ public class BauDoZeRepositoryData {
         this.atividades = new ArrayList<>();
     }
 
+    // atividades
+
+    public Atividade incluiAtividade(Atividade atividade) {
+        atividade.setId(Repository.generateId());
+        this.atividades.add(atividade);
+        return atividade;
+    }
+
     // colecoes
 
     public Colecao buscaColecaoPorNome(String nome) {
@@ -72,9 +80,10 @@ public class BauDoZeRepositoryData {
         return this.livros.stream().filter(l -> l.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public void incluiLivro(Livro livro) {
+    public Livro incluiLivro(Livro livro) {
         livro.setId(Repository.generateId());
         this.livros.add(livro);
+        return livro;
     }
 
     // pessoas

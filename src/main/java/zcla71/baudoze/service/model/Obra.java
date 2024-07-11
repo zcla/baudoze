@@ -8,5 +8,5 @@ import lombok.Data;
 public class Obra {
     private String id;
     private String titulo;
-    private Collection<String> idsAutores;
+    private Collection<String> idsAutores; // TODO cascade
 }

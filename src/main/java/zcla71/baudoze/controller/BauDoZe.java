@@ -174,6 +174,12 @@ public class BauDoZe {
 
     // livros
 
+    public void deleteLivro(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+        Service service = Service.getInstance();
+
+        service.excluiLivro(service.buscaLivroPorId(id));
+    }
+
     public LivroPagina getLivro(String id) throws StreamReadException, DatabindException, IOException {
         Service service = Service.getInstance();
 

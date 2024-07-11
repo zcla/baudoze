@@ -98,6 +98,13 @@ public class Service {
         return this.repository.getData().buscaLivroPorId(id);
     }
 
+    public void excluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException, RepositoryException {
+        this.repository.beginTransaction();
+        // TODO Excluir as atividades e outras dependências
+        this.repository.getData().excluiLivro(livro);
+        this.repository.commitTransaction();
+    }
+
     public Livro incluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException {
         this.repository.beginTransaction();
         Livro result = this.repository.getData().incluiLivro(livro);

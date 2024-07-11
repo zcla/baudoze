@@ -22,15 +22,36 @@
 
             $('#ano').attr('max', new Date().getFullYear());
 
-            $("#toolbarAlterar").on('click', function(event) {
+            // Ações do toolbar
+
+            function editar() {
                 $('#toolbar').attr('disabled', true);
                 $('#fields').removeAttr('disabled');
                 $('#actions').removeClass('d-none');
+            }
+
+            $("#toolbarAlterar").on('click', function(event) {
+                editar();
+                $('input[name="_method"]').val('put');
+                $('#actionAlterar').removeClass('d-none');
             });
 
-            // TODO toolbarExcluir
+            $("#toolbarExcluir").on('click', function(event) {
+                $('#toolbar').attr('disabled', true);
+                $('input[name="_method"]').val('delete');
+                $('#actions').removeClass('d-none');
+                $('#actionExcluir').removeClass('d-none');
+            });
 
-            $("#actionSalvar").on('click', function(event) {
+            // Ações do form
+
+            $("#actionAlterar").on('click', function(event) {
+                // Não precisa de código; é o submit do form
+                // TODO desabilitar botões + spinner
+            });
+
+            $("#actionIncluir").on('click', function(event) {
+                // Não precisa de código; é o submit do form
                 // TODO desabilitar botões + spinner
             });
 
@@ -47,7 +68,9 @@
             // Estado da página
 
             if ($('#estadoPagina').val() == 'CREATE') {
-                $("#toolbarAlterar").click();
+                editar();
+                $('input[name="_method"]').val('post');
+                $('#actionIncluir').removeClass('d-none');
             }
 
             if ($('#estadoPagina').val() == 'UPDATE') {
@@ -60,13 +83,14 @@
         <div class="container-fluid">
             <h1>Livro</h1>
             <div class="initialSpinner spinner-border"></div>
-            <form class="initiallyHidden" th:method="${livro.id == null ? 'post' : 'put'}" th:action="@{/livro__${livro.id == null ? '' : '/' + livro.id}__}" th:object="${livro}">
+            <form class="initiallyHidden" th:object="${livro}">
+                <input type="hidden" name="_method" value="post"><!-- Esse é o método real do form; isso é uma gambiarra oficial do thymeleaf. -->
                 <input type="hidden" th:field="*{estadoPagina}">
                 <fieldset id="toolbar">
                     <div class="row">
                         <div class="col">
                             <button id="toolbarAlterar" type="button" class="btn btn-primary"><span class="whiteBorder">✏️</span> Alterar</button>
-                            <button id="toolbarExcluir" type="button" class="btn btn-danger" disabled><span class="whiteBorder">🗑</span> Excluir</button>
+                            <button id="toolbarExcluir" type="button" class="btn btn-danger"><span class="whiteBorder">🗑</span> Excluir</button>
                         </div>
                     </div>
                 </fieldset>
@@ -142,7 +166,9 @@
                 <fieldset id="actions" class="d-none">
                     <div class="row">
                         <div class="col">
-                            <button id="actionSalvar" type="submit" class="btn btn-success"><span class="whiteBorder">✅</span> Salvar</button>
+                            <button id="actionIncluir" formmethod="post" th:formaction="@{/livro}" type="submit" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
+                            <button id="actionAlterar" formmethod="post" th:formaction="@{/livro/__${livro.id}__}" type="submit" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Alterar</button>
+                            <button id="actionExcluir" formmethod="post" th:formaction="@{/livro/__${livro.id}__}" type="submit" class="btn btn-danger d-none"><span class="whiteBorder">✅</span> Confirmar exclusão</button>
                             <button id="actionCancelar" type="button" class="btn btn-secondary"><span class="whiteBorder">❌</span> Cancelar</button>
                         </div>
                     </div>

@@ -80,6 +80,13 @@ public class BauDoZeRepositoryData {
         return this.livros.stream().filter(l -> l.getId().equals(id)).findFirst().orElse(null);
     }
 
+    public void excluiLivro(Livro livro) throws RepositoryException {
+        if (buscaLivroPorId(livro.getId()) == null) {
+            throw new RepositoryException("Tentativa de alterar um livro que não existe");
+        }
+        this.livros.remove(livro);
+    }
+
     public Livro incluiLivro(Livro livro) {
         livro.setId(Repository.generateId());
         this.livros.add(livro);

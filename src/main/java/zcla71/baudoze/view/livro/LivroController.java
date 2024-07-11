@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,15 @@ public class LivroController {
         return "livro";
     }
 
+    @DeleteMapping("/livro/{id}")
+    public String livroDeleteId(Model model, @PathVariable String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+        BauDoZe bauDoZe = BauDoZe.getInstance();
+
+        bauDoZe.deleteLivro(id);
+
+        return "redirect:/livros";
+    }
+
     @PostMapping("/livro")
     public String livroPostId(Model model, @ModelAttribute LivroForm form, RedirectAttributes redirectAttributes) throws StreamReadException, DatabindException, IOException, RepositoryException {
         BauDoZe bauDoZe = BauDoZe.getInstance();
@@ -51,10 +61,7 @@ public class LivroController {
 
         model.addAttribute("livro", livro);
 
-        if (livro.getExceptionMap().size() == 0) {
-            redirectAttributes.addAttribute("id", livro.getId());
-        }
-        return "livro";
+        return "redirect:/livro/" + livro.getId();
     }
 
     @PutMapping("/livro/{id}")

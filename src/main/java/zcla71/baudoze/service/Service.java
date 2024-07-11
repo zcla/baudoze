@@ -3,6 +3,7 @@ package zcla71.baudoze.service;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
@@ -100,7 +101,10 @@ public class Service {
 
     public void excluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException, RepositoryException {
         this.repository.beginTransaction();
-        // TODO Excluir as atividades e outras dependências
+        List<Atividade> atividades = this.repository.getData().listaAtividadePorLivro(livro);
+        for (Atividade atividade : atividades) {
+            this.repository.getData().excluiAtividade(atividade);
+        }
         this.repository.getData().excluiLivro(livro);
         this.repository.commitTransaction();
     }

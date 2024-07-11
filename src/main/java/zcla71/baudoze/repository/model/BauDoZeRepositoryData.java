@@ -2,6 +2,7 @@ package zcla71.baudoze.repository.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import lombok.Data;
 import zcla71.baudoze.repository.Repository;
@@ -34,6 +35,17 @@ public class BauDoZeRepositoryData {
     }
 
     // atividades
+
+    public List<Atividade> listaAtividadePorLivro(Livro livro) {
+        return this.atividades.stream().filter(a -> a.getIdLivro().equals(livro.getId())).toList();
+    }
+
+    public void excluiAtividade(Atividade atividade) throws RepositoryException {
+        if (!this.atividades.contains(atividade)) {
+            throw new RepositoryException("Tentativa de excluir uma atividade que não existe");
+        }
+        this.atividades.remove(atividade);
+    }
 
     public Atividade incluiAtividade(Atividade atividade) {
         atividade.setId(Repository.generateId());
@@ -70,7 +82,7 @@ public class BauDoZeRepositoryData {
     // livros
 
     public void alteraLivro(Livro livro) throws RepositoryException {
-        if (buscaLivroPorId(livro.getId()) == null) {
+        if (!this.getLivros().contains(livro)) {
             throw new RepositoryException("Tentativa de alterar um livro que não existe");
         }
         this.livros.replaceAll(l -> l.getId().equals(livro.getId()) ? livro : l);
@@ -81,7 +93,7 @@ public class BauDoZeRepositoryData {
     }
 
     public void excluiLivro(Livro livro) throws RepositoryException {
-        if (buscaLivroPorId(livro.getId()) == null) {
+        if (!this.getLivros().contains(livro)) {
             throw new RepositoryException("Tentativa de alterar um livro que não existe");
         }
         this.livros.remove(livro);

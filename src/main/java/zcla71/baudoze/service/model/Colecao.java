@@ -8,5 +8,7 @@ import lombok.Data;
 public class Colecao {
     private String id;
     private String nome;
-    private Collection<String> idsLivros; // TODO cascade
+    // TODO cascade: excluiu coleção -> não afeta livro
+    // TODO cascade: excluiu livro -> retira da coleção
+    private Collection<String> idsLivros;
 }

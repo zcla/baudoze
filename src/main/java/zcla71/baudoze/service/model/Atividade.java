@@ -31,5 +31,7 @@ public class Atividade {
     private String id;
     private AtividadeTipo tipo;
     private LocalDate data;
+    // cascade: excluiu atividade -> não afeta livro
+    // cascade: excluiu livro -> exclui atividade
     private String idLivro;
 }

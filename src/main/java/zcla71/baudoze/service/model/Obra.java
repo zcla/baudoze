@@ -8,5 +8,7 @@ import lombok.Data;
 public class Obra {
     private String id;
     private String titulo;
-    private Collection<String> idsAutores; // TODO cascade
+    // TODO cascade: excluiu obra -> não afeta pessoa
+    // TODO cascade: excluiu pessoa -> não permite
+    private Collection<String> idsAutores;
 }

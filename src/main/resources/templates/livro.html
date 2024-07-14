@@ -44,6 +44,7 @@
             });
 
             // Ações do form
+            // TODO Por causa dos três botões temos problemas com o enter
 
             $("#actionAlterar").on('click', function(event) {
                 // Não precisa de código; é o submit do form
@@ -89,6 +90,7 @@
                 <fieldset id="toolbar">
                     <div class="row">
                         <div class="col">
+                            <button id="toolbarIncluir" type="button" class="btn btn-primary"><span class="whiteBorder">➕</span> Incluir</button>
                             <button id="toolbarAlterar" type="button" class="btn btn-primary"><span class="whiteBorder">✏️</span> Alterar</button>
                             <button id="toolbarExcluir" type="button" class="btn btn-danger"><span class="whiteBorder">🗑</span> Excluir</button>
                         </div>

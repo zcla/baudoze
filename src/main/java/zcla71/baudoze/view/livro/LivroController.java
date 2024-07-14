@@ -61,7 +61,11 @@ public class LivroController {
 
         model.addAttribute("livro", livro);
 
-        return "redirect:/livro/" + livro.getId();
+        if (livro.getExceptionMap().isEmpty()) {
+            return "redirect:/livro/" + livro.getId();
+        } else {
+            return "livro";
+        }
     }
 
     @PutMapping("/livro/{id}")
@@ -72,6 +76,10 @@ public class LivroController {
 
         model.addAttribute("livro", livro);
 
-        return "livro";
+        if (livro.getExceptionMap().isEmpty()) {
+            return "redirect:/livro/" + livro.getId();
+        } else {
+            return "livro";
+        }
     }
 }

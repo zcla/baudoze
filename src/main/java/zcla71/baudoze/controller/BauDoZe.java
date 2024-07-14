@@ -285,7 +285,7 @@ public class BauDoZe {
         Estado estadoAnterior = result.getEstadoPagina();
         try {
             Livro livro = validaLivro(id, result);
-            result.setEstadoPagina(null);
+            result.setEstadoPagina(Estado.READ);
             Service service = Service.getInstance();
             if (livro.getId() == null) {
                 livro = service.incluiLivro(livro);

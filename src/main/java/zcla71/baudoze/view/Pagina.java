@@ -27,6 +27,7 @@ public abstract class Pagina {
 
     public Pagina() {
         this.exceptionMap = new HashMap<>();
+        this.estadoPagina = Estado.READ;
     }
 
     public String getExceptionMessage(String campo) {

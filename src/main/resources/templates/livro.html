@@ -3,7 +3,12 @@
     <head th:replace="~{_fragments::head}"></head>
     <script>
         function estadoPagina(estadoPagina) {
-            if (estadoPagina && (estadoPagina != 'RELOAD')) {
+            if (estadoPagina == 'RELOAD') {
+                $(".initialSpinner").show();
+                $(".initiallyHidden").hide();
+                estadoPagina = null;
+            }
+            if (estadoPagina) {
                 $('#estadoPagina').val(estadoPagina);
             } else {
                 estadoPagina = $('#estadoPagina').val();
@@ -81,23 +86,18 @@
 
             // Ações
 
-            $("#actionAlterar").on('click', function(event) {
-                // Não precisa de código; é o submit do form
+            $("form").on('submit', function(event) {
                 estadoPagina('RELOAD');
-            });
-
-            $("#actionIncluir").on('click', function(event) {
-                // Não precisa de código; é o submit do form
-                estadoPagina('RELOAD');
+                return
             });
 
             $("#actionCancelar").on('click', function(event) {
+                estadoPagina('RELOAD');
                 if ($('#estadoPagina').val() == 'CREATE') {
                     window.location = window.location + 's'; // volta pra lista de livros
                 } else {
                     window.location = window.location; // window.location.reload() dá problema após o submit
                 }
-                estadoPagina('RELOAD');
             });
 
             // Estado da página

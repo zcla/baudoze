@@ -76,6 +76,10 @@
 
             // Ações do toolbar
 
+            $("#toolbarIncluir").on('click', function(event) {
+                window.location = window.location.href.substring(0, window.location.href.lastIndexOf('/'));;
+            });
+
             $("#toolbarAlterar").on('click', function(event) {
                 estadoPagina('UPDATE');
             });
@@ -94,9 +98,9 @@
             $("#actionCancelar").on('click', function(event) {
                 estadoPagina('RELOAD');
                 if ($('#estadoPagina').val() == 'CREATE') {
-                    window.location = window.location + 's'; // volta pra lista de livros
+                    window.location = window.location.href + 's'; // volta pra lista de livros
                 } else {
-                    window.location = window.location; // window.location.reload() dá problema após o submit
+                    window.location = window.location.href; // window.location.reload() dá problema após o submit
                 }
             });
 

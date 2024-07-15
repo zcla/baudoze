@@ -3,51 +3,48 @@
     <head th:replace="~{_fragments::head}"></head>
     <script>
         function estadoPagina(estadoPagina) {
-            if (estadoPagina) {
+            if (estadoPagina && (estadoPagina != 'RELOAD')) {
                 $('#estadoPagina').val(estadoPagina);
             } else {
                 estadoPagina = $('#estadoPagina').val();
             }
 
-            // #toolbar
+            // default
             $('#toolbar').attr('disabled', true);
-            if (['READ'].includes(estadoPagina)) {
-                $('#toolbar').attr('disabled', false);
-            }
-
-            // '#fields
             $('#fields').attr('disabled', true);
-            if (['CREATE', 'UPDATE'].includes(estadoPagina)) {
-                $('#fields').attr('disabled', false);
-            }
+            $('#actions').addClass('d-none');
+            $('#actionIncluir').attr('type', 'button');
+            $('#actionExcluir').attr('type', 'button');
+            $('#actionAlterar').attr('type', 'button');
 
-            // name="_method"
+            // estadoPagina
             switch (estadoPagina) {
                 case 'CREATE':
                     $('input[name="_method"]').val('post');
-                    break;
-                case 'DELETE':
-                    $('input[name="_method"]').val('delete');
-                    break;
-                case 'UPDATE':
-                    $('input[name="_method"]').val('put');
-                    break;
-            }
-
-            // '#actions
-            $('#actions').addClass('d-none');
-            if (['CREATE', 'DELETE', 'UPDATE'].includes(estadoPagina)) {
-                $('#actions').removeClass('d-none');
-            }
-            switch (estadoPagina) {
-                case 'CREATE':
+                    $('#fields').attr('disabled', false);
+                    $('#actions').removeClass('d-none');
+                    $('#actionIncluir').attr('type', 'submit');
                     $('#actionIncluir').removeClass('d-none');
                     break;
                 case 'DELETE':
+                    $('input[name="_method"]').val('delete');
+                    $('#actions').removeClass('d-none');
+                    $('#actionExcluir').attr('type', 'submit');
                     $('#actionExcluir').removeClass('d-none');
                     break;
+                case 'READ':
+                    $('#toolbar').attr('disabled', false);
+                    break;
                 case 'UPDATE':
+                    $('input[name="_method"]').val('put');
+                    $('#fields').attr('disabled', false);
+                    $('#actions').removeClass('d-none');
+                    $('#actionAlterar').attr('type', 'submit');
                     $('#actionAlterar').removeClass('d-none');
+                    break;
+                case 'RELOAD':
+                    $('initialSpinner').show();
+                    $('initiallyHidden').hide();
                     break;
             }
         }
@@ -82,26 +79,25 @@
                 estadoPagina('DELETE');
             });
 
-            // Ações do form
-            // FIXME Por causa dos três botões temos problemas com o Enter
+            // Ações
 
             $("#actionAlterar").on('click', function(event) {
                 // Não precisa de código; é o submit do form
-                // TODO desabilitar botões + spinner
+                estadoPagina('RELOAD');
             });
 
             $("#actionIncluir").on('click', function(event) {
                 // Não precisa de código; é o submit do form
-                // TODO desabilitar botões + spinner
+                estadoPagina('RELOAD');
             });
 
             $("#actionCancelar").on('click', function(event) {
-                estadoPagina('CANCEL');
                 if ($('#estadoPagina').val() == 'CREATE') {
                     window.location = window.location + 's'; // volta pra lista de livros
                 } else {
                     window.location = window.location; // window.location.reload() dá problema após o submit
                 }
+                estadoPagina('RELOAD');
             });
 
             // Estado da página
@@ -198,9 +194,9 @@
                 <fieldset id="actions" class="d-none">
                     <div class="row">
                         <div class="col">
-                            <button id="actionIncluir" formmethod="post" th:formaction="@{/livro}" type="submit" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
-                            <button id="actionAlterar" formmethod="post" th:formaction="@{/livro/__${livro.id}__}" type="submit" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Alterar</button>
-                            <button id="actionExcluir" formmethod="post" th:formaction="@{/livro/__${livro.id}__}" type="submit" class="btn btn-danger d-none"><span class="whiteBorder">✅</span> Confirmar exclusão</button>
+                            <button id="actionIncluir" formmethod="post" th:formaction="@{/livro}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
+                            <button id="actionAlterar" formmethod="post" th:formaction="@{/livro/__${livro.id}__}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Alterar</button>
+                            <button id="actionExcluir" formmethod="post" th:formaction="@{/livro/__${livro.id}__}" type="button" class="btn btn-danger d-none"><span class="whiteBorder">✅</span> Confirmar exclusão</button>
                             <button id="actionCancelar" type="button" class="btn btn-secondary"><span class="whiteBorder">❌</span> Cancelar</button>
                         </div>
                     </div>

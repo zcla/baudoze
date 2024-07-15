@@ -2,6 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{_fragments::head}"></head>
     <script>
+        function estadoPagina(estadoPagina) {
+            if (estadoPagina) {
+                $('#estadoPagina').val(estadoPagina);
+            } else {
+                estadoPagina = $('#estadoPagina').val();
+            }
+
+            // #toolbar
+            $('#toolbar').attr('disabled', true);
+            if (['READ'].includes(estadoPagina)) {
+                $('#toolbar').attr('disabled', false);
+            }
+
+            // '#fields
+            $('#fields').attr('disabled', true);
+            if (['CREATE', 'UPDATE'].includes(estadoPagina)) {
+                $('#fields').attr('disabled', false);
+            }
+
+            // name="_method"
+            switch (estadoPagina) {
+                case 'CREATE':
+                    $('input[name="_method"]').val('post');
+                    break;
+                case 'DELETE':
+                    $('input[name="_method"]').val('delete');
+                    break;
+                case 'UPDATE':
+                    $('input[name="_method"]').val('put');
+                    break;
+            }
+
+            // '#actions
+            $('#actions').addClass('d-none');
+            if (['CREATE', 'DELETE', 'UPDATE'].includes(estadoPagina)) {
+                $('#actions').removeClass('d-none');
+            }
+            switch (estadoPagina) {
+                case 'CREATE':
+                    $('#actionIncluir').removeClass('d-none');
+                    break;
+                case 'DELETE':
+                    $('#actionExcluir').removeClass('d-none');
+                    break;
+                case 'UPDATE':
+                    $('#actionAlterar').removeClass('d-none');
+                    break;
+            }
+        }
+
         $(document).ready(function() {
             // Inicialização dos campos
 
@@ -24,27 +74,16 @@
 
             // Ações do toolbar
 
-            function editar() {
-                $('#toolbar').attr('disabled', true);
-                $('#fields').removeAttr('disabled');
-                $('#actions').removeClass('d-none');
-            }
-
             $("#toolbarAlterar").on('click', function(event) {
-                editar();
-                $('input[name="_method"]').val('put');
-                $('#actionAlterar').removeClass('d-none');
+                estadoPagina('UPDATE');
             });
 
             $("#toolbarExcluir").on('click', function(event) {
-                $('#toolbar').attr('disabled', true);
-                $('input[name="_method"]').val('delete');
-                $('#actions').removeClass('d-none');
-                $('#actionExcluir').removeClass('d-none');
+                estadoPagina('DELETE');
             });
 
             // Ações do form
-            // TODO Por causa dos três botões temos problemas com o enter
+            // FIXME Por causa dos três botões temos problemas com o Enter
 
             $("#actionAlterar").on('click', function(event) {
                 // Não precisa de código; é o submit do form
@@ -57,8 +96,7 @@
             });
 
             $("#actionCancelar").on('click', function(event) {
-                $('#fields').attr('disabled', true);
-                $('#actions').addClass('d-none');
+                estadoPagina('CANCEL');
                 if ($('#estadoPagina').val() == 'CREATE') {
                     window.location = window.location + 's'; // volta pra lista de livros
                 } else {
@@ -68,15 +106,7 @@
 
             // Estado da página
 
-            if ($('#estadoPagina').val() == 'CREATE') {
-                editar();
-                $('input[name="_method"]').val('post');
-                $('#actionIncluir').removeClass('d-none');
-            }
-
-            if ($('#estadoPagina').val() == 'UPDATE') {
-                $("#toolbarAlterar").click();
-            }
+            estadoPagina();
         });
     </script>
     <body>

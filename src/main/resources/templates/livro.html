@@ -18,6 +18,7 @@
             $('#toolbar').attr('disabled', true);
             $('#fields').attr('disabled', true);
             $('#actions').addClass('d-none');
+            $('#detalhes').addClass('d-none');
             $('#actionIncluir').attr('type', 'button');
             $('#actionExcluir').attr('type', 'button');
             $('#actionAlterar').attr('type', 'button');
@@ -33,12 +34,14 @@
                     break;
                 case 'DELETE':
                     $('input[name="_method"]').val('delete');
+                    $('#detalhes').removeClass('d-none');
                     $('#actions').removeClass('d-none');
                     $('#actionExcluir').attr('type', 'submit');
                     $('#actionExcluir').removeClass('d-none');
                     break;
                 case 'READ':
                     $('#toolbar').attr('disabled', false);
+                    $('#detalhes').removeClass('d-none');
                     break;
                 case 'UPDATE':
                     $('input[name="_method"]').val('put');
@@ -111,10 +114,10 @@
     </script>
     <body>
         <nav th:replace="~{_fragments::nav}"></nav>
-        <div class="container-fluid">
+        <div class="container-fluid" th:object="${livro}">
             <h1>Livro</h1>
             <div class="initialSpinner spinner-border"></div>
-            <form class="initiallyHidden" th:object="${livro}">
+            <form class="initiallyHidden">
                 <input type="hidden" name="_method" value="post"><!-- Esse é o método real do form; isso é uma gambiarra oficial do thymeleaf. -->
                 <input type="hidden" th:field="*{estadoPagina}">
                 <fieldset id="toolbar">
@@ -195,7 +198,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset id="actions" class="d-none">
+                <fieldset id="actions" class="d-none mb-3">
                     <div class="row">
                         <div class="col">
                             <button id="actionIncluir" formmethod="post" th:formaction="@{/livro}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
@@ -206,6 +209,26 @@
                     </div>
                 </fieldset>
             </form>
+            <div id="detalhes" class="initiallyHidden">
+                <div class="row mb-3">
+                    <div class="col" th:if="${(livro.atividades != null) && (livro.atividades.size() > 0)}">
+                        <div id="atividades" class="card">
+                            <h5 class="card-header">Atividades</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" th:each="atividade:${livro.atividades}" th:text="${atividade}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col" th:if="${livro.colecao != null}">
+                        <div id="colecao" class="card">
+                            <h5 class="card-header">Coleção</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" th:text="${livro.colecao}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

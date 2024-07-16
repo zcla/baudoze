@@ -40,15 +40,8 @@ public class Service {
 
     // Atividades
 
-    public Atividade buscaUltimaAtividadeDoLivro(String idLivro) {
-        return this.listaAtividades().stream()
-                .filter(a -> a.getIdLivro().equals(idLivro)).sorted((a1, a2) -> {
-                    int result = a2.getData().compareTo(a1.getData());
-                    if (result == 0) {
-                        result = a2.getTipo().getOrdem().compareTo(a1.getTipo().getOrdem());
-                    }
-                    return result;
-                })
+    public Atividade buscaUltimaAtividadeDoLivro(Livro livro) {
+        return listaAtividadesDoLivro(livro).stream()
                 .findFirst()
                 .orElse(null);
     }
@@ -57,10 +50,26 @@ public class Service {
         return this.repository.getData().getAtividades();
     }
 
+    public List<Atividade> listaAtividadesDoLivro(Livro livro) {
+        return this.listaAtividades().stream()
+                .filter(a -> a.getIdLivro().equals(livro.getId())).sorted((a1, a2) -> {
+                    int result = a2.getData().compareTo(a1.getData());
+                    if (result == 0) {
+                        result = a2.getTipo().getOrdem().compareTo(a1.getTipo().getOrdem());
+                    }
+                    return result;
+                })
+                .toList();
+    }
+
     // Coleções
 
     public Collection<Colecao> listaColecoes() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getColecoes();
+    }
+
+    public Colecao buscaColecaoDoLivro(Livro livro) throws StreamReadException, DatabindException, IOException {
+        return this.listaColecoes().stream().filter(c -> c.getIdsLivros().contains(livro.getId())).findFirst().orElse(null);
     }
 
     // Editoras

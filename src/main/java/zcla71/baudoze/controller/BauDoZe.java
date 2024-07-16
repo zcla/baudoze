@@ -13,6 +13,7 @@ import java.util.Locale;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
+import zcla71.baudoze.Application;
 import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.service.Service;
 import zcla71.baudoze.service.model.Atividade;
@@ -188,6 +189,8 @@ public class BauDoZe {
         result.setEditoras(new ArrayList<>());
         result.setEtiquetas(new ArrayList<>());
 
+        // form
+
         if (id != null) {
             Livro livro = service.buscaLivroPorId(id);
             result.setId(livro.getId());
@@ -206,7 +209,21 @@ public class BauDoZe {
             for (String idEtiqueta : livro.getIdsEtiquetas()) {
                 result.getEtiquetas().add(idEtiqueta);
             }
+
+            // detalhes
+            Colecao colecao = service.buscaColecaoDoLivro(livro);
+            if (colecao != null) {
+                result.setColecao(colecao.getNome());
+            }
+
+            List<Atividade> atividades = service.listaAtividadesDoLivro(livro);
+            result.setAtividades(new ArrayList<>());
+            for (Atividade atividade : atividades) {
+                result.getAtividades().add(Application.format(atividade.getData()) + " " + atividade.getTipo().getTexto());
+            }
         }
+
+        // form - selects
 
         Collection<Obra> obras = service.listaObras();
         result.setListaObras(new ArrayList<>());
@@ -447,7 +464,7 @@ public class BauDoZe {
 
             lpLivro.setPaginas(livro.getPaginas());
             lpLivro.setEdicao(livro.getEdicao());
-            lpLivro.setStatus(service.buscaUltimaAtividadeDoLivro(livro.getId()).getTipo().getStatus());
+            lpLivro.setStatus(service.buscaUltimaAtividadeDoLivro(livro).getTipo().getStatus());
 
             result.add(lpLivro);
         }

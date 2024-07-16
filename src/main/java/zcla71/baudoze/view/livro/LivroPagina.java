@@ -22,9 +22,9 @@ public class LivroPagina extends Pagina {
     private Collection<String> editoras;
     private Collection<String> etiquetas;
     // form - selects
-    private List<LivroPaginaObra> listaObras; // TODO Map<String, String>
-    private List<LivroPaginaEditora> listaEditoras; // TODO Map<String, String>
-    private List<LivroPaginaEtiqueta> listaEtiquetas; // TODO Map<String, String>
+    private List<LivroPaginaObra> listaObras;
+    private List<LivroPaginaEditora> listaEditoras;
+    private List<LivroPaginaEtiqueta> listaEtiquetas;
     // detalhes
     private String colecao;
     private List<String> atividades;

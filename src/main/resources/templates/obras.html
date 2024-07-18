@@ -3,7 +3,15 @@
     <head th:replace="~{_fragments::head}"></head>
     <script>
         $(document).ready( function () {
-            $('table.datatable').DataTable(DATATABLE_COMMON_OPTIONS);
+            const options = DATATABLE_COMMON_OPTIONS;
+            options.buttons.push({
+                text: '<span class="whiteBorder">➕</span> Incluir',
+                className: 'btn-primary',
+                action: function ( e, dt, node, config ) {
+                    window.location = "/obra";
+                }
+            });
+            $('table.datatable').DataTable(options);
         });
     </script>
     <body>
@@ -21,7 +29,9 @@
                 </thead>
                 <tbody>
                     <tr th:each="obra:${obras}">
-                        <td th:text="${obra.titulo}"></td>
+                        <td>
+                            <a th:href="'/obra/' + ${obra.id}" th:text="${obra.titulo}"></a>
+                        </td>
                         <td>
                             <span th:text="${obra.autorPrincipal}"></span>
                             <span class="badge text-bg-secondary ml-2" th:text="'+' + ${obra.qtdOutrosAutores}" th:if="${obra.qtdOutrosAutores > 0}"></span>

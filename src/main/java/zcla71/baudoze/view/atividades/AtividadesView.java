@@ -1,4 +1,4 @@
-package zcla71.baudoze.view.obras;
+package zcla71.baudoze.view.atividades;
 
 import java.io.IOException;
 
@@ -12,11 +12,11 @@ import com.fasterxml.jackson.databind.DatabindException;
 import zcla71.baudoze.controller.BauDoZe;
 
 @Controller
-public class ObrasController {
-    @GetMapping("/obras")
-    public String obrasGet(Model model) throws StreamReadException, DatabindException, IOException {
+public class AtividadesView {
+    @GetMapping("/atividades")
+    public String atividadesGet(Model model) throws StreamReadException, DatabindException, IOException {
         BauDoZe bauDoZe = BauDoZe.getInstance();
-        model.addAttribute("obras", bauDoZe.getObras());
-        return "obras";
+        model.addAttribute("atividades", bauDoZe.getAtividades());
+        return "atividades";
     }
 }

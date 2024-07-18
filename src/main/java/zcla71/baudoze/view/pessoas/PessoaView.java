@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import zcla71.baudoze.controller.BauDoZe;
 
 @Controller
-public class PessoaController {
+public class PessoaView {
     @GetMapping("/pessoas")
     public String pessoasGet(Model model) throws StreamReadException, DatabindException, IOException {
         BauDoZe bauDoZe = BauDoZe.getInstance();

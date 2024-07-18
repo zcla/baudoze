@@ -20,7 +20,7 @@ import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.view.Pagina.Estado;
 
 @Controller
-public class LivroController {
+public class LivroView {
     @GetMapping("/livro")
     public String livroGet(Model model) throws StreamReadException, DatabindException, IOException {
         BauDoZe bauDoZe = BauDoZe.getInstance();

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
 @Controller
-public class IndexController {
+public class IndexView {
     @GetMapping("/")
     public String index(Model model) throws StreamReadException, DatabindException, IOException {
         return "forward:/stats";

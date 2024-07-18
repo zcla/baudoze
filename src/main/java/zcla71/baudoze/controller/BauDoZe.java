@@ -32,7 +32,6 @@ import zcla71.baudoze.view.livro.LivroForm;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
 import zcla71.baudoze.view.obras.ObrasPagina;
-import zcla71.baudoze.view.obras.ObrasPaginaObra;
 import zcla71.baudoze.view.pessoas.PessoasPagina;
 import zcla71.baudoze.view.pessoas.PessoasPaginaPessoa;
 import zcla71.baudoze.view.stats.StatsPagina;
@@ -50,10 +49,12 @@ public class BauDoZe {
     }
 
     private LivroController livro;
+    private ObraController obra;
 
     private BauDoZe() {
         super();
         this.livro = LivroController.getInstance();
+        this.obra = ObraController.getInstance();
     }
 
     // atividades
@@ -194,42 +195,7 @@ public class BauDoZe {
     // obras
 
     public ObrasPagina getObras() throws StreamReadException, DatabindException, IOException {
-        Service service = Service.getInstance();
-
-        Collection<Obra> obras = service.listaObras();
-        ObrasPagina result = new ObrasPagina();
-        for (Obra obra : obras) {
-            ObrasPaginaObra opObra = new ObrasPaginaObra();
-
-            opObra.setId(obra.getId());
-            opObra.setTitulo(obra.getTitulo());
-
-            opObra.setAutorPrincipal(null);
-            opObra.setQtdOutrosAutores(0);
-            for (String idPessoa : obra.getIdsAutores()) {
-                Pessoa autor = service.buscaPessoaPorId(idPessoa);
-                if (opObra.getAutorPrincipal() == null) {
-                    opObra.setAutorPrincipal(autor.getNome());
-                } else {
-                    opObra.setQtdOutrosAutores(opObra.getQtdOutrosAutores() + 1);
-                }
-            }
-    
-            opObra.setQtdLivros(service.listaLivrosDaObra(obra.getId()).size());
-    
-            result.add(opObra);
-        }
-
-        // TODO Testar
-        Collections.sort(result, new Comparator<ObrasPaginaObra>() {
-            @Override
-            public int compare(ObrasPaginaObra o1, ObrasPaginaObra o2) {
-                Collator ptBrCollator = Collator.getInstance(Locale.forLanguageTag("pt-BR"));
-                return ptBrCollator.compare(o1.getTitulo(), o2.getTitulo());
-            }
-        });
-
-        return result;
+        return obra.getObras();
     }
 
     // pessoas

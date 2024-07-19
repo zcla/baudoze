@@ -42,6 +42,8 @@ public class LivroController {
         return instance;
     }
 
+    // TODO Fazer testes unitários
+
     public void deleteLivro(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
         Service service = Service.getInstance();
 

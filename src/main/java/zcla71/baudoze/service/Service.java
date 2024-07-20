@@ -2,7 +2,6 @@ package zcla71.baudoze.service;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -13,13 +12,13 @@ import zcla71.baudoze.repository.Repository;
 import zcla71.baudoze.repository.model.BauDoZeRepositoryData;
 import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.service.model.Atividade;
+import zcla71.baudoze.service.model.Atividade.AtividadeTipo;
 import zcla71.baudoze.service.model.Colecao;
 import zcla71.baudoze.service.model.Editora;
 import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
-import zcla71.baudoze.service.model.Atividade.AtividadeTipo;
 
 public class Service {
     private static final String JSON_FILE_LOCATION = "data/baudoze.json"; // TODO Jogar pro application.properties
@@ -46,7 +45,7 @@ public class Service {
                 .orElse(null);
     }
 
-    public Collection<Atividade> listaAtividades() {
+    public List<Atividade> listaAtividades() {
         return this.repository.getData().getAtividades();
     }
 
@@ -64,7 +63,7 @@ public class Service {
 
     // Coleções
 
-    public Collection<Colecao> listaColecoes() throws StreamReadException, DatabindException, IOException {
+    public List<Colecao> listaColecoes() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getColecoes();
     }
 
@@ -74,7 +73,7 @@ public class Service {
 
     // Editoras
 
-    public Collection<Editora> listaEditoras() throws StreamReadException, DatabindException, IOException {
+    public List<Editora> listaEditoras() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getEditoras();
     }
 
@@ -92,7 +91,7 @@ public class Service {
         return this.repository.getData().buscaEtiquetaPorId(id);
     }
 
-    public Collection<Etiqueta> listaEtiquetas() throws StreamReadException, DatabindException, IOException {
+    public List<Etiqueta> listaEtiquetas() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getEtiquetas();
     }
 
@@ -131,18 +130,37 @@ public class Service {
         return result;
     }
 
-    public Collection<Livro> listaLivros() throws StreamReadException, DatabindException, IOException {
+    public List<Livro> listaLivros() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getLivros();
     }
 
-    public Collection<Livro> listaLivrosDaObra(String idObra) throws StreamReadException, DatabindException, IOException {
-        return this.listaLivros().stream().filter(l -> l.getIdsObras().contains(idObra)).toList();
+    public List<Livro> listaLivrosDaObra(Obra obra) throws StreamReadException, DatabindException, IOException {
+        return this.listaLivros().stream().filter(l -> l.getIdsObras().contains(obra.getId())).toList();
     }
 
     // Obras
 
-    public Collection<Obra> listaObras() throws StreamReadException, DatabindException, IOException {
+    public void alteraObra(Obra obra) throws StreamWriteException, DatabindException, IOException, RepositoryException {
+        this.repository.beginTransaction();
+        this.repository.getData().alteraObra(obra);
+        this.repository.commitTransaction();
+    }
+
+    public void excluiObra(Obra obra) throws StreamWriteException, DatabindException, IOException, RepositoryException {
+        this.repository.beginTransaction();
+        this.repository.getData().excluiObra(obra);
+        this.repository.commitTransaction();
+    }
+
+    public List<Obra> listaObras() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getObras();
+    }
+
+    public Obra incluiObra(Obra obra) throws StreamWriteException, DatabindException, IOException {
+        this.repository.beginTransaction();
+        Obra result = this.repository.getData().incluiObra(obra);
+        this.repository.commitTransaction();
+        return result;
     }
 
     public Obra buscaObraPorId(String id) {
@@ -151,7 +169,7 @@ public class Service {
 
     // Pessoas
 
-    public Collection<Pessoa> listaPessoas() throws StreamReadException, DatabindException, IOException {
+    public List<Pessoa> listaPessoas() throws StreamReadException, DatabindException, IOException {
         return this.repository.getData().getPessoas();
     }
 

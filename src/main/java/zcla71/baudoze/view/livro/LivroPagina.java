@@ -10,6 +10,7 @@ import zcla71.baudoze.view.Pagina;
 @EqualsAndHashCode(callSuper = true)
 public class LivroPagina extends Pagina {
     // form
+    // TODO Devia ser LivroForm
     private String id;
     private String titulo;
     private List<String> obras;

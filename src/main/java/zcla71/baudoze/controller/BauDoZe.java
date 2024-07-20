@@ -31,6 +31,8 @@ import zcla71.baudoze.view.etiquetas.EtiquetasPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroForm;
 import zcla71.baudoze.view.livro.LivroPagina;
 import zcla71.baudoze.view.livros.LivrosPagina;
+import zcla71.baudoze.view.obra.ObraForm;
+import zcla71.baudoze.view.obra.ObraPagina;
 import zcla71.baudoze.view.obras.ObrasPagina;
 import zcla71.baudoze.view.pessoas.PessoasPagina;
 import zcla71.baudoze.view.pessoas.PessoasPaginaPessoa;
@@ -39,7 +41,7 @@ import zcla71.baudoze.view.stats.StatsPagina;
 public class BauDoZe {
     private static BauDoZe instance;
 
-    // TODO Fazer testes unitários
+    // TODO Essa classe parece ser um intermediário desnecessário
 
     public static BauDoZe getInstance() {
         if (instance == null) {
@@ -194,8 +196,20 @@ public class BauDoZe {
 
     // obras
 
+    public void deleteObra(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+        obra.deleteObra(id);
+    }
+
+    public ObraPagina getObra(String id) throws StreamReadException, DatabindException, IOException {
+        return obra.getObra(id);
+    }
+
     public ObrasPagina getObras() throws StreamReadException, DatabindException, IOException {
         return obra.getObras();
+    }
+
+    public ObraPagina setObra(String id, ObraForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+        return obra.setObra(id, form);
     }
 
     // pessoas

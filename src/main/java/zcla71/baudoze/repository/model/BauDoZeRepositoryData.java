@@ -1,7 +1,6 @@
 package zcla71.baudoze.repository.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import lombok.Data;
@@ -17,12 +16,12 @@ import zcla71.baudoze.service.model.Pessoa;
 @Data
 public class BauDoZeRepositoryData {
     private ArrayList<Livro> livros;
-    private Collection<Obra> obras;
-    private Collection<Pessoa> pessoas;
-    private Collection<Editora> editoras;
-    private Collection<Colecao> colecoes;
-    private Collection<Etiqueta> etiquetas;
-    private Collection<Atividade> atividades;
+    private List<Obra> obras;
+    private List<Pessoa> pessoas;
+    private List<Editora> editoras;
+    private List<Colecao> colecoes;
+    private List<Etiqueta> etiquetas;
+    private List<Atividade> atividades;
 
     public BauDoZeRepositoryData() {
         this.livros = new ArrayList<>();
@@ -113,7 +112,27 @@ public class BauDoZeRepositoryData {
 
     // obras
 
+    public void alteraObra(Obra obra) throws RepositoryException {
+        if (!this.getObras().contains(obra)) {
+            throw new RepositoryException("Tentativa de alterar uma obra que não existe");
+        }
+        this.obras.replaceAll(o -> o.getId().equals(obra.getId()) ? obra : o);
+    }
+
     public Obra buscaObraPorId(String id) {
         return this.obras.stream().filter(o -> o.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public void excluiObra(Obra obra) throws RepositoryException {
+        if (!this.getObras().contains(obra)) {
+            throw new RepositoryException("Tentativa de alterar uma obra que não existe");
+        }
+        this.obras.remove(obra);
+    }
+
+    public Obra incluiObra(Obra obra) {
+        obra.setId(Repository.generateId());
+        this.obras.add(obra);
+        return obra;
     }
 }

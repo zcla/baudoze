@@ -1,0 +1,167 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{_fragments::head}"></head>
+    <script>
+        function estadoPagina(estadoPagina) {
+            if (estadoPagina == 'RELOAD') {
+                $(".initialSpinner").show();
+                $(".initiallyHidden").hide();
+                estadoPagina = null;
+            }
+            if (estadoPagina) {
+                $('#estadoPagina').val(estadoPagina);
+            } else {
+                estadoPagina = $('#estadoPagina').val();
+            }
+
+            // default
+            $('#toolbar').attr('disabled', true);
+            $('#fields').attr('disabled', true);
+            $('#actions').addClass('d-none');
+            $('#detalhes').addClass('d-none');
+            $('#actionIncluir').attr('type', 'button');
+            $('#actionExcluir').attr('type', 'button');
+            $('#actionAlterar').attr('type', 'button');
+
+            // estadoPagina
+            switch (estadoPagina) {
+                case 'CREATE':
+                    $('input[name="_method"]').val('post');
+                    $('#fields').attr('disabled', false);
+                    $('#actions').removeClass('d-none');
+                    $('#actionIncluir').attr('type', 'submit');
+                    $('#actionIncluir').removeClass('d-none');
+                    break;
+                case 'DELETE':
+                    $('input[name="_method"]').val('delete');
+                    $('#detalhes').removeClass('d-none');
+                    $('#actions').removeClass('d-none');
+                    $('#actionExcluir').attr('type', 'submit');
+                    $('#actionExcluir').removeClass('d-none');
+                    break;
+                case 'READ':
+                    $('#toolbar').attr('disabled', false);
+                    $('#detalhes').removeClass('d-none');
+                    break;
+                case 'UPDATE':
+                    $('input[name="_method"]').val('put');
+                    $('#fields').attr('disabled', false);
+                    $('#actions').removeClass('d-none');
+                    $('#actionAlterar').attr('type', 'submit');
+                    $('#actionAlterar').removeClass('d-none');
+                    break;
+                case 'RELOAD':
+                    $('initialSpinner').show();
+                    $('initiallyHidden').hide();
+                    break;
+            }
+        }
+
+        $(document).ready(function() {
+            // Inicialização dos campos
+
+            $('#autores').multiselect({
+                buttonTextAlignment: 'left',
+                enableFiltering: true
+            });
+
+            // Ações do toolbar
+
+            $("#toolbarIncluir").on('click', function(event) {
+                window.location = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+            });
+
+            $("#toolbarAlterar").on('click', function(event) {
+                estadoPagina('UPDATE');
+            });
+
+            $("#toolbarExcluir").on('click', function(event) {
+                estadoPagina('DELETE');
+            });
+
+            // Ações
+
+            $("form").on('submit', function(event) {
+                estadoPagina('RELOAD');
+                return
+            });
+
+            $("#actionCancelar").on('click', function(event) {
+                estadoPagina('RELOAD');
+                if ($('#estadoPagina').val() == 'CREATE') {
+                    window.location = window.location.href + 's'; // volta pra lista de obras
+                } else {
+                    window.location = window.location.href; // window.location.reload() dá problema após o submit
+                }
+            });
+
+            // Estado da página
+
+            estadoPagina();
+        });
+    </script>
+    <body>
+        <nav th:replace="~{_fragments::nav}"></nav>
+        <div class="container-fluid" th:object="${obra}">
+            <h1>Obra</h1>
+            <div class="initialSpinner spinner-border"></div>
+            <form class="initiallyHidden">
+                <input type="hidden" name="_method" value="post">
+                <input type="hidden" th:field="*{estadoPagina}">
+                <fieldset id="toolbar">
+                    <div class="row">
+                        <div class="col">
+                            <button id="toolbarIncluir" type="button" class="btn btn-primary"><span class="whiteBorder">➕</span> Incluir</button>
+                            <button id="toolbarAlterar" type="button" class="btn btn-primary"><span class="whiteBorder">✏️</span> Alterar</button>
+                            <button id="toolbarExcluir" type="button" class="btn btn-danger"><span class="whiteBorder">🗑</span> Excluir</button>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="fields" disabled>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="titulo" class="form-label">Título</label>
+                                    <input type="text" th:class="'form-control' + ${obra.exceptionMap.get('titulo') == null ? '' : ' is-invalid'}" th:field="*{titulo}">
+                                    <div id="titulo:exception" class="invalid-feedback" th:text="${obra.getExceptionMessage('titulo')}"></div>
+                                </div>
+                                <div class="col">
+                                    <label for="autores" class="form-label">Autores</label>
+                                    <div class="multiselect-fixer">
+                                        <select th:class="'form-select' + ${obra.exceptionMap.get('autores') == null ? '' : ' is-invalid'}" th:field="*{autores}" multiple="multiple">
+                                            <option th:each="autor:${obra.listaAutores}" th:value="${autor.id}" th:text="${autor.nome}" th:selected="${obra.autores.contains(autor.id)}"></option>
+                                        </select>
+                                    </div>
+                                    <div id="autores:exception" class="invalid-feedback" th:text="${obra.getExceptionMessage('autores')}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="actions" class="d-none mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <button id="actionIncluir" formmethod="post" th:formaction="@{/obra}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
+                            <button id="actionAlterar" formmethod="post" th:formaction="@{/obra/__${obra.id}__}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Alterar</button>
+                            <button id="actionExcluir" formmethod="post" th:formaction="@{/obra/__${obra.id}__}" type="button" class="btn btn-danger d-none"><span class="whiteBorder">✅</span> Confirmar exclusão</button>
+                            <button id="actionCancelar" type="button" class="btn btn-secondary"><span class="whiteBorder">❌</span> Cancelar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div id="detalhes" class="initiallyHidden">
+                <div class="row mb-3">
+                    <div class="col" th:if="${(obra.livros != null) && (obra.livros.size() > 0)}">
+                        <div id="livros" class="card">
+                            <h5 class="card-header">Livros</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" th:each="livro:${obra.livros}" th:text="${livro}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

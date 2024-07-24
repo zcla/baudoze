@@ -6,17 +6,13 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-multiselect.css" rel="stylesheet">
-    <link href="/css/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="/css/datatables/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="/css/datatables.min.css" rel="stylesheet">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap-multiselect.js"></script>
     <script src="/js/chart.umd.min.js"></script>
-    <script src="/js/datatables/dataTables.min.js"></script>
-    <script src="/js/datatables/dataTables.bootstrap5.min.js"></script>
-    <script src="/js/datatables/dataTables.buttons.min.js"></script>
-    <script src="/js/datatables/buttons.bootstrap5.min.js"></script>
-    <script src="/js/datatables/intl.js"></script>
+    <script src="/js/datatables.min.js"></script>
+    <script src="/js/dataTables.intl.js"></script>
     <script>
         DataTable.Buttons.defaults.dom.button.className = 'btn';
         const DATATABLE_COMMON_OPTIONS = {
@@ -356,6 +352,14 @@
 
         table a {
             text-decoration: none;
+        }
+
+        /*
+        Formatação das tabelas dentro de cards
+        */
+
+        .card-body .dt-layout-table {
+            margin-top: 0px !important;
         }
 
         /*

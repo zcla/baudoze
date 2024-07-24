@@ -65,6 +65,16 @@
                 enableFiltering: true
             });
 
+            const options = DATATABLE_COMMON_OPTIONS;
+            options.layout = null;
+            options.columnDefs = [
+                {
+                    targets: 0,
+                    type: "html"
+                }
+            ];
+            $('table.datatable').DataTable(options);
+
             // Ações do toolbar
 
             $("#toolbarIncluir").on('click', function(event) {
@@ -155,11 +165,37 @@
                     <div class="col" th:if="${(obra.livros != null) && (obra.livros.size() > 0)}">
                         <div id="livros" class="card">
                             <h5 class="card-header">Livros</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item" th:each="livro:${obra.livros}">
-                                    <a th:href="@{/livro/__${livro.id}__}" th:text="${livro.nome}"></a>
-                                </li>
-                            </ul>
+                            <div class="card-body">
+                                <table id="livros" class="table datatable table-sm table-striped table-hover initiallyHidden">
+                                    <thead>
+                                        <tr>
+                                            <th>Título</th>
+                                            <th>Ano</th>
+                                            <th>ISBN</th>
+                                            <th>Páginas</th>
+                                            <th>Edição</th>
+                                            <th>Editoras</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="livro:${obra.livros}">
+                                            <td>
+                                                <a th:href="'/livro/' + ${livro.id}" th:text="${livro.titulo}"></a>
+                                            </td>
+                                            <td th:text="${livro.ano}"></td>
+                                            <td th:text="${livro.isbn}"></td>
+                                            <td th:text="${livro.paginas}"></td>
+                                            <td th:text="${livro.edicao}"></td>
+                                            <td>
+                                                <span th:text="${livro.editoraPrincipal}"></span>
+                                                <span class="badge text-bg-secondary ml-2" th:text="'+' + ${livro.qtdOutrasEditoras}" th:if="${livro.qtdOutrasEditoras > 0}"></span>
+                                            </td>
+                                            <td th:text="${livro.status}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

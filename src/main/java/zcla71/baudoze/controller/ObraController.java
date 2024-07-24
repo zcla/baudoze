@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 
 import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.service.Service;
+import zcla71.baudoze.service.model.Editora;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
@@ -61,12 +62,28 @@ public class ObraController {
 
             // detalhes
 
+            // TODO Código muito parecido com LivroCrontroller.getLivros()
             List<Livro> livros = service.listaLivrosDaObra(obra);
             result.setLivros(new ArrayList<>());
             for (Livro livro : livros) {
                 ObraPaginaLivro opl = new ObraPaginaLivro();
                 opl.setId(livro.getId());
-                opl.setNome(livro.getTitulo());
+                opl.setTitulo(livro.getTitulo());
+                opl.setIsbn(livro.getIsbn13() != null ? livro.getIsbn13() : livro.getIsbn10());
+                opl.setEditoraPrincipal(null);
+                opl.setQtdOutrasEditoras(0);
+                for (String idEditora : livro.getIdsEditoras()) {
+                    Editora editora = service.buscaEditoraPorId(idEditora);
+                    if (opl.getEditoraPrincipal() == null) {
+                        opl.setEditoraPrincipal(editora.getNome());
+                    } else {
+                        opl.setQtdOutrasEditoras(opl.getQtdOutrasEditoras() + 1);
+                    }
+                }
+                opl.setAno(livro.getAno());
+                opl.setPaginas(livro.getPaginas());
+                opl.setEdicao(livro.getEdicao());
+                opl.setStatus(service.buscaUltimaAtividadeDoLivro(livro).getTipo().getStatus());
                 result.getLivros().add(opl);
             }
         }

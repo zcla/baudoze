@@ -17,5 +17,5 @@ public class ObraPagina extends Pagina {
     // form - selects
     private List<ObraPaginaAutor> listaAutores;
     // detalhes
-    private List<String> livros;
+    private List<ObraPaginaLivro> livros;
 }

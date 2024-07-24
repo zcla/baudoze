@@ -156,7 +156,9 @@
                         <div id="livros" class="card">
                             <h5 class="card-header">Livros</h5>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" th:each="livro:${obra.livros}" th:text="${livro}"></li>
+                                <li class="list-group-item" th:each="livro:${obra.livros}">
+                                    <a th:href="@{/livro/__${livro.id}__}" th:text="${livro.nome}"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

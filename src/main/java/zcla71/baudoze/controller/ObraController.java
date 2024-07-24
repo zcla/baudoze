@@ -21,6 +21,7 @@ import zcla71.baudoze.view.Pagina.Estado;
 import zcla71.baudoze.view.obra.ObraForm;
 import zcla71.baudoze.view.obra.ObraPagina;
 import zcla71.baudoze.view.obra.ObraPaginaAutor;
+import zcla71.baudoze.view.obra.ObraPaginaLivro;
 import zcla71.baudoze.view.obras.ObrasPagina;
 import zcla71.baudoze.view.obras.ObrasPaginaObra;
 
@@ -63,7 +64,10 @@ public class ObraController {
             List<Livro> livros = service.listaLivrosDaObra(obra);
             result.setLivros(new ArrayList<>());
             for (Livro livro : livros) {
-                result.getLivros().add(livro.getTitulo());
+                ObraPaginaLivro opl = new ObraPaginaLivro();
+                opl.setId(livro.getId());
+                opl.setNome(livro.getTitulo());
+                result.getLivros().add(opl);
             }
         }
 

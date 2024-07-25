@@ -132,7 +132,7 @@
                 <fieldset id="fields" disabled>
                     <div class="row">
                         <div class="col">
-                            <div class="row mb-3">
+                            <div class="row mt-3">
                                 <div class="col">
                                     <label for="titulo" class="form-label">Título</label>
                                     <input type="text" th:class="'form-control' + ${livro.exceptionMap.get('titulo') == null ? '' : ' is-invalid'}" th:field="*{titulo}">
@@ -148,7 +148,7 @@
                                     <div id="obras:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('obras')}"></div>
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mt-3">
                                 <div class="col">
                                     <label for="isbn13" class="form-label">ISBN-13</label>
                                     <input type="text" th:class="'form-control text-end' + ${livro.exceptionMap.get('isbn13') == null ? '' : ' is-invalid'}" th:field="*{isbn13}">
@@ -175,7 +175,7 @@
                                     <div id="edicao:exception" class="invalid-feedback" th:text="${livro.getExceptionMessage('edicao')}"></div>
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mt-3">
                                 <div class="col">
                                     <label for="editoras" class="form-label">Editoras</label>
                                     <div class="multiselect-fixer">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset id="actions" class="d-none mb-3">
+                <fieldset id="actions" class="d-none mt-3">
                     <div class="row">
                         <div class="col">
                             <button id="actionIncluir" formmethod="post" th:formaction="@{/livro}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
@@ -210,6 +210,7 @@
                 </fieldset>
             </form>
             <div id="detalhes" class="initiallyHidden">
+                <hr>
                 <div class="row mb-3">
                     <div class="col" th:if="${(livro.atividades != null) && (livro.atividades.size() > 0)}">
                         <div id="atividades" class="card">

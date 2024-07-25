@@ -130,7 +130,7 @@
                 <fieldset id="fields" disabled>
                     <div class="row">
                         <div class="col">
-                            <div class="row mb-3">
+                            <div class="row mt-3">
                                 <div class="col">
                                     <label for="titulo" class="form-label">Título</label>
                                     <input type="text" th:class="'form-control' + ${obra.exceptionMap.get('titulo') == null ? '' : ' is-invalid'}" th:field="*{titulo}">
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset id="actions" class="d-none mb-3">
+                <fieldset id="actions" class="d-none mt-3">
                     <div class="row">
                         <div class="col">
                             <button id="actionIncluir" formmethod="post" th:formaction="@{/obra}" type="button" class="btn btn-success d-none"><span class="whiteBorder">✅</span> Incluir</button>
@@ -161,6 +161,7 @@
                 </fieldset>
             </form>
             <div id="detalhes" class="initiallyHidden">
+                <hr>
                 <div class="row mb-3">
                     <div class="col" th:if="${(obra.livros != null) && (obra.livros.size() > 0)}">
                         <div id="livros" class="card">

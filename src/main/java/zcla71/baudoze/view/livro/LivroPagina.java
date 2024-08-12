@@ -27,5 +27,5 @@ public class LivroPagina extends Pagina {
     private List<LivroPaginaEtiqueta> listaEtiquetas;
     // detalhes
     private String colecao;
-    private List<String> atividades;
+    private List<LivroPaginaAtividade> atividades;
 }

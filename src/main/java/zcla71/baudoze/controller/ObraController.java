@@ -1,6 +1,5 @@
 package zcla71.baudoze.controller;
 
-import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,10 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-
-import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.service.Service;
 import zcla71.baudoze.service.model.Editora;
 import zcla71.baudoze.service.model.Livro;
@@ -38,13 +33,13 @@ public class ObraController {
 
     // TODO Fazer testes unitários
 
-    public void deleteObra(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public void deleteObra(String id) throws Exception {
         Service service = Service.getInstance();
 
         service.excluiObra(service.buscaObraPorId(id));
     }
 
-    public ObraPagina getObra(String id) throws StreamReadException, DatabindException, IOException {
+    public ObraPagina getObra(String id) throws Exception {
         Service service = Service.getInstance();
 
         ObraPagina result = new ObraPagina();
@@ -109,7 +104,7 @@ public class ObraController {
         return result;
     }
 
-    public ObrasPagina getObras() throws StreamReadException, DatabindException, IOException {
+    public ObrasPagina getObras() throws Exception {
         Service service = Service.getInstance();
 
         Collection<Obra> obras = service.listaObras();
@@ -148,7 +143,7 @@ public class ObraController {
         return result;
     }
 
-    public ObraPagina setObra(String id, ObraForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public ObraPagina setObra(String id, ObraForm form) throws Exception {
         ObraPagina result = getObra(id);
         result.setEstadoPagina(Estado.CREATE);
         if (id != null) {
@@ -178,7 +173,7 @@ public class ObraController {
         return result;
     }
 
-    private Obra validaObra(String id, ObraPagina obra) throws StreamReadException, DatabindException, IOException, ValidationException {
+    private Obra validaObra(String id, ObraPagina obra) throws Exception {
         List<ValidationException> exceptions = new ArrayList<>();
         
         Obra result = null;

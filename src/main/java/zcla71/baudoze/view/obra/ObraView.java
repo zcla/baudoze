@@ -1,7 +1,5 @@
 package zcla71.baudoze.view.obra;
 
-import java.io.IOException;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,17 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-
 import zcla71.baudoze.controller.BauDoZe;
-import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.view.Pagina.Estado;
 
 @Controller
 public class ObraView {
     @GetMapping("/obra")
-    public String obraGet(Model model) throws StreamReadException, DatabindException, IOException {
+    public String obraGet(Model model) throws Exception {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         ObraPagina obra = bauDoZe.getObra(null);
@@ -34,7 +28,7 @@ public class ObraView {
     }
 
     @GetMapping("/obra/{id}")
-    public String obraGetId(Model model, @PathVariable String id) throws StreamReadException, DatabindException, IOException {
+    public String obraGetId(Model model, @PathVariable String id) throws Exception {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         ObraPagina obra = bauDoZe.getObra(id);
@@ -45,7 +39,7 @@ public class ObraView {
     }
 
     @DeleteMapping("/obra/{id}")
-    public String obraDeleteId(Model model, @PathVariable String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public String obraDeleteId(Model model, @PathVariable String id) throws Exception {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         bauDoZe.deleteObra(id);
@@ -54,7 +48,7 @@ public class ObraView {
     }
 
     @PostMapping("/obra")
-    public String obraPostId(Model model, @ModelAttribute ObraForm form, RedirectAttributes redirectAttributes) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public String obraPostId(Model model, @ModelAttribute ObraForm form, RedirectAttributes redirectAttributes) throws Exception {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         ObraPagina obra = bauDoZe.setObra(null, form);
@@ -69,7 +63,7 @@ public class ObraView {
     }
 
     @PutMapping("/obra/{id}")
-    public String obraPutId(Model model, @PathVariable String id, @ModelAttribute ObraForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public String obraPutId(Model model, @PathVariable String id, @ModelAttribute ObraForm form) throws Exception {
         BauDoZe bauDoZe = BauDoZe.getInstance();
 
         ObraPagina obra = bauDoZe.setObra(id, form);

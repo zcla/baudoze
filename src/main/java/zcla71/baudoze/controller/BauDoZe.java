@@ -1,6 +1,5 @@
 package zcla71.baudoze.controller;
 
-import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,10 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-
-import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.service.Service;
 import zcla71.baudoze.service.model.Atividade;
 import zcla71.baudoze.service.model.Colecao;
@@ -61,7 +56,7 @@ public class BauDoZe {
 
     // atividades
 
-    public Collection<AtividadesPaginaAtividade> getAtividades() throws StreamReadException, DatabindException, IOException {
+    public Collection<AtividadesPaginaAtividade> getAtividades() throws Exception {
         Service service = Service.getInstance();
         Collection<Atividade> atividades = service.listaAtividades();
         List<AtividadesPaginaAtividade> result = new ArrayList<>();
@@ -88,7 +83,7 @@ public class BauDoZe {
 
     // colecoes
 
-    public ColecoesPagina getColecoes() throws StreamReadException, DatabindException, IOException {
+    public ColecoesPagina getColecoes() throws Exception {
         Service service = Service.getInstance();
         Collection<Colecao> colecoes = service.listaColecoes();
         ColecoesPagina result = new ColecoesPagina();
@@ -124,7 +119,7 @@ public class BauDoZe {
 
     // editoras
 
-    public EditorasPagina getEditoras() throws StreamReadException, DatabindException, IOException {
+    public EditorasPagina getEditoras() throws Exception {
         Service service = Service.getInstance();
         Collection<Editora> editoras = service.listaEditoras();
         EditorasPagina result = new EditorasPagina();
@@ -151,7 +146,7 @@ public class BauDoZe {
 
     // etiquetas
 
-    public EtiquetasPagina getEtiquetas() throws StreamReadException, DatabindException, IOException {
+    public EtiquetasPagina getEtiquetas() throws Exception {
         Service service = Service.getInstance();
         Collection<Etiqueta> etiquetas = service.listaEtiquetas();
         EtiquetasPagina result = new EtiquetasPagina();
@@ -178,43 +173,43 @@ public class BauDoZe {
 
     // livros
 
-    public void deleteLivro(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public void deleteLivro(String id) throws Exception {
         livro.deleteLivro(id);
     }
 
-    public LivroPagina getLivro(String id) throws StreamReadException, DatabindException, IOException {
+    public LivroPagina getLivro(String id) throws Exception {
         return livro.getLivro(id);
     }
 
-    public LivrosPagina getLivros() throws StreamReadException, DatabindException, IOException {
+    public LivrosPagina getLivros() throws Exception {
         return livro.getLivros();
     }
 
-    public LivroPagina setLivro(String id, LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public LivroPagina setLivro(String id, LivroForm form) throws Exception {
         return livro.setLivro(id, form);
     }
 
     // obras
 
-    public void deleteObra(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public void deleteObra(String id) throws Exception {
         obra.deleteObra(id);
     }
 
-    public ObraPagina getObra(String id) throws StreamReadException, DatabindException, IOException {
+    public ObraPagina getObra(String id) throws Exception {
         return obra.getObra(id);
     }
 
-    public ObrasPagina getObras() throws StreamReadException, DatabindException, IOException {
+    public ObrasPagina getObras() throws Exception {
         return obra.getObras();
     }
 
-    public ObraPagina setObra(String id, ObraForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public ObraPagina setObra(String id, ObraForm form) throws Exception {
         return obra.setObra(id, form);
     }
 
     // pessoas
 
-    public PessoasPagina getPessoas() throws StreamReadException, DatabindException, IOException {
+    public PessoasPagina getPessoas() throws Exception {
         Service service = Service.getInstance();
         Collection<Pessoa> pessoas = service.listaPessoas();
         PessoasPagina result = new PessoasPagina();
@@ -249,7 +244,7 @@ public class BauDoZe {
 
     // stats
 
-    public StatsPagina getStats() throws StreamReadException, DatabindException, IOException {
+    public StatsPagina getStats() throws Exception {
         Service service = Service.getInstance();
         StatsPagina result = new StatsPagina(service.listaObras().size(),
                 service.listaLivros().size(),

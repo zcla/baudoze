@@ -77,6 +77,11 @@
 
             $('#ano').attr('max', new Date().getFullYear());
 
+            const options = DATATABLE_COMMON_OPTIONS;
+            options.layout = null;
+            options.order = [0, 'desc'];
+            $('table.datatable').DataTable(options);
+
             // Ações do toolbar
 
             $("#toolbarIncluir").on('click', function(event) {
@@ -215,9 +220,22 @@
                     <div class="col" th:if="${(livro.atividades != null) && (livro.atividades.size() > 0)}">
                         <div id="atividades" class="card">
                             <h5 class="card-header">Atividades</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item" th:each="atividade:${livro.atividades}" th:text="${atividade}"></li>
-                            </ul>
+                            <div class="card-body">
+                                <table id="atividades" class="table datatable table-sm table-striped table-hover initiallyHidden">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Tipo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="atividade:${livro.atividades}">
+                                            <td th:text="${atividade.data}"></td>
+                                            <td th:text="${atividade.tipo}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col" th:if="${livro.colecao != null}">

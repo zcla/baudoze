@@ -5,12 +5,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 
-import zcla71.baudoze.repository.Repository;
-import zcla71.baudoze.repository.model.BauDoZeRepositoryData;
-import zcla71.baudoze.repository.model.RepositoryException;
+import zcla71.baudoze.repository.BauDoZeRepository;
 import zcla71.baudoze.service.model.Atividade;
 import zcla71.baudoze.service.model.Atividade.AtividadeTipo;
 import zcla71.baudoze.service.model.Colecao;
@@ -19,22 +16,22 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.repository.JsonRepository;
 
 public class Service {
-    private static final String JSON_FILE_LOCATION = "data/baudoze.json"; // TODO Jogar pro application.properties
     private static Service instance;
 
-    public static Service getInstance() throws StreamReadException, DatabindException, IOException {
+    public static Service getInstance() throws Exception {
         if (instance == null) {
             instance = new Service();
         }
         return instance;
     }
 
-    private Repository<BauDoZeRepositoryData> repository;
+    private BauDoZeRepository repository;
 
-    private Service() throws StreamReadException, DatabindException, IOException {
-        this.repository = new Repository<BauDoZeRepositoryData>(BauDoZeRepositoryData.class, JSON_FILE_LOCATION, true);
+    private Service() throws Exception {
+        this.repository = BauDoZeRepository.getInstance(true);
     }
 
     // Atividades
@@ -97,7 +94,7 @@ public class Service {
 
     // Livros
 
-    public void alteraLivro(Livro livro) throws RepositoryException, StreamWriteException, DatabindException, IOException {
+    public void alteraLivro(Livro livro) throws Exception {
         this.repository.beginTransaction();
         this.repository.getData().alteraLivro(livro);
         this.repository.commitTransaction();
@@ -107,7 +104,7 @@ public class Service {
         return this.repository.getData().buscaLivroPorId(id);
     }
 
-    public void excluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException, RepositoryException {
+    public void excluiLivro(Livro livro) throws Exception {
         this.repository.beginTransaction();
         List<Atividade> atividades = this.repository.getData().listaAtividadePorLivro(livro);
         for (Atividade atividade : atividades) {
@@ -117,14 +114,14 @@ public class Service {
         this.repository.commitTransaction();
     }
 
-    public Livro incluiLivro(Livro livro) throws StreamWriteException, DatabindException, IOException {
+    public Livro incluiLivro(Livro livro) throws Exception {
         this.repository.beginTransaction();
         Livro result = this.repository.getData().incluiLivro(livro);
         Atividade atividade = new Atividade(); // TODO Pensar: isso não deveria estar no BauDoZe (controller)? Caso positivo, o controle de transação também.
-        atividade.setId(Repository.generateId());
         atividade.setTipo(AtividadeTipo.CADASTRO);
         atividade.setData(LocalDate.now());
         atividade.setIdLivro(result.getId());
+        atividade.setId(JsonRepository.generateId(atividade));
         this.repository.getData().incluiAtividade(atividade);
         this.repository.commitTransaction();
         return result;
@@ -140,13 +137,13 @@ public class Service {
 
     // Obras
 
-    public void alteraObra(Obra obra) throws StreamWriteException, DatabindException, IOException, RepositoryException {
+    public void alteraObra(Obra obra) throws Exception {
         this.repository.beginTransaction();
         this.repository.getData().alteraObra(obra);
         this.repository.commitTransaction();
     }
 
-    public void excluiObra(Obra obra) throws StreamWriteException, DatabindException, IOException, RepositoryException {
+    public void excluiObra(Obra obra) throws Exception {
         this.repository.beginTransaction();
         this.repository.getData().excluiObra(obra);
         this.repository.commitTransaction();
@@ -156,7 +153,7 @@ public class Service {
         return this.repository.getData().getObras();
     }
 
-    public Obra incluiObra(Obra obra) throws StreamWriteException, DatabindException, IOException {
+    public Obra incluiObra(Obra obra) throws Exception {
         this.repository.beginTransaction();
         Obra result = this.repository.getData().incluiObra(obra);
         this.repository.commitTransaction();

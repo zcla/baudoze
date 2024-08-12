@@ -9,4 +9,5 @@ public class Notes {
     private String editora;
     private Integer publicacao;
     private Integer paginas;
+    private String isbn13;
 }

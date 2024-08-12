@@ -1,6 +1,5 @@
 package zcla71.baudoze.controller;
 
-import java.io.IOException;
 import java.text.Collator;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,11 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-
 import zcla71.baudoze.Application;
-import zcla71.baudoze.repository.model.RepositoryException;
 import zcla71.baudoze.service.Service;
 import zcla71.baudoze.service.model.Atividade;
 import zcla71.baudoze.service.model.Colecao;
@@ -26,6 +21,7 @@ import zcla71.baudoze.service.model.Pessoa;
 import zcla71.baudoze.view.Pagina.Estado;
 import zcla71.baudoze.view.livro.LivroForm;
 import zcla71.baudoze.view.livro.LivroPagina;
+import zcla71.baudoze.view.livro.LivroPaginaAtividade;
 import zcla71.baudoze.view.livro.LivroPaginaEditora;
 import zcla71.baudoze.view.livro.LivroPaginaEtiqueta;
 import zcla71.baudoze.view.livro.LivroPaginaObra;
@@ -44,13 +40,13 @@ public class LivroController {
 
     // TODO Fazer testes unitários
 
-    public void deleteLivro(String id) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public void deleteLivro(String id) throws Exception {
         Service service = Service.getInstance();
 
         service.excluiLivro(service.buscaLivroPorId(id));
     }
 
-    public LivroPagina getLivro(String id) throws StreamReadException, DatabindException, IOException {
+    public LivroPagina getLivro(String id) throws Exception {
         Service service = Service.getInstance();
 
         LivroPagina result = new LivroPagina();
@@ -88,7 +84,10 @@ public class LivroController {
             List<Atividade> atividades = service.listaAtividadesDoLivro(livro);
             result.setAtividades(new ArrayList<>());
             for (Atividade atividade : atividades) {
-                result.getAtividades().add(Application.format(atividade.getData()) + " " + atividade.getTipo().getTexto());
+                LivroPaginaAtividade lpa = new LivroPaginaAtividade();
+                lpa.setData(Application.format(atividade.getData()));
+                lpa.setTipo(atividade.getTipo().getTexto());
+                result.getAtividades().add(lpa);
             }
         }
 
@@ -149,7 +148,7 @@ public class LivroController {
         return result;
     }
 
-    public LivrosPagina getLivros() throws StreamReadException, DatabindException, IOException {
+    public LivrosPagina getLivros() throws Exception {
         Service service = Service.getInstance();
         Collection<Livro> livros = service.listaLivros();
         LivrosPagina result = new LivrosPagina();
@@ -222,7 +221,7 @@ public class LivroController {
         return result;
     }
 
-    public LivroPagina setLivro(String id, LivroForm form) throws StreamReadException, DatabindException, IOException, RepositoryException {
+    public LivroPagina setLivro(String id, LivroForm form) throws Exception {
         LivroPagina result = getLivro(id);
         result.setEstadoPagina(Estado.CREATE);
         if (id != null) {
@@ -262,7 +261,7 @@ public class LivroController {
         return result;
     }
 
-    private Livro validaLivro(String id, LivroPagina livro) throws ValidationException, StreamReadException, DatabindException, IOException {
+    private Livro validaLivro(String id, LivroPagina livro) throws Exception {
         List<ValidationException> exceptions = new ArrayList<>();
         
         Livro result = null;

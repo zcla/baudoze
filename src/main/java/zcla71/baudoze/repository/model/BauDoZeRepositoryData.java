@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
-import zcla71.baudoze.repository.Repository;
 import zcla71.baudoze.service.model.Atividade;
 import zcla71.baudoze.service.model.Colecao;
 import zcla71.baudoze.service.model.Editora;
@@ -12,6 +11,7 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
+import zcla71.repository.JsonRepository;
 
 @Data
 public class BauDoZeRepositoryData {
@@ -47,7 +47,7 @@ public class BauDoZeRepositoryData {
     }
 
     public Atividade incluiAtividade(Atividade atividade) {
-        atividade.setId(Repository.generateId());
+        atividade.setId(JsonRepository.generateId(atividade));
         this.atividades.add(atividade);
         return atividade;
     }
@@ -99,7 +99,7 @@ public class BauDoZeRepositoryData {
     }
 
     public Livro incluiLivro(Livro livro) {
-        livro.setId(Repository.generateId());
+        livro.setId(JsonRepository.generateId(livro));
         this.livros.add(livro);
         return livro;
     }
@@ -131,7 +131,7 @@ public class BauDoZeRepositoryData {
     }
 
     public Obra incluiObra(Obra obra) {
-        obra.setId(Repository.generateId());
+        obra.setId(JsonRepository.generateId(obra));
         this.obras.add(obra);
         return obra;
     }

@@ -26,7 +26,6 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.ObraLiteraria;
 import zcla71.baudoze.service.model.Pessoa;
-import zcla71.repository.JsonRepository;
 
 public class LibibImport {
     public static void main(String[] args) throws Exception {
@@ -86,12 +85,12 @@ public class LibibImport {
                             if (pessoa == null) {
                                 pessoa = new Pessoa();
                                 pessoa.setNome(autor);
-                                pessoa.setId(JsonRepository.generateId(pessoa));
+                                pessoa.setId(BauDoZeRepository.generateId(pessoa));
                                 repository.getData().getPessoas().add(pessoa);
                             }
                             obra.getIdsAutores().add(pessoa.getId());
                         }
-                        obra.setId(JsonRepository.generateId(obra));
+                        obra.setId(BauDoZeRepository.generateId(obra));
                         repository.getData().getObras().add(obra);
 
                         Livro livro = new Livro();
@@ -112,7 +111,7 @@ public class LibibImport {
                                 if (editora == null) {
                                     editora = new Editora();
                                     editora.setNome(nomeEditora);
-                                    editora.setId(JsonRepository.generateId(editora));
+                                    editora.setId(BauDoZeRepository.generateId(editora));
                                     repository.getData().getEditoras().add(editora);
                                 }
                                 livro.getIdsEditoras().add(editora.getId());
@@ -121,7 +120,7 @@ public class LibibImport {
                         livro.setAno(publishDate);
                         livro.setPaginas(length);
                         livro.setEdicao(edicao);
-                        livro.setId(JsonRepository.generateId(livro));
+                        livro.setId(BauDoZeRepository.generateId(livro));
                         repository.getData().getLivros().add(livro);
 
                         if ((line.getGroup() != null) && (line.getGroup().length() > 0)) {
@@ -130,7 +129,7 @@ public class LibibImport {
                                 colecao = new Colecao();
                                 colecao.setNome(line.getGroup());
                                 colecao.setIdsLivros(new ArrayList<>());
-                                colecao.setId(JsonRepository.generateId(colecao));
+                                colecao.setId(BauDoZeRepository.generateId(colecao));
                                 repository.getData().getColecoes().add(colecao);
                             }
                             colecao.getIdsLivros().add(livro.getId());
@@ -145,7 +144,7 @@ public class LibibImport {
                                 if (etiqueta == null) {
                                     etiqueta = new Etiqueta();
                                     etiqueta.setNome(tag);
-                                    etiqueta.setId(JsonRepository.generateId(etiqueta));
+                                    etiqueta.setId(BauDoZeRepository.generateId(etiqueta));
                                     repository.getData().getEtiquetas().add(etiqueta);
                                 }
                                 livro.getIdsEtiquetas().add(etiqueta.getId());
@@ -160,7 +159,7 @@ public class LibibImport {
                         cadastro.setTipo(AtividadeTipo.CADASTRO);
                         cadastro.setData(ldAdded);
                         cadastro.setIdLivro(livro.getId());
-                        cadastro.setId(JsonRepository.generateId(cadastro));
+                        cadastro.setId(BauDoZeRepository.generateId(cadastro));
                         repository.getData().getAtividades().add(cadastro);
 
                         String began = line.getBegan().trim();
@@ -170,7 +169,7 @@ public class LibibImport {
                             inicioLeitura.setTipo(AtividadeTipo.INICIO_LEITURA);
                             inicioLeitura.setData(ldBegan);
                             inicioLeitura.setIdLivro(livro.getId());
-                            inicioLeitura.setId(JsonRepository.generateId(inicioLeitura));
+                            inicioLeitura.setId(BauDoZeRepository.generateId(inicioLeitura));
                             repository.getData().getAtividades().add(inicioLeitura);
                         }
 
@@ -184,7 +183,7 @@ public class LibibImport {
                                     terminoLeitura.setTipo(AtividadeTipo.TERMINO_LEITURA);
                                     terminoLeitura.setData(ldCompleted);
                                     terminoLeitura.setIdLivro(livro.getId());
-                                    terminoLeitura.setId(JsonRepository.generateId(terminoLeitura));
+                                    terminoLeitura.setId(BauDoZeRepository.generateId(terminoLeitura));
                                     repository.getData().getAtividades().add(terminoLeitura);
                                     break;
 

@@ -16,7 +16,6 @@ import zcla71.baudoze.service.model.Etiqueta;
 import zcla71.baudoze.service.model.Livro;
 import zcla71.baudoze.service.model.Obra;
 import zcla71.baudoze.service.model.Pessoa;
-import zcla71.repository.JsonRepository;
 
 public class Service {
     private static Service instance;
@@ -121,7 +120,7 @@ public class Service {
         atividade.setTipo(AtividadeTipo.CADASTRO);
         atividade.setData(LocalDate.now());
         atividade.setIdLivro(result.getId());
-        atividade.setId(JsonRepository.generateId(atividade));
+        atividade.setId(BauDoZeRepository.generateId(atividade));
         this.repository.getData().incluiAtividade(atividade);
         this.repository.commitTransaction();
         return result;

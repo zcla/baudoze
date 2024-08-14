@@ -20,6 +20,7 @@ public abstract class JsonRepository<T> extends SingleFileRepository<T> {
         return result;
     }
 
+    @Override
     public T readData() throws StreamReadException, DatabindException, IOException {
         File file = getFile();
         if (file.exists()) {

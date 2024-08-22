@@ -114,28 +114,6 @@ public class LibibToTiddlywiki {
                         livro.setCreated(LocalDate.parse(line.getAdded(), dateFormatLibib).atStartOfDay());
                     }
 
-                    String status = line.getStatus().trim();
-                    switch (status) {
-                        case "Abandoned":
-                            status = "Abandonado";
-                            break;
-                        case "Completed":
-                            status = "Lido";
-                            break;
-                        case "In progress":
-                            status = "Lendo";
-                            break;
-                        case "Not begun":
-                        case "":
-                            status = null;
-                            break;
-                        default:
-                            throw new RuntimeException("Não sei tratar o status " + status);
-                    }
-                    if ((status != null) && (status.length() > 0)) {
-                        livro.setTags(livro.getTags() + " [[" + status + "]]");
-                    }
-
                     if ((line.getCreators() != null) && (line.getCreators().length() > 0)) {
                         String propAutores = "";
                         String[] autores = line.getCreators().split(",");
@@ -170,7 +148,29 @@ public class LibibToTiddlywiki {
                             colecao.setTags("Coleção Revisar");
                             colecao.getCustomProperties().put("nome", line.getGroup());
                         }
-                        livro.setTags(livro.getTags() + " [[" + colecao.getTitle() + "]]");
+                        livro.getCustomProperties().put("colecao", "[[" + colecao.getTitle() + "]]");
+                    }
+
+                    String status = line.getStatus().trim();
+                    switch (status) {
+                        case "Abandoned":
+                            status = "Abandonado";
+                            break;
+                        case "Completed":
+                            status = "Lido";
+                            break;
+                        case "In progress":
+                            status = "Lendo";
+                            break;
+                        case "Not begun":
+                        case "":
+                            status = null;
+                            break;
+                        default:
+                            throw new RuntimeException("Não sei tratar o status " + status);
+                    }
+                    if ((status != null) && (status.length() > 0)) {
+                        livro.getCustomProperties().put("colecao", "[[" + status + "]]");
                     }
 
                     String began = line.getBegan().trim();
@@ -184,7 +184,7 @@ public class LibibToTiddlywiki {
                             wiki.insert(leitura);
                             leitura.setTags("Leitura");
                         }
-                        leitura.getCustomProperties().put("livro", livro.getTitle());
+                        leitura.getCustomProperties().put("livro", "[[" + livro.getTitle() + "]]");
                         leitura.getCustomProperties().put("inicio", twBegan);
 
                         String completed = line.getCompleted().trim();

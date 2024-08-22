@@ -91,7 +91,7 @@ public class LibibToTiddlywiki {
                                 editora = new Tiddler(title);
                                 wiki.insert(editora);
                                 editora.setTags("Editora Revisar");
-                                editora.setName(nomeEditora); // TODO -> nome
+                                editora.getCustomProperties().put("nome", nomeEditora);
                             }
                             propEditoras += " [[" + editora.getTitle() + "]]";
                         }
@@ -99,7 +99,7 @@ public class LibibToTiddlywiki {
                     }
 
                     if ((publishDate != null) && (!publishDate.isEmpty())) {
-                        livro.getCustomProperties().put("ano", publishDate); // TODO -> dataPublicacao
+                        livro.getCustomProperties().put("publicacao", publishDate);
                     }
 
                     if ((length != null) && (!length.isEmpty())) {
@@ -146,8 +146,7 @@ public class LibibToTiddlywiki {
                                 pessoa = new Tiddler(title);
                                 wiki.insert(pessoa);
                                 pessoa.setTags("Pessoa Revisar");
-                                pessoa.setName(autor); // TODO -> nome
-                                livro.getCustomProperties().put("nome", autor);
+                                pessoa.getCustomProperties().put("nome", autor);
                             }
                             propAutores += " [[" + pessoa.getTitle() + "]]";
                             livro.getCustomProperties().put("autores", propAutores.trim());
@@ -164,12 +163,12 @@ public class LibibToTiddlywiki {
 
                     if ((line.getGroup() != null) && (line.getGroup().length() > 0)) {
                         String title = line.getGroup() + " (coleção)";
-                        Tiddler colecao = wiki.getByTagAndTitle("Coleção", title); // TODO -> "Colecao"
+                        Tiddler colecao = wiki.getByTagAndTitle("Coleção", title);
                         if (colecao == null) {
                             colecao = new Tiddler(title);
                             wiki.insert(colecao);
-                            colecao.setTags("Coleção Revisar"); // TODO -> "Colecao"
-                            colecao.setName(line.getGroup()); // TODO -> nome
+                            colecao.setTags("Coleção Revisar");
+                            colecao.getCustomProperties().put("nome", line.getGroup());
                         }
                         livro.setTags(livro.getTags() + " [[" + colecao.getTitle() + "]]");
                     }
@@ -192,13 +191,15 @@ public class LibibToTiddlywiki {
                         if ((completed != null) && (completed.length() > 0)) {
                             LocalDateTime ldCompleted = LocalDate.parse(completed, dateFormatLibib).atStartOfDay();
                             String twCompleted = ldCompleted.format(dateFormatTiddlyWiki);
-                            switch (status) {
-                                case "Lido":
-                                    leitura.getCustomProperties().put("fim", twCompleted);
-                                    break;
-
-                                default:
-                                    throw new RuntimeException("Status desconhecido: " + status);
+                            if (status != null) { // Não tem risco; só pra tirar o warning :)
+                                switch (status) {
+                                    case "Lido":
+                                        leitura.getCustomProperties().put("fim", twCompleted);
+                                        break;
+    
+                                    default:
+                                        throw new RuntimeException("Status desconhecido: " + status);
+                                }
                             }
                         }
                     }

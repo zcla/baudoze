@@ -170,7 +170,7 @@ public class LibibToTiddlywiki {
                             throw new RuntimeException("Não sei tratar o status " + status);
                     }
                     if ((status != null) && (status.length() > 0)) {
-                        livro.getCustomProperties().put("colecao", status);
+                        livro.getCustomProperties().put("status", status);
                     }
 
                     String began = line.getBegan().trim();

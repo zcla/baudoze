@@ -68,7 +68,7 @@ public class LibibToTiddlywiki {
                     if (livro == null) {
                         livro = new Tiddler(line.getTitle());
                         wiki.insert(livro);
-                        livro.setTags("Livro TenhoImpresso Revisar");
+                        livro.setTags("Livro TenhoImpresso _Revisar");
                     }
 
                     livro.getCustomProperties().put("titulo", line.getTitle());
@@ -85,12 +85,13 @@ public class LibibToTiddlywiki {
                         String propEditoras = "";
                         String[] editoras = publisher.split(",");
                         for (String nomeEditora : editoras) {
+                            nomeEditora = nomeEditora.trim();
                             String title = nomeEditora + " (editora)";
                             Tiddler editora = wiki.getByTagAndTitle("Editora", title);
                             if (editora == null) {
                                 editora = new Tiddler(title);
                                 wiki.insert(editora);
-                                editora.setTags("Editora Revisar");
+                                editora.setTags("Editora _Revisar");
                                 editora.getCustomProperties().put("nome", nomeEditora);
                             }
                             propEditoras += " [[" + editora.getTitle() + "]]";
@@ -118,12 +119,13 @@ public class LibibToTiddlywiki {
                         String propAutores = "";
                         String[] autores = line.getCreators().split(",");
                         for (String autor : autores) {
+                            autor = autor.trim();
                             String title = autor;
                             Tiddler pessoa = wiki.getByTagAndTitle("Pessoa", title);
                             if (pessoa == null) {
                                 pessoa = new Tiddler(title);
                                 wiki.insert(pessoa);
-                                pessoa.setTags("Pessoa Revisar");
+                                pessoa.setTags("Pessoa _Revisar");
                                 pessoa.getCustomProperties().put("nome", autor);
                             }
                             propAutores += " [[" + pessoa.getTitle() + "]]";
@@ -140,13 +142,13 @@ public class LibibToTiddlywiki {
                     }
 
                     if ((line.getGroup() != null) && (line.getGroup().length() > 0)) {
-                        String title = line.getGroup() + " (coleção)";
+                        String title = line.getGroup().trim() + " (coleção)";
                         Tiddler colecao = wiki.getByTagAndTitle("Coleção", title);
                         if (colecao == null) {
                             colecao = new Tiddler(title);
                             wiki.insert(colecao);
-                            colecao.setTags("Coleção Revisar");
-                            colecao.getCustomProperties().put("nome", line.getGroup());
+                            colecao.setTags("Coleção _Revisar");
+                            colecao.getCustomProperties().put("nome", line.getGroup().trim());
                         }
                         livro.getCustomProperties().put("colecao", "[[" + colecao.getTitle() + "]]");
                     }

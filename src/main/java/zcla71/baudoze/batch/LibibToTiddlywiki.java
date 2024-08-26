@@ -38,12 +38,8 @@ public class LibibToTiddlywiki {
         importImages();
     }
 
-    private static void importImages() throws Exception {
-        importResizedImages();
-    }
-    
     // Antes de rodar: carregar a página principal do Libib até o final, salvar, colocar nessa pasta e rodar o Resize-Images.ps1
-    private static void importResizedImages() throws IOException {
+    private static void importImages() throws IOException {
         String fileName = "data/Libib.html";
         File f =  new File(fileName);
         Document html = Jsoup.parse(f);

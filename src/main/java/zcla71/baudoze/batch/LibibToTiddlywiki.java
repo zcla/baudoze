@@ -42,7 +42,7 @@ public class LibibToTiddlywiki {
         importResizedImages();
     }
     
-    // Rodar o Resize-Images.ps1 antes
+    // Antes de rodar: carregar a página principal do Libib até o final, salvar, colocar nessa pasta e rodar o Resize-Images.ps1
     private static void importResizedImages() throws IOException {
         String fileName = "data/Libib.html";
         File f =  new File(fileName);

@@ -1,16 +1,28 @@
 package zcla71.baudoze.batch;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -22,11 +34,112 @@ import zcla71.tiddlywiki.TiddlyWiki;
 
 public class LibibToTiddlywiki {
     public static void main(String[] args) throws Exception {
+        // importCsv();
+        importImages();
+    }
+
+    private static void importImages() throws Exception {
+        importResizedImages();
+    }
+    
+    // Rodar o Resize-Images.ps1 antes
+    private static void importResizedImages() throws IOException {
+        String fileName = "data/Libib.html";
+        File f =  new File(fileName);
+        Document html = Jsoup.parse(f);
+        Elements imgs = html.select("#library-items img");
+        TiddlyWiki wiki = new TiddlyWiki(new File("data/baudoze.html"));
+        for (Element img : imgs) {
+            String id = img.attr("data-join-id");
+            String imgFile = img.attr("src");
+            imgFile = imgFile.replaceFirst("\\.jpg", ".resized.jpg");
+            Element itemTitle = html.selectFirst(".item-title[data-join-id='" + id+ "']");
+            String name = itemTitle.text();
+            String capaFileName = "data/" + imgFile;
+            File capaFile = new File(capaFileName);
+            Tiddler capa = new Tiddler(name + "\\capa");
+            capa.setText(encodeFileToBase64Binary(capaFile));
+            capa.setType("image/jpeg");
+            capa.setTags("LivroCapa");
+            wiki.insert(capa);
+        }
+        wiki.save();
+    }
+
+    // Cria arquivos com as capas. Não funciona por causa do nome de alguns livros.
+    @SuppressWarnings("unused")
+    private static void importImagesAsFiles() throws IOException {
+        String fileName = "data/Libib.html";
+        File f =  new File(fileName);
+        Document html = Jsoup.parse(f);
+        Elements imgs = html.select("#library-items img");
+
+        for (Element img : imgs) {
+            String id = img.attr("data-join-id");
+            String imgFileName = img.attr("src");
+            Element itemTitle = html.selectFirst(".item-title[data-join-id='" + id+ "']");
+            String name = itemTitle.text();
+            String capaFileName = "data/" + imgFileName;
+            File capaFile = new File(capaFileName);
+            Files.copy(Paths.get(capaFile.getAbsolutePath()), Paths.get("./data/img/" + name + ".jpg"), StandardCopyOption.REPLACE_EXISTING);
+        }
+    }
+
+    // Cria tiddlers com as capas. Funciona, mas deixa o wiki pesado.
+    @SuppressWarnings("unused")
+    private static void importImagesAsIs() throws IOException {
+        String fileName = "data/Libib.html";
+        File f =  new File(fileName);
+        Document html = Jsoup.parse(f);
+        Elements imgs = html.select("#library-items img");
+        TiddlyWiki wiki = new TiddlyWiki(new File("data/baudoze.html"));
+        for (Element img : imgs) {
+            String id = img.attr("data-join-id");
+            String imgFile = img.attr("src");
+            Element itemTitle = html.selectFirst(".item-title[data-join-id='" + id+ "']");
+            String name = itemTitle.text();
+            String capaFileName = "data/" + imgFile;
+            File capaFile = new File(capaFileName);
+            Tiddler capa = new Tiddler(name + "\\capa");
+            capa.setText(encodeFileToBase64Binary(capaFile));
+            capa.setType("image/jpeg");
+            capa.setTags("LivroCapa");
+            wiki.insert(capa);
+        }
+        wiki.save();
+    }
+
+    // https://stackoverflow.com/questions/36492084/how-to-convert-an-image-to-base64-string-in-java
+    private static String encodeFileToBase64Binary(File file) throws IOException{
+        String encodedfile = null;
+        FileInputStream fileInputStreamReader = null;
+        try {
+            fileInputStreamReader = new FileInputStream(file);
+            byte[] bytes = new byte[(int)file.length()];
+            fileInputStreamReader.read(bytes);
+            encodedfile = Base64.getEncoder().encodeToString(bytes);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            if (fileInputStreamReader != null) {
+                fileInputStreamReader.close();
+            }
+        }
+        return encodedfile;
+    }
+
+    @SuppressWarnings("unused")
+    private static void importCsv()
+            throws URISyntaxException, IOException, JsonProcessingException, JsonMappingException {
         DateTimeFormatter dateFormatLibib = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter dateFormatTiddlyWiki = DateTimeFormatter.ofPattern("yyyyMMddhhmmssSSS");
 
         List<LibibCsvLine> libib = readLibib();
-        TiddlyWiki wiki = new TiddlyWiki(new File("data/livros.html"));
+        TiddlyWiki wiki = new TiddlyWiki(new File("data/baudoze.html"));
         for (LibibCsvLine line : libib) {
             switch (line.getItemType()) {
                 case "book":

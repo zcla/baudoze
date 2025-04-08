@@ -1,0 +1,16 @@
+services:
+  development:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace
+    stdin_open: true
+  mysql_db:
+    hostname: mysql_db
+    image: mysql/mysql-server:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_DATABASE=${DATABASE_DB}
+      - MYSQL_USER=${DATABASE_USER}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}

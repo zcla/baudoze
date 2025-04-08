@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+	<head th:fragment="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/3rdp/bootstrap.min.css">
+		<!-- <script src="/3rdp/jquery.min.js"></script> -->
+		<script src="/3rdp/bootstrap.bundle.min.js"></script>
+		<!-- <script src="/3rdp/marked.min.js"></script> -->
+		<meta name="description" content="Baú do Zé">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="stylesheet" href="/css/baudoze.css">
+	</head>
+	<body>
+		<nav th:fragment="nav" class="navbar navbar-expand-sm navbar-dark bg-dark d-print-none">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">Baú do Zé</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar">
+					<ul class="navbar-nav me-auto mb-2 mb-sm-0">
+						<li class="nav-item">
+							<a class="nav-link" href="/tarefa">Tarefas</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<footer th:fragment="footer" class="bg-dark d-print-none">
+			<p class="text-center text-white">Este código é livre e pode ser baixado do <a href="https://github.com/zcla/todo" target="_blank">GitHub<img class="align-text-bottom" src="/img/linkExterno.svg"></a>.</p>
+		</footer>
+	</body>
+</html>

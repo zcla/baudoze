@@ -1,11 +1,11 @@
 ### Listar
-GET http://localhost:8080/api/v1/tarefa
+GET http://localhost:8080/client/tarefa
 
 ### Buscar
-GET http://localhost:8080/api/v1/tarefa/17
+GET http://localhost:8080/client/tarefa/19
 
 ### Incluir
-POST http://localhost:8080/api/v1/tarefa
+POST http://localhost:8080/client/tarefa
 Content-Type: application/json
 
 {
@@ -17,11 +17,11 @@ Content-Type: application/json
 }
 
 ### Alterar
-PUT http://localhost:8080/api/v1/tarefa
+PUT http://localhost:8080/client/tarefa
 Content-Type: application/json
 
 {
-    "id": 17,
+    "id": 20,
     "nome": "Alterada",
     "notas": "com sucesso!",
     "idMae": null,
@@ -30,4 +30,4 @@ Content-Type: application/json
 }
 
 ### Excluir
-DELETE http://localhost:8080/api/v1/tarefa/17
+DELETE http://localhost:8080/client/tarefa/23

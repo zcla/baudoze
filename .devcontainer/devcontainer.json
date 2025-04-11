@@ -27,7 +27,8 @@
 			"extensions": [
 				"cweijan.vscode-mysql-client2",
 				"humao.rest-client",
-				"ms-azuretools.vscode-docker"
+				"ms-azuretools.vscode-docker",
+				"vscjava.vscode-java-pack"
 			]
 		}
 	}

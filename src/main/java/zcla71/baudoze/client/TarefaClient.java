@@ -1,6 +1,8 @@
 package zcla71.baudoze.client;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -9,12 +11,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 import zcla71.baudoze.entity.Tarefa;
@@ -84,5 +88,14 @@ public class TarefaClient {
                 new ParameterizedTypeReference<Tarefa>() {},
                 id
         );
+    }
+
+    @ExceptionHandler(RestClientResponseException.class)
+    public ResponseEntity<Object> handleNotFoundException(RestClientResponseException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("message", ex.getLocalizedMessage());
+        body.put("statusCode", ex.getStatusCode());
+        body.put("statusText", ex.getStatusText());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 }

@@ -18,10 +18,10 @@
 						</div>
 					</div>
 				</h1>
-				<th:block th:if="${#lists.isEmpty(tarefas)}">
+				<th:block th:if="${#lists.isEmpty(data.tarefas)}">
 					<p>Não há tarefas cadastradas.</p>
 				</th:block>
-				<th:block th:if="${!#lists.isEmpty(tarefas)}">
+				<th:block th:if="${!#lists.isEmpty(data.tarefas)}">
 					<div id="select" class="mb-3">
 						<table class="table table-sm table-hover">
 							<thead>
@@ -34,7 +34,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="tarefa : ${tarefas}">
+								<tr th:each="tarefa : ${data.tarefas}">
 									<td>
 										<span class="row" th:classappend ="${tarefa.indent} ? 'indent' + ${tarefa.indent} : ''">
 											<span class="col-1" style="width: 1px !important">

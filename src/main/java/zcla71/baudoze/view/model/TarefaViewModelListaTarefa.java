@@ -1,17 +1,17 @@
-package zcla71.baudoze.view.tarefa;
+package zcla71.baudoze.view.model;
 
 import lombok.Data;
-import zcla71.baudoze.entity.Tarefa;
+import zcla71.baudoze.model.entity.Tarefa;
 
 @Data
-public class ListaTarefa {
+public class TarefaViewModelListaTarefa {
     private Long id;
     private String nome;
     private String notas;
     private Boolean cumprida;
     private Integer indent;
 
-    public ListaTarefa(Tarefa tarefa, Integer indent) {
+    public TarefaViewModelListaTarefa(Tarefa tarefa, Integer indent) {
         this.id = tarefa.getId();
         this.nome = tarefa.getNome();
         this.notas = tarefa.getNotas();

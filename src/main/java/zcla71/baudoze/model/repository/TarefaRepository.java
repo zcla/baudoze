@@ -1,9 +1,9 @@
-package zcla71.baudoze.repository;
+package zcla71.baudoze.model.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import zcla71.baudoze.entity.Tarefa;
+import zcla71.baudoze.model.entity.Tarefa;
 
 @Repository
 public interface TarefaRepository extends CrudRepository<Tarefa, Long> {

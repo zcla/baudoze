@@ -28,15 +28,15 @@ public class TarefaServiceRepository implements TarefaService {
     //     return this.tarefaRepository.findById(id);
     // }
 
-    public List<Tarefa> list() {
+    public List<Tarefa> listar() {
         List<Tarefa> result = new ArrayList<>();
         this.tarefaRepository.findAll().forEach(result::add);
         return result;
     }
 
-    // public void add(Tarefa tarefa) {
-    //     this.tarefaRepository.save(tarefa);
-    // }
+    public void incluir(Tarefa tarefa) {
+        this.tarefaRepository.save(tarefa);
+    }
 
     // public void update(Tarefa tarefa) {
     //     Optional<Tarefa> tarefaBD = this.tarefaRepository.findById(tarefa.getId());

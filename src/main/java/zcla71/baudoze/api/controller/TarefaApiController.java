@@ -30,7 +30,7 @@ public class TarefaApiController {
  
     @GetMapping("/api/v1/tarefa")
     public ResponseEntity<List<Tarefa>> listar() {
-        List<Tarefa> tarefas = this.tarefaService.list();
+        List<Tarefa> tarefas = this.tarefaService.listar();
         return new ResponseEntity<>(tarefas, HttpStatus.OK);
     }
 
@@ -48,14 +48,10 @@ public class TarefaApiController {
     //     }
     // }
 
-    // @PostMapping("/api/v1/tarefa")
-    // public void incluir(@RequestBody Tarefa tarefa) {
-    //     try {
-    //         this.tarefaService.add(tarefa);
-    //     } catch (BauDoZeException e) {
-    //         throw new RuntimeException(e);
-    //     }
-    // }
+    @PostMapping("/api/v1/tarefa")
+    public void incluir(@RequestBody Tarefa tarefa) {
+        this.tarefaService.incluir(tarefa);
+    }
 
     // @PutMapping("/api/v1/tarefa")
     // public void alterar(@RequestBody Tarefa tarefa) {

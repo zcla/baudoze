@@ -19,7 +19,8 @@ import zcla71.baudoze.config.AppConfig;
 import zcla71.baudoze.controller.TarefaController;
 import zcla71.baudoze.model.entity.Tarefa;
 import zcla71.baudoze.model.service.TarefaService;
-import zcla71.baudoze.view.model.TarefaViewModelListaTarefa;
+import zcla71.baudoze.view.model.TarefaViewModelIncluirOk;
+import zcla71.baudoze.view.model.TarefaViewModelListarTarefa;
 
 @Controller
 public class TarefaViewController {
@@ -27,26 +28,23 @@ public class TarefaViewController {
     private TarefaService tarefaService;
 
     @GetMapping("/tarefa")
-    public String listar(Model model) throws BauDoZeException { // TODO Como tratar exceptions?
+    public String listar(Model model) {
         model.addAttribute("data", TarefaController.getInstance(tarefaService).listar());
         return "/tarefa/lista";
     }
 
-    // @GetMapping("/tarefa/incluir")
-    // public String incluir(Model model) throws BauDoZeException {
-    //     Tarefa tarefa = new Tarefa();
-    //     tarefa.setPeso(0);
-    //     model.addAttribute("tarefa", tarefa);
-    //     // TODO Adicionar lista de tarefas para idMae
-    //     return "/tarefa/incluir";
-    // }
+    @GetMapping("/tarefa/incluir")
+    public String incluir(Model model) {
+        model.addAttribute("data", TarefaController.getInstance(tarefaService).incluir());
+        return "/tarefa/incluir";
+    }
 
-    // @PostMapping("/tarefa/incluir_ok")
-    // public String incluirOk(@ModelAttribute Tarefa tarefa) throws BauDoZeException {
-    //     // TODO Validar
-    //     this.tarefaService.add(tarefa);
-    //     return "redirect:/tarefa";
-    // }
+    @PostMapping("/tarefa/incluir_ok")
+    public String incluirOk(@ModelAttribute TarefaViewModelIncluirOk tarefa) throws BauDoZeException {
+        // TODO Validar
+        this.tarefaService.incluir(tarefa.getTarefa());
+        return "redirect:/tarefa";
+    }
 
     // // @GetMapping("/tarefa/{id}")
     // // public String mostrar(@PathVariable String id, Model model) throws BauDoZeException {

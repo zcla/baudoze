@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 
 import zcla71.baudoze.model.entity.Tarefa;
 import zcla71.baudoze.model.service.TarefaService;
-import zcla71.baudoze.view.model.TarefaViewModelLista;
-import zcla71.baudoze.view.model.TarefaViewModelListaTarefa;
+import zcla71.baudoze.view.model.TarefaViewModelIncluir;
+import zcla71.baudoze.view.model.TarefaViewModelIncluirTarefaMae;
+import zcla71.baudoze.view.model.TarefaViewModelListar;
+import zcla71.baudoze.view.model.TarefaViewModelListarTarefa;
 
 public class TarefaController {
     // Singleton
@@ -28,7 +30,45 @@ public class TarefaController {
         this.tarefaService = tarefaService;
     }
 
-    // Funções utilitárias
+    // Métodos utilitários
+
+    private Boolean trataNull(Boolean b) {
+        return b == null ? Boolean.FALSE : b;
+    }
+
+    private Integer trataNull(Integer i) {
+        return i == null ? 0 : i;
+    }
+
+    // Negócio - classes e métodos de apoio
+
+    private class TarefaControllerTarefaHierarquia {
+        private Tarefa tarefa;
+        private Integer indent;
+
+        private TarefaControllerTarefaHierarquia(Tarefa tarefa, Integer indent) {
+            this.tarefa = tarefa;
+            this.indent = indent;
+        }
+    }
+
+    private List<TarefaControllerTarefaHierarquia> listaTarefasHierarquicamente() {
+        List<TarefaControllerTarefaHierarquia> result = new ArrayList<>();
+
+        List<Tarefa> tarefas = this.sort(tarefaService.listar());
+        for (Tarefa tarefa : tarefas) {
+            Integer indent = 0;
+            Tarefa temp = tarefa;
+            while (temp.getIdMae() != null) {
+                final Tarefa finalTemp = temp;
+                temp = tarefas.stream().filter(t -> finalTemp.getIdMae().equals(t.getId())).findFirst().get();
+                indent++;
+            }
+            result.add(new TarefaControllerTarefaHierarquia(tarefa, indent));
+        }
+
+        return result;
+    }
 
     private List<Tarefa> sort(List<Tarefa> tarefas) {
         return this.sort(tarefas, null);
@@ -36,6 +76,7 @@ public class TarefaController {
 
     private List<Tarefa> sort(List<Tarefa> tarefas, Long idMae) {
         List<Tarefa> result = new ArrayList<>();
+
         List<Tarefa> filhas = tarefas.stream().filter(t -> {
             if (idMae == null) {
                 return t.getIdMae() == null;
@@ -43,6 +84,7 @@ public class TarefaController {
                 return idMae.equals(t.getIdMae());
             }
         }).collect(Collectors.toList());
+
         filhas.sort(new Comparator<Tarefa>() {
             @Override
             public int compare(Tarefa t1, Tarefa t2) {
@@ -61,37 +103,42 @@ public class TarefaController {
                 return t1.getNome().compareToIgnoreCase(t2.getNome());
             }
         });
+
         for (Tarefa filha : filhas) {
             result.add(filha);
             result.addAll(sort(tarefas, filha.getId()));
         }
+
         return result;
     }
 
-    private Boolean trataNull(Boolean b) {
-        return b == null ? Boolean.FALSE : b;
-    }
+    // Negócio - métodos públicos
 
-    private Integer trataNull(Integer i) {
-        return i == null ? 0 : i;
-    }
+    public TarefaViewModelListar listar() {
+        TarefaViewModelListar result = new TarefaViewModelListar();
 
-    // Negócio
-
-    public TarefaViewModelLista listar() {
-        List<Tarefa> tarefas = this.sort(tarefaService.list());
-        TarefaViewModelLista result = new TarefaViewModelLista();
         result.setTarefas(new ArrayList<>());
-        for (Tarefa tarefa : tarefas) {
-            Integer indent = 0;
-            Tarefa temp = tarefa;
-            while (temp.getIdMae() != null) {
-                final Tarefa finalTemp = temp;
-                temp = tarefas.stream().filter(t -> finalTemp.getIdMae().equals(t.getId())).findFirst().get();
-                indent++;
-            }
-            result.getTarefas().add(new TarefaViewModelListaTarefa(tarefa, indent));
+        List<TarefaControllerTarefaHierarquia> tarefas = this.listaTarefasHierarquicamente();
+        for (TarefaControllerTarefaHierarquia tarefa : tarefas) {
+            result.getTarefas().add(new TarefaViewModelListarTarefa(tarefa.tarefa, tarefa.indent));
         }
+
+        return result;
+    }
+
+    public TarefaViewModelIncluir incluir() {
+        TarefaViewModelIncluir result = new TarefaViewModelIncluir();
+
+        result.setTarefa(new Tarefa());
+        result.getTarefa().setNome("Nova tarefa");
+        result.getTarefa().setPeso(0);
+
+        result.setTarefasMae(new ArrayList<>());
+        List<TarefaControllerTarefaHierarquia> tarefas = this.listaTarefasHierarquicamente();
+        for (TarefaControllerTarefaHierarquia tarefa : tarefas) {
+            result.getTarefasMae().add(new TarefaViewModelIncluirTarefaMae(tarefa.tarefa, tarefa.indent));
+        }
+
         return result;
     }
 }

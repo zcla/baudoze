@@ -32,7 +32,7 @@ public class TarefaServiceApi implements TarefaService {
     private RestTemplate restTemplate;
  
     @Override
-    public List<Tarefa> list() {
+    public List<Tarefa> listar() {
         String url = "http://localhost:8080/api/v1/tarefa";
         ResponseEntity<List<Tarefa>> response = restTemplate.exchange(
                 url,
@@ -58,16 +58,16 @@ public class TarefaServiceApi implements TarefaService {
     //     return new ResponseEntity<Tarefa>(tarefa, HttpStatus.OK);
     // }
 
-    // @PostMapping("/client/tarefa")
-    // public void incluir(@RequestBody Tarefa tarefa) {
-    //     String url = "http://localhost:8080/api/v1/tarefa";
-    //     restTemplate.exchange(
-    //             url,
-    //             HttpMethod.POST,
-    //             new HttpEntity<>(tarefa),
-    //             new ParameterizedTypeReference<Tarefa>() {}
-    //     );
-    // }
+    @PostMapping("/client/tarefa")
+    public void incluir(@RequestBody Tarefa tarefa) {
+        String url = "http://localhost:8080/api/v1/tarefa";
+        restTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                new HttpEntity<>(tarefa),
+                new ParameterizedTypeReference<Tarefa>() {}
+        );
+    }
 
     // @PutMapping("/client/tarefa")
     // public void alterar(@RequestBody Tarefa tarefa) {

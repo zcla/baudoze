@@ -9,15 +9,15 @@
 		<div class="container-fluid">
 			<div id="mensagens" class="mt-3"></div>
 			<div id="conteudo">
-				<h1>Nova Tarefa</h1>
-				<form th:object="${tarefa}" th:action="@{'/tarefa/incluir_ok'}" method="POST">
+				<h1><span><img src="/img/tarefa-c-32.png"> Nova Tarefa</span></h1>
+				<form th:object="${data.tarefa}" th:action="@{'/tarefa/incluir_ok'}" method="POST">
 					<div class="mb-3">
 						<label for="nome" class="form-label">Nome</label>
 						<input th:field="*{nome}" id="nome" name="nome" type="text" class="form-control" required>
 					</div>
 					<div class="mb-3">
 						<label for="notas" class="form-label">Notas</label>
-						<input th:field="*{notas}" id="notas" name="notas" type="text" class="form-control" required>
+						<input th:field="*{notas}" id="notas" name="notas" type="text" class="form-control">
 					</div>
 					<div class="mb-3">
 						<label for="peso" class="form-label">Peso</label>
@@ -27,7 +27,7 @@
 						<label for="idMae" class="form-label">Tarefa "mãe"</label>
 						<select th:field="*{idMae}" id="idMae" name="idMae" class="form-select">
 							<option value=""></option>
-							<option value="teste">Teste</option>
+							<option th:each="tarefa : ${data.tarefasMae}" th:value="${tarefa.id}" th:utext="${tarefa.nome}"></option>
 						</select>
 					</div>
 					<div class="btn-group mb-3">

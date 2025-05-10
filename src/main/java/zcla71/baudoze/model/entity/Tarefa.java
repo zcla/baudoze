@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "tarefa")
+// TODO criar interface no pacote controller e implementar aqui
 public class Tarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

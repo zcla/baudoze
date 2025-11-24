@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Baú do Zé : Tarefas</title>
+		<th:block th:insert="~{_fragments/geral.html :: head}"></th:block>
+	</head>
+	<body>
+		<nav th:replace="~{_fragments/geral.html :: nav}"></nav>
+		<div class="container-fluid">
+			<div id="mensagens" class="mt-3"></div>
+			<div id="conteudo">
+				<div id="form">
+					<h1>
+						<span style="position: relative">
+							<img th:src="${'/img/tarefa-32.png'}">
+							<img th:src="${'/img/layer-' + contexto.id + '-32.png'}" style="position: absolute; bottom: 0px; left: 0px; z-index: 1;">
+						</span>
+						<span th:text="${#strings.capitalize(contexto.titulo)}"></span>
+					</h1>
+					<div th:unless="${data.tarefa}" class="mt-3">
+						<div class="alert alert-danger">Tarefa não encontrada!</div>
+					</div>
+					<div th:replace="~{_fragments/form.html :: noFieldValidation}"></div>
+					</div>
+					<form th:if="${data.tarefa}" th:object="${data.tarefa}" th:action="${'/tarefa/' + contexto.id + '_ok'}" method="POST">
+						<input th:if="${!('incluir'.equals(contexto.id))}" th:field="*{id}" id="id" name="id" type="hidden">
+						<div class="row mb-3">
+							<div th:replace="~{_fragments/form.html :: inputText (field='nome', label='Nome')}"></div>
+						</div>
+						<div class="row mb-3">
+							<div th:replace="~{_fragments/form.html :: inputText (field='notas', label='Notas')}"></div>
+						</div>
+						<div class="row mb-3">
+							<div th:replace="~{_fragments/form.html :: inputNumber (field='peso', label='Peso')}"></div>
+						</div>
+						<div class="row mb-3">
+							<div th:replace="~{_fragments/form.html :: select (field='idMae', label='Tarefa &quot;mãe&quot;', options= ${data.tarefasMae})}"></div>
+						</div>
+						<div th:if="${'mostrar'.equals(contexto.id)}" class="btn-group mb-3">
+							<a th:href="@{'/tarefa/' + ${id}} + '/alterar'" type="button" class="btn bg-warning-subtle" title="Alterar"><img src="/img/button-alterar.png"> Alterar</a>
+							<a th:href="@{'/tarefa/' + ${id}} + '/excluir'" type="button" class="btn bg-danger-subtle" title="Excluir"><img src="/img/button-excluir.png"> Excluir</a>
+							<a th:href="@{'/tarefa'}" type="button" class="btn bg-secondary-subtle" title="Voltar"><img src="/img/button-voltar.png"> Voltar</a>
+						</div>
+						<div th:unless="${'mostrar'.equals(contexto.id)}" class="btn-group mb-3">
+							<button type="submit" class="btn bg-success-subtle" title="Ok"><img src="/img/button-ok.png"> Ok</button>
+							<a th:href="@{'/tarefa'}" type="button" class="btn bg-danger-subtle" title="Cancelar"><img src="/img/button-cancelar.png"> Cancelar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer th:replace="~{_fragments/geral.html :: footer}"></footer>
+	</body>
+</html>

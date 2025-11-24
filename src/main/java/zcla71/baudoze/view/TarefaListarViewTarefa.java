@@ -1,17 +1,18 @@
-package zcla71.baudoze.view.model;
+package zcla71.baudoze.view;
 
 import lombok.Data;
-import zcla71.baudoze.model.entity.Tarefa;
+import zcla71.baudoze.model.TarefaModel;
 
 @Data
-public class TarefaViewModelListarTarefa {
+public class TarefaListarViewTarefa {
     private Long id;
     private String nome;
     private String notas;
     private Boolean cumprida;
     private Integer indent;
 
-    public TarefaViewModelListarTarefa(Tarefa tarefa, Integer indent) {
+    // TODO Aqui o View depende do Model, mas apenas de forma utilitária. Eliminar essa dependência me parece preciosismo demais. Será?
+    public TarefaListarViewTarefa(TarefaModel tarefa, Integer indent) {
         this.id = tarefa.getId();
         this.nome = tarefa.getNome();
         this.notas = tarefa.getNotas();

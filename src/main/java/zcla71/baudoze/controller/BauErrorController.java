@@ -1,4 +1,4 @@
-package zcla71.baudoze.view.controller;
+package zcla71.baudoze.controller;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,10 +15,10 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class TarefaErrorController implements ErrorController {
+public class BauErrorController implements ErrorController {
     private final ErrorAttributes errorAttributes;
 
-    public TarefaErrorController(ErrorAttributes errorAttributes) {
+    public BauErrorController(ErrorAttributes errorAttributes) {
         super();
         this.errorAttributes = errorAttributes;
     }

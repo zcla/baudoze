@@ -10,8 +10,10 @@
             <div id="conteudo">
                 <h1>ERRO 😬</h1>
                 <dl>
-                    <dt>Status code</dt>
-                    <dd th:text="${statusCode}"></dd>
+                    <th:block th:if="${errors}">
+                        <dt>Status code</dt>
+                        <dd th:text="${statusCode}"></dd>
+                    </th:block>
                     <dt>Exception</dt>
                     <dd th:text="${exception}"></dd>
                     <dt>Message</dt>

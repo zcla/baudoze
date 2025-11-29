@@ -1,4 +1,4 @@
-package zcla71.baudoze.view;
+package zcla71.baudoze.tarefa.view;
 
 import lombok.Data;
 
@@ -12,8 +12,7 @@ public class TarefaEditarViewTarefaMae {
         this.text = "";
     }
 
-    // TODO Dependência indevida de outra tela, mas apenas de forma utilitária. Para eliminar essa dependência teria que criar uma classe intermediária. Me parece preciosismo demais. Será?
-	public TarefaEditarViewTarefaMae(TarefaListarViewTarefa tarefa) {
+	public TarefaEditarViewTarefaMae(TarefaListaViewTarefa tarefa) {
 		this.value = tarefa.getId().toString();
         this.text = tarefa.getNome();
 	}

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import zcla71.baudoze.model.validation.Validation;
 
+// TODO Isso aqui parece tanto model quanto view; decidir
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class ValidationException extends Exception {

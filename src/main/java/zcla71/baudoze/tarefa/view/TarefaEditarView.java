@@ -1,16 +1,15 @@
-package zcla71.baudoze.view;
+package zcla71.baudoze.tarefa.view;
 
 import java.util.List;
 
 import lombok.Data;
-import zcla71.baudoze.model.TarefaModel;
 
 @Data
 public class TarefaEditarView {
-	private TarefaModel tarefa;
+	private TarefaEditarViewTarefa tarefa;
 	private List<TarefaEditarViewTarefaMae> tarefasMae;
 
-	public TarefaEditarView(TarefaModel tarefa, List<TarefaEditarViewTarefaMae> tarefasMae) {
+	public TarefaEditarView(TarefaEditarViewTarefa tarefa, List<TarefaEditarViewTarefaMae> tarefasMae) {
 		super();
 		this.tarefa = tarefa;
 		this.tarefasMae = tarefasMae;

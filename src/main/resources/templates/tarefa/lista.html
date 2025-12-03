@@ -7,7 +7,7 @@
 	<body>
 		<nav th:replace="~{_fragments/geral.html :: nav}"></nav>
 		<div class="container-fluid">
-			<div id="mensagens" class="mt-3"></div>
+			<div th:replace="~{_fragments/geral.html :: mensagens}"></div>
 			<div id="conteudo">
 				<h1>
 					<span><img src="/img/tarefa-32.png"> Tarefas</span>

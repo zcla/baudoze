@@ -7,7 +7,7 @@
 	<body>
 		<nav th:replace="~{_fragments/geral.html :: nav}"></nav>
 		<div class="container-fluid">
-			<div id="mensagens" class="mt-3"></div>
+			<div th:replace="~{_fragments/geral.html :: mensagens}"></div>
 			<div id="conteudo">
 				<div id="form">
 					<h1>
@@ -21,7 +21,6 @@
 						<div class="alert alert-danger">Tarefa não encontrada!</div>
 					</div>
 					<div th:replace="~{_fragments/form.html :: noFieldValidation}"></div>
-					</div>
 					<form th:if="${data.tarefa}" th:object="${data.tarefa}" th:action="${'/tarefa/' + contexto.id + '_ok'}" method="POST">
 						<input th:if="${!('incluir'.equals(contexto.id))}" th:field="*{id}" id="id" name="id" type="hidden">
 						<div class="row mb-3">

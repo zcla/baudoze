@@ -4,13 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- https://getbootstrap.com/docs/5.3/getting-started/download/ -->
-		<link rel="stylesheet" href="/3rdp/bootstrap.min.css">
-		<script src="/3rdp/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" th:href="@{/3rdp/bootstrap.min.css}">
+		<script th:src="@{/3rdp/bootstrap.bundle.min.js}"></script>
+		<!-- baú -->
 		<meta name="description" content="Baú do Zé">
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="stylesheet" href="/css/baudoze.css">
 	</head>
 	<body>
+		<!-- Header -->
 		<nav th:fragment="nav" class="navbar navbar-expand-sm navbar-dark bg-dark d-print-none">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/"><img src="/img/bau-16.png"> Baú do Zé</a>
@@ -26,6 +28,26 @@
 				</div>
 			</div>
 		</nav>
+		<div th:fragment="mensagens" id="mensagens" class="mt-3">
+			<!-- exception -->
+			<dl th:if="${exception != null}">
+				<div class="alert alert-danger alert-dismissible">
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+					<h1>ERRO 😬</h1>
+					<dt>Exception</dt>
+					<dd th:text="${exception.class.name}"></dd>
+					<dt>Message</dt>
+					<dd th:text="${exception.message}"></dd>
+					<dt>
+						<a data-bs-toggle="collapse" href="#exceptionStackTrace" role="button" aria-expanded="false" aria-controls="exceptionStackTrace">Stack trace</a>
+					</dt>
+					<dd class="collapse" id="exceptionStackTrace">
+						<pre><code th:text="${#strings.listJoin(exception.stackTrace,'&#10;')}"></code></pre>
+					</dd>
+				</div>
+			</dl>
+		</div>
+		<!-- Footer -->
 		<footer th:fragment="footer" class="bg-dark d-print-none">
 			<p class="text-center text-white">Este código é livre e pode ser baixado do <a href="https://github.com/zcla/baudoze" target="_blank">GitHub<img class="align-text-bottom" src="/img/linkExterno.svg"></a>.</p>
 		</footer>

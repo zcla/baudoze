@@ -174,29 +174,28 @@ public class TarefaController {
 		}
 	}
 
+	// TODO Padronizar os outros métodos como os abaixo
 	@GetMapping("/tarefa/{id}/excluir")
 	public ModelAndView excluir(@PathVariable Long id) {
-		ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-		// try {
-			mav.addObject("contexto", ContextoCrud.EXCLUIR);
-			mav.addObject("data", new TarefaEditarView(this.entity2view(tarefaService.buscar(id)), getTarefasMae()));
-		// } catch (Exception e) {
-			// TODO Fazer um controle geral de exceptions genérico para todas as telas, adicionando a um atributo "exception"
-		// }
-		return mav;
+		ModelAndView result = new ModelAndView("/tarefa/detalhe");
+		result.addObject("contexto", ContextoCrud.EXCLUIR);
+		result.addObject("data", new TarefaEditarView(this.entity2view(tarefaService.buscar(id)), getTarefasMae()));
+		return result;
 	}
 
 	@PostMapping("/tarefa/excluir_ok")
 	public ModelAndView excluirOk(@ModelAttribute TarefaEditarViewOk tarefa) {
+		ModelAndView result = new ModelAndView("/tarefa/detalhe");
+		result.addObject("contexto", ContextoCrud.EXCLUIR);
+		result.addObject("data", new TarefaEditarView(tarefa.getTarefa(), getTarefasMae()));
 		try {
 			this.tarefaService.excluir(this.view2entity(tarefa.getTarefa()));
-			return new ModelAndView("redirect:/tarefa");
+			result = new ModelAndView("redirect:/tarefa");
 		} catch (ValidationException e) {
-			ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-			mav.addObject("contexto", ContextoCrud.EXCLUIR);
-			mav.addObject("data", new TarefaEditarView(tarefa.getTarefa(), getTarefasMae()));
-			mav.addObject("validation", e.getValidations());
-			return mav;
+			result.addObject("validation", e.getValidations());
+		} catch (Exception e) {
+			result.addObject("exception", e);
 		}
+		return result;
 	}
 }

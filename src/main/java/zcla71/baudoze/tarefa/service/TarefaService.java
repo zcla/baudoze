@@ -22,6 +22,7 @@ public class TarefaService {
 		this.tarefaRepository.save(tarefa);
 	}
 
+	@SuppressWarnings("null")
 	public TarefaEntity buscar(Long id) {
 		return this.tarefaRepository.findById(id).orElse(null);
 	}

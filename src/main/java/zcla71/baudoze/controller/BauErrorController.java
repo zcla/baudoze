@@ -23,6 +23,7 @@ public class BauErrorController implements ErrorController {
         this.errorAttributes = errorAttributes;
     }
 
+    @SuppressWarnings("null")
     @GetMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
         model.addAttribute("statusCode", request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));

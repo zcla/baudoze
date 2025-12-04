@@ -1,5 +1,7 @@
 package zcla71.baudoze.tarefa.service;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -71,6 +73,11 @@ public class TarefaEntity {
 
 	public ValidationException validaExcluir(TarefaRepository tarefaRepository) {
 		ValidationException result = new ValidationException();
+
+		List<TarefaEntity> filhos = tarefaRepository.findByIdMae(this.id);
+		if (filhos.size() > 0) {
+			result.getValidations().add(new Validation("Tarefa não pode ser excluída porque tem subtarefas."));
+		}
 
 		validaIdInvalido(tarefaRepository, result);
 

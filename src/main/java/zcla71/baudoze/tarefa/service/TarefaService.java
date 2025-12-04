@@ -28,7 +28,6 @@ public class TarefaService {
 	}
 
 	public void excluir(TarefaEntity tarefa) throws ValidationException {
-		// TODO Não permitir excluir tarefa com filhos ou excluir em cascata.
 		ValidationException validation = tarefa.validaExcluir(this.tarefaRepository);
 		if (!validation.getValidations().isEmpty()) {
 			throw validation;

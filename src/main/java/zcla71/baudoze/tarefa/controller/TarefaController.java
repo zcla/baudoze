@@ -113,29 +113,44 @@ public class TarefaController {
 		return result;
 	}
 
+	private ModelAndView getModelAndViewTarefaDetalhe(ContextoCrud contexto, TarefaEditarViewTarefa data) {
+		ModelAndView result = new ModelAndView("/tarefa/detalhe");
+		result.addObject("contexto", contexto);
+		result.addObject("data", new TarefaEditarView(data, getTarefasMae()));
+		return result;
+	}
+
+	private ModelAndView getModelAndViewTarefaDetalhe(ContextoCrud contexto, TarefaEditarViewTarefa data, Exception e) {
+		ModelAndView result = getModelAndViewTarefaDetalhe(contexto, data);
+		trataException(result, e);
+		return result;
+	}
+
+	private void trataException(ModelAndView mav, Exception e) {
+		if (e instanceof ValidationException v) {
+			mav.addObject("validation", v.getValidations());
+		} else {
+			mav.addObject("exception", e);
+		}
+	}
+
 	// Controller
 
 	@GetMapping("/tarefa")
 	public ModelAndView listar() {
-		ModelAndView mav = new ModelAndView("/tarefa/lista");
-		mav.addObject("data", new TarefaListaView(this.listaTarefasHierarquicamente()));
-		return mav;
+		ModelAndView result = new ModelAndView("/tarefa/lista");
+		result.addObject("data", new TarefaListaView(this.listaTarefasHierarquicamente()));
+		return result;
 	}
 
 	@GetMapping("/tarefa/{id}")
 	public ModelAndView mostrar(@PathVariable Long id) {
-		ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-		mav.addObject("contexto", ContextoCrud.MOSTRAR);
-		mav.addObject("data", new TarefaEditarView(this.entity2view(tarefaService.buscar(id)), getTarefasMae()));
-		return mav;
+		return getModelAndViewTarefaDetalhe(ContextoCrud.MOSTRAR, this.entity2view(tarefaService.buscar(id)));
 	}
 
 	@GetMapping("/tarefa/incluir")
 	public ModelAndView incluir() {
-		ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-		mav.addObject("contexto", ContextoCrud.INCLUIR);
-		mav.addObject("data", new TarefaEditarView(this.entity2view(TarefaEntity.nova()), getTarefasMae()));
-		return mav;
+		return getModelAndViewTarefaDetalhe(ContextoCrud.INCLUIR, this.entity2view(TarefaEntity.nova()));
 	}
 
 	@PostMapping("/tarefa/incluir_ok")
@@ -143,21 +158,14 @@ public class TarefaController {
 		try {
 			this.tarefaService.incluir(this.view2entity(tarefa.getTarefa()));
 			return new ModelAndView("redirect:/tarefa");
-		} catch (ValidationException e) {
-			ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-			mav.addObject("contexto", ContextoCrud.INCLUIR);
-			mav.addObject("data", new TarefaEditarView(tarefa.getTarefa(), getTarefasMae()));
-			mav.addObject("validation", e.getValidations());
-			return mav;
+		} catch (Exception e) {
+			return getModelAndViewTarefaDetalhe(ContextoCrud.INCLUIR, tarefa.getTarefa(), e);
 		}
 	}
 
 	@GetMapping("/tarefa/{id}/alterar")
 	public ModelAndView alterar(@PathVariable Long id) {
-		ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-		mav.addObject("contexto", ContextoCrud.ALTERAR);
-		mav.addObject("data", new TarefaEditarView(this.entity2view(tarefaService.buscar(id)), getTarefasMae()));
-		return mav;
+		return getModelAndViewTarefaDetalhe(ContextoCrud.ALTERAR, this.entity2view(tarefaService.buscar(id)));
 	}
 
 	@PostMapping("/tarefa/alterar_ok")
@@ -165,37 +173,23 @@ public class TarefaController {
 		try {
 			this.tarefaService.alterar(this.view2entity(tarefa.getTarefa()));
 			return new ModelAndView("redirect:/tarefa");
-		} catch (ValidationException e) {
-			ModelAndView mav = new ModelAndView("/tarefa/detalhe");
-			mav.addObject("contexto", ContextoCrud.ALTERAR);
-			mav.addObject("data", new TarefaEditarView(tarefa.getTarefa(), getTarefasMae()));
-			mav.addObject("validation", e.getValidations());
-			return mav;
+		} catch (Exception e) {
+			return getModelAndViewTarefaDetalhe(ContextoCrud.ALTERAR, tarefa.getTarefa(), e);
 		}
 	}
 
-	// TODO Padronizar os outros métodos como os abaixo
 	@GetMapping("/tarefa/{id}/excluir")
 	public ModelAndView excluir(@PathVariable Long id) {
-		ModelAndView result = new ModelAndView("/tarefa/detalhe");
-		result.addObject("contexto", ContextoCrud.EXCLUIR);
-		result.addObject("data", new TarefaEditarView(this.entity2view(tarefaService.buscar(id)), getTarefasMae()));
-		return result;
+		return getModelAndViewTarefaDetalhe(ContextoCrud.EXCLUIR, this.entity2view(tarefaService.buscar(id)));
 	}
 
 	@PostMapping("/tarefa/excluir_ok")
 	public ModelAndView excluirOk(@ModelAttribute TarefaEditarViewOk tarefa) {
-		ModelAndView result = new ModelAndView("/tarefa/detalhe");
-		result.addObject("contexto", ContextoCrud.EXCLUIR);
-		result.addObject("data", new TarefaEditarView(tarefa.getTarefa(), getTarefasMae()));
 		try {
 			this.tarefaService.excluir(this.view2entity(tarefa.getTarefa()));
-			result = new ModelAndView("redirect:/tarefa");
-		} catch (ValidationException e) {
-			result.addObject("validation", e.getValidations());
+			return new ModelAndView("redirect:/tarefa");
 		} catch (Exception e) {
-			result.addObject("exception", e);
+			return getModelAndViewTarefaDetalhe(ContextoCrud.EXCLUIR, tarefa.getTarefa(), e);
 		}
-		return result;
 	}
 }

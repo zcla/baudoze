@@ -92,12 +92,4 @@ public class TarefaEntity {
 
 		return result;
 	}
-
-	// public ValidationException validaMostrar(TarefaRepository tarefaRepository) {
-	// 	ValidationException result = new ValidationException();
-
-	// 	validaIdInvalido(tarefaRepository, result);
-
-	// 	return result;
-	// }
 }

@@ -43,6 +43,9 @@ public class TarefaEntity {
 		if (this.peso == null) {
 			result.getValidacoes().add(new Validacao("Informe o peso.", "peso"));
 		}
+		if ((this.idMae != null) && this.idMae.equals(this.id)) {
+			result.getValidacoes().add(new Validacao("A tarefa não pode ser filha dela mesma.", "idMae"));
+		}
 	}
 
 	private void validaIdDeveSerNulo(ValidacaoException result) {
@@ -65,7 +68,6 @@ public class TarefaEntity {
 	public ValidacaoException validaAlterar(TarefaRepository tarefaRepository) {
 		ValidacaoException result = new ValidacaoException();
 
-		// TODO Não pode ser mãe de si mesma
 		validaIdInvalido(tarefaRepository, result);
 		validaDados(result);
 

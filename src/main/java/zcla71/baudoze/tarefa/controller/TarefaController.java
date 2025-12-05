@@ -23,6 +23,7 @@ import zcla71.baudoze.tarefa.view.TarefaEditarViewTarefaMae;
 import zcla71.baudoze.tarefa.view.TarefaListaView;
 import zcla71.baudoze.tarefa.view.TarefaListaViewTarefa;
 import zcla71.baudoze.view.ContextoCrud;
+import zcla71.utils.Utils;
 
 @Controller
 public class TarefaController {
@@ -31,27 +32,15 @@ public class TarefaController {
 
 	// Métodos de apoio
 
-	// TODO Avaliar se seria possível haver uma superclasse abstrata pra facilitar essas conversões
 	private TarefaEditarViewTarefa entity2view(TarefaEntity tarefa) {
-		return new TarefaEditarViewTarefa(
-				tarefa.getId(),
-				tarefa.getNome(),
-				tarefa.getNotas(),
-				tarefa.getIdMae(),
-				tarefa.getPeso(),
-				tarefa.getCumprida()
-		);
+		TarefaEditarViewTarefa result = new TarefaEditarViewTarefa();
+		Utils.copiaPropriedades(tarefa, result);
+		return result;
 	}
 
 	private TarefaEntity view2entity(TarefaEditarViewTarefa tarefa) {
-		TarefaEntity result = new TarefaEntity(
-				tarefa.getId(),
-				tarefa.getNome(),
-				tarefa.getNotas(),
-				tarefa.getIdMae(),
-				tarefa.getPeso(),
-				tarefa.getCumprida()
-		);
+		TarefaEntity result = new TarefaEntity();
+		Utils.copiaPropriedades(tarefa, result);
 		return result;
 	}
 

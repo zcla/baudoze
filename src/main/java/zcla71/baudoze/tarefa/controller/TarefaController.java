@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import zcla71.baudoze.model.validation.ValidationException;
+import zcla71.baudoze.model.ValidationException;
 import zcla71.baudoze.tarefa.service.TarefaEntity;
 import zcla71.baudoze.tarefa.service.TarefaEntityComparator;
 import zcla71.baudoze.tarefa.service.TarefaService;

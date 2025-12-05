@@ -1,4 +1,4 @@
-package zcla71.baudoze.model.validation;
+package zcla71.baudoze.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

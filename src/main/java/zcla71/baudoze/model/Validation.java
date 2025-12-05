@@ -1,10 +1,9 @@
-package zcla71.baudoze.model.validation;
+package zcla71.baudoze.model;
 
 import java.util.List;
 
 import lombok.Data;
 
-// TODO Mover para ..
 @Data
 public class Validation {
 	// TODO Eliminar, transformando em método de classe (ver htmls que usam)

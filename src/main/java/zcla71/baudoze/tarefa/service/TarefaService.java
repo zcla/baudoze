@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import zcla71.baudoze.model.validation.ValidationException;
+import zcla71.baudoze.model.ValidationException;
 
 @Service
 public class TarefaService {

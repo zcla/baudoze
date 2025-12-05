@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import zcla71.baudoze.model.ValidationException;
+import zcla71.baudoze.model.ValidacaoException;
 
 @Service
 public class TarefaService {
 	@Autowired
 	private TarefaRepository tarefaRepository;
 
-	public void alterar(TarefaEntity tarefa) throws ValidationException {
-		ValidationException validation = tarefa.validaAlterar(this.tarefaRepository);
-		if (!validation.getValidations().isEmpty()) {
+	public void alterar(TarefaEntity tarefa) throws ValidacaoException {
+		ValidacaoException validation = tarefa.validaAlterar(this.tarefaRepository);
+		if (!validation.getValidacoes().isEmpty()) {
 			throw validation;
 		}
 
@@ -27,18 +27,18 @@ public class TarefaService {
 		return this.tarefaRepository.findById(id).orElse(null);
 	}
 
-	public void excluir(TarefaEntity tarefa) throws ValidationException {
-		ValidationException validation = tarefa.validaExcluir(this.tarefaRepository);
-		if (!validation.getValidations().isEmpty()) {
+	public void excluir(TarefaEntity tarefa) throws ValidacaoException {
+		ValidacaoException validation = tarefa.validaExcluir(this.tarefaRepository);
+		if (!validation.getValidacoes().isEmpty()) {
 			throw validation;
 		}
 
 		this.tarefaRepository.delete(tarefa);
 	}
 
-	public void incluir(TarefaEntity tarefa) throws ValidationException {
-		ValidationException validation = tarefa.validaIncluir(this.tarefaRepository);
-		if (!validation.getValidations().isEmpty()) {
+	public void incluir(TarefaEntity tarefa) throws ValidacaoException {
+		ValidacaoException validation = tarefa.validaIncluir(this.tarefaRepository);
+		if (!validation.getValidacoes().isEmpty()) {
 			throw validation;
 		}
 

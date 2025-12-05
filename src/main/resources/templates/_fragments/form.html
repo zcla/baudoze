@@ -9,7 +9,7 @@
 		<!-- inputDate (field, [opt]label, [opt]contexto)
 		<div th:fragment="inputDate (field)" th:with="label=${label} ?: null, contexto=${contexto.id} ?: 'editar'">
 			<label th:for="${field}" class="form-label" th:text="${label}"></label>
-			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="date" th:class="'form-control ' + ${T(zcla71.baudoze.model.validation.Validation).validationClass(validation, field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
+			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="date" th:class="'form-control ' + ${validation == null ? '' : validation.validationClass(field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
 			<div th:if="${validation != null}" class="invalid-feedback">
 				<div th:each="v : ${validation.?[fieldName == '__${field}__']}" th:text="${v.message}"></div>
 			</div>
@@ -18,7 +18,7 @@
 		<!-- inputDateTime (field, [opt]label, [opt]contexto)
 		<div th:fragment="inputDateTime (field)" th:with="label=${label} ?: null, contexto=${contexto.id} ?: 'editar'">
 			<label th:for="${field}" class="form-label" th:text="${label}"></label>
-			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="datetime-local" th:class="'form-control ' + ${T(zcla71.baudoze.model.validation.Validation).validationClass(validation, field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
+			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="datetime-local" th:class="'form-control ' + ${validation == null ? '' : validation.validationClass(field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
 			<div th:if="${validation != null}" class="invalid-feedback">
 				<div th:each="v : ${validation.?[fieldName == '__${field}__']}" th:text="${v.message}"></div>
 			</div>
@@ -27,7 +27,7 @@
 		<!-- inputNumber (field, [opt]label, [opt]step, [opt]contexto) -->
 		<div th:fragment="inputNumber (field)" th:with="label=${label} ?: null, step=${step} ?: null, contexto=${contexto.id} ?: 'editar'">
 			<label th:if="${label != null}" th:for="${field}" class="form-label" th:text="${label}"></label>
-			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="number" th:step="${step}" th:class="'form-control ' + ${T(zcla71.baudoze.model.validation.Validation).validationClass(validation, field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
+			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="number" th:step="${step}" th:class="'form-control ' + ${validation == null ? '' : validation.validationClass(field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
 			<div th:if="${validation != null}" class="invalid-feedback">
 				<div th:each="v : ${validation.?[fieldName == '__${field}__']}" th:text="${v.message}"></div>
 			</div>
@@ -36,7 +36,7 @@
 		<!-- inputText (field, [opt]label, [opt]contexto) -->
 		<div th:fragment="inputText (field)" th:with="label=${label} ?: null, contexto=${contexto.id} ?: 'editar'">
 			<label th:for="${field}" class="form-label" th:text="${label}"></label>
-			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="text" th:class="'form-control ' + ${T(zcla71.baudoze.model.validation.Validation).validationClass(validation, field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
+			<input th:field="*{__${field}__}" th:id="${field}" th:name="${field}" type="text" th:class="'form-control ' + ${validation == null ? '' : validation.validationClass(field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
 			<div th:if="${validation != null}" class="invalid-feedback">
 				<div th:each="v : ${validation.?[fieldName == '__${field}__']}" th:text="${v.message}"></div>
 			</div>
@@ -45,7 +45,7 @@
 		<!-- select (field, options, [opt]label, [opt]contexto) -->
 		<div th:fragment="select (field, options)" th:with="label=${label} ?: null, contexto=${contexto.id} ?: 'editar'">
 			<label th:if="${label != null}" th:for="${field}" class="form-label" th:text="${label}"></label>
-			<select th:field="*{__${field}__}" th:id="${field}" th:name="${field}" th:class="'form-select ' + ${T(zcla71.baudoze.model.validation.Validation).validationClass(validation, field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
+			<select th:field="*{__${field}__}" th:id="${field}" th:name="${field}" th:class="'form-select ' + ${validation == null ? '' : validation.validationClass(field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
 				<option th:each="option : ${options}" th:value="${option.value}" th:text="${option.text}"></option>
 			</select>
 			<div th:if="${validation != null}" class="invalid-feedback">

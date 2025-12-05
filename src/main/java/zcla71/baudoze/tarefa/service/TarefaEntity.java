@@ -10,8 +10,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import zcla71.baudoze.model.Validation;
-import zcla71.baudoze.model.ValidationException;
+import zcla71.baudoze.model.Validacao;
+import zcla71.baudoze.model.ValidacaoException;
 
 @Data
 @NoArgsConstructor
@@ -36,47 +36,48 @@ public class TarefaEntity {
 	private Integer peso;
 	private Boolean cumprida;
 
-	private void validaDados(ValidationException result) {
+	private void validaDados(ValidacaoException result) {
 		if (this.nome == null || this.nome.trim().length() < 1) {
-			result.getValidations().add(new Validation("Informe o nome.", "nome"));
+			result.getValidacoes().add(new Validacao("Informe o nome.", "nome"));
 		}
 		if (this.peso == null) {
-			result.getValidations().add(new Validation("Informe o peso.", "peso"));
+			result.getValidacoes().add(new Validacao("Informe o peso.", "peso"));
 		}
 	}
 
-	private void validaIdDeveSerNulo(ValidationException result) {
+	private void validaIdDeveSerNulo(ValidacaoException result) {
 		if (this.id != null) {
-			result.getValidations().add(new Validation("O ID da tarefa não deve ser informado."));
+			result.getValidacoes().add(new Validacao("O ID da tarefa não deve ser informado."));
 		}
 	}
 
 	@SuppressWarnings("null")
-	private void validaIdInvalido(TarefaRepository tarefaRepository, ValidationException result) {
+	private void validaIdInvalido(TarefaRepository tarefaRepository, ValidacaoException result) {
 		if (this.id == null) {
-			result.getValidations().add(new Validation("ID da tarefa não informado."));
+			result.getValidacoes().add(new Validacao("ID da tarefa não informado."));
 		} else {
 			if (!tarefaRepository.existsById(this.id)) {
-				result.getValidations().add(new Validation("Tarefa não encontrada."));
+				result.getValidacoes().add(new Validacao("Tarefa não encontrada."));
 			}
 		}
 	}
 
-	public ValidationException validaAlterar(TarefaRepository tarefaRepository) {
-		ValidationException result = new ValidationException();
+	public ValidacaoException validaAlterar(TarefaRepository tarefaRepository) {
+		ValidacaoException result = new ValidacaoException();
 
+		// TODO Não pode ser mãe de si mesma
 		validaIdInvalido(tarefaRepository, result);
 		validaDados(result);
 
 		return result;
 	}
 
-	public ValidationException validaExcluir(TarefaRepository tarefaRepository) {
-		ValidationException result = new ValidationException();
+	public ValidacaoException validaExcluir(TarefaRepository tarefaRepository) {
+		ValidacaoException result = new ValidacaoException();
 
 		List<TarefaEntity> filhos = tarefaRepository.findByIdMae(this.id);
 		if (filhos.size() > 0) {
-			result.getValidations().add(new Validation("Tarefa não pode ser excluída porque tem subtarefas."));
+			result.getValidacoes().add(new Validacao("Tarefa não pode ser excluída porque tem subtarefas."));
 		}
 
 		validaIdInvalido(tarefaRepository, result);
@@ -84,8 +85,8 @@ public class TarefaEntity {
 		return result;
 	}
 
-	public ValidationException validaIncluir(TarefaRepository tarefaRepository) {
-		ValidationException result = new ValidationException();
+	public ValidacaoException validaIncluir(TarefaRepository tarefaRepository) {
+		ValidacaoException result = new ValidacaoException();
 
 		validaIdDeveSerNulo(result);
 		validaDados(result);

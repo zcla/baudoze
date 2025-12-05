@@ -10,8 +10,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import zcla71.baudoze.model.service.ValidationException;
 import zcla71.baudoze.model.validation.Validation;
+import zcla71.baudoze.model.validation.ValidationException;
 
 @Data
 @NoArgsConstructor

@@ -1,13 +1,11 @@
-package zcla71.baudoze.model.service;
+package zcla71.baudoze.model.validation;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import zcla71.baudoze.model.validation.Validation;
 
-// TODO Isso aqui parece tanto model quanto view; decidir
 @Data
 @EqualsAndHashCode(callSuper=true)
 public class ValidationException extends Exception {

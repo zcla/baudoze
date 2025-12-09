@@ -46,7 +46,7 @@
 		<div th:fragment="select (field, options)" th:with="label=${label} ?: null, contexto=${contexto.id} ?: 'editar'">
 			<label th:if="${label != null}" th:for="${field}" class="form-label" th:text="${label}"></label>
 			<select th:field="*{__${field}__}" th:id="${field}" th:name="${field}" th:class="'form-select ' + ${validation == null ? '' : validation.validationClass(field)}" th:disabled="${#arrays.contains({'excluir', 'mostrar'}, contexto)}">
-				<option th:each="option : ${options}" th:value="${option.value}" th:text="${option.text}"></option>
+				<option th:each="option : ${options}" th:value="${option.value}" th:text="${#strings.repeat('&nbsp;', 3 * option.indent) + option.text}"></option>
 			</select>
 			<div th:if="${validation != null}" class="invalid-feedback">
 				<div th:each="v : ${validation.?[fieldName == '__${field}__']}" th:text="${v.message}"></div>

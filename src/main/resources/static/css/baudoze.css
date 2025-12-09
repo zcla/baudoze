@@ -12,45 +12,21 @@ footer p {
     margin-bottom: 0px;
 }
 
-#select .botoes {
+#crudLista .botoes {
     padding: 0;
     white-space: nowrap;
     width: 0;
 }
 
-#select .botoes div.btn-group {
+#crudLista .botoes div.btn-group {
     margin: 1px;
 }
 
-#select .botoes button {
+#crudLista .botoes button {
     font-size: .90rem;
 }
 
-#select .indent1 {
-    padding-left: 2rem !important;
-}
-
-#select .indent2 {
-    padding-left: 4rem !important;
-}
-
-#select .indent3 {
-    padding-left: 6rem !important;
-}
-
-#select .indent4 {
-    padding-left: 8rem !important;
-}
-
-#select .indent5 {
-    padding-left: 10rem !important;
-}
-
-#select small {
+#crudLista small {
     padding-left: 1rem;
     font-style: italic;
-}
-
-.erro .stack3rdp {
-    opacity: 25%;
 }

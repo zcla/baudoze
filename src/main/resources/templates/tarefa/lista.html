@@ -22,7 +22,7 @@
 					<p>Não há tarefas cadastradas.</p>
 				</th:block>
 				<th:block th:if="${!#lists.isEmpty(data.tarefas)}">
-					<div id="select" class="mb-3">
+					<div id="crudLista" class="mb-3">
 						<table class="table table-sm table-hover">
 							<thead>
 								<tr id="selectTitle">
@@ -36,14 +36,13 @@
 							<tbody>
 								<tr th:each="tarefa : ${data.tarefas}">
 									<td>
-										<span class="row" th:classappend ="${tarefa.indent} ? 'indent' + ${tarefa.indent} : ''">
-											<span class="col-1" style="width: 1px !important">
-												<input class="form-check-input me-1" type="checkbox" th:checked="${tarefa.cumprida}">
-											</span>
-											<span class="col">
-												<label th:utext="${tarefa.nome}" class="form-check-label"></label>
-												<small th:utext="${tarefa.notas}"></small>
-											</span>
+										<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
+										<span class="col-1" style="width: 1px !important">
+											<input class="form-check-input me-1" type="checkbox" th:checked="${tarefa.cumprida}">
+										</span>
+										<span class="col">
+											<label th:utext="${tarefa.nome}" class="form-check-label"></label>
+											<small th:utext="${tarefa.notas}"></small>
 										</span>
 									</td>
 									<td class="botoes d-print-none">

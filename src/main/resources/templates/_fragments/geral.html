@@ -4,12 +4,34 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- https://getbootstrap.com/docs/5.3/getting-started/download/ -->
-		<link rel="stylesheet" th:href="@{/3rdp/bootstrap.min.css}">
-		<script th:src="@{/3rdp/bootstrap.bundle.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/3rdp/bootstrap-5.3.8.min.css}">
+		<!-- TODO Warning no browser -->
+		<script th:src="@{/3rdp/bootstrap-5.3.8.bundle.min.js}"></script>
+		<!-- https://jquery.com/download/ -->
+		<script th:src="@{/3rdp/jquery-3.7.1.min.js}"></script>
 		<!-- baú -->
 		<meta name="description" content="Baú do Zé">
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="stylesheet" href="/css/baudoze.css">
+		<script th:src="@{/js/utils.js}"></script>
+		<script>
+			$(window).on('load', function() {
+				$('#bau_exportar').click(async () => {
+					const data = await $.ajax({ 
+						type: "GET",
+						dataType: "json",
+						url: "/backupRestore/exportar",
+						success: function(data){
+							debugger;
+							StringUtils.downloadString(data, `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
+							// TODO Trazer frontend do projeto "todo"
+							frontend.addMessage('success', '', 'Exportação feita com sucesso.');
+						}
+						// TODO Tratar erro
+					});
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<!-- Header -->
@@ -20,9 +42,19 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbar">
-					<ul class="navbar-nav me-auto mb-2 mb-sm-0">
+					<ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link" href="/tarefa"><img src="/img/tarefa-16.png"> Tarefas</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+						<li class="nav-item dropdown">
+							<a class="d-block nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="/img/backup-restore-16.png"> Backup/Restore</a>
+							<ul class="dropdown-menu dropdown-menu-end text-small">
+								<li><a id="bau_exportar" class="dropdown-item">Exportar</a></li>
+								<li><a id="bau_importar" class="dropdown-item">Importar</a></li>
+								<li><a id="bau_limpar" class="dropdown-item">Limpar</a></li>
+							</ul>
 						</li>
 					</ul>
 				</div>

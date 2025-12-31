@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- https://getbootstrap.com/docs/5.3/getting-started/download/ -->
 		<link rel="stylesheet" th:href="@{/3rdp/bootstrap-5.3.8.min.css}">
-		<!-- TODO Warning no browser -->
 		<script th:src="@{/3rdp/bootstrap-5.3.8.bundle.min.js}"></script>
 		<!-- https://jquery.com/download/ -->
 		<script th:src="@{/3rdp/jquery-3.7.1.min.js}"></script>
@@ -23,7 +22,7 @@
 						url: "/backupRestore/exportar",
 						success: function(data){
 							debugger;
-							StringUtils.downloadString(data, `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
+							StringUtils.downloadString(JSON.stringify(data), `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
 							// TODO Trazer frontend do projeto "todo"
 							frontend.addMessage('success', '', 'Exportação feita com sucesso.');
 						}

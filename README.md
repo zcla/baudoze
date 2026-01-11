@@ -23,6 +23,15 @@
       * `<módulo><view>View[<detalhe>].java`
         <br>DTO com os valores necessários à view.
 
+## .devcontainer/.env
+DATABASE_HOST=mysql_db
+DATABASE_PORT=3306
+DATABASE_DB=baudoze
+DATABASE_USER=ze
+DATABASE_PASSWORD=senhaDoZe
+GOOGLE_AUTH_CLIENT_ID=?
+GOOGLE_AUTH_CLIENT_SECRET=?
+
 ## Outras notas
 
 * Adicionando um container com o mysql (Dockerfile, docker-compose.yml, .env e como configurar o banco)

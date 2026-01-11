@@ -56,6 +56,12 @@
 							</ul>
 						</li>
 					</ul>
+					<ul class="navbar-nav ms-3">
+						<li class="nav-item d-flex align-items-center">
+							<img th:src="${authUserPicture}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+							<span class="navbar-text me-3" th:text="${authUserName}"></span>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</nav>

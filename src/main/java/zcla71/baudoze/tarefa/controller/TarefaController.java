@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -102,15 +104,22 @@ public class TarefaController {
 		return result;
 	}
 
-	private ModelAndView getModelAndViewTarefaDetalhe(ContextoCrud contexto, TarefaEditarViewTarefa data) {
+	private void addAuthInfo(ModelAndView mav,OidcUser user) {
+		mav.addObject("authUserName", user.getAttribute("name"));
+		mav.addObject("authUserPicture", user.getAttribute("picture"));
+		mav.addObject("authUserEmail", user.getAttribute("email"));
+	}
+
+	private ModelAndView getModelAndViewTarefaDetalhe(OidcUser user, ContextoCrud contexto, TarefaEditarViewTarefa data) {
 		ModelAndView result = new ModelAndView("/tarefa/detalhe");
+		addAuthInfo(result, user);
 		result.addObject("contexto", contexto);
 		result.addObject("data", new TarefaEditarView(data, getTarefasMae()));
 		return result;
 	}
 
-	private ModelAndView getModelAndViewTarefaDetalhe(ContextoCrud contexto, TarefaEditarViewTarefa data, Exception e) {
-		ModelAndView result = getModelAndViewTarefaDetalhe(contexto, data);
+	private ModelAndView getModelAndViewTarefaDetalhe(OidcUser user, ContextoCrud contexto, TarefaEditarViewTarefa data, Exception e) {
+		ModelAndView result = getModelAndViewTarefaDetalhe(user, contexto, data);
 		trataException(result, e);
 		return result;
 	}
@@ -126,59 +135,60 @@ public class TarefaController {
 	// Controller
 
 	@GetMapping("/tarefa")
-	public ModelAndView listar() {
+	public ModelAndView listar(@AuthenticationPrincipal OidcUser user) {
 		ModelAndView result = new ModelAndView("/tarefa/lista");
+		addAuthInfo(result, user);
 		result.addObject("data", new TarefaListaView(this.listaTarefasHierarquicamente()));
 		return result;
 	}
 
 	@GetMapping("/tarefa/{id}")
-	public ModelAndView mostrar(@PathVariable Long id) {
-		return getModelAndViewTarefaDetalhe(ContextoCrud.MOSTRAR, this.entity2view(tarefaService.buscar(id)));
+	public ModelAndView mostrar(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.MOSTRAR, this.entity2view(tarefaService.buscar(id)));
 	}
 
 	@GetMapping("/tarefa/incluir")
-	public ModelAndView incluir() {
-		return getModelAndViewTarefaDetalhe(ContextoCrud.INCLUIR, this.entity2view(TarefaEntity.nova()));
+	public ModelAndView incluir(@AuthenticationPrincipal OidcUser user) {
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.INCLUIR, this.entity2view(TarefaEntity.nova()));
 	}
 
 	@PostMapping("/tarefa/incluir_ok")
-	public ModelAndView incluirOk(@ModelAttribute TarefaEditarViewOk tarefa) {
+	public ModelAndView incluirOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
 		try {
 			this.tarefaService.incluir(this.view2entity(tarefa.getTarefa()));
 			return new ModelAndView("redirect:/tarefa");
 		} catch (Exception e) {
-			return getModelAndViewTarefaDetalhe(ContextoCrud.INCLUIR, tarefa.getTarefa(), e);
+			return getModelAndViewTarefaDetalhe(user, ContextoCrud.INCLUIR, tarefa.getTarefa(), e);
 		}
 	}
 
 	@GetMapping("/tarefa/{id}/alterar")
-	public ModelAndView alterar(@PathVariable Long id) {
-		return getModelAndViewTarefaDetalhe(ContextoCrud.ALTERAR, this.entity2view(tarefaService.buscar(id)));
+	public ModelAndView alterar(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, this.entity2view(tarefaService.buscar(id)));
 	}
 
 	@PostMapping("/tarefa/alterar_ok")
-	public ModelAndView alterarOk(@ModelAttribute TarefaEditarViewOk tarefa) {
+	public ModelAndView alterarOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
 		try {
 			this.tarefaService.alterar(this.view2entity(tarefa.getTarefa()));
 			return new ModelAndView("redirect:/tarefa");
 		} catch (Exception e) {
-			return getModelAndViewTarefaDetalhe(ContextoCrud.ALTERAR, tarefa.getTarefa(), e);
+			return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, tarefa.getTarefa(), e);
 		}
 	}
 
 	@GetMapping("/tarefa/{id}/excluir")
-	public ModelAndView excluir(@PathVariable Long id) {
-		return getModelAndViewTarefaDetalhe(ContextoCrud.EXCLUIR, this.entity2view(tarefaService.buscar(id)));
+	public ModelAndView excluir(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.EXCLUIR, this.entity2view(tarefaService.buscar(id)));
 	}
 
 	@PostMapping("/tarefa/excluir_ok")
-	public ModelAndView excluirOk(@ModelAttribute TarefaEditarViewOk tarefa) {
+	public ModelAndView excluirOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
 		try {
 			this.tarefaService.excluir(this.view2entity(tarefa.getTarefa()));
 			return new ModelAndView("redirect:/tarefa");
 		} catch (Exception e) {
-			return getModelAndViewTarefaDetalhe(ContextoCrud.EXCLUIR, tarefa.getTarefa(), e);
+			return getModelAndViewTarefaDetalhe(user, ContextoCrud.EXCLUIR, tarefa.getTarefa(), e);
 		}
 	}
 }

@@ -10,5 +10,4 @@ public class BauDoZeApplication {
 	}
 
 	// TODO Backup automático
-	// TODO Autenticação com Google: https://developers.google.com/api-client-library/java
 }

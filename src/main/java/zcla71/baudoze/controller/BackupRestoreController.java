@@ -20,3 +20,22 @@ public class BackupRestoreController {
 		return result;
 	}
 }
+
+// O ChatGPT sugeriu o código abaixo, que não me parece necessário:
+// @Configuration
+// @EnableWebSecurity
+// public class SecurityConfig {
+
+//   @Bean
+//   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//     http
+//       .authorizeHttpRequests(auth -> auth
+//         .requestMatchers("/", "/css/**", "/js/**", "/images/**").permitAll()
+//         .anyRequest().authenticated()
+//       )
+//       .oauth2Login(oauth -> { /* default ok */ })
+//       .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+
+//     return http.build();
+//   }
+// }

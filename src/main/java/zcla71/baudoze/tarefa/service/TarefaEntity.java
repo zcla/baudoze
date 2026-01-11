@@ -54,7 +54,6 @@ public class TarefaEntity {
 		}
 	}
 
-	@SuppressWarnings("null")
 	private void validaIdInvalido(TarefaRepository tarefaRepository, ValidacaoException result) {
 		if (this.id == null) {
 			result.getValidacoes().add(new Validacao("ID da tarefa não informado."));

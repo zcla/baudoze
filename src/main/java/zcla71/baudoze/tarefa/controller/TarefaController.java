@@ -59,7 +59,7 @@ public class TarefaController {
 	private List<TarefaListaViewTarefa> listaTarefasHierarquicamente() {
 		List<TarefaListaViewTarefa> result = new ArrayList<>();
 
-		List<TarefaEntity> tarefas = this.sort(tarefaService.listar(), null);
+		List<TarefaEntity> tarefas = this.sort(this.tarefaService.listar(), null);
 		for (TarefaEntity tarefa : tarefas) {
 			Integer indent = 0;
 			TarefaEntity temp = tarefa;
@@ -104,7 +104,7 @@ public class TarefaController {
 		return result;
 	}
 
-	private void addAuthInfo(ModelAndView mav,OidcUser user) {
+	private void addAuthInfo(ModelAndView mav, OidcUser user) {
 		mav.addObject("authUserName", user.getAttribute("name"));
 		mav.addObject("authUserPicture", user.getAttribute("picture"));
 		mav.addObject("authUserEmail", user.getAttribute("email"));
@@ -144,7 +144,7 @@ public class TarefaController {
 
 	@GetMapping("/tarefa/{id}")
 	public ModelAndView mostrar(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
-		return getModelAndViewTarefaDetalhe(user, ContextoCrud.MOSTRAR, this.entity2view(tarefaService.buscar(id)));
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.MOSTRAR, this.entity2view(this.tarefaService.buscar(id)));
 	}
 
 	@GetMapping("/tarefa/incluir")
@@ -164,7 +164,7 @@ public class TarefaController {
 
 	@GetMapping("/tarefa/{id}/alterar")
 	public ModelAndView alterar(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
-		return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, this.entity2view(tarefaService.buscar(id)));
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, this.entity2view(this.tarefaService.buscar(id)));
 	}
 
 	@PostMapping("/tarefa/alterar_ok")
@@ -179,7 +179,7 @@ public class TarefaController {
 
 	@GetMapping("/tarefa/{id}/excluir")
 	public ModelAndView excluir(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
-		return getModelAndViewTarefaDetalhe(user, ContextoCrud.EXCLUIR, this.entity2view(tarefaService.buscar(id)));
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.EXCLUIR, this.entity2view(this.tarefaService.buscar(id)));
 	}
 
 	@PostMapping("/tarefa/excluir_ok")

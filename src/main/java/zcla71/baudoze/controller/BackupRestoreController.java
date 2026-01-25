@@ -16,7 +16,7 @@ public class BackupRestoreController {
 	@GetMapping("/backupRestore/exportar")
 	@ResponseBody
 	public BackupRestore listar() {
-		BackupRestore result = new BackupRestore(tarefaService);
+		BackupRestore result = new BackupRestore(this.tarefaService);
 		return result;
 	}
 }

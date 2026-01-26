@@ -1,6 +1,5 @@
 package zcla71.baudoze.tarefa.service;
 
-import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.context.annotation.Profile;
@@ -10,8 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import zcla71.baudoze.BauDoZeProperties;
-import zcla71.baudoze.tarefa.service.chatgpt.CurrentOidcUser;
-import zcla71.baudoze.tarefa.service.chatgpt.StorageProperties;
 import zcla71.baudoze.tarefa.service.chatgpt.UserScopedPathResolver;
 import zcla71.repository.json.JsonRepository;
 import zcla71.utils.OidcUtils;

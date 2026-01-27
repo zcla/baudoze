@@ -2,8 +2,10 @@ package zcla71.baudoze;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
+@EnableConfigurationProperties(BauDoZeProperties.class)
 public class BauDoZeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BauDoZeApplication.class, args);

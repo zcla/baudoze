@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import zcla71.baudoze.BauDoZeProperties;
-import zcla71.baudoze.tarefa.service.chatgpt.UserScopedPathResolver;
 import zcla71.repository.json.JsonRepository;
 import zcla71.utils.OidcUtils;
 
@@ -19,7 +18,7 @@ import zcla71.utils.OidcUtils;
 public class TarefaJsonRepository extends JsonRepository<TarefaEntity, Long> implements TarefaRepository {
     public TarefaJsonRepository(ObjectMapper mapper, BauDoZeProperties props) {
         super(mapper, () -> {
-            return new UserScopedPathResolver(props.getStoragePath()).tarefasFileFor(OidcUtils.getLoggedUser());
+            return OidcUtils.getStoragePath(props.getStoragePath(), "tarefas", ".json");
         });
 
         enableAutoIdLong();

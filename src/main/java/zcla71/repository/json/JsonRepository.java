@@ -3,8 +3,6 @@ package zcla71.repository.json;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import zcla71.baudoze.tarefa.service.chatgpt.FilePathProvider;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,6 +13,10 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public abstract class JsonRepository<T, ID> {
+    public interface FilePathProvider {
+        Path get();
+    }
+
     private final ObjectMapper mapper;
     private final FilePathProvider filePathProvider;
 

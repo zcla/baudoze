@@ -16,9 +16,9 @@ import zcla71.utils.OidcUtils;
 @Profile("json")
 @Repository
 public class TarefaJsonRepository extends JsonRepository<TarefaEntity, Long> implements TarefaRepository {
-    public TarefaJsonRepository(ObjectMapper mapper, BauDoZeProperties props) {
+    public TarefaJsonRepository(OidcUtils oidcUtils, ObjectMapper mapper, BauDoZeProperties props) {
         super(mapper, () -> {
-            return OidcUtils.getStoragePath(props.getStoragePath(), "tarefas", ".json");
+            return oidcUtils.getStoragePath(props.getStoragePath(), "tarefas.json");
         });
 
         enableAutoIdLong();

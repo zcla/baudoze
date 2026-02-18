@@ -1,0 +1,41 @@
+app:
+  storage:
+    # TODO Substituir por app.storage-path
+    base-path: ./data
+  # Local para armazenamento de dados
+  storage-path: ./data
+  # Define a implementação de TarefaRepository:
+  # db: banco de dados, implementado por TarefaDatabaseRepository
+  # json: arquivos json, implementado por TarefaJsonRepository
+  storage-profile: json
+logging:
+  level:
+    org:
+      springframework:
+        web: INFO
+spring:
+  application:
+    name: Bau do Zé
+  datasource:
+    password: ${DATABASE_PASSWORD}
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_DB}
+    username: ${DATABASE_USER}
+  jpa:
+    hibernate:
+      ddl-auto: update
+  profiles:
+    # TODO spring.profiles.active=db: para que funcione com múltiplos usuários tem que incluir a coluna userid no banco e na classe, e no Repository inseri-la silenciosamente
+    # TODO Substituir por app.storage-profile
+    active: json
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_AUTH_CLIENT_ID}
+            client-secret: ${GOOGLE_AUTH_CLIENT_SECRET}
+            scope: openid,profile,email
+  thymeleaf:
+    cache: false
+    suffix: .html
+    template-loader-path: classpath:/templates

@@ -1,6 +1,6 @@
 # Fontes de textos
 
-* Obs.: tudo o que está no readme do projeto `wikimaker` foi copiado pra cá em 13/02/2026.
+* Obs.: tudo o que está no readme dos projetos [`doccat`](https://github.com/zcla/doccat) e [`wikimaker`](https://github.com/zcla/wikimaker) foi copiado pra cá em 13/02/2026.
 
 ## Bíblias
 

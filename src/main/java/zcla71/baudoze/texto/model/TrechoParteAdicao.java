@@ -1,5 +1,7 @@
-package zcla71.baudoze.biblia.service;
+package zcla71.baudoze.texto.model;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -7,6 +9,8 @@ import lombok.EqualsAndHashCode;
 // Ex.: Bíblia Pe. Matos Soares Ed. Realeza (1932), Lc 1,8 (cercado por barras): Sucedeu pois que, exercendo //(Zacarias)// diante de Deus as funções de sacerdote na ordem da sua turma, ...
 @Data
 @EqualsAndHashCode(callSuper=true)
+// @Entity
+@DiscriminatorValue("ADICAO")
 public class TrechoParteAdicao extends TrechoParte {
 	private String texto;
 }

@@ -21,7 +21,7 @@ public class ImportMyBible {
 	public void downloadAll() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
         // ----- https://www.ph4.org/b4_1.php
         // [pt-br] BAM 1959 - Bíblia Ave Maria (The words of Jesus are highlighted in red)
-		download("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM1959", "Bíblia Ave Maria");
+		download("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM1959", "Bíblia Ave Maria", "pt");
         // [pt-br] BEP 1990 - Bíblia Sagrada — Edição Pastoral (The words of Jesus are highlighted in red)
 		// [pt-br] BJRD 2002 - Bíblia de Jerusalém
 		// [pt-br] CNBB 2002 - Bíblia CNBB (Nova Capa) (The words of Jesus are highlighted in red)
@@ -32,17 +32,18 @@ public class ImportMyBible {
 		// [en] RSV-2CE 2006 - Revised Standard Version, Second Catholic Edition (The words of Jesus are highlighted in red)
 	}
 
-	private void download(String url, String codigo, String nome) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
+	private void download(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
 		MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(url));
-		Biblia biblia = fromMyBible(url, codigo, nome, myBible);
+		Biblia biblia = fromMyBible(url, codigo, nome, idioma, myBible);
 		new BibliaService().incluir(biblia);
 	}
 
-	private Biblia fromMyBible(String url, String codigo, String nome, MyBible myBible) {
+	private Biblia fromMyBible(String url, String codigo, String nome, String idioma, MyBible myBible) {
 		// Biblia
 		Biblia result = new Biblia();
 		result.setCodigo(codigo);
 		result.setNome(nome);
+		result.setIdioma(idioma);
 		result.setFonte(url);
 		result.setLivros(new ArrayList<>());
 

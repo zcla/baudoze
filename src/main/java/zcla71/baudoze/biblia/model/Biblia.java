@@ -25,6 +25,8 @@ public class Biblia {
 
 	private String nome;
 
+	private String idioma;
+
 	private String fonte;
 
 	@OneToMany(mappedBy = "biblia", cascade = CascadeType.ALL)

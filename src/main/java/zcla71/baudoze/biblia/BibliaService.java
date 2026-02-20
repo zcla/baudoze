@@ -13,4 +13,8 @@ public class BibliaService {
 	public void incluir(Biblia biblia) {
 		bibliaRepository.save(biblia);
 	}
+
+	public Biblia buscaPorCodigo(String codigo) {
+		return bibliaRepository.findByCodigo(codigo);
+	}
 }

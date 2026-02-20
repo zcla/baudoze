@@ -7,22 +7,48 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+
+import lombok.extern.slf4j.Slf4j;
 import zcla71.baudoze.biblia.model.Biblia;
+import zcla71.baudoze.biblia.model.Livro;
 import zcla71.mybible.MyBible;
 import zcla71.mybible.MyBibleUtils;
+import zcla71.mybible.bible.BooksAll;
 
+@Component
+@Slf4j
 public class ImportMyBible {
-	// TODO O BibliaRepository não vai funcionar se não for um componente
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-		// TODO Fazer isso ser automático (verificar se existe e importar se não)
-		new ImportMyBible().downloadAll();
+	private BibliaService bibliaService;
+
+	public ImportMyBible(BibliaService bibliaService) {
+		this.bibliaService = bibliaService;
 	}
 
-	public void downloadAll() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-        // ----- https://www.ph4.org/b4_1.php
-        // [pt-br] BAM 1959 - Bíblia Ave Maria (The words of Jesus are highlighted in red)
-		download("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM1959", "Bíblia Ave Maria", "pt");
-        // [pt-br] BEP 1990 - Bíblia Sagrada — Edição Pastoral (The words of Jesus are highlighted in red)
+	@Async
+	@EventListener(ApplicationStartedEvent.class)
+    public void init() {
+		try {
+			// TODO Criar um flag no BibliaService para não permitir uso enquanto estiver inicializando
+			log.info("init start");
+			importaTudo();
+			log.info("init end");
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | NoSuchFieldException | IOException | SQLException
+				| URISyntaxException e) {
+			throw new RuntimeException("Erro ao importar dados do MyBible", e);
+		}
+	}
+
+	public void importaTudo() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
+		// ----- https://www.ph4.org/b4_1.php
+		// [pt-br] BAM 1959 - Bíblia Ave Maria (The words of Jesus are highlighted in red)
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM", "Bíblia Ave Maria", "pt");
+		// [pt-br] BEP 1990 - Bíblia Sagrada — Edição Pastoral (The words of Jesus are highlighted in red)
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c", "ph4.org/BEP", "Bíblia Sagrada - Edição Pastoral", "pt");
 		// [pt-br] BJRD 2002 - Bíblia de Jerusalém
 		// [pt-br] CNBB 2002 - Bíblia CNBB (Nova Capa) (The words of Jesus are highlighted in red)
 		// [pt-br] DBFC 1955 - Difusora Bíblica (The words of Jesus are highlighted in red) (Franciscanos Capuchinhos)
@@ -32,13 +58,17 @@ public class ImportMyBible {
 		// [en] RSV-2CE 2006 - Revised Standard Version, Second Catholic Edition (The words of Jesus are highlighted in red)
 	}
 
-	private void download(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-		MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(url));
-		Biblia biblia = fromMyBible(url, codigo, nome, idioma, myBible);
-		new BibliaService().incluir(biblia);
+	private void importa(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
+		log.info("importa(\"" + codigo + "\")");
+		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
+			MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(url));
+			Biblia biblia = fromMyBible(url, codigo, nome, idioma, myBible);
+			this.bibliaService.incluir(biblia);
+		}
 	}
 
 	private Biblia fromMyBible(String url, String codigo, String nome, String idioma, MyBible myBible) {
+		log.info("fromMyBible(\"" + codigo + "\")");
 		// Biblia
 		Biblia result = new Biblia();
 		result.setCodigo(codigo);
@@ -47,7 +77,20 @@ public class ImportMyBible {
 		result.setFonte(url);
 		result.setLivros(new ArrayList<>());
 
-		// TODO Livro
+		// Livro
+		for (BooksAll booksAll : myBible.getBible().getBooksAll()) {
+			if (booksAll.getIs_present()) {
+				Livro livro = new Livro();
+				result.getLivros().add(livro);
+				livro.setBiblia(result);
+				livro.setSigla(booksAll.getShort_name());
+				livro.setNome(booksAll.getTitle());
+				if (livro.getNome() == null) {
+					livro.setNome(booksAll.getLong_name());
+				}
+				livro.setCapitulos(new ArrayList<>());
+			}
+		}
 
 		// TODO Capitulo
 

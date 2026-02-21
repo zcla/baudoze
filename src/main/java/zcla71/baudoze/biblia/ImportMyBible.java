@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import zcla71.baudoze.biblia.model.Biblia;
 import zcla71.baudoze.biblia.model.Capitulo;
 import zcla71.baudoze.biblia.model.Livro;
+import zcla71.baudoze.biblia.model.Versiculo;
 import zcla71.mybible.MyBible;
 import zcla71.mybible.MyBibleUtils;
 import zcla71.mybible.bible.BooksAll;
@@ -95,22 +96,28 @@ public class ImportMyBible {
 		}
 
 		// Capitulo
-		Integer lastChapter = null;
+		String last = null;
 		for (Verses verses : myBible.getBible().getVerses()) {
-			Integer currentChapter = verses.getChapter();
-			String sigla = myBible.getBible().getBooksAll().stream().filter(b -> b.getBook_number().equals(verses.getBook_number())).findFirst().get().getShort_name();
-			Livro livro = result.getLivros().stream().filter(l -> l.getSigla().equals(sigla)).findFirst().get();
-			if (!currentChapter.equals(lastChapter)) {
+			String livroSigla = myBible.getBible().getBooksAll().stream().filter(b -> b.getBook_number().equals(verses.getBook_number())).findFirst().get().getShort_name();
+			Livro livro = result.getLivros().stream().filter(l -> l.getSigla().equals(livroSigla)).findFirst().get();
+			String capituloNumero = verses.getChapter().toString();
+			String current = livroSigla + "|" + capituloNumero;
+			if (!current.equals(last)) {
 				Capitulo capitulo = new Capitulo();
 				livro.getCapitulos().add(capitulo);
 				capitulo.setLivro(livro);
-				capitulo.setNumero(verses.getChapter().toString());
+				capitulo.setNumero(capituloNumero);
 				capitulo.setVersiculos(new ArrayList<>());
-				lastChapter = currentChapter;
+				last = current;
 			}
+			// Versiculo
+			Capitulo capitulo = livro.getCapitulos().stream().filter(c -> c.getNumero().equals(capituloNumero)).findFirst().get();
+			Versiculo versiculo = new Versiculo();
+			capitulo.getVersiculos().add(versiculo);
+			versiculo.setCapitulo(capitulo);
+			versiculo.setNumero(verses.getVerse().toString());
+			versiculo.setTexto(verses.getText());
 		}
-
-		// TODO Versiculo
 
 		// Fim
 		return result;

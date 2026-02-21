@@ -14,10 +14,12 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import zcla71.baudoze.biblia.model.Biblia;
+import zcla71.baudoze.biblia.model.Capitulo;
 import zcla71.baudoze.biblia.model.Livro;
 import zcla71.mybible.MyBible;
 import zcla71.mybible.MyBibleUtils;
 import zcla71.mybible.bible.BooksAll;
+import zcla71.mybible.bible.Verses;
 
 @Component
 @Slf4j
@@ -92,7 +94,21 @@ public class ImportMyBible {
 			}
 		}
 
-		// TODO Capitulo
+		// Capitulo
+		Integer lastChapter = null;
+		for (Verses verses : myBible.getBible().getVerses()) {
+			Integer currentChapter = verses.getChapter();
+			String sigla = myBible.getBible().getBooksAll().stream().filter(b -> b.getBook_number().equals(verses.getBook_number())).findFirst().get().getShort_name();
+			Livro livro = result.getLivros().stream().filter(l -> l.getSigla().equals(sigla)).findFirst().get();
+			if (!currentChapter.equals(lastChapter)) {
+				Capitulo capitulo = new Capitulo();
+				livro.getCapitulos().add(capitulo);
+				capitulo.setLivro(livro);
+				capitulo.setNumero(verses.getChapter().toString());
+				capitulo.setVersiculos(new ArrayList<>());
+				lastChapter = currentChapter;
+			}
+		}
 
 		// TODO Versiculo
 

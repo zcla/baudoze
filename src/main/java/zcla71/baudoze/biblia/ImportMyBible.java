@@ -48,17 +48,15 @@ public class ImportMyBible {
 
 	public void importaTudo() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
 		// ----- https://www.ph4.org/b4_1.php
-		// [pt-br] BAM 1959 - Bíblia Ave Maria (The words of Jesus are highlighted in red)
 		importa("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM", "Bíblia Ave Maria", "pt");
-		// [pt-br] BEP 1990 - Bíblia Sagrada — Edição Pastoral (The words of Jesus are highlighted in red)
 		importa("https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c", "ph4.org/BEP", "Bíblia Sagrada - Edição Pastoral", "pt");
-		// [pt-br] BJRD 2002 - Bíblia de Jerusalém
-		// [pt-br] CNBB 2002 - Bíblia CNBB (Nova Capa) (The words of Jesus are highlighted in red)
-		// [pt-br] DBFC 1955 - Difusora Bíblica (The words of Jesus are highlighted in red) (Franciscanos Capuchinhos)
-		// [pt-br] DIF - Difusora Bíblica - Franciscanos Capuchinhos
-		// [pt-pt] BPT 2009 - a BÍBLIA para todos Edição Católica (The words of Jesus are highlighted in red; Sociedade Bíblica de Portugal)
-		// [es] EUNSA 1997 - Sagrada Biblia (Universidad de Navarra)
-		// [en] RSV-2CE 2006 - Revised Standard Version, Second Catholic Edition (The words of Jesus are highlighted in red)
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c", "ph4.org/BJRD", "Bíblia de Jerusalém", "pt");
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c", "ph4.org/BPT'09D", "a BÍBLIA para todos Edição Católica", "pt");
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c", "ph4.org/CNBB", "Bíblia CNBB (Nova Capa)", "pt");
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c", "ph4.org/DBFC", "Difusora Bíblica (Franciscanos Capuchinhos)", "pt");
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c", "ph4.org/DIF", "Difusora Bíblica - Franciscanos Capuchinhos", "pt");
+		// importa("https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c", "ph4.org/EUNSA", "Sagrada Biblia (Universidad de Navarra)", "es");
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c", "ph4.org/RSV-CE", "Revised Standard Version, Second Catholic Edition", "en");
 	}
 
 	private void importa(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {

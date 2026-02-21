@@ -28,6 +28,6 @@ public class Versiculo {
 	@Column(nullable = false)
 	private String numero;
 
-	@Column(nullable = false, length = 1024)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	private String texto;
 }

@@ -3,7 +3,9 @@ package zcla71.baudoze.biblia.model;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,9 +26,10 @@ public class Capitulo {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "livro_id")
+	@JoinColumn(name = "livro_id", nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_capitulo_livro"))
 	private Livro livro;
 
+	@Column(nullable = false)
 	private String numero;
 
 	@OneToMany(mappedBy = "capitulo", cascade = CascadeType.ALL)

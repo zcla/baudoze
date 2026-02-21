@@ -1,6 +1,8 @@
 package zcla71.baudoze.biblia.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,10 +22,12 @@ public class Versiculo {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "capitulo_id")
+	@JoinColumn(name = "capitulo_id", nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_versiculo_capitulo"))
 	private Capitulo capitulo;
 
+	@Column(nullable = false)
 	private String numero;
 
+	@Column(nullable = false)
 	private String texto;
 }

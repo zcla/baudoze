@@ -47,19 +47,19 @@ public class ImportMyBible {
 	}
 
 	public void importaTudo() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-		// ----- https://www.ph4.org/b4_1.php
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM", "Bíblia Ave Maria", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c", "ph4.org/BEP", "Bíblia Sagrada - Edição Pastoral", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c", "ph4.org/BJRD", "Bíblia de Jerusalém", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c", "ph4.org/BPT'09D", "a BÍBLIA para todos Edição Católica", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c", "ph4.org/CNBB", "Bíblia CNBB (Nova Capa)", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c", "ph4.org/DBFC", "Difusora Bíblica (Franciscanos Capuchinhos)", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c", "ph4.org/DIF", "Difusora Bíblica - Franciscanos Capuchinhos", "pt");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c", "ph4.org/EUNSA", "Sagrada Biblia (Universidad de Navarra)", "es");
-		importa("https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c", "ph4.org/RSV-CE", "Revised Standard Version, Second Catholic Edition", "en");
+		// ----- https://www.ph4.org/b4_index.php
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM", "Bíblia Ave Maria", "pt-br");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c", "ph4.org/BEP", "Bíblia Sagrada Edição Pastoral 1990", "pt-br");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c", "ph4.org/BJRD", "Bíblia de Jerusalém 2002", "pt-br");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c", "ph4.org/BPT'09D", "A Bíblia para todos Edição Católica", "pt-pt");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c", "ph4.org/CNBB", "Bíblia CNBB 2002", "pt-br");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c", "ph4.org/DBFC", "Bíblia Difusora Bíblica 1955 (Franciscanos Capuchinhos)", "pt-pt");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c", "ph4.org/DIF", "Bíblia Difusora Bíblica (Franciscanos Capuchinhos)", "pt-pt");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c", "ph4.org/EUNSA", "Bíblia de Navarra", "es");
+		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c", "ph4.org/RSV-CE", "Revised Standard Version, Second Catholic Edition", "en");
 	}
 
-	private void importa(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
+	private void ph4Importa(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
 		log.info("importa(\"" + codigo + "\")");
 		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
 			MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(url));

@@ -2,33 +2,42 @@
 
 * Obs.: tudo o que está no readme dos projetos [`doccat`](https://github.com/zcla/doccat) e [`wikimaker`](https://github.com/zcla/wikimaker) foi copiado pra cá em 13/02/2026.
 
+## Ferramentas
+
+* Para abrir arquivos sqlite (bíblias no formato MyBible, por exemplo): https://inloop.github.io/sqlite-viewer/
+
 ## Bíblias
 
-### Já organizadas
+### Já importadas
+
+* [`ph4.org/BAM`](https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c) Bíblia Ave Maria (pt-br)
+* [`ph4.org/BEP`](https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c) Bíblia Sagrada Edição Pastoral 1990 (pt-br)
+* [`ph4.org/BJRD`](https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c) Bíblia de Jerusalém 2002 (pt-br)
+* [`ph4.org/BPT'09D`](https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c) A Bíblia para todos Edição Católica (pt-pt)
+* [`ph4.org/CNBB`](https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c) Bíblia CNBB 2002
+* [`ph4.org/DBFC`](https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c) Bíblia Difusora Bíblica (pt-pt)
+* [`ph4.org/DIF`](https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c) Bíblia Difusora Bíblica (pt-pt)
+* [`ph4.org/EUNSA`](https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c) Bíblia de Navarra (es)
+* [`ph4.org/RSV-CE`](https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c) Revised Standard Version, Second Catholic Edition (en)
+
+### Já no projeto [`wikimaker`](https://github.com/zcla/wikimaker); é só adaptar
 
 * [`a12_com_biblia`](https://www.a12.com/biblia) Bíblia de Aparecida
 * [`biblia_parresia_com_bible`](https://claretianos.com.br/biblia-ave-maria-online/) Bíblia Ave-Maria
 * [`biblia_paulus_com_br_biblia`](https://biblia.paulus.com.br/) Bíblia Sagrada Edição Pastoral
-* [`liturgiadashoras_online_biblia`](https://liturgiadashoras.online/biblia/biblia-jerusalem/) Bíblia de Jerusalém
 * [`github_com_Bible-Projects_believers-sword-next_AveMaria1959`](https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3) Bíblia Ave-Maria
 * [`github_com_Bible-Projects_believers-sword-next_MatosSoares1950`](https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3) Bíblia Matos Soares 1932
-* [`ph4_org_BAM`](https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c) Bíblia Ave Maria
-* [`ph4_org_BEP`](https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c) Bíblia Sagrada Edição Pastoral 1990
-* [`ph4_org_BJRD`](https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c) Bíblia de Jerusalém 2002
-* [`ph4_org_BPT_09D`](https://www.ph4.org/_dl.php?back=bbl&a=BPT%2709D&b=mybible&c) A Bíblia para todos Edição Católica (Portugal)
-* [`ph4_org_CNBB`](https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c) Bíblia CNBB 2002
-* [`ph4_org_DBFC`](https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c) Bíblia Difusora Bíblica (Portugal)
-* [`ph4_org_DIF`](https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c) Bíblia Difusora Bíblica (Portugal)
-* [`ph4_org_EUNSA`](https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c) Bíblia de Navarra
+* [`liturgiadashoras_online_biblia`](https://liturgiadashoras.online/biblia/biblia-jerusalem/) Bíblia de Jerusalém
 * [`vatican_va_bible_nova_vulgata_lt`](https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_index_lt.html) Nova Vulgata (Vaticano)
 
-### Falta organizar
+### Não importar
+
+* https://github.com/pepaulo/Open-Source-Catholic-Bible - várias bíblias no formato MyBible; são as mesmas do site ph4.org
+
+### Falta analisar
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json
-
-* https://github.com/pepaulo/Open-Source-Catholic-Bible - várias bíblias no formato MyBible
-  * `mybible` [pt] https://github.com/pepaulo/Open-Source-Catholic-Bible
 
 * die-bibel.de => Versões usadas na tradução da Bíblia CNBB 2019
   * [he] https://www.die-bibel.de/en/bible/BHS/

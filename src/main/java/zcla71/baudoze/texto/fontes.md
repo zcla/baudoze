@@ -34,6 +34,12 @@
 
 * https://github.com/pepaulo/Open-Source-Catholic-Bible - várias bíblias no formato MyBible; são as mesmas do site ph4.org
 
+### Importar
+
+* github.com/Bible-Projects/believers-sword-next - várias bíblias no formato MyBible
+  * `mybible` [várias] https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible - texto
+  * `mybible` [várias] https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Commentaries - comentários
+
 ### Falta analisar
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
@@ -91,10 +97,6 @@
   * [el] https://ebible.org/find/details.php?id=grcbrent The Greek Septuagint with Apocrypha, compiled by Sir Lancelot C. L. Brenton
   * [várias] https://ebible.org/find/ (não achei nenhuma católica em português; há versões em grego, tem que verificar se são confiáveis e úteis)
 
-* github.com/Bible-Projects/believers-sword-next - várias bíblias no formato MyBible
-  * `mybible` [várias] https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible - texto
-  * `mybible` [várias] https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Commentaries - comentários
-
 * github.com/scrollmapper - dezenas de versões em dezenas de línguas; não sei se há católicas.
   * `json` [várias] https://github.com/scrollmapper/bible_databases/tree/master/sources
   * `json` [lt] https://github.com/scrollmapper/bible_databases/tree/master/sources/la - várias versões da vulgata
@@ -124,9 +126,6 @@
   * `xml` [lt] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.02.0060 (Jerome. Vulgate Bible.)
   * `xml` [el] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.01.0155 (The New Testament in the original Greek.)
   * `xml` [en] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.01.0156 (World English Bible.)
-
-* ph4.org - `MILHARES` usar https://inloop.github.io/sqlite-viewer/ para abrir
-  * `sqlite` [várias] https://www.ph4.org/b4_index.php?hd=b
 
 * scaife.perseus.org
   * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0527/ (AT Septuaginta / World English Bible)

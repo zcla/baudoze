@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import lombok.Data;
 import zcla71.mybible.bible.BibleModule;
 import zcla71.mybible.commentaries.CommentariesModule;
+import zcla71.mybible.dictionary.DictionaryModule;
 
 @Data
 // Documentação: https://docs.google.com/document/d/12rf4Pqy13qhnAW31uKkaWNTBDTtRbNW0s7cM0vcimlA/
@@ -13,10 +14,10 @@ public class MyBible {
 	private String url;
 	private String downloadedFileName;
 	private LocalDateTime downloadTimestamp;
-	
+
 	// Módulos
 	private BibleModule bible = null;
-	// TODO Dictionary Module
+	private DictionaryModule dictionary = null;
 	// TODO Subheadings Module
 	// TODO Cross References Module
 	// Commentaries Module

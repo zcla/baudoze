@@ -31,6 +31,9 @@ import zcla71.mybible.commentaries.Commentaries;
 import zcla71.mybible.commentaries.CommentariesModule;
 import zcla71.mybible.common.ContentFragments;
 import zcla71.mybible.common.Info;
+import zcla71.mybible.dictionary.Dictionary;
+import zcla71.mybible.dictionary.DictionaryModule;
+import zcla71.mybible.dictionary.Words;
 import zcla71.sqlite.SQLiteDb;
 
 public class MyBibleUtils {
@@ -87,6 +90,7 @@ public class MyBibleUtils {
 			String baseFileName = getTempDirectory().toPath().normalize() + "/" + removeExtension(result.getDownloadedFileName());
 			String bibleFileName = baseFileName + ".SQLite3";
 			String commentariesFileName = baseFileName + ".commentaries.SQLite3";
+			String dictionaryFileName = baseFileName + ".dictionary.SQLite3";
 			for (File unzippedFile : unzippedFiles) {
 				String tipo = null;
 				if ((tipo == null) && unzippedFile.getPath().equalsIgnoreCase(bibleFileName)) {
@@ -96,6 +100,10 @@ public class MyBibleUtils {
 				if ((tipo == null) && unzippedFile.getPath().equalsIgnoreCase(commentariesFileName)) {
 					tipo = "commentaries";
 					sqlCommentaries(result, unzippedFile.getPath());
+				}
+				if ((tipo == null) && unzippedFile.getPath().equalsIgnoreCase(dictionaryFileName)) {
+					tipo = "dictionary";
+					sqlDictionary(result, unzippedFile.getPath());
 				}
 				if (tipo == null) {
 					throw new RuntimeException("Arquivo desconhecido: " + unzippedFile.getPath());
@@ -228,6 +236,37 @@ public class MyBibleUtils {
 					case "android_metadata":
 					case "introductions": // TODO Na Bíblia onde ele aparece (BPT'09D), ele está vazio; talvez fosse legal fazer um filtro só de tabelas que têm dados.
 						// Aparecem em alguns arquivos; ignora
+						break;
+
+					default:
+						throw new RuntimeException("Tabela desconhecida: " + tableName);
+				}
+			}
+		}
+	}
+
+	private static void sqlDictionary(MyBible myBible, String nomeArq) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException {
+		myBible.setDictionary(new DictionaryModule());
+		SQLiteDb sqLiteDb = new SQLiteDb(nomeArq);
+		try (
+			Connection conn = sqLiteDb.getConnection();
+		) {
+			Collection<String> tableNames = sqLiteDb.getTableNames(conn);
+			for (String tableName : tableNames) {
+				switch (tableName) {
+					case "info":
+						Collection<Info> info = sqLiteDb.getData(conn, tableName, Info.class);
+						myBible.getDictionary().setInfo(info);
+						break;
+
+					case "dictionary":
+						Collection<Dictionary> dictionary = sqLiteDb.getData(conn, tableName, Dictionary.class);
+						myBible.getDictionary().setDictionary(dictionary);
+						break;
+
+					case "words":
+						Collection<Words> words = sqLiteDb.getData(conn, tableName, Words.class);
+						myBible.getDictionary().setWords(words);
 						break;
 
 					default:

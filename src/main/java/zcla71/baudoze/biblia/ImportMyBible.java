@@ -55,7 +55,7 @@ public class ImportMyBible {
 		importa("https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c", "ph4.org/CNBB", "Bíblia CNBB (Nova Capa)", "pt");
 		importa("https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c", "ph4.org/DBFC", "Difusora Bíblica (Franciscanos Capuchinhos)", "pt");
 		importa("https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c", "ph4.org/DIF", "Difusora Bíblica - Franciscanos Capuchinhos", "pt");
-		// importa("https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c", "ph4.org/EUNSA", "Sagrada Biblia (Universidad de Navarra)", "es");
+		importa("https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c", "ph4.org/EUNSA", "Sagrada Biblia (Universidad de Navarra)", "es");
 		importa("https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c", "ph4.org/RSV-CE", "Revised Standard Version, Second Catholic Edition", "en");
 	}
 

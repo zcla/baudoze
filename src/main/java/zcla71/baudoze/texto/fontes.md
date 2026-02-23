@@ -10,6 +10,8 @@
 
 ### Já importadas
 
+* [`github/believers-sword/BAM1959`](https://github.com/Bible-Projects/believers-sword-next/blob/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3) Bíblia Ave-Maria 1959
+* [`github/believers-sword/BPMS1950`](https://github.com/Bible-Projects/believers-sword-next/blob/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3) Bíblia Padre Matos Soares 1950
 * [`ph4.org/BAM`](https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c) Bíblia Ave Maria (pt-br)
 * [`ph4.org/BEP`](https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c) Bíblia Sagrada Edição Pastoral 1990 (pt-br)
 * [`ph4.org/BJRD`](https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c) Bíblia de Jerusalém 2002 (pt-br)
@@ -32,13 +34,7 @@
 
 ### Não importar
 
-* https://github.com/pepaulo/Open-Source-Catholic-Bible - várias bíblias no formato MyBible; são as mesmas do site ph4.org
-
-### Importar
-
-* github.com/Bible-Projects/believers-sword-next - várias bíblias no formato MyBible
-  * `mybible` [várias] https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible - texto
-  * `mybible` [várias] https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Commentaries - comentários
+* https://github.com/pepaulo/Open-Source-Catholic-Bible - são as mesmas do site ph4.org
 
 ### Falta analisar
 
@@ -55,9 +51,6 @@
 * bibliacatolica.com.br - Parece conter captchas; talvez o código sirva para todas as outras bíblias que há no mesmo site. Há código a aproveitar no projeto `doccat`, pasta `/powershell/old`
   * [pt] https://www.bibliacatolica.com.br/biblia-ave-maria/genesis/1/ Ave Maria
   * [pt] https://www.bibliacatolica.com.br/biblia-matos-soares-1956/genesis/1/ Matos Soares 1956
-
-* tuapalavra.com.br - CNBB antiga (1987?); talvez o código sirva para todas as outras dezenas de bíblias que há no mesmo site. Não consegui encontrar os deuterocanônicos.
-  * [pt] https://amp.tuapalavra.com.br/pt-BR/CNBB
 
 * salvaimerainha.org.br - Há uma Bíblia católica aqui, não sei qual
   * [pt] https://salvaimerainha.org.br/biblia-online/
@@ -132,6 +125,8 @@
   * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0031/ (The New Testament in the original Greek / World English Bible)
 
 * tuapalavra.com.br - **MUITAS** versões; não consegui encontrar os deuterocanônicos.
+  * [pt] https://amp.tuapalavra.com.br/pt-BR/CNBB CNBB antiga (1987?); talvez o código sirva para todas as outras dezenas de bíblias que há no mesmo site. Não consegui encontrar os deuterocanônicos.
+  * [pt] https://amp.tuapalavra.com.br/pt-BR
   * [ar] https://amp.tuapalavra.com.br/ar-SA
   * [cn] https://amp.tuapalavra.com.br/zh-CN
   * [de] https://amp.tuapalavra.com.br/de-DE
@@ -140,7 +135,6 @@
   * [fr] https://amp.tuapalavra.com.br/fr-FR
   * [hi] https://amp.tuapalavra.com.br/hi-IN
   * [it] https://amp.tuapalavra.com.br/it-IT
-  * [pt] https://amp.tuapalavra.com.br/pt-BR
 
 * usccb.org (OFICIAL EUA)
   * [en] https://www.usccb.org/offices/new-american-bible/books-bible (New American Bible)

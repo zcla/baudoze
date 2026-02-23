@@ -37,6 +37,41 @@ import zcla71.mybible.dictionary.Words;
 import zcla71.sqlite.SQLiteDb;
 
 public class MyBibleUtils {
+	public static MyBible loadFromSqliteURI(URI uri) throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, SQLException {
+		MyBible result = new MyBible();
+		result.setUrl(uri.toString());
+		result.setDownloadedFileName(getDownloadFileName(uri));
+		result.setDownloadTimestamp(LocalDateTime.now());
+		
+		// Baixa o arquivo SQLite3
+		// TODO Código parecido com o de loadFromZipFile; provavelmente dá pra fazer um método utilitário comum
+		File tempDir = getTempDirectory();
+		String prefix = removeExtension(result.getDownloadedFileName()) + ".";
+		File file = File.createTempFile(prefix, ".SQLite3", tempDir);
+		try {
+			Files.createDirectories(tempDir.toPath());
+			try (
+				BufferedInputStream in = new BufferedInputStream(uri.toURL().openStream());
+				FileOutputStream fos = new FileOutputStream(file);
+			) {
+				byte dataBuffer[] = new byte[1024];
+				int bytesRead;
+				while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+					fos.write(dataBuffer, 0, bytesRead);
+				}
+			}
+
+			sqlBible(result, file.getPath());
+
+		} finally {
+			if (file.exists()) {
+				file.delete();
+			}
+		}
+
+		return result;
+	}
+
 	public static MyBible loadFromZipFile(URI uri) throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, SQLException {
 		MyBible result = new MyBible();
 		result.setUrl(uri.toString());
@@ -109,7 +144,6 @@ public class MyBibleUtils {
 					throw new RuntimeException("Arquivo desconhecido: " + unzippedFile.getPath());
 				}
 			}
-
 		} finally {
 			for (File arq : apagarAoFinal) {
 				arq.delete();

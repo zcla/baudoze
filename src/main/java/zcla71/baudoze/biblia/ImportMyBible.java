@@ -47,23 +47,81 @@ public class ImportMyBible {
 	}
 
 	public void importaTudo() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-		// ----- https://www.ph4.org/b4_index.php
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c", "ph4.org/BAM", "Bíblia Ave Maria", "pt-br");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c", "ph4.org/BEP", "Bíblia Sagrada Edição Pastoral 1990", "pt-br");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c", "ph4.org/BJRD", "Bíblia de Jerusalém 2002", "pt-br");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c", "ph4.org/BPT'09D", "A Bíblia para todos Edição Católica", "pt-pt");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c", "ph4.org/CNBB", "Bíblia CNBB 2002", "pt-br");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c", "ph4.org/DBFC", "Bíblia Difusora Bíblica 1955 (Franciscanos Capuchinhos)", "pt-pt");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c", "ph4.org/DIF", "Bíblia Difusora Bíblica (Franciscanos Capuchinhos)", "pt-pt");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c", "ph4.org/EUNSA", "Bíblia de Navarra", "es");
-		ph4Importa("https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c", "ph4.org/RSV-CE", "Revised Standard Version, Second Catholic Edition", "en");
+		// believers-sword https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible
+		sqLiteImporta(
+			"https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3",
+			"github/believers-sword/BAM1959",
+			"Bíblia Ave-Maria 1959",
+			"pt-br"
+		);
+		sqLiteImporta(
+			"https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3",
+			"github/believers-sword/BPMS1950",
+			"Bíblia Padre Matos Soares 1950",
+			"pt-br");
+
+		// ph4 https://www.ph4.org/b4_index.php
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c",
+			"ph4.org/BAM",
+			"Bíblia Ave Maria",
+			"pt-br");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c",
+			"ph4.org/BEP",
+			"Bíblia Sagrada Edição Pastoral 1990",
+			"pt-br");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c",
+			"ph4.org/BJRD",
+			"Bíblia de Jerusalém 2002",
+			"pt-br");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c",
+			"ph4.org/BPT'09D",
+			"A Bíblia para todos Edição Católica",
+			"pt-pt");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c",
+			"ph4.org/CNBB",
+			"Bíblia CNBB 2002",
+			"pt-br");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c",
+			"ph4.org/DBFC",
+			"Bíblia Difusora Bíblica 1955 (Franciscanos Capuchinhos)",
+			"pt-pt");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c",
+			"ph4.org/DIF",
+			"Bíblia Difusora Bíblica (Franciscanos Capuchinhos)",
+			"pt-pt");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c",
+			"ph4.org/EUNSA",
+			"Bíblia de Navarra",
+			"es");
+		ph4Importa(
+			"https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c",
+			"ph4.org/RSV-CE",
+			"Revised Standard Version, Second Catholic Edition",
+			"en");
 	}
 
-	private void ph4Importa(String url, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-		log.info("importa(\"" + codigo + "\")");
+	private void ph4Importa(String strUri, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
+		log.info("ph4Importa(\"" + codigo + "\")");
 		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
-			MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(url));
-			Biblia biblia = fromMyBible(url, codigo, nome, idioma, myBible);
+			MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(strUri));
+			Biblia biblia = fromMyBible(strUri, codigo, nome, idioma, myBible);
+			this.bibliaService.incluir(biblia);
+		}
+	}
+
+	private void sqLiteImporta(String strUri, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
+		log.info("sqLiteImporta(\"" + codigo + "\")");
+		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
+			MyBible myBible = MyBibleUtils.loadFromSqliteURI(new URI(strUri));
+			Biblia biblia = fromMyBible(strUri, codigo, nome, idioma, myBible);
 			this.bibliaService.incluir(biblia);
 		}
 	}

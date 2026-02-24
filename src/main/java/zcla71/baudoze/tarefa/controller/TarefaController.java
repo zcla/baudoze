@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import zcla71.baudoze.controller.BauBaseController;
 import zcla71.baudoze.model.ValidacaoException;
 import zcla71.baudoze.tarefa.service.TarefaEntity;
 import zcla71.baudoze.tarefa.service.TarefaEntityComparator;
@@ -28,7 +29,7 @@ import zcla71.baudoze.view.ContextoCrud;
 import zcla71.utils.Utils;
 
 @Controller
-public class TarefaController {
+public class TarefaController extends BauBaseController {
 	@Autowired
 	private TarefaService tarefaService;
 
@@ -102,12 +103,6 @@ public class TarefaController {
 		}
 
 		return result;
-	}
-
-	private void addAuthInfo(ModelAndView mav, OidcUser user) {
-		mav.addObject("authUserName", user.getAttribute("name"));
-		mav.addObject("authUserPicture", user.getAttribute("picture"));
-		mav.addObject("authUserEmail", user.getAttribute("email"));
 	}
 
 	private ModelAndView getModelAndViewTarefaDetalhe(OidcUser user, ContextoCrud contexto, TarefaEditarViewTarefa data) {

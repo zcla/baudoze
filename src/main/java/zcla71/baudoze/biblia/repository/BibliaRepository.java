@@ -1,4 +1,4 @@
-package zcla71.baudoze.biblia;
+package zcla71.baudoze.biblia.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

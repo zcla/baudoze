@@ -11,6 +11,7 @@
 -- );
 
 -- Bíblia
+DROP VIEW IF EXISTS biblia_lista;
 DROP TABLE IF EXISTS versiculo;
     DROP TABLE IF EXISTS capitulo;
         DROP TABLE IF EXISTS livro;
@@ -52,9 +53,7 @@ CREATE VIEW biblia_lista
 AS
 SELECT
     b.id,
-    b.codigo,
     b.nome,
-    b.fonte,
     b.idioma,
 	(
         SELECT COUNT(l.id)

@@ -25,11 +25,12 @@ DROP TABLE IF EXISTS versiculo;
 CREATE TABLE biblia (
     id BIGINT NOT NULL AUTO_INCREMENT,
         PRIMARY KEY (id),
-    codigo VARCHAR(255) NOT NULL,
+    codigo VARCHAR(255) NOT NULL, -- necessário para a importação
     nome VARCHAR(255) NOT NULL,
     fonte VARCHAR(255) DEFAULT NULL,
     idioma VARCHAR(255) DEFAULT NULL
 );
+
 CREATE TABLE livro (
     id BIGINT NOT NULL AUTO_INCREMENT,
         PRIMARY KEY (id),
@@ -38,6 +39,7 @@ CREATE TABLE livro (
     nome VARCHAR(255) DEFAULT NULL,
     sigla VARCHAR(255) NOT NULL
 );
+
 CREATE TABLE capitulo (
     id BIGINT NOT NULL AUTO_INCREMENT,
         PRIMARY KEY (id),
@@ -45,6 +47,7 @@ CREATE TABLE capitulo (
         FOREIGN KEY (livro_id) REFERENCES livro(id),
     numero VARCHAR(255) NOT NULL
 );
+
 CREATE TABLE versiculo (
     id BIGINT NOT NULL AUTO_INCREMENT,
         PRIMARY KEY (id),

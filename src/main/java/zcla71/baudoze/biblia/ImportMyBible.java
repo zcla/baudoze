@@ -17,6 +17,7 @@ import zcla71.baudoze.biblia.model.Biblia;
 import zcla71.baudoze.biblia.model.Capitulo;
 import zcla71.baudoze.biblia.model.Livro;
 import zcla71.baudoze.biblia.model.Versiculo;
+import zcla71.baudoze.biblia.service.BibliaService;
 import zcla71.mybible.MyBible;
 import zcla71.mybible.MyBibleUtils;
 import zcla71.mybible.bible.BooksAll;
@@ -113,7 +114,9 @@ public class ImportMyBible {
 		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
 			MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(strUri));
 			Biblia biblia = fromMyBible(strUri, codigo, nome, idioma, myBible);
-			this.bibliaService.incluir(biblia);
+			if (biblia != null) {
+				this.bibliaService.incluir(biblia);
+			}
 		}
 	}
 
@@ -122,7 +125,9 @@ public class ImportMyBible {
 		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
 			MyBible myBible = MyBibleUtils.loadFromSqliteURI(new URI(strUri));
 			Biblia biblia = fromMyBible(strUri, codigo, nome, idioma, myBible);
-			this.bibliaService.incluir(biblia);
+			if (biblia != null) {
+				this.bibliaService.incluir(biblia);
+			}
 		}
 	}
 

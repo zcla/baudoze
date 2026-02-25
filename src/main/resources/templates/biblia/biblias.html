@@ -22,8 +22,8 @@
 						<table class="table table-sm table-hover">
 							<thead>
 								<tr id="selectTitle">
-									<th>Nome</th>
 									<th>Idioma</th>
+									<th>Nome</th>
 									<th>Livros</th>
 									<th class="botoes d-print-none">
 									</th>
@@ -32,7 +32,7 @@
 							<tbody>
 								<tr th:each="biblia : ${data.biblias}">
 									<td th:text="${biblia.idioma}"></td>
-									<td th:text="${biblia.nome}"></td>
+									<td><a th:href="${'/biblia/' + biblia.id + '/livro'}" th:text="${biblia.nome}"></a></td>
 									<td th:text="${biblia.livros}" class="text-end"></td>
 									<td class="botoes d-print-none">
 										<div class="btn-group" role="group">

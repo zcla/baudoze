@@ -12,9 +12,13 @@
 
 -----===== Bíblia =====-----
 
--- drop * if exists
+-- drop view if exists
 
 DROP VIEW IF EXISTS biblia_lista;
+DROP VIEW IF EXISTS livro_lista;
+
+-- drop table if exists
+
 DROP TABLE IF EXISTS versiculo;
     DROP TABLE IF EXISTS capitulo;
         DROP TABLE IF EXISTS livro;
@@ -72,3 +76,18 @@ SELECT
     ) livros
 FROM biblia b
 ORDER BY b.nome;
+
+CREATE VIEW livro_lista
+AS
+SELECT
+	l.id,
+    l.biblia_id,
+	l.sigla,
+	l.nome,
+	(
+        SELECT COUNT(c.id)
+	    FROM capitulo c
+	    WHERE c.livro_id = l.id
+    ) capitulos
+FROM livro l
+ORDER BY l.id;

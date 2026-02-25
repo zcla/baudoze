@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import zcla71.baudoze.biblia.service.BibliaService;
@@ -21,11 +22,21 @@ public class BibliaController extends BauBaseController {
 	// Controller
 
 	@GetMapping("/biblia")
-	public ModelAndView listar(@AuthenticationPrincipal OidcUser user) {
-		ModelAndView result = new ModelAndView("/biblia/lista");
+	public ModelAndView biblia(@AuthenticationPrincipal OidcUser user) {
+		ModelAndView result = new ModelAndView("/biblia/biblias");
 		addAuthInfo(result, user);
 		Map<String, Object> data = new HashMap<>();
-		data.put("biblias", bibliaService.listar());
+		data.put("biblias", bibliaService.listarBiblias());
+		result.addObject("data", data);
+		return result;
+	}
+
+	@GetMapping("/biblia/{idBiblia}/livro")
+	public ModelAndView livro(@AuthenticationPrincipal OidcUser user, @PathVariable Long idBiblia) {
+		ModelAndView result = new ModelAndView("/biblia/livros");
+		addAuthInfo(result, user);
+		Map<String, Object> data = new HashMap<>();
+		data.put("livros", bibliaService.listarLivros(idBiblia));
 		result.addObject("data", data);
 		return result;
 	}

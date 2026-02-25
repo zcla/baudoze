@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import zcla71.baudoze.biblia.model.Biblia;
 import zcla71.baudoze.biblia.repository.BibliaListaRepository;
 import zcla71.baudoze.biblia.repository.BibliaRepository;
+import zcla71.baudoze.biblia.repository.LivroListaRepository;
 import zcla71.baudoze.biblia.view.BibliaLista;
+import zcla71.baudoze.biblia.view.LivroLista;
 
 @Service
 public class BibliaService {
@@ -31,7 +33,16 @@ public class BibliaService {
 	@Autowired
 	private BibliaListaRepository bibliaListaRepository;
 
-	public List<BibliaLista> listar() {
+	public List<BibliaLista> listarBiblias() {
 		return this.bibliaListaRepository.findAll();
+	}
+
+	// LivroLista
+
+	@Autowired
+	private LivroListaRepository livroListaRepository;
+
+	public List<LivroLista> listarLivros(Long id) {
+		return this.livroListaRepository.findByBibliaId(id);
 	}
 }

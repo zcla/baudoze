@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Baú do Zé : Bíblias</title>
+		<th:block th:insert="~{_fragments/geral.html :: head}"></th:block>
+	</head>
+	<body>
+		<nav th:replace="~{_fragments/geral.html :: nav}"></nav>
+		<div class="container-fluid">
+			<div th:replace="~{_fragments/geral.html :: mensagens}"></div>
+			<div id="conteudo">
+				<h1>
+					<span><img src="/img/biblia-32.png"> Bíblias</span>
+					<div id="toolbar" class="btn-toolbar float-end d-print-none">
+					</div>
+				</h1>
+				<th:block th:if="${#lists.isEmpty(data.livros)}">
+					<p>Não há Bíblias cadastradas.</p>
+				</th:block>
+				<th:block th:if="${!#lists.isEmpty(data.livros)}">
+					<div id="crudLista" class="mb-3">
+						<table class="table table-sm table-hover">
+							<thead>
+								<tr id="selectTitle">
+									<th>Sigla</th>
+									<th>Nome</th>
+									<th>Capítulos</th>
+									<th class="botoes d-print-none">
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="livro : ${data.livros}">
+									<td th:text="${livro.sigla}"></td>
+									<td th:text="${livro.nome}"></td>
+									<td th:text="${livro.capitulos}" class="text-end"></td>
+									<td class="botoes d-print-none">
+										<div class="btn-group" role="group">
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</th:block>
+			</div>
+		</div>
+		<footer th:replace="~{_fragments/geral.html :: footer}"></footer>
+	</body>
+</html>

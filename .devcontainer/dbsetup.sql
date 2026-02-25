@@ -10,12 +10,17 @@
 --     FOREIGN KEY (id_mae) REFERENCES tarefa(id)
 -- );
 
--- Bíblia
+-----===== Bíblia =====-----
+
+-- drop * if exists
+
 DROP VIEW IF EXISTS biblia_lista;
 DROP TABLE IF EXISTS versiculo;
     DROP TABLE IF EXISTS capitulo;
         DROP TABLE IF EXISTS livro;
             DROP TABLE IF EXISTS biblia;
+
+-- crete table
 
 CREATE TABLE biblia (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -48,7 +53,9 @@ CREATE TABLE versiculo (
     numero VARCHAR(255) NOT NULL,
     texto TEXT NOT NULL
 );
--- Não é utilizada; só de zoeira
+
+-- create view
+
 CREATE VIEW biblia_lista
 AS
 SELECT

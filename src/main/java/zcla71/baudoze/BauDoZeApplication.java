@@ -15,7 +15,9 @@ public class BauDoZeApplication {
 		SpringApplication.run(BauDoZeApplication.class, args);
 	}
 
-	// TODO Backup automático
+	// TODO Gravar dados fora do container
+	// TODO Backup
+	// TODO Restore
 	// Autenticação do Google
 	// TODO 1. Botão sair.
 	// TODO 2. Guardar o último usuário logado.

@@ -101,12 +101,12 @@ public class ImportMyBible {
 			"https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c",
 			"ph4.org/EUNSA",
 			"Bíblia de Navarra",
-			"es");
+			"es-es");
 		ph4Importa(
 			"https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c",
 			"ph4.org/RSV-CE",
 			"Revised Standard Version, Second Catholic Edition",
-			"en");
+			"en-us");
 	}
 
 	private void ph4Importa(String strUri, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {

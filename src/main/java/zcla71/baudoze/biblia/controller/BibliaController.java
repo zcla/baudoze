@@ -37,7 +37,11 @@ public class BibliaController extends BauBaseController {
 		ModelAndView result = new ModelAndView("/biblia/livros");
 		addAuthInfo(result, user);
 		Map<String, Object> data = new HashMap<>();
-		data.put("biblia", bibliaService.buscaPorId(idBiblia));
+		data.put("biblia", bibliaService.listarBiblias().stream()
+				.filter(b -> b.getId() == idBiblia)
+				.findFirst()
+				.orElse(null)
+		);
 		data.put("livros", bibliaService.listarLivros(idBiblia));
 		result.addObject("data", data);
 		return result;

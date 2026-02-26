@@ -17,7 +17,11 @@
 					</ol>
 				</nav>
 				<h1>
-					<span><img src="/img/biblia-32.png" th:text="' ' + ${data.biblia.nome}"></span>
+					<span>
+						<img src="/img/biblia-32.png">
+						<span th:class="${'fi fi-' + data.biblia.bandeira}" th:title="${data.biblia.idioma}" style="font-size: 1.75rem;"></span>
+						<span th:text="${data.biblia.nome}"></span>
+					</span>
 					<div id="toolbar" class="btn-toolbar float-end d-print-none">
 					</div>
 				</h1>

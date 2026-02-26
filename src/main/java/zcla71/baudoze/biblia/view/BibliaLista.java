@@ -5,6 +5,7 @@ import org.hibernate.annotations.Immutable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -17,4 +18,13 @@ public class BibliaLista {
 	private String nome;
 	private String idioma;
 	private Integer livros;
+
+	@Transient
+	public String getBandeira() {
+		if (this.idioma == null) {
+			return null;
+		}
+		String[] spl = this.idioma.split("-");
+		return spl[spl.length - 1];
+	}
 }

@@ -16,7 +16,10 @@
 					</ol>
 				</nav>
 				<h1>
-					<span><img src="/img/biblia-32.png"> Bíblias</span>
+					<span>
+						<img src="/img/biblia-32.png">
+						Bíblias
+					</span>
 					<div id="toolbar" class="btn-toolbar float-end d-print-none">
 					</div>
 				</h1>
@@ -28,7 +31,6 @@
 						<table class="table table-sm table-hover">
 							<thead>
 								<tr id="selectTitle">
-									<th>Idioma</th>
 									<th>Nome</th>
 									<th>Livros</th>
 									<th class="botoes d-print-none">
@@ -37,8 +39,10 @@
 							</thead>
 							<tbody>
 								<tr th:each="biblia : ${data.biblias}">
-									<td th:text="${biblia.idioma}"></td>
-									<td><a th:href="${'/biblia/' + biblia.id + '/livro'}" th:text="${biblia.nome}"></a></td>
+									<td>
+										<span th:class="${'fi fi-' + biblia.bandeira}" th:title="${biblia.idioma}"></span>
+										<a th:href="${'/biblia/' + biblia.id + '/livro'}" th:text="${biblia.nome}"></a>
+									</td>
 									<td th:text="${biblia.livros}" class="text-end"></td>
 									<td class="botoes d-print-none">
 										<div class="btn-group" role="group">

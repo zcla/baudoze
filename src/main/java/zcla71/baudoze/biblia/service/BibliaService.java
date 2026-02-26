@@ -28,6 +28,10 @@ public class BibliaService {
 		return this.bibliaRepository.findByCodigo(codigo);
 	}
 
+	public Biblia buscaPorId(@NonNull Long id) {
+		return this.bibliaRepository.findById(id).orElse(null);
+	}
+
 	// BibliaLista
 
 	@Autowired

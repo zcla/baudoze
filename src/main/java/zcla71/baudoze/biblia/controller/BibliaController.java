@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
@@ -32,10 +33,11 @@ public class BibliaController extends BauBaseController {
 	}
 
 	@GetMapping("/biblia/{idBiblia}/livro")
-	public ModelAndView livro(@AuthenticationPrincipal OidcUser user, @PathVariable Long idBiblia) {
+	public ModelAndView livro(@AuthenticationPrincipal OidcUser user, @PathVariable @NonNull Long idBiblia) {
 		ModelAndView result = new ModelAndView("/biblia/livros");
 		addAuthInfo(result, user);
 		Map<String, Object> data = new HashMap<>();
+		data.put("biblia", bibliaService.buscaPorId(idBiblia));
 		data.put("livros", bibliaService.listarLivros(idBiblia));
 		result.addObject("data", data);
 		return result;

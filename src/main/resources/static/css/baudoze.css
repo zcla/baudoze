@@ -12,6 +12,10 @@ footer p {
     margin-bottom: 0px;
 }
 
+.breadcrumb img {
+    margin-right: 4px;
+}
+
 #crudLista .botoes {
     padding: 0;
     white-space: nowrap;

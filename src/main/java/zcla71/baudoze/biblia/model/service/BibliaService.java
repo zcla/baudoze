@@ -1,13 +1,13 @@
-package zcla71.baudoze.biblia.service;
+package zcla71.baudoze.biblia.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
-import zcla71.baudoze.biblia.model.Biblia;
-import zcla71.baudoze.biblia.model.Livro;
-import zcla71.baudoze.biblia.repository.BibliaRepository;
-import zcla71.baudoze.biblia.repository.LivroRepository;
+import zcla71.baudoze.biblia.model.entity.Biblia;
+import zcla71.baudoze.biblia.model.entity.Livro;
+import zcla71.baudoze.biblia.model.repository.BibliaRepository;
+import zcla71.baudoze.biblia.model.repository.LivroRepository;
 
 @Service
 public class BibliaService {

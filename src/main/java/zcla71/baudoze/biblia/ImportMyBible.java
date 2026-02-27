@@ -13,11 +13,11 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import zcla71.baudoze.biblia.model.Biblia;
-import zcla71.baudoze.biblia.model.Capitulo;
-import zcla71.baudoze.biblia.model.Livro;
-import zcla71.baudoze.biblia.model.Versiculo;
-import zcla71.baudoze.biblia.service.BibliaService;
+import zcla71.baudoze.biblia.model.entity.Biblia;
+import zcla71.baudoze.biblia.model.entity.Capitulo;
+import zcla71.baudoze.biblia.model.entity.Livro;
+import zcla71.baudoze.biblia.model.entity.Versiculo;
+import zcla71.baudoze.biblia.model.service.BibliaService;
 import zcla71.mybible.MyBible;
 import zcla71.mybible.MyBibleUtils;
 import zcla71.mybible.bible.BooksAll;

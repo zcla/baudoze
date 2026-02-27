@@ -1,4 +1,4 @@
-package zcla71.baudoze.biblia.view;
+package zcla71.baudoze.biblia.view.entity;
 
 import org.hibernate.annotations.Immutable;
 

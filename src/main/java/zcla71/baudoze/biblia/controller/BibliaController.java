@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import zcla71.baudoze.biblia.model.Livro;
-import zcla71.baudoze.biblia.service.BibliaService;
-import zcla71.baudoze.biblia.view.BibliaViewService;
+import zcla71.baudoze.biblia.model.entity.Livro;
+import zcla71.baudoze.biblia.model.service.BibliaService;
+import zcla71.baudoze.biblia.view.service.BibliaViewService;
 import zcla71.baudoze.controller.BauBaseController;
 
 @Controller

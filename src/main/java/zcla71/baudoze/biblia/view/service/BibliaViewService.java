@@ -1,13 +1,16 @@
-package zcla71.baudoze.biblia.view;
+package zcla71.baudoze.biblia.view.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import zcla71.baudoze.biblia.repository.BibliaListaRepository;
-import zcla71.baudoze.biblia.repository.CapituloListaRepository;
-import zcla71.baudoze.biblia.repository.LivroListaRepository;
+import zcla71.baudoze.biblia.view.entity.BibliaLista;
+import zcla71.baudoze.biblia.view.entity.CapituloLista;
+import zcla71.baudoze.biblia.view.entity.LivroLista;
+import zcla71.baudoze.biblia.view.repository.BibliaListaRepository;
+import zcla71.baudoze.biblia.view.repository.CapituloListaRepository;
+import zcla71.baudoze.biblia.view.repository.LivroListaRepository;
 
 @Service
 public class BibliaViewService {

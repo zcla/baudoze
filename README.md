@@ -1,5 +1,12 @@
 # Baú do Zé
 
+## Módulos
+
+* biblia (wip)
+* planodevida (esboço)
+* tarefa (feito de forma inicial, como piloto; falta muito para ficar funcional)
+* texto (esboço)
+
 ## Modelo de execução
 
 * `<aplicação>`

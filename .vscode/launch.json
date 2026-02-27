@@ -15,7 +15,12 @@
             "name": "BauDoZeApplication",
             "request": "launch",
             "mainClass": "zcla71.baudoze.BauDoZeApplication",
-            "projectName": "baudoze"
+            "projectName": "baudoze",
+            "serverReadyAction": {
+              "pattern": "Tomcat started on port ([0-9]+) \\(http\\) with context path '/?'",
+              "uriFormat": "http://localhost:%s",
+              "action": "openExternally"
+            }
         }
     ]
 }

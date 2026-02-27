@@ -1,4 +1,4 @@
-package zcla71.baudoze.controller;
+package zcla71.baudoze.common.controller;
 
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.servlet.ModelAndView;

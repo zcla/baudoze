@@ -10,25 +10,34 @@
 ## Modelo de execução
 
 * `<aplicação>`
-  * `config`
-    * `AppConfig.java`
-      <br>Responsável por guardar as configurações da aplicação.
-  * `controller`
-    * `BauErrorController.java`
-      <br>Responsável por mostrar uma view genérica para quando houver erros.
+  * `common`
+    * Classes que não estão ligados a nenhum módulo
+    * `controller`
+      * Classes com afinidade com a camada controller.
+    * `model`
+      * Classes com afinidade com a camada model.
+    * `view`
+      * Classes com afinidade com a camada view.
+
   * `<módulo>`
     * `controller`
-      * `<módulo>Controller.java`
-        <br>Responsável por mapear as urls de um módulo, e para cada uma delas:
-        <br>1. fazer os processamentos necessários;
-        <br>2. determinar a view que será chamada;
-        <br>3. prover todos os dados necessários à view.
-    * `service`
-      * `<módulo>Service.java`
-        <br>Responsável por implementar os métodos e retornar os dados do serviço, funcionando como uma caixa-preta.
+      * Controllers do módulo.
+    * `model`
+      * Pacote de classes relativas ao modelo (tabelas de banco).
+      * `entity`
+        * DTOs (@Entity).
+      * `repository`
+        * Repositories (extends Repository<T, ID>).
+      * `service`
+        * Classes de serviço (@Service), para serem usadas externamente.
     * `view`
-      * `<módulo><view>View[<detalhe>].java`
-        <br>DTO com os valores necessários à view.
+      * Pacote de classes relativas ao view (views de banco).
+      * `entity`
+        * DTOs (@Entity).
+      * `repository`
+        * Repositories (extends Repository<T, ID>).
+      * `service`
+        * Classes de serviço (@Service), para serem usadas pelo controller.
 
 ## .devcontainer/.env
 DATABASE_HOST=mysql_db

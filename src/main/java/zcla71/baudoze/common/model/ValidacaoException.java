@@ -1,4 +1,4 @@
-package zcla71.baudoze.model;
+package zcla71.baudoze.common.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

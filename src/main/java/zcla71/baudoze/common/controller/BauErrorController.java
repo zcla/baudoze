@@ -1,4 +1,4 @@
-package zcla71.baudoze.controller;
+package zcla71.baudoze.common.controller;
 
 import java.util.Map;
 import java.util.Map.Entry;

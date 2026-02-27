@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import zcla71.baudoze.biblia.model.entity.Livro;
 import zcla71.baudoze.biblia.model.service.BibliaService;
 import zcla71.baudoze.biblia.view.service.BibliaViewService;
-import zcla71.baudoze.controller.BauBaseController;
+import zcla71.baudoze.common.controller.BauBaseController;
 
 @Controller
 public class BibliaController extends BauBaseController {

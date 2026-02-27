@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import zcla71.baudoze.controller.BauBaseController;
-import zcla71.baudoze.model.ValidacaoException;
+import zcla71.baudoze.common.controller.BauBaseController;
+import zcla71.baudoze.common.model.ValidacaoException;
+import zcla71.baudoze.common.view.ContextoCrud;
 import zcla71.baudoze.tarefa.service.TarefaEntity;
 import zcla71.baudoze.tarefa.service.TarefaEntityComparator;
 import zcla71.baudoze.tarefa.service.TarefaService;
@@ -25,7 +26,6 @@ import zcla71.baudoze.tarefa.view.TarefaEditarViewTarefa;
 import zcla71.baudoze.tarefa.view.TarefaEditarViewTarefaMae;
 import zcla71.baudoze.tarefa.view.TarefaListaView;
 import zcla71.baudoze.tarefa.view.TarefaListaViewTarefa;
-import zcla71.baudoze.view.ContextoCrud;
 import zcla71.utils.Utils;
 
 @Controller

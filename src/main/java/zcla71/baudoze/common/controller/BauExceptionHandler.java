@@ -1,4 +1,4 @@
-package zcla71.baudoze.controller;
+package zcla71.baudoze.common.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

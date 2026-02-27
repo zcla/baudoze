@@ -1,4 +1,4 @@
-package zcla71.baudoze.view;
+package zcla71.baudoze.common.view;
 
 public enum ContextoCrud {
 	MOSTRAR("mostrar", "Tarefa"),

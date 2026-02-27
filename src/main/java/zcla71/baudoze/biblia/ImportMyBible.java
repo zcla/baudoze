@@ -111,7 +111,7 @@ public class ImportMyBible {
 
 	private void ph4Importa(String strUri, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
 		log.info("ph4Importa(\"" + codigo + "\")");
-		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
+		if (this.bibliaService.buscaBibliaPorCodigo(codigo) == null) {
 			MyBible myBible = MyBibleUtils.loadFromZipFile(new URI(strUri));
 			Biblia biblia = fromMyBible(strUri, codigo, nome, idioma, myBible);
 			if (biblia != null) {
@@ -122,7 +122,7 @@ public class ImportMyBible {
 
 	private void sqLiteImporta(String strUri, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
 		log.info("sqLiteImporta(\"" + codigo + "\")");
-		if (this.bibliaService.buscaPorCodigo(codigo) == null) {
+		if (this.bibliaService.buscaBibliaPorCodigo(codigo) == null) {
 			MyBible myBible = MyBibleUtils.loadFromSqliteURI(new URI(strUri));
 			Biblia biblia = fromMyBible(strUri, codigo, nome, idioma, myBible);
 			if (biblia != null) {
@@ -157,22 +157,19 @@ public class ImportMyBible {
 		}
 
 		// Capitulo
-		String last = null;
 		for (Verses verses : myBible.getBible().getVerses()) {
 			String livroSigla = myBible.getBible().getBooksAll().stream().filter(b -> b.getBook_number().equals(verses.getBook_number())).findFirst().get().getShort_name();
 			Livro livro = result.getLivros().stream().filter(l -> l.getSigla().equals(livroSigla)).findFirst().get();
 			String capituloNumero = verses.getChapter().toString();
-			String current = livroSigla + "|" + capituloNumero;
-			if (!current.equals(last)) {
-				Capitulo capitulo = new Capitulo();
+			Capitulo capitulo = livro.getCapitulos().stream().filter(c -> c.getNumero().equals(capituloNumero)).findFirst().orElse(null);
+			if (capitulo == null) {
+				capitulo = new Capitulo();
 				livro.getCapitulos().add(capitulo);
 				capitulo.setLivro(livro);
 				capitulo.setNumero(capituloNumero);
 				capitulo.setVersiculos(new ArrayList<>());
-				last = current;
 			}
 			// Versiculo
-			Capitulo capitulo = livro.getCapitulos().stream().filter(c -> c.getNumero().equals(capituloNumero)).findFirst().get();
 			Versiculo versiculo = new Versiculo();
 			capitulo.getVersiculos().add(versiculo);
 			versiculo.setCapitulo(capitulo);

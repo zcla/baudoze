@@ -3,6 +3,7 @@
 DROP VIEW IF EXISTS biblia_lista;
 DROP VIEW IF EXISTS livro_lista;
 DROP VIEW IF EXISTS capitulo_lista;
+DROP VIEW IF EXISTS versiculo_lista;
 
 -- drop table if exists
 
@@ -95,3 +96,19 @@ FROM capitulo c
 JOIN livro l
 	ON l.id = c.livro_id
 ORDER BY c.id;
+
+CREATE VIEW versiculo_lista
+AS
+SELECT
+	v.id,
+	l.biblia_id,
+	c.livro_id,
+	v.capitulo_id,
+	v.numero,
+	v.texto
+FROM versiculo v
+JOIN capitulo c
+	ON c.id = v.capitulo_id
+JOIN livro l
+	ON l.id = c.livro_id
+ORDER BY v.id;

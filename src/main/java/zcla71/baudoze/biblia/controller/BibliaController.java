@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import zcla71.baudoze.biblia.model.entity.Capitulo;
 import zcla71.baudoze.biblia.model.entity.Livro;
 import zcla71.baudoze.biblia.model.service.BibliaService;
 import zcla71.baudoze.biblia.view.service.BibliaViewService;
@@ -56,6 +57,22 @@ public class BibliaController extends BauBaseController {
 			"biblia", bibliaViewService.buscarBiblia(idBiblia),
 			"livro", bibliaViewService.buscarLivro(idBiblia, idLivro),
 			"capitulos", bibliaViewService.listarCapitulos(idLivro)
+		));
+		return result;
+	}
+
+	@GetMapping("/biblia/livro/capitulo/{idCapitulo}")
+	public ModelAndView capituloId(@AuthenticationPrincipal OidcUser user, @PathVariable @NonNull Long idCapitulo) {
+		ModelAndView result = new ModelAndView("/biblia/capitulo");
+		addAuthInfo(result, user);
+		Capitulo capitulo = bibliaService.buscaCapituloPorId(idCapitulo);
+		Long idLivro = capitulo.getLivro().getId();
+		Long idBiblia = capitulo.getLivro().getBiblia().getId();
+		result.addObject("data", Map.of(
+			"biblia", bibliaViewService.buscarBiblia(idBiblia),
+			"livro", bibliaViewService.buscarLivro(idBiblia, idLivro),
+			"capitulo", bibliaViewService.buscarCapitulo(idLivro, idCapitulo),
+			"versiculos", bibliaViewService.listarVersiculos(idCapitulo)
 		));
 		return result;
 	}

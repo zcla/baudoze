@@ -13,39 +13,36 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><img src="/img/bau-16.png"><a href="/">Baú</a></li>
 						<li class="breadcrumb-item"><img src="/img/biblia-16.png"><a href="/biblia">Bíblias</a></li>
-						<li class="breadcrumb-item active" th:text="${data.biblia.nome}"></li>
+						<li class="breadcrumb-item"><a th:href="'/biblia/' + ${data.biblia.id}" th:text="${data.biblia.nome}"></a></li>
+						<li class="breadcrumb-item"><a th:href="'/biblia/livro/' + ${data.livro.id}" th:text="${data.livro.nome}"></a></li>
+						<li class="breadcrumb-item active" th:text="'Capítulo ' + ${data.capitulo.numero}"></li>
 					</ol>
 				</nav>
 				<h1>
 					<span>
-						<span th:class="${'fi fi-' + data.biblia.bandeira}" th:title="${data.biblia.idioma}" style="font-size: 1.75rem;"></span>
-						<span th:text="${data.biblia.nome}"></span>
+						<span th:text="'Capítulo ' + ${data.capitulo.numero}"></span>
 					</span>
 					<div id="toolbar" class="btn-toolbar float-end d-print-none">
 					</div>
 				</h1>
-				<th:block th:if="${#lists.isEmpty(data.livros)}">
-					<p>Não há livros cadastrados.</p>
+				<th:block th:if="${#lists.isEmpty(data.versiculos)}">
+					<p>Não há versículos cadastrados.</p>
 				</th:block>
-				<th:block th:if="${!#lists.isEmpty(data.livros)}">
+				<th:block th:if="${!#lists.isEmpty(data.versiculos)}">
 					<div id="crudLista" class="mb-3">
 						<table class="table table-sm table-hover">
 							<thead>
 								<tr id="selectTitle">
-									<th>Sigla</th>
-									<th>Livro</th>
-									<th>Capítulos</th>
+									<th>Versículo</th>
+									<th>Texto</th>
 									<th class="botoes d-print-none">
 									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="livro : ${data.livros}">
-									<td th:text="${livro.sigla}"></td>
-									<td>
-										<a th:href="'/biblia/livro/' + ${livro.id}" th:text="${livro.nome}"></a>
-									</td>
-									<td th:text="${livro.capitulos}" class="text-end"></td>
+								<tr th:each="versiculo : ${data.versiculos}">
+									<td th:text="${versiculo.numero}"></td>
+									<td th:text="${versiculo.texto}"></td>
 									<td class="botoes d-print-none">
 										<div class="btn-group" role="group">
 										</div>

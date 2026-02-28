@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import zcla71.baudoze.biblia.view.entity.BibliaLista;
 import zcla71.baudoze.biblia.view.entity.CapituloLista;
 import zcla71.baudoze.biblia.view.entity.LivroLista;
+import zcla71.baudoze.biblia.view.entity.VersiculoLista;
 import zcla71.baudoze.biblia.view.repository.BibliaListaRepository;
 import zcla71.baudoze.biblia.view.repository.CapituloListaRepository;
 import zcla71.baudoze.biblia.view.repository.LivroListaRepository;
+import zcla71.baudoze.biblia.view.repository.VersiculoListaRepository;
 
 @Service
 public class BibliaViewService {
@@ -53,5 +55,21 @@ public class BibliaViewService {
 
 	public List<CapituloLista> listarCapitulos(Long idLivro) {
 		return this.capituloListaRepository.findByLivroId(idLivro);
+	}
+
+	public CapituloLista buscarCapitulo(Long idLivro, Long idCapitulo) {
+		return listarCapitulos(idLivro).stream()
+				.filter(c -> c.getId().equals(idCapitulo))
+				.findFirst()
+				.orElse(null);
+	}
+
+	// VersiculoLista
+
+	@Autowired
+	private VersiculoListaRepository versiculoListaRepository;
+
+	public List<VersiculoLista> listarVersiculos(Long idCapitulo) {
+		return this.versiculoListaRepository.findByCapituloId(idCapitulo);
 	}
 }

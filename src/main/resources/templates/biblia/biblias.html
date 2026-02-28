@@ -41,7 +41,7 @@
 								<tr th:each="biblia : ${data.biblias}">
 									<td>
 										<span th:class="${'fi fi-' + biblia.bandeira}" th:title="${biblia.idioma}"></span>
-										<a th:href="${'/biblia/' + biblia.id}" th:text="${biblia.nome}"></a>
+										<a th:href="'/biblia/' + ${biblia.id}" th:text="${biblia.nome}"></a>
 									</td>
 									<td th:text="${biblia.livros}" class="text-end"></td>
 									<td class="botoes d-print-none">

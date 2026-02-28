@@ -5,8 +5,10 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import zcla71.baudoze.biblia.model.entity.Biblia;
+import zcla71.baudoze.biblia.model.entity.Capitulo;
 import zcla71.baudoze.biblia.model.entity.Livro;
 import zcla71.baudoze.biblia.model.repository.BibliaRepository;
+import zcla71.baudoze.biblia.model.repository.CapituloRepository;
 import zcla71.baudoze.biblia.model.repository.LivroRepository;
 
 @Service
@@ -35,5 +37,14 @@ public class BibliaService {
 
 	public Livro buscaLivroPorId(@NonNull Long id) {
 		return this.livroRepository.findById(id).orElse(null);
+	}
+
+	// Capítulo
+
+	@Autowired
+	private CapituloRepository capituloRepository;
+
+	public Capitulo buscaCapituloPorId(@NonNull Long id) {
+		return this.capituloRepository.findById(id).orElse(null);
 	}
 }

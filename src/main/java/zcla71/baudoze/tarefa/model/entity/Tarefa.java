@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.service;
+package zcla71.baudoze.tarefa.model.entity;
 
 import java.util.List;
 
@@ -12,15 +12,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import zcla71.baudoze.common.model.Validacao;
 import zcla71.baudoze.common.model.ValidacaoException;
+import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tarefa")
-public class TarefaEntity {
-	public static TarefaEntity nova() {
-		TarefaEntity result = new TarefaEntity();
+public class Tarefa {
+	public static Tarefa nova() {
+		Tarefa result = new Tarefa();
 		result.setNome("Nova tarefa");
 		result.setPeso(0);
 		result.setCumprida(false);
@@ -76,7 +77,7 @@ public class TarefaEntity {
 	public ValidacaoException validaExcluir(TarefaRepository tarefaRepository) {
 		ValidacaoException result = new ValidacaoException();
 
-		List<TarefaEntity> filhos = tarefaRepository.findByIdMae(this.id);
+		List<Tarefa> filhos = tarefaRepository.findByIdMae(this.id);
 		if (filhos.size() > 0) {
 			result.getValidacoes().add(new Validacao("Tarefa não pode ser excluída porque tem subtarefas."));
 		}

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import zcla71.baudoze.common.model.BackupRestore;
-import zcla71.baudoze.tarefa.service.TarefaService;
+import zcla71.baudoze.tarefa.model.service.TarefaService;
 
 @Controller
 public class BackupRestoreController {

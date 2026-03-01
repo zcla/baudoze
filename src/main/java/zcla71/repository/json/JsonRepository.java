@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+@Deprecated // Já foi usado com sucesso, mas não utilizo mais. Mantenho aqui caso seja necessário no futuro, pois funciona perfeitamente.
 public abstract class JsonRepository<T, ID> {
     public interface FilePathProvider {
         Path get();

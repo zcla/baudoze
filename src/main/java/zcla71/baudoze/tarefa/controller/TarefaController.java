@@ -17,9 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.common.model.ValidacaoException;
 import zcla71.baudoze.common.view.ContextoCrud;
-import zcla71.baudoze.tarefa.service.TarefaEntity;
-import zcla71.baudoze.tarefa.service.TarefaEntityComparator;
-import zcla71.baudoze.tarefa.service.TarefaService;
+import zcla71.baudoze.tarefa.model.entity.Tarefa;
+import zcla71.baudoze.tarefa.model.entity.TarefaComparator;
+import zcla71.baudoze.tarefa.model.service.TarefaService;
 import zcla71.baudoze.tarefa.view.TarefaEditarView;
 import zcla71.baudoze.tarefa.view.TarefaEditarViewOk;
 import zcla71.baudoze.tarefa.view.TarefaEditarViewTarefa;
@@ -35,14 +35,14 @@ public class TarefaController extends BauBaseController {
 
 	// Métodos de apoio
 
-	private TarefaEditarViewTarefa entity2view(TarefaEntity tarefa) {
+	private TarefaEditarViewTarefa entity2view(Tarefa tarefa) {
 		TarefaEditarViewTarefa result = new TarefaEditarViewTarefa();
 		Utils.copiaPropriedades(tarefa, result);
 		return result;
 	}
 
-	private TarefaEntity view2entity(TarefaEditarViewTarefa tarefa) {
-		TarefaEntity result = new TarefaEntity();
+	private Tarefa view2entity(TarefaEditarViewTarefa tarefa) {
+		Tarefa result = new Tarefa();
 		Utils.copiaPropriedades(tarefa, result);
 		return result;
 	}
@@ -60,12 +60,12 @@ public class TarefaController extends BauBaseController {
 	private List<TarefaListaViewTarefa> listaTarefasHierarquicamente() {
 		List<TarefaListaViewTarefa> result = new ArrayList<>();
 
-		List<TarefaEntity> tarefas = this.sort(this.tarefaService.listar(), null);
-		for (TarefaEntity tarefa : tarefas) {
+		List<Tarefa> tarefas = this.sort(this.tarefaService.listar(), null);
+		for (Tarefa tarefa : tarefas) {
 			Integer indent = 0;
-			TarefaEntity temp = tarefa;
+			Tarefa temp = tarefa;
 			while (temp.getIdMae() != null) {
-				final TarefaEntity finalTemp = temp;
+				final Tarefa finalTemp = temp;
 				temp = tarefas.stream()
 						.filter(t -> finalTemp.getIdMae().equals(t.getId()))
 						.findFirst()
@@ -84,10 +84,10 @@ public class TarefaController extends BauBaseController {
 		return result;
 	}
 
-	private List<TarefaEntity> sort(List<TarefaEntity> tarefas, Long idMae) {
-		List<TarefaEntity> result = new ArrayList<>();
+	private List<Tarefa> sort(List<Tarefa> tarefas, Long idMae) {
+		List<Tarefa> result = new ArrayList<>();
 
-		List<TarefaEntity> filhas = tarefas.stream().filter(t -> {
+		List<Tarefa> filhas = tarefas.stream().filter(t -> {
 			if (idMae == null) {
 				return t.getIdMae() == null;
 			} else {
@@ -95,9 +95,9 @@ public class TarefaController extends BauBaseController {
 			}
 		}).collect(Collectors.toList());
 
-		filhas.sort(new TarefaEntityComparator());
+		filhas.sort(new TarefaComparator());
 
-		for (TarefaEntity filha : filhas) {
+		for (Tarefa filha : filhas) {
 			result.add(filha);
 			result.addAll(sort(tarefas, filha.getId()));
 		}
@@ -144,7 +144,7 @@ public class TarefaController extends BauBaseController {
 
 	@GetMapping("/tarefa/incluir")
 	public ModelAndView incluir(@AuthenticationPrincipal OidcUser user) {
-		return getModelAndViewTarefaDetalhe(user, ContextoCrud.INCLUIR, this.entity2view(TarefaEntity.nova()));
+		return getModelAndViewTarefaDetalhe(user, ContextoCrud.INCLUIR, this.entity2view(Tarefa.nova()));
 	}
 
 	@PostMapping("/tarefa/incluir_ok")

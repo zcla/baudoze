@@ -1,12 +1,12 @@
-package zcla71.baudoze.tarefa.service;
+package zcla71.baudoze.tarefa.model.entity;
 
 import java.util.Comparator;
 
 import zcla71.utils.Utils;
 
-public class TarefaEntityComparator implements Comparator<TarefaEntity> {
+public class TarefaComparator implements Comparator<Tarefa> {
 	@Override
-	public int compare(TarefaEntity t1, TarefaEntity t2) {
+	public int compare(Tarefa t1, Tarefa t2) {
 		if (Utils.trataNull(t1.getCumprida()) && !Utils.trataNull(t2.getCumprida())) {
 			return 1;
 		}

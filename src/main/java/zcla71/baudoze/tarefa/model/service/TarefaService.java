@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.service;
+package zcla71.baudoze.tarefa.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import zcla71.baudoze.common.model.ValidacaoException;
+import zcla71.baudoze.tarefa.model.entity.Tarefa;
+import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 
 @Service
 public class TarefaService {
 	@Autowired
 	private TarefaRepository tarefaRepository;
 
-	public void alterar(TarefaEntity tarefa) throws ValidacaoException {
+	public void alterar(Tarefa tarefa) throws ValidacaoException {
 		ValidacaoException validation = tarefa.validaAlterar(this.tarefaRepository);
 		if (!validation.getValidacoes().isEmpty()) {
 			throw validation;
@@ -22,11 +24,11 @@ public class TarefaService {
 		this.tarefaRepository.save(tarefa);
 	}
 
-	public TarefaEntity buscar(Long id) {
+	public Tarefa buscar(Long id) {
 		return this.tarefaRepository.findById(id).orElse(null);
 	}
 
-	public void excluir(TarefaEntity tarefa) throws ValidacaoException {
+	public void excluir(Tarefa tarefa) throws ValidacaoException {
 		ValidacaoException validation = tarefa.validaExcluir(this.tarefaRepository);
 		if (!validation.getValidacoes().isEmpty()) {
 			throw validation;
@@ -35,7 +37,7 @@ public class TarefaService {
 		this.tarefaRepository.delete(tarefa);
 	}
 
-	public void incluir(TarefaEntity tarefa) throws ValidacaoException {
+	public void incluir(Tarefa tarefa) throws ValidacaoException {
 		ValidacaoException validation = tarefa.validaIncluir(this.tarefaRepository);
 		if (!validation.getValidacoes().isEmpty()) {
 			throw validation;
@@ -44,8 +46,8 @@ public class TarefaService {
 		this.tarefaRepository.save(tarefa);
 	}
 
-	public List<TarefaEntity> listar() {
-		List<TarefaEntity> result = new ArrayList<>();
+	public List<Tarefa> listar() {
+		List<Tarefa> result = new ArrayList<>();
 		this.tarefaRepository.findAll().forEach(result::add);
 		return result;
 	}

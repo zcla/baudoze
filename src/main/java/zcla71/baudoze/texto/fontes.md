@@ -36,6 +36,11 @@
 
 * https://github.com/pepaulo/Open-Source-Catholic-Bible - são as mesmas do site ph4.org
 
+### Sugestões do ChatGPT
+
+* https://chatgpt.com/c/69a0c566-2220-832c-a7e9-1dbb58f34156 (conversa)
+*https://chatgpt.com/share/69a38832-5e6c-8004-8b30-533c2ddcd6ec (link de compartilhamento)
+
 ### Falta analisar
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
@@ -67,7 +72,7 @@
 * biblegateway.com
   * [en] https://www.biblegateway.com/passage/?search=Genesis%201&version=NCB (New Catholic Bible)
   * [en] https://www.biblegateway.com/passage/?search=Genesis%201&version=RSVCE (Revised Standard Version Catholic Edition)
-  * [en] https://www.biblegateway.com/passage/?search=Genesis%201&version=NRSVCE (New Revised Standard Version Catholic Edition)
+  * [en] https://www.biblegateway.com/passage/?search=Genesis%201&version=NRSVCE (New Revised Standard Version Catholic Edition) parece ser a base da Ignatius Bible
 
 * biblesupersearch.com - download; não parece haver versões católicas, mas há duas versões em grego que talvez sejam úteis: "Textus Receptus NT" e "Textus Receptus Parsed NT"
   * [várias] https://www.biblesupersearch.com/bible-downloads/
@@ -77,6 +82,9 @@
 
 * bibliaonline.com.br
   * https://www.bibliaonline.com.br/vc/livros "Versão católica"
+
+* catholicbible.online
+  * https://catholicbible.online/ Vulgate + Douay-Rheims + Knox, lado a lado.
 
 * clerus.org https://www.clerus.org/bibliaclerusonline/pt/index.htm
   * [de] https://www.clerus.org/bibliaclerusonline/de/66c.htm
@@ -107,7 +115,10 @@
   * https://www.liturgiacatolica.com/ (só alguns livros, mas também Catecismo e alguns documentos oficiais da Igreja)
 
 * newadvent.org
-  * [el/en/lt] https://www.newadvent.org/bible/
+  * [el/en/lt] https://www.newadvent.org/bible/ Greek + Knox + Latin, lado a lado
+
+* paroquiadasgracas.com
+  * [pt-br] https://www.paroquiadasgracas.com/biblia Parece ser a CNBB antiga
 
 * paroquias.org
   * [pt-pt] https://www.paroquias.org/biblia/ Difusora Bíblica (Capuchinhos)

@@ -1,5 +1,9 @@
 # Baú do Zé
 
+## Outras notas em .md
+
+* [fontes.md](src/main/java/zcla71/baudoze/texto/fontes.md) Fontes de textos encontrados na internet, para uso futuro.
+
 ## Módulos
 
 * biblia (wip)
@@ -40,6 +44,8 @@
         * Classes de serviço (@Service), para serem usadas pelo controller.
 
 ## .devcontainer/.env
+
+```
 DATABASE_HOST=mysql_db
 DATABASE_PORT=3306
 DATABASE_DB=baudoze
@@ -47,8 +53,4 @@ DATABASE_USER=ze
 DATABASE_PASSWORD=senhaDoZe
 GOOGLE_AUTH_CLIENT_ID=?
 GOOGLE_AUTH_CLIENT_SECRET=?
-
-## Outras notas
-
-* Adicionando um container com o mysql (Dockerfile, docker-compose.yml, .env e como configurar o banco)
-  * https://dev.to/cmiles74/really-using-visual-studio-development-containers-561e
+```

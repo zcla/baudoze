@@ -1,10 +1,11 @@
-package zcla71.baudoze.tarefa.view;
+package zcla71.baudoze.tarefa.view.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@Deprecated
 public class TarefaListaViewTarefa {
 	private Long id;
 	private String nome;

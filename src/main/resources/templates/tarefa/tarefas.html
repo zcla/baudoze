@@ -13,8 +13,10 @@
 					<span><img src="/img/tarefa-32.png"> Tarefas</span>
 					<div id="toolbar" class="btn-toolbar float-end d-print-none">
 						<div class="btn-group">
+							<!--
 							<a th:href="@{'/tarefa/incluir'}" type="button" class="btn bg-success-subtle" title="Incluir"><img src="/img/button-incluir.png" style="padding-bottom: 3px;"></a>
 							<button id="btnUnselectAll" type="button" class="btn bg-warning-subtle" title="Desmarcar todas"><img src="/img/tarefa-button-desmarcar-todas.png" style="padding-bottom: 3px;"></button></div>
+							-->
 						</div>
 					</div>
 				</h1>
@@ -26,9 +28,7 @@
 						<table class="table table-sm table-hover">
 							<thead>
 								<tr id="selectTitle">
-									<th>
-										Tarefa
-									</th>
+									<th>Tarefa</th>
 									<th class="botoes d-print-none">
 									</th>
 								</tr>
@@ -36,21 +36,25 @@
 							<tbody>
 								<tr th:each="tarefa : ${data.tarefas}">
 									<td>
+										<!--
 										<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
+										-->
 										<span class="col-1" style="width: 1px !important">
 											<input class="form-check-input me-1" type="checkbox" th:checked="${tarefa.cumprida}">
 										</span>
 										<span class="col">
-											<label th:utext="${tarefa.nome}" class="form-check-label"></label>
-											<small th:utext="${tarefa.notas}"></small>
+											<label th:utext="${tarefa.titulo}" class="form-check-label"></label>
+											<small th:utext="${tarefa.descricao}"></small>
 										</span>
 									</td>
 									<td class="botoes d-print-none">
+										<!--
 										<div class="btn-group" role="group">
 											<a th:href="@{'/tarefa/' + ${tarefa.id}}" type="button" class="btn btn-sm bg-info-subtle" title="Ver"><img src="/img/button-mostrar.png"></a>
 											<a th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'" type="button" class="btn btn-sm bg-warning-subtle" title="Alterar"><img src="/img/button-alterar.png"></a>
 											<a th:href="@{'/tarefa/' + ${tarefa.id}} + '/excluir'" type="button" class="btn btn-sm bg-danger-subtle" title="Excluir"><img src="/img/button-excluir.png"></a>
 										</div>
+										-->
 									</td>
 								</tr>
 							</tbody>

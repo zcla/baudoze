@@ -15,7 +15,8 @@ public class BauDoZeApplication {
 		SpringApplication.run(BauDoZeApplication.class, args);
 	}
 
-	// TODO Padronização: retirar as anotações @Column dos @Entity e tudo o que só existe para gerar DDL.
+	// TODO Boa prática: colocar todos os th:href envoltos em @{}
+	// TODO Padronização: retirar as anotações @Table e @Column dos @Entity e tudo o que só existe para gerar DDL.
 
 	// TODO Gravar dados fora do container
 	// TODO Backup

@@ -11,6 +11,6 @@ public class BackupRestore {
 	private Collection<Tarefa> tarefas;
 
 	public BackupRestore(TarefaService tarefaService) {
-		this.tarefas = tarefaService.listar();
+		// this.tarefas = tarefaService.listar();
 	}
 }

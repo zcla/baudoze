@@ -1,10 +1,11 @@
-package zcla71.baudoze.tarefa.view;
+package zcla71.baudoze.tarefa.view.entity;
 
 import java.util.List;
 
 import lombok.Data;
 
 @Data
+@Deprecated
 public class TarefaListaView {
 	private List<TarefaListaViewTarefa> tarefas;
 

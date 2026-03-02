@@ -3,6 +3,9 @@ app:
 logging:
   level:
     org:
+      hibernate:
+        SQL: DEBUG
+        type.descriptor.sql.BasicBinder: TRACE
       springframework:
         web: INFO
 
@@ -16,8 +19,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-    show-sql: true
-
   security:
     oauth2:
       client:

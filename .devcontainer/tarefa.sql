@@ -27,6 +27,7 @@ WITH RECURSIVE temp AS (
 	-- Tarefas "root"
 	SELECT
 		t.id,
+		t.auth_user_id, -- Performance: para que o MySQL possa aplicar um WHERE externo antes de executar a view, evitando a montagem da tabela inteira
 		0 AS indent,
 		CAST(LPAD(t.ordem, 10, '0') AS CHAR(255)) AS path
 	FROM tarefa t
@@ -35,6 +36,7 @@ WITH RECURSIVE temp AS (
 	-- Tarefas "filhas"
 	SELECT
 		tf.id,
+		tf.auth_user_id,
 		tm.indent + 1 AS indent,
 		CONCAT(tm.path, '.', LPAD(tf.ordem, 10, '0')) AS path
 	FROM tarefa tf
@@ -46,11 +48,11 @@ SELECT
 	t.titulo,
 	t.descricao,
 	t.cumprida,
-	_.indent AS indent
+	_.indent
 FROM temp _
 JOIN tarefa t
 	ON t.id = _.id
-ORDER BY _.path;
+ORDER BY _.path, _.id;
 
 -- TODO EXCLUIR TUDO DAQUI PRA BAIXO
 

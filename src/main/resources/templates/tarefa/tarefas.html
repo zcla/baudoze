@@ -36,9 +36,7 @@
 							<tbody>
 								<tr th:each="tarefa : ${data.tarefas}">
 									<td>
-										<!--
 										<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
-										-->
 										<span class="col-1" style="width: 1px !important">
 											<input class="form-check-input me-1" type="checkbox" th:checked="${tarefa.cumprida}">
 										</span>

@@ -15,4 +15,5 @@ public class TarefaLista {
 	private String titulo;
 	private String descricao;
     private Boolean cumprida;
+	private Long indent;
 }

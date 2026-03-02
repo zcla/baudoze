@@ -29,10 +29,11 @@ public class Tarefa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private String notas;
+	private Long authUserId;
+	private String titulo;
+	private String descricao;
 	private Long idMae;
-	private Integer peso;
+	private Integer ordem;
 	private Boolean cumprida;
 
 	// private void validaDados(ValidacaoException result) {

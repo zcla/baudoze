@@ -13,12 +13,12 @@ public class TarefaComparator implements Comparator<Tarefa> {
 		if (!Utils.trataNull(t1.getCumprida()) && Utils.trataNull(t2.getCumprida())) {
 			return -1;
 		}
-		if (Utils.trataNull(t1.getPeso()) < Utils.trataNull(t2.getPeso())) {
+		if (Utils.trataNull(t1.getOrdem()) > Utils.trataNull(t2.getOrdem())) {
 			return 1;
 		}
-		if (Utils.trataNull(t1.getPeso()) > Utils.trataNull(t2.getPeso())) {
+		if (Utils.trataNull(t1.getOrdem()) < Utils.trataNull(t2.getOrdem())) {
 			return -1;
 		}
-		return t1.getNome().compareToIgnoreCase(t2.getNome());
+		return t1.getTitulo().compareToIgnoreCase(t2.getTitulo());
 	}
 }

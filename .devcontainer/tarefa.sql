@@ -27,10 +27,6 @@ WITH RECURSIVE temp AS (
 	-- Tarefas "root"
 	SELECT
 		t.id,
-		t.auth_user_id,
-		t.titulo,
-		t.descricao,
-		t.cumprida,
 		0 AS indent,
 		CAST(LPAD(t.ordem, 10, '0') AS CHAR(255)) AS path
 	FROM tarefa t
@@ -39,12 +35,8 @@ WITH RECURSIVE temp AS (
 	-- Tarefas "filhas"
 	SELECT
 		tf.id,
-		t.auth_user_id,
-		tf.titulo,
-		tf.descricao,
-		tf.cumprida,
 		tm.indent + 1 AS indent,
-        CONCAT(tm.path, '.', LPAD(tf.ordem, 10, '0')) AS path
+		CONCAT(tm.path, '.', LPAD(tf.ordem, 10, '0')) AS path
 	FROM tarefa tf
 	JOIN temp tm ON tf.id_mae = tm.id
 )
@@ -54,9 +46,11 @@ SELECT
 	t.titulo,
 	t.descricao,
 	t.cumprida,
-	t.indent AS indent
-FROM temp t
-ORDER BY path;
+	_.indent AS indent
+FROM temp _
+JOIN tarefa t
+	ON t.id = _.id
+ORDER BY _.path;
 
 -- TODO EXCLUIR TUDO DAQUI PRA BAIXO
 

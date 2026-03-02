@@ -15,7 +15,7 @@ public class TarefaViewService {
 	@Autowired
 	private TarefaListaRepository tarefaListaRepository;
 
-	public List<TarefaLista> listaTarefas() {
-		return this.tarefaListaRepository.findAll();
+	public List<TarefaLista> listaTarefas(Long authUserId) {
+		return this.tarefaListaRepository.findByAuthUserId(authUserId);
 	}
 }

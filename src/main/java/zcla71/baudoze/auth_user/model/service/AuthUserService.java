@@ -15,6 +15,10 @@ public class AuthUserService {
 		this.authUserRepository = authUserRepository;
 	}
 
+	public AuthUser buscarPorProviderESubject(String provider, String subject) {
+		return authUserRepository.findByProviderAndSubject(provider, subject).orElse(null);
+	}
+
 	@Transactional
 	public AuthUser processarLogin(OidcUser oidcUser, String provider) {
 		String subject = oidcUser.getSubject();
@@ -22,17 +26,17 @@ public class AuthUserService {
 		return authUserRepository.findByProviderAndSubject(provider, subject)
 			.map(u -> {
 				// Atualiza dados mutáveis
-				updateAuthUserData(oidcUser, u);
+				atualiza(oidcUser, u);
 				return u;
 			})
 			.orElseGet(() -> {
 				AuthUser authUser = new AuthUser(provider, subject);
-				updateAuthUserData(oidcUser, authUser);
+				atualiza(oidcUser, authUser);
 				return authUserRepository.save(authUser);
 			});
 	}
 
-	private void updateAuthUserData(OidcUser oidcUser, AuthUser authUser) {
+	private void atualiza(OidcUser oidcUser, AuthUser authUser) {
 		authUser.setNome(oidcUser.getFullName());
 		authUser.setEmail(oidcUser.getEmail());
 		authUser.setUrlImagem(oidcUser.getPicture());

@@ -12,6 +12,7 @@ import lombok.Data;
 public class TarefaLista {
 	@Id
 	private Long id;
+	private Long authUserId;
 	private String titulo;
 	private String descricao;
     private Boolean cumprida;

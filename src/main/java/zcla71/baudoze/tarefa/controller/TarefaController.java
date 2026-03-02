@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.auth_user.model.service.AuthUserService;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.common.model.ValidacaoException;
 import zcla71.baudoze.common.view.ContextoCrud;
@@ -134,11 +138,12 @@ public class TarefaController extends BauBaseController {
 	// Controller
 
 	@GetMapping("/tarefa")
-	public ModelAndView listar(@AuthenticationPrincipal OidcUser user) {
+	public ModelAndView listar(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication) {
 		ModelAndView result = new ModelAndView("/tarefa/tarefas");
-		addAuthInfo(result, user);
+		addAuthInfo(result, oidcUser);
+		AuthUser authUser = getAuthUser(oidcUser, authentication);
 		result.addObject("data", Map.of(
-			"tarefas", tarefaViewService.listaTarefas())
+			"tarefas", tarefaViewService.listaTarefas(authUser.getId()))
 		);
 		return result;
 	}

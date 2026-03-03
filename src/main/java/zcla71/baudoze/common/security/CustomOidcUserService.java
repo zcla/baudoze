@@ -17,8 +17,12 @@ public class CustomOidcUserService extends OidcUserService {
 	}
 
 	@Override
-	public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
+	public OidcUser loadUser(OidcUserRequest userRequest) {
 		OidcUser oidcUser = super.loadUser(userRequest);
+
+		// TODO Ver https://chatgpt.com/share/69a651e1-84c0-8004-b794-7f4bbec7eda3 => Procurar por "O que é @AuthenticationPrincipal?"
+		// TODO Salvar o usuário aqui? Talvez seja bom.
+		// TODO Salvar a imagem localmente para evitar o erro 429 - Too many requests.
 
 		authUserService.processarLogin(
 			oidcUser,

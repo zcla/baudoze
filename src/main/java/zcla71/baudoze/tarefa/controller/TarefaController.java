@@ -6,17 +6,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.validation.Valid;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.auth_user.model.service.AuthUserService;
 import zcla71.baudoze.common.controller.BauBaseController;
@@ -29,6 +32,7 @@ import zcla71.baudoze.tarefa.view.entity.TarefaEditarView;
 import zcla71.baudoze.tarefa.view.entity.TarefaEditarViewOk;
 import zcla71.baudoze.tarefa.view.entity.TarefaEditarViewTarefa;
 import zcla71.baudoze.tarefa.view.entity.TarefaEditarViewTarefaMae;
+import zcla71.baudoze.tarefa.view.entity.TarefaLista;
 import zcla71.baudoze.tarefa.view.entity.TarefaListaView;
 import zcla71.baudoze.tarefa.view.entity.TarefaListaViewTarefa;
 import zcla71.baudoze.tarefa.view.service.TarefaViewService;
@@ -36,12 +40,12 @@ import zcla71.utils.Utils;
 
 @Controller
 public class TarefaController extends BauBaseController {
-	// @Autowired
-	// private TarefaService tarefaService;
+	@Autowired
+	private TarefaService tarefaService;
 	@Autowired
 	private TarefaViewService tarefaViewService;
 
-	// // Métodos de apoio
+	// Métodos de apoio
 
 	// private TarefaEditarViewTarefa entity2view(Tarefa tarefa) {
 	// 	TarefaEditarViewTarefa result = new TarefaEditarViewTarefa();
@@ -142,36 +146,38 @@ public class TarefaController extends BauBaseController {
 		ModelAndView result = new ModelAndView("/tarefa/tarefas");
 		addAuthInfo(result, oidcUser);
 		AuthUser authUser = getAuthUser(oidcUser, authentication);
-		result.addObject("data", Map.of(
-			"tarefas", tarefaViewService.listaTarefas(authUser.getId()))
-		);
+		result.addObject("tarefas", tarefaViewService.listaTarefas(authUser.getId()));
 		return result;
 	}
 
-	// @GetMapping("/tarefa/{id}")
-	// public ModelAndView mostrar(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
-	// 	return getModelAndViewTarefaDetalhe(user, ContextoCrud.MOSTRAR, this.entity2view(this.tarefaService.buscar(id)));
-	// }
+	private ModelAndView getEditarModelAndView(OidcUser oidcUser, Authentication authentication, Tarefa tarefa) {
+		ModelAndView result = new ModelAndView("tarefa/tarefa");
+		addAuthInfo(result, oidcUser);
+		result.addObject("tarefa", tarefa);
+		AuthUser authUser = getAuthUser(oidcUser, authentication);
+		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(authUser, tarefa));
+		return result;
+	}
 
-	// @GetMapping("/tarefa/incluir")
-	// public ModelAndView incluir(@AuthenticationPrincipal OidcUser user) {
-	// 	return getModelAndViewTarefaDetalhe(user, ContextoCrud.INCLUIR, this.entity2view(Tarefa.nova()));
-	// }
+	@GetMapping("/tarefa/incluir")
+	public ModelAndView incluir(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication) {
+		return getEditarModelAndView(oidcUser, authentication, tarefaService.novaTarefa());
+	}
 
-	// @PostMapping("/tarefa/incluir_ok")
-	// public ModelAndView incluirOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
-	// 	try {
-	// 		this.tarefaService.incluir(this.view2entity(tarefa.getTarefa()));
-	// 		return new ModelAndView("redirect:/tarefa");
-	// 	} catch (Exception e) {
-	// 		return getModelAndViewTarefaDetalhe(user, ContextoCrud.INCLUIR, tarefa.getTarefa(), e);
-	// 	}
-	// }
+	@PostMapping("/tarefa/salvar")
+	public ModelAndView salvar(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication, @NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return getEditarModelAndView(oidcUser, authentication, tarefa);
+		}
+		AuthUser authUser = super.getAuthUser(oidcUser, authentication);
+		this.tarefaService.salvar(tarefa, authUser);
+		return new ModelAndView("redirect:/tarefa");
+	}
 
-	// @GetMapping("/tarefa/{id}/alterar")
-	// public ModelAndView alterar(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
-	// 	return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, this.entity2view(this.tarefaService.buscar(id)));
-	// }
+	@GetMapping("/tarefa/{id}/alterar")
+	public ModelAndView alterar(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication, @NonNull @PathVariable Long id) {
+		return getEditarModelAndView(oidcUser, authentication, tarefaService.buscar(id));
+	}
 
 	// @PostMapping("/tarefa/alterar_ok")
 	// public ModelAndView alterarOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
@@ -181,11 +187,6 @@ public class TarefaController extends BauBaseController {
 	// 	} catch (Exception e) {
 	// 		return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, tarefa.getTarefa(), e);
 	// 	}
-	// }
-
-	// @GetMapping("/tarefa/{id}/excluir")
-	// public ModelAndView excluir(@AuthenticationPrincipal OidcUser user, @PathVariable Long id) {
-	// 	return getModelAndViewTarefaDetalhe(user, ContextoCrud.EXCLUIR, this.entity2view(this.tarefaService.buscar(id)));
 	// }
 
 	// @PostMapping("/tarefa/excluir_ok")

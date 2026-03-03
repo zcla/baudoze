@@ -1,16 +1,17 @@
 package zcla71.baudoze.common.view;
 
+@Deprecated
 public enum ContextoCrud {
-	MOSTRAR("mostrar", "Tarefa"),
-	INCLUIR("incluir", "Incluir tarefa"),
-	EXCLUIR("excluir", "Excluir tarefa"),
-	ALTERAR("alterar", "Alterar tarefa");
+	MOSTRAR("mostrar", ""),
+	INCLUIR("incluir", "Incluir "),
+	EXCLUIR("excluir", "Excluir "),
+	ALTERAR("alterar", "Alterar ");
 
 	public String id;
-	public String titulo;
+	public String tituloPrefixo;
 
-	ContextoCrud(String id, String titulo) {
+	ContextoCrud(String id, String tituloPrefixo) {
 		this.id = id;
-		this.titulo = titulo;
+		this.tituloPrefixo = tituloPrefixo;
 	}
 }

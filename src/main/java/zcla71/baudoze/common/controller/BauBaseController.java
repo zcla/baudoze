@@ -14,9 +14,10 @@ public abstract class BauBaseController {
 	private AuthUserService authUserService;
 
 	protected void addAuthInfo(ModelAndView mav, OidcUser user) {
-		mav.addObject("authUserName", user.getAttribute("name"));
-		mav.addObject("authUserPicture", user.getAttribute("picture"));
-		mav.addObject("authUserEmail", user.getAttribute("email"));
+		// TODO Seria melhor _auth.userName, ...
+		mav.addObject("_authUserName", user.getAttribute("name"));
+		mav.addObject("_authUserPicture", user.getAttribute("picture"));
+		// mav.addObject("_authUserEmail", user.getAttribute("email"));
 	}
 
 	protected AuthUser getAuthUser(OidcUser oidcUser, Authentication authentication) {

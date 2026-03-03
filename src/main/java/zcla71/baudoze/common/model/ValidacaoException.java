@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
+@Deprecated
 public class ValidacaoException extends Exception {
 	private Validacoes validacoes;
 

@@ -2,6 +2,7 @@ package zcla71.baudoze.common.model;
 
 import java.util.ArrayList;
 
+@Deprecated
 public class Validacoes extends ArrayList<Validacao> {
 	public String getMessage(String fieldName) {
 		return this.stream()

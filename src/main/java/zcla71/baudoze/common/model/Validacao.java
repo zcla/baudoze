@@ -3,6 +3,7 @@ package zcla71.baudoze.common.model;
 import lombok.Data;
 
 @Data
+@Deprecated
 public class Validacao {
 	private String fieldName;
 	private String message;

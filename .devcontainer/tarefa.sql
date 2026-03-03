@@ -53,11 +53,3 @@ FROM temp _
 JOIN tarefa t
 	ON t.id = _.id
 ORDER BY _.path, _.id;
-
--- TODO EXCLUIR TUDO DAQUI PRA BAIXO
-
-DELETE FROM tarefa;
-INSERT INTO tarefa (auth_user_id, titulo, descricao, id_mae, ordem, cumprida) VALUES (1, "Tarefa 1", "Descrição", null, 1, FALSE);
-INSERT INTO tarefa (auth_user_id, titulo, descricao, id_mae, ordem, cumprida) VALUES (1, "Tarefa 2", "Descrição", null, 2, FALSE);
-INSERT INTO tarefa (auth_user_id, titulo, descricao, id_mae, ordem, cumprida) VALUES (1, "Tarefa 1.1", "Descrição", 1, 3, FALSE);
-INSERT INTO tarefa (auth_user_id, titulo, descricao, id_mae, ordem, cumprida) VALUES (1, "Tarefa 1.2", "Descrição", 1, 4, FALSE);

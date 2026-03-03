@@ -2,10 +2,14 @@ package zcla71.baudoze.tarefa.model.entity;
 
 import java.util.List;
 
+import org.springframework.lang.NonNull;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,22 +22,22 @@ import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 @AllArgsConstructor
 @Entity
 public class Tarefa {
-	// public static Tarefa nova() {
-	// 	Tarefa result = new Tarefa();
-	// 	result.setNome("Nova tarefa");
-	// 	result.setPeso(0);
-	// 	result.setCumprida(false);
-	// 	return result;
-	// }
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long authUserId;
+
+	private Long authUserId; // TODO Tem que ser referência a AuthUser
+
+	@NotBlank(message = "Informe o título.")
+	@Size(max = 150, message = "O título deve ter no máximo 255 caracteres")
 	private String titulo;
+
 	private String descricao;
+
 	private Long idMae;
-	private Integer ordem;
+
+	private Long ordem;
+
 	private Boolean cumprida;
 
 	// private void validaDados(ValidacaoException result) {

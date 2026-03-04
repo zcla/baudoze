@@ -50,10 +50,27 @@
 											<!--
 											TODO Incluir filha
 											-->
-											<a th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'" type="button" class="btn btn-sm bg-warning-subtle" title="Alterar"><img src="/img/button-alterar.png"></a>
-											<form th:action="@{'/tarefa/' + ${tarefa.id}} + '/excluir'" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
-												<button type="submit" class="btn btn-sm bg-danger-subtle" title="Excluir"><img src="/img/button-excluir.png"></button>
+											<a
+													th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'"
+													type="button"
+													class="btn btn-sm bg-warning-subtle"
+													title="Alterar">
+												<img src="/img/button-alterar.png">
+											</a>
+											<form
+													th:id="'delete-form-' + ${tarefa.id}"
+													th:action="@{'/tarefa/' + ${tarefa.id}} + '/excluir'"
+													method="post"
+      												style="display:none;">
 											</form>
+											<a
+													href="#"
+													type="button"
+													class="btn btn-sm bg-danger-subtle"
+													title="Excluir"
+													th:onclick="'if(confirm(\'Tem certeza que deseja excluir esta tarefa?\')) document.getElementById(\'delete-form-' + ${tarefa.id} + '\').submit(); return false;'">
+												<img src="/img/button-excluir.png">
+											</a>
 										</div>
 									</td>
 								</tr>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Deprecated // Já foi usado com sucesso, mas não utilizo mais. Mantenho aqui caso seja necessário no futuro, pois funciona perfeitamente.
 public class OidcUtils {
+    @Deprecated
 	public OidcUser getLoggedUser() {
 		return (OidcUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	}

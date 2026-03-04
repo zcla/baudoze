@@ -13,10 +13,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JsonUtils {
 	private final ObjectMapper objectMapper;
 
+	@Deprecated
     public JsonUtils(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
+	@Deprecated
 	public String toJson(Object object) {
         try {
             return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
@@ -25,6 +27,7 @@ public class JsonUtils {
         }
     }
 
+	@Deprecated
 	public void writeToFile(Object object, File file) {
 		try {
 			objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, object);

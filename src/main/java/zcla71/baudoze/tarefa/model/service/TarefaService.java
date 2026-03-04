@@ -53,6 +53,7 @@ public class TarefaService {
 			tarefa.setCumprida(false);
 			return this.tarefaRepository.save(tarefa);
 		}
+		@SuppressWarnings("null") // Já foi tratado no if, acima
 		Tarefa existente = tarefaRepository.findById(tarefa.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		if (!existente.getAuthUser().equals(authUser)) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de alterar uma tarefa de outro usuário!");

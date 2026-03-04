@@ -47,11 +47,13 @@
 									</td>
 									<td class="botoes d-print-none">
 										<div class="btn-group" role="group">
-											<a th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'" type="button" class="btn btn-sm bg-warning-subtle" title="Alterar"><img src="/img/button-alterar.png"></a>
 											<!--
 											TODO Incluir filha
-											<a th:href="@{'/tarefa/' + ${tarefa.id}} + '/excluir'" type="button" class="btn btn-sm bg-danger-subtle" title="Excluir"><img src="/img/button-excluir.png"></a>
 											-->
+											<a th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'" type="button" class="btn btn-sm bg-warning-subtle" title="Alterar"><img src="/img/button-alterar.png"></a>
+											<form th:action="@{'/tarefa/' + ${tarefa.id}} + '/excluir'" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+												<button type="submit" class="btn btn-sm bg-danger-subtle" title="Excluir"><img src="/img/button-excluir.png"></button>
+											</form>
 										</div>
 									</td>
 								</tr>

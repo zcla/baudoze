@@ -179,23 +179,11 @@ public class TarefaController extends BauBaseController {
 		return getEditarModelAndView(oidcUser, authentication, tarefaService.buscar(id));
 	}
 
-	// @PostMapping("/tarefa/alterar_ok")
-	// public ModelAndView alterarOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
-	// 	try {
-	// 		this.tarefaService.alterar(this.view2entity(tarefa.getTarefa()));
-	// 		return new ModelAndView("redirect:/tarefa");
-	// 	} catch (Exception e) {
-	// 		return getModelAndViewTarefaDetalhe(user, ContextoCrud.ALTERAR, tarefa.getTarefa(), e);
-	// 	}
-	// }
-
-	// @PostMapping("/tarefa/excluir_ok")
-	// public ModelAndView excluirOk(@AuthenticationPrincipal OidcUser user, @ModelAttribute TarefaEditarViewOk tarefa) {
-	// 	try {
-	// 		this.tarefaService.excluir(this.view2entity(tarefa.getTarefa()));
-	// 		return new ModelAndView("redirect:/tarefa");
-	// 	} catch (Exception e) {
-	// 		return getModelAndViewTarefaDetalhe(user, ContextoCrud.EXCLUIR, tarefa.getTarefa(), e);
-	// 	}
-	// }
+	@PostMapping("/tarefa/{id}/excluir")
+	public ModelAndView excluir(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication, @NonNull @PathVariable Long id) {
+		// TODO Verificar se tem filhos e o que fazer: impedir ou cascata
+		AuthUser authUser = super.getAuthUser(oidcUser, authentication);
+		this.tarefaService.excluir(id, authUser);
+		return new ModelAndView("redirect:/tarefa");
+	}
 }

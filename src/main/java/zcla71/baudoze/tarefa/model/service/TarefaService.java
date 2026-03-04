@@ -33,15 +33,15 @@ public class TarefaService {
 
 	@Transactional(propagation = Propagation.MANDATORY)
 	public Long proximaOrdem(AuthUser authUser) {
-        Long result = (Long) entityManager
-                .createNativeQuery("""
-                        SELECT MAX(t.ordem)
-                        FROM tarefa t
-                        WHERE t.auth_user_id = :authUserId
-                        FOR UPDATE
-                        """)
-                .setParameter("authUserId", authUser.getId())
-                .getSingleResult();
+		Long result = (Long) entityManager
+				.createNativeQuery("""
+						SELECT MAX(t.ordem)
+						FROM tarefa t
+						WHERE t.auth_user_id = :authUserId
+						FOR UPDATE
+						""")
+				.setParameter("authUserId", authUser.getId())
+				.getSingleResult();
 		return (result == null ? 0 : result) + 1;
 	}
 
@@ -63,12 +63,12 @@ public class TarefaService {
 		return this.tarefaRepository.save(existente);
 	}
 
-	// public void excluir(Tarefa tarefa) throws ValidacaoException {
-	// 	ValidacaoException validation = tarefa.validaExcluir(this.tarefaRepository);
-	// 	if (!validation.getValidacoes().isEmpty()) {
-	// 		throw validation;
-	// 	}
-
-	// 	this.tarefaRepository.delete(tarefa);
-	// }
+	@Transactional
+	public void excluir(@NonNull Long id, AuthUser authUser) {
+		Tarefa tarefa = tarefaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de excluir tarefa de outro usuário!");
+		}
+		tarefaRepository.delete(tarefa);
+	}
 }

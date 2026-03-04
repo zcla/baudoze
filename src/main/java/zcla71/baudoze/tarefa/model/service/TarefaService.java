@@ -48,13 +48,13 @@ public class TarefaService {
 	@Transactional
 	public Tarefa salvar(@NonNull Tarefa tarefa, AuthUser authUser) {
 		if (tarefa.getId() == null) { // Tarefa nova
-			tarefa.setAuthUserId(authUser.getId());
+			tarefa.setAuthUser(authUser);
 			tarefa.setOrdem(proximaOrdem(authUser));
 			tarefa.setCumprida(false);
 			return this.tarefaRepository.save(tarefa);
 		}
 		Tarefa existente = tarefaRepository.findById(tarefa.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		if (!existente.getAuthUserId().equals(authUser.getId())) {
+		if (!existente.getAuthUser().equals(authUser)) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de alterar uma tarefa de outro usuário!");
 		}
 		existente.setTitulo(tarefa.getTitulo());

@@ -46,12 +46,12 @@
 						</div>
 						<div class="row mb-3">
 							<div>
-								<label th:for="${idMae}" class="form-label">Tarefa "mãe"</label>
-								<select th:field="*{idMae}" id="idMae" name="idMae" class="form-select">
+								<label th:for="${tarefaMae}" class="form-label">Tarefa "mãe"</label>
+								<select th:field="*{tarefaMae}" id="tarefaMae" name="tarefaMae" class="form-select">
 									<option value=""></option>
 									<option th:each="tarefaMae : ${tarefasMae}" th:value="${tarefaMae.id}" th:text="${#strings.repeat('&nbsp;', 3 * tarefaMae.indent) + tarefaMae.titulo}"></option>
 								</select>
-								<div th:if="${#fields.hasErrors('idMae')}" th:errors="*{idMae}"></div>
+								<div th:if="${#fields.hasErrors('tarefaMae')}" th:errors="*{tarefaMae}"></div>
 							</div>
 						</div>
 						<div class="btn-group mb-3">

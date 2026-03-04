@@ -39,7 +39,9 @@ public class Tarefa {
 
 	private String descricao;
 
-	private Long idMae; // TODO Tem que ser referência a Tarefa
+	@ManyToOne
+	@JoinColumn(name = "id_mae", referencedColumnName = "id")
+	private Tarefa tarefaMae;
 
 	private Long ordem;
 

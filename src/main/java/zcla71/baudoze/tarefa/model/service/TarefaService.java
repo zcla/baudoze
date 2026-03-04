@@ -59,7 +59,7 @@ public class TarefaService {
 		}
 		existente.setTitulo(tarefa.getTitulo());
 		existente.setDescricao(tarefa.getDescricao());
-		existente.setIdMae(tarefa.getIdMae());
+		existente.setTarefaMae(tarefa.getTarefaMae());
 		return this.tarefaRepository.save(existente);
 	}
 

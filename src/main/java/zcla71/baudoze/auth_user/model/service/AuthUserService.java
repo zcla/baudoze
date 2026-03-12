@@ -18,9 +18,7 @@ public class AuthUserService {
 	// Só é usado no login
 	@Transactional
 	public AuthUser buscarPorProviderEOidcUser(String provider, OidcUser oidcUser) {
-		String subject = oidcUser.getSubject();
-
-		AuthUser result = authUserRepository.findByProviderAndSubject(provider, subject).orElse(null);
+		AuthUser result = authUserRepository.findByProviderAndSubject(provider, oidcUser.getSubject()).orElse(null);
 		if (result == null) {
 			result = new AuthUser(provider, oidcUser);
 		} else {

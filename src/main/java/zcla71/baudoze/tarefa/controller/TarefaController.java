@@ -2,9 +2,7 @@ package zcla71.baudoze.tarefa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,47 +26,43 @@ public class TarefaController extends BauBaseController {
 	private TarefaViewService tarefaViewService;
 
 	@GetMapping("/tarefa")
-	public ModelAndView listar(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication) {
+	public ModelAndView listar(@AuthenticationPrincipal AuthUser authUser) {
 		ModelAndView result = new ModelAndView("/tarefa/tarefas");
-		addAuthInfo(result, oidcUser);
-		AuthUser authUser = getAuthUser(oidcUser, authentication);
+		addAuthInfo(result, authUser);
 		result.addObject("tarefas", tarefaViewService.listaTarefas(authUser.getId()));
 		return result;
 	}
 
-	private ModelAndView getEditarModelAndView(OidcUser oidcUser, Authentication authentication, Tarefa tarefa) {
+	private ModelAndView getEditarModelAndView(@AuthenticationPrincipal AuthUser authUser, Tarefa tarefa) {
 		ModelAndView result = new ModelAndView("tarefa/tarefa");
-		addAuthInfo(result, oidcUser);
+		addAuthInfo(result, authUser);
 		result.addObject("tarefa", tarefa);
-		AuthUser authUser = getAuthUser(oidcUser, authentication);
 		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(authUser, tarefa));
 		return result;
 	}
 
 	@GetMapping("/tarefa/incluir")
-	public ModelAndView incluir(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication) {
-		return getEditarModelAndView(oidcUser, authentication, tarefaService.novaTarefa());
+	public ModelAndView incluir(@AuthenticationPrincipal AuthUser authUser) {
+		return getEditarModelAndView(authUser, tarefaService.novaTarefa());
 	}
 
 	@PostMapping("/tarefa/salvar")
-	public ModelAndView salvar(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication, @NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
+	public ModelAndView salvar(@AuthenticationPrincipal AuthUser authUser, @NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return getEditarModelAndView(oidcUser, authentication, tarefa);
+			return getEditarModelAndView(authUser, tarefa);
 		}
-		AuthUser authUser = super.getAuthUser(oidcUser, authentication);
 		this.tarefaService.salvar(tarefa, authUser);
 		return new ModelAndView("redirect:/tarefa");
 	}
 
 	@GetMapping("/tarefa/{id}/alterar")
-	public ModelAndView alterar(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication, @NonNull @PathVariable Long id) {
-		return getEditarModelAndView(oidcUser, authentication, tarefaService.buscar(id));
+	public ModelAndView alterar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id) {
+		return getEditarModelAndView(authUser, tarefaService.buscar(id));
 	}
 
 	@PostMapping("/tarefa/{id}/excluir")
-	public ModelAndView excluir(@AuthenticationPrincipal OidcUser oidcUser, Authentication authentication, @NonNull @PathVariable Long id) {
+	public ModelAndView excluir(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id) {
 		// TODO Verificar se tem filhos e o que fazer: impedir ou cascata
-		AuthUser authUser = super.getAuthUser(oidcUser, authentication);
 		this.tarefaService.excluir(id, authUser);
 		return new ModelAndView("redirect:/tarefa");
 	}

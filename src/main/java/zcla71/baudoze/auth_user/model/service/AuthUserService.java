@@ -15,31 +15,24 @@ public class AuthUserService {
 		this.authUserRepository = authUserRepository;
 	}
 
-	public AuthUser buscarPorProviderESubject(String provider, String subject) {
-		return authUserRepository.findByProviderAndSubject(provider, subject).orElse(null);
+	// Só é usado no login
+	@Transactional
+	public AuthUser buscarPorProviderEOidcUser(String provider, OidcUser oidcUser) {
+		String subject = oidcUser.getSubject();
+
+		AuthUser result = authUserRepository.findByProviderAndSubject(provider, subject).orElse(null);
+		if (result == null) {
+			result = new AuthUser(provider, oidcUser);
+		} else {
+			result.setDelegate(provider, oidcUser);
+		}
+		authUserRepository.save(result);
+		return result;
 	}
 
 	@Transactional
-	public AuthUser processarLogin(OidcUser oidcUser, String provider) {
-		String subject = oidcUser.getSubject();
-
-		return authUserRepository.findByProviderAndSubject(provider, subject)
-			.map(u -> {
-				// Atualiza dados mutáveis
-				atualiza(oidcUser, u);
-				return u;
-			})
-			.orElseGet(() -> {
-				AuthUser authUser = new AuthUser(provider, subject);
-				atualiza(oidcUser, authUser);
-				return authUserRepository.save(authUser);
-			});
-	}
-
-	private void atualiza(OidcUser oidcUser, AuthUser authUser) {
-		authUser.setNome(oidcUser.getFullName());
-		authUser.setEmail(oidcUser.getEmail());
-		authUser.setUrlImagem(oidcUser.getPicture());
+	public void registrarLogin(AuthUser authUser) {
 		authUser.registrarLogin();
+		authUserRepository.save(authUser);
 	}
 }

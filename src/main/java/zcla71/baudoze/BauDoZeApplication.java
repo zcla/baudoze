@@ -17,6 +17,7 @@ public class BauDoZeApplication {
 
 	// TODO Boa prática: colocar todos os th:href envoltos em @{}; antes decidir se '' ficam dentro ou fora de ${}
 	// TODO Padronização: retirar as anotações @Table e @Column dos @Entity e tudo o que só existe para gerar DDL.
+	// TODO Boa prática??? Trocar todos os @Autowired por construtores com parâmetros.
 
 	// TODO Gravar dados fora do container
 	// TODO Backup

@@ -14,6 +14,8 @@ CREATE TABLE auth_user (
     nome VARCHAR(255),
     email VARCHAR(255),
     url_imagem VARCHAR(255),
+    imagem BLOB,
+    imagem_content_type VARCHAR(255),
     criado_em TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     ultimo_login_em TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
         ON UPDATE CURRENT_TIMESTAMP(6)

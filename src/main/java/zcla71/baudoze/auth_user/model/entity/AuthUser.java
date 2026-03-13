@@ -1,5 +1,12 @@
 package zcla71.baudoze.auth_user.model.entity;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URLConnection;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Map;
@@ -13,13 +20,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
 @NoArgsConstructor
 @Entity
+@Slf4j
 public class AuthUser implements OidcUser {
 	// OidcUser
 
@@ -33,6 +43,22 @@ public class AuthUser implements OidcUser {
 		this.nome = delegate.getFullName();
 		this.email = delegate.getEmail();
 		this.urlImagem = delegate.getPicture();
+
+		// Faz o download da imagem
+		try {
+			HttpClient client = HttpClient.newHttpClient();
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(this.urlImagem))
+					.build();
+			HttpResponse<byte[]> response = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
+			this.imagem = response.body();
+			this.imagemContentType = response
+					.headers()
+					.firstValue("Content-Type")
+					.orElse(URLConnection.guessContentTypeFromStream(new ByteArrayInputStream(this.imagem)));
+		} catch (IOException | InterruptedException e) {
+			log.warn("Erro ao baixar a url do usuário", e);
+		}
 	}
 
 	@Override
@@ -85,7 +111,12 @@ public class AuthUser implements OidcUser {
 
 	private String email;
 
-	private String urlImagem; // TODO Salvar a imagem localmente para evitar o erro 429 - Too many requests.
+	private String urlImagem;
+
+	@Lob
+	private byte[] imagem;
+
+	private String imagemContentType;
 
 	private Instant criadoEm;
 

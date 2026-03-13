@@ -1,13 +1,17 @@
 package zcla71.baudoze.common.controller;
 
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.servlet.ModelAndView;
 
+import zcla71.baudoze.auth_user.model.entity.AuthUser;
+
 public abstract class BauBaseController {
-	protected void addAuthInfo(ModelAndView mav, OidcUser user) {
-		// TODO Seria melhor _auth.userName, ...
-		mav.addObject("_authUserName", user.getAttribute("name"));
-		mav.addObject("_authUserPicture", user.getAttribute("picture"));
-		// mav.addObject("_authUserEmail", user.getAttribute("email"));
+	protected void addAuthInfo(ModelAndView mav, AuthUser authUser) {
+		// TODO Criar um objeto só "_authUser"?
+		mav.addObject("_authUserName", authUser.getNome());
+		if (authUser.getImagem() == null) {
+			mav.addObject("_authUserPicture", authUser.getUrlImagem());
+		} else {
+			mav.addObject("_authUserPicture", "/auth_user/" + authUser.getId() + "/imagem/");
+		}
 	}
 }

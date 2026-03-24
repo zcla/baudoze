@@ -1,4 +1,54 @@
 app:
+  biblia:
+    importacao:
+      sqlite-importa:
+        # believers-sword https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible
+        - codigo: github/believers-sword/BAM1959
+          uri: https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3
+          nome: Bíblia Ave-Maria 1959
+          idioma: pt-br
+        - codigo: github/believers-sword/BPMS1950
+          uri: https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3
+          nome: Bíblia Padre Matos Soares 1950
+          idioma: pt-br
+      ph4-importa:
+        # ph4 https://www.ph4.org/b4_index.php
+        - codigo: ph4.org/BAM
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c
+          nome: Bíblia Ave Maria
+          idioma: pt-br
+        - codigo: ph4.org/BEP
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c
+          nome: Bíblia Sagrada Edição Pastoral 1990
+          idioma: pt-br
+        - codigo: ph4.org/BJRD
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c
+          nome: Bíblia de Jerusalém 2002
+          idioma: pt-br
+        - codigo: ph4.org/BPT'09D
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c
+          nome: A Bíblia para todos Edição Católica
+          idioma: pt-pt
+        - codigo: ph4.org/CNBB
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c
+          nome: Bíblia CNBB 2002
+          idioma: pt-br
+        - codigo: ph4.org/DBFC
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c
+          nome: Bíblia Difusora Bíblica 1955 (Franciscanos Capuchinhos)
+          idioma: pt-pt
+        - codigo: ph4.org/DIF
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c
+          nome: Bíblia Difusora Bíblica (Franciscanos Capuchinhos)
+          idioma: pt-pt
+        - codigo: ph4.org/EUNSA
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c
+          nome: Bíblia de Navarra
+          idioma: es-es
+        - codigo: ph4.org/RSV-CE
+          uri: https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c
+          nome: Revised Standard Version, Second Catholic Edition
+          idioma: en-us
 
 logging:
   level:

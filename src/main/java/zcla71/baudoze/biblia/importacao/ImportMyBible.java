@@ -1,4 +1,4 @@
-package zcla71.baudoze.biblia;
+package zcla71.baudoze.biblia.importacao;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -7,12 +7,16 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
+import zcla71.baudoze.BauDoZeProperties;
+import zcla71.baudoze.BauDoZeProperties.PropBiblia.PropImportacao.PropPh4Importa;
+import zcla71.baudoze.BauDoZeProperties.PropBiblia.PropImportacao.PropSqliteImporta;
 import zcla71.baudoze.biblia.model.entity.Biblia;
 import zcla71.baudoze.biblia.model.entity.Capitulo;
 import zcla71.baudoze.biblia.model.entity.Livro;
@@ -26,6 +30,8 @@ import zcla71.mybible.bible.Verses;
 @Component
 @Slf4j
 public class ImportMyBible {
+	@Autowired
+	private BauDoZeProperties appProperties;
 	private BibliaService bibliaService;
 
 	public ImportMyBible(BibliaService bibliaService) {
@@ -48,65 +54,12 @@ public class ImportMyBible {
 	}
 
 	public void importaTudo() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {
-		// believers-sword https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible
-		sqLiteImporta(
-			"https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3",
-			"github/believers-sword/BAM1959",
-			"Bíblia Ave-Maria 1959",
-			"pt-br"
-		);
-		sqLiteImporta(
-			"https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3",
-			"github/believers-sword/BPMS1950",
-			"Bíblia Padre Matos Soares 1950",
-			"pt-br");
-
-		// ph4 https://www.ph4.org/b4_index.php
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c",
-			"ph4.org/BAM",
-			"Bíblia Ave Maria",
-			"pt-br");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c",
-			"ph4.org/BEP",
-			"Bíblia Sagrada Edição Pastoral 1990",
-			"pt-br");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c",
-			"ph4.org/BJRD",
-			"Bíblia de Jerusalém 2002",
-			"pt-br");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c",
-			"ph4.org/BPT'09D",
-			"A Bíblia para todos Edição Católica",
-			"pt-pt");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c",
-			"ph4.org/CNBB",
-			"Bíblia CNBB 2002",
-			"pt-br");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c",
-			"ph4.org/DBFC",
-			"Bíblia Difusora Bíblica 1955 (Franciscanos Capuchinhos)",
-			"pt-pt");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c",
-			"ph4.org/DIF",
-			"Bíblia Difusora Bíblica (Franciscanos Capuchinhos)",
-			"pt-pt");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c",
-			"ph4.org/EUNSA",
-			"Bíblia de Navarra",
-			"es-es");
-		ph4Importa(
-			"https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c",
-			"ph4.org/RSV-CE",
-			"Revised Standard Version, Second Catholic Edition",
-			"en-us");
+		for (PropPh4Importa biblia : appProperties.getBiblia().getImportacao().getPh4Importa()) {
+			ph4Importa(biblia.getUri(), biblia.getCodigo(), biblia.getNome(), biblia.getIdioma());
+		}
+		for (PropSqliteImporta biblia : appProperties.getBiblia().getImportacao().getSqliteImporta()) {
+			sqLiteImporta(biblia.getUri(), biblia.getCodigo(), biblia.getNome(), biblia.getIdioma());
+		}
 	}
 
 	private void ph4Importa(String strUri, String codigo, String nome, String idioma) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, SQLException, URISyntaxException {

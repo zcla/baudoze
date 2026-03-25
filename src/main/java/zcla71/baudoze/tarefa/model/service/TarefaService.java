@@ -55,11 +55,12 @@ public class TarefaService {
 		}
 		@SuppressWarnings("null") // Já foi tratado no if, acima
 		Tarefa existente = tarefaRepository.findById(tarefa.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		if (!existente.getAuthUser().equals(authUser)) {
+		if (!existente.getAuthUser().getId().equals(authUser.getId())) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de alterar uma tarefa de outro usuário!");
 		}
 		existente.setTitulo(tarefa.getTitulo());
 		existente.setDescricao(tarefa.getDescricao());
+		// TODO Se a tarefa mãe mudou, tem que rearrumar a ordem
 		existente.setTarefaMae(tarefa.getTarefaMae());
 		return this.tarefaRepository.save(existente);
 	}

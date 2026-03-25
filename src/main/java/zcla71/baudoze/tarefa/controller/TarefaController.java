@@ -51,6 +51,7 @@ public class TarefaController extends BauBaseController {
 		if (bindingResult.hasErrors()) {
 			return getEditarModelAndView(authUser, tarefa);
 		}
+		// TODO A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas; talvez a melhor opção seja usar TarefaViewService.listaTarefasMaePossiveis() e verificar o disabled.
 		this.tarefaService.salvar(tarefa, authUser);
 		return new ModelAndView("redirect:/tarefa");
 	}

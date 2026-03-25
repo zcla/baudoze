@@ -24,11 +24,21 @@ public class TarefaViewService {
 	public List<TarefaLista> listaTarefasMaePossiveis(AuthUser authUser, Tarefa tarefa) {
 		List<TarefaLista> result = listaTarefas(authUser.getId());
 		if (tarefa.getId() != null) {
-			// Não pode ser ela mesma
-			result = result.stream().filter(t -> !t.getId().equals(tarefa.getId())).toList();
-			// TODO Não pode ser uma de suas filhas
+			// Não pode ser nem ela mesma nem nenhuma de suas filhas
+			Long indent = null;
+			for (TarefaLista tarefaLista : result) {
+				if (tarefaLista.getId().equals(tarefa.getId())) {
+					indent = tarefaLista.getIndent();
+				} else {
+					if (indent != null) {
+						if (tarefaLista.getIndent() <= indent) {
+							indent = null;
+						}
+					}
+				}
+				tarefaLista.setDisabled(indent != null);
+			}
 		}
 		return result;
 	}
-
 }

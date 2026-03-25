@@ -4,6 +4,7 @@ import org.hibernate.annotations.Immutable;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -17,4 +18,6 @@ public class TarefaLista {
 	private String descricao;
     private Boolean cumprida;
 	private Long indent;
+	@Transient
+	private Boolean disabled;
 }

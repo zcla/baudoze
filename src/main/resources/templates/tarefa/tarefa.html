@@ -56,7 +56,7 @@
 								<label th:for="${tarefaMae}" class="form-label">Tarefa "mãe"</label>
 								<select th:field="*{tarefaMae}" id="tarefaMae" name="tarefaMae" class="form-select">
 									<option value=""></option>
-									<option th:each="tarefaMae : ${tarefasMae}" th:value="${tarefaMae.id}" th:text="${#strings.repeat('&nbsp;', 3 * tarefaMae.indent) + tarefaMae.titulo}"></option>
+									<option th:each="tarefaMae : ${tarefasMae}" th:value="${tarefaMae.id}" th:text="${#strings.repeat('&nbsp;', 3 * tarefaMae.indent) + tarefaMae.titulo}" th:disabled="${tarefaMae.disabled}"></option>
 								</select>
 								<div th:if="${#fields.hasErrors('tarefaMae')}" th:errors="*{tarefaMae}"></div>
 							</div>

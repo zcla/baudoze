@@ -47,18 +47,30 @@
 						<div class="row mb-3">
 							<div>
 								<label>Descrição</label>
-								<input type="text" th:field="*{descricao}" class="form-control">
-								<div th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></div>
+								<input type="text"
+									th:field="*{descricao}"
+									th:classappend="${#fields.hasErrors('descricao')} ? ' is-invalid' : ''"
+									class="form-control">
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('descricao')}"
+									th:errors="*{descricao}">
+								</div>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div>
 								<label th:for="${tarefaMae}" class="form-label">Tarefa "mãe"</label>
-								<select th:field="*{tarefaMae}" id="tarefaMae" name="tarefaMae" class="form-select">
+								<select
+									th:field="*{tarefaMae}"
+									th:classappend="${#fields.hasErrors('tarefaMae')} ? ' is-invalid' : ''"
+									class="form-select">
 									<option value=""></option>
 									<option th:each="tarefaMae : ${tarefasMae}" th:value="${tarefaMae.id}" th:text="${#strings.repeat('&nbsp;', 3 * tarefaMae.indent) + tarefaMae.titulo}" th:disabled="${tarefaMae.disabled}"></option>
 								</select>
-								<div th:if="${#fields.hasErrors('tarefaMae')}" th:errors="*{tarefaMae}"></div>
+								<div class="invalid-feedback"
+									th:if="${#fields.hasErrors('tarefaMae')}"
+									th:errors="*{tarefaMae}">
+								</div>
 							</div>
 						</div>
 						<div class="btn-group mb-3">

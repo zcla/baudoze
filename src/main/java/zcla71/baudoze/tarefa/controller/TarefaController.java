@@ -5,6 +5,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.service.TarefaService;
+import zcla71.baudoze.tarefa.view.entity.TarefaLista;
 import zcla71.baudoze.tarefa.view.service.TarefaViewService;
 
 @Controller
@@ -48,10 +50,29 @@ public class TarefaController extends BauBaseController {
 
 	@PostMapping("/tarefa/salvar")
 	public ModelAndView salvar(@AuthenticationPrincipal AuthUser authUser, @NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
+		// A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
+		Long tarefaId = tarefa.getId();
+		if ((tarefaId != null) && (tarefa.getTarefaMae() != null)) {
+			Tarefa existente = tarefaService.buscar(tarefaId);
+			if (existente == null) {
+				throw new IllegalArgumentException("Tarefa não encontrada");
+			}
+			TarefaLista tarefaLista = tarefaViewService.listaTarefasMaePossiveis(authUser, existente).stream()
+					.filter(t -> t.getId().equals(tarefa.getId()))
+					.findAny()
+					.orElse(null);
+			if (tarefaLista == null) {
+				throw new IllegalArgumentException("Tarefa não encontrada");
+			}
+			if (tarefaLista.getDisabled()) {
+				bindingResult.addError(new FieldError(bindingResult.getObjectName(), "tarefaMae", "A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas"));
+			}
+		}
+
 		if (bindingResult.hasErrors()) {
 			return getEditarModelAndView(authUser, tarefa);
 		}
-		// TODO A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas; talvez a melhor opção seja usar TarefaViewService.listaTarefasMaePossiveis() e verificar o disabled.
+
 		this.tarefaService.salvar(tarefa, authUser);
 		return new ModelAndView("redirect:/tarefa");
 	}

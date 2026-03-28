@@ -10,6 +10,10 @@
 * planodevida (esboço)
 * tarefa (feito de forma inicial, como piloto; falta muito para ficar funcional)
 * texto (esboço)
+* livros (plano)
+  * APIs ISBN (tem mais; buscar no Google):
+    * https://brasilapi.com.br/api/isbn/v1/<isbn>
+    * https://openlibrary.org/isbn/<isbn>.json
 
 ## Modelo de execução
 

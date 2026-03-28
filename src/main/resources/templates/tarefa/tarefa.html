@@ -2,17 +2,27 @@
 <html lang="pt-br"
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorate="~{_layouts/base}">
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle=${tarefa.id == null} ? 'Nova tarefa' : 'Alterar tarefa'">
 	<head>
-		<title th:text="${tarefa.id == null} ? 'Nova tarefa' : 'Alterar tarefa'"></title>
+		<title th:text="${htmlTitle}"></title>
 	</head>
 	<body>
 		<div layout:fragment="conteudo" class="container-fluid">
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><img src="/img/bau-16.png"><a href="/">Baú</a></li>
-					<li class="breadcrumb-item"><img src="/img/tarefa-16.png"><a href="/tarefa">Tarefas</a></li>
-					<li class="breadcrumb-item active"><img th:src="${'/img/button-' + (tarefa.id == null ? 'incluir' : 'alterar') + '.png'}"><span th:text="${tarefa.id == null} ? 'Nova' : 'Alterar'"></span></li>
+					<li class="breadcrumb-item">
+						<img src="/img/bau-16.png">
+						<a href="/">Baú</a>
+					</li>
+					<li class="breadcrumb-item">
+						<img src="/img/tarefa-16.png">
+						<a href="/tarefa">Tarefas</a>
+					</li>
+					<li class="breadcrumb-item active">
+						<img th:src="${'/img/button-' + (tarefa.id == null ? 'incluir' : 'alterar') + '.png'}">
+						<span th:text="${htmlTitle}"></span>
+					</li>
 				</ol>
 			</nav>
 			<h1>
@@ -20,7 +30,7 @@
 					<img th:src="${'/img/tarefa-32.png'}">
 					<img th:src="${'/img/layer-' + (tarefa.id == null ? 'incluir' : 'alterar') + '-32.png'}" style="position: absolute; bottom: 0px; left: 0px; z-index: 1;">
 				</span>
-				<span th:text="${tarefa.id == null} ? 'Nova tarefa' : 'Alterar tarefa'"></span>
+				<span th:text="htmlTitle"></span>
 			</h1>
 			<div id="form">
 				<!--

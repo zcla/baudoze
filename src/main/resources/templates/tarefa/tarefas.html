@@ -2,20 +2,30 @@
 <html lang="pt-br"
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorate="~{_layouts/base}">
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='Tarefas'">
 	<head>
-		<title>Tarefas</title>
+		<title th:text="${htmlTitle}"></title>
 	</head>
 	<body>
 		<div layout:fragment="conteudo" class="container-fluid">
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><img src="/img/bau-16.png"><a href="/">Baú</a></li>
-					<li class="breadcrumb-item active"><img src="/img/tarefa-16.png">Tarefas</li>
+					<li class="breadcrumb-item">
+						<img src="/img/bau-16.png">
+						<a href="/">Baú</a>
+					</li>
+					<li class="breadcrumb-item active">
+						<img src="/img/tarefa-16.png">
+						<span th:text="${htmlTitle}"></span>
+					</li>
 				</ol>
 			</nav>
 			<h1>
-				<span><img src="/img/tarefa-32.png"> Tarefas</span>
+				<span>
+					<img src="/img/tarefa-32.png">
+					<span th:text="${htmlTitle}"></span>
+				</span>
 				<div id="toolbar" class="btn-toolbar float-end d-print-none">
 					<div class="btn-group">
 						<a th:href="@{'/tarefa/incluir'}" type="button" class="btn bg-success-subtle" title="Incluir"><img src="/img/button-incluir.png" style="padding-bottom: 3px;"></a>

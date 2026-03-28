@@ -2,13 +2,14 @@
 <html lang="pt-br"
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorate="~{_layouts/base}">
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='ERRO 😬'">
 	<head>
-		<title>ERRO 😬</title>
+		<title th:text="${htmlTitle}"></title>
 	</head>
 	<body>
 		<div layout:fragment="conteudo" class="container-fluid">
-			<h1>ERRO 😬</h1>
+			<h1 th:text="${htmlTitle}"></h1>
 			<dl>
 				<th:block th:if="${errors}">
 					<dt>Status code</dt>

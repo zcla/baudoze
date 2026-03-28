@@ -7,6 +7,7 @@
 ## Módulos
 
 * biblia (wip)
+  * https://www.believersword.com/ -> Bom programa a imitar
 * planodevida (esboço)
 * tarefa (feito de forma inicial, como piloto; falta muito para ficar funcional)
 * texto (esboço)

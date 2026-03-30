@@ -23,7 +23,7 @@ public class Tarefa {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "auth_user_id", nullable = false, referencedColumnName = "id")
+	@JoinColumn(name = "auth_user_id", referencedColumnName = "id")
 	private AuthUser authUser;
 
 	@NotBlank(message = "Informe o título.")

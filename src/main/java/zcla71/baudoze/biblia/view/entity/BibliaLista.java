@@ -4,14 +4,12 @@ import org.hibernate.annotations.Immutable;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
 @Entity
 @Immutable
-@Table(name = "biblia_lista")
 public class BibliaLista {
 	@Id
 	private Long id;

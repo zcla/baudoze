@@ -7,12 +7,12 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import zcla71.baudoze.BauDoZeProperties;
 import zcla71.baudoze.BauDoZeProperties.PropBiblia.PropImportacao.PropPh4Importa;
@@ -27,16 +27,12 @@ import zcla71.mybible.MyBibleUtils;
 import zcla71.mybible.bible.BooksAll;
 import zcla71.mybible.bible.Verses;
 
+@RequiredArgsConstructor
 @Component
 @Slf4j
 public class ImportMyBible {
-	@Autowired
-	private BauDoZeProperties appProperties;
-	private BibliaService bibliaService;
-
-	public ImportMyBible(BibliaService bibliaService) {
-		this.bibliaService = bibliaService;
-	}
+	final private BauDoZeProperties appProperties;
+	final private BibliaService bibliaService;
 
 	@Async
 	@EventListener(ApplicationStartedEvent.class)

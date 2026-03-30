@@ -2,20 +2,20 @@ package zcla71.baudoze.tarefa.view.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.view.entity.TarefaLista;
 import zcla71.baudoze.tarefa.view.repository.TarefaListaRepository;
 
+@RequiredArgsConstructor
 @Service
 public class TarefaViewService {
 	// TarefaLista
 
-	@Autowired
-	private TarefaListaRepository tarefaListaRepository;
+	final private TarefaListaRepository tarefaListaRepository;
 
 	public List<TarefaLista> listaTarefas(Long authUserId) {
 		return this.tarefaListaRepository.findByAuthUserId(authUserId);

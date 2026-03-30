@@ -2,7 +2,6 @@ package zcla71.baudoze.biblia.controller;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.biblia.model.entity.Capitulo;
 import zcla71.baudoze.biblia.model.entity.Livro;
@@ -17,12 +17,11 @@ import zcla71.baudoze.biblia.model.service.BibliaService;
 import zcla71.baudoze.biblia.view.service.BibliaViewService;
 import zcla71.baudoze.common.controller.BauBaseController;
 
+@RequiredArgsConstructor
 @Controller
 public class BibliaController extends BauBaseController {
-	@Autowired
-	private BibliaService bibliaService;
-	@Autowired
-	private BibliaViewService bibliaViewService;
+	final private BibliaService bibliaService;
+	final private BibliaViewService bibliaViewService;
 
 	// Controller
 

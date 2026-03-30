@@ -1,9 +1,9 @@
 package zcla71.baudoze.biblia.model.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.biblia.model.entity.Biblia;
 import zcla71.baudoze.biblia.model.entity.Capitulo;
 import zcla71.baudoze.biblia.model.entity.Livro;
@@ -11,12 +11,12 @@ import zcla71.baudoze.biblia.model.repository.BibliaRepository;
 import zcla71.baudoze.biblia.model.repository.CapituloRepository;
 import zcla71.baudoze.biblia.model.repository.LivroRepository;
 
+@RequiredArgsConstructor
 @Service
 public class BibliaService {
 	// Biblia
 
-	@Autowired
-	private BibliaRepository bibliaRepository;
+	final private BibliaRepository bibliaRepository;
 	
 	public void incluir(@NonNull Biblia biblia) {
 		this.bibliaRepository.save(biblia);
@@ -32,8 +32,7 @@ public class BibliaService {
 
 	// Livro
 
-	@Autowired
-	private LivroRepository livroRepository;
+	final private LivroRepository livroRepository;
 
 	public Livro buscaLivroPorId(@NonNull Long id) {
 		return this.livroRepository.findById(id).orElse(null);
@@ -41,8 +40,7 @@ public class BibliaService {
 
 	// Capítulo
 
-	@Autowired
-	private CapituloRepository capituloRepository;
+	final private CapituloRepository capituloRepository;
 
 	public Capitulo buscaCapituloPorId(@NonNull Long id) {
 		return this.capituloRepository.findById(id).orElse(null);

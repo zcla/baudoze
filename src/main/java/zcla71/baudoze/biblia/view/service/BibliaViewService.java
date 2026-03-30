@@ -2,9 +2,9 @@ package zcla71.baudoze.biblia.view.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.biblia.view.entity.BibliaLista;
 import zcla71.baudoze.biblia.view.entity.CapituloLista;
 import zcla71.baudoze.biblia.view.entity.LivroLista;
@@ -14,12 +14,12 @@ import zcla71.baudoze.biblia.view.repository.CapituloListaRepository;
 import zcla71.baudoze.biblia.view.repository.LivroListaRepository;
 import zcla71.baudoze.biblia.view.repository.VersiculoListaRepository;
 
+@RequiredArgsConstructor
 @Service
 public class BibliaViewService {
 	// BibliaLista
 
-	@Autowired
-	private BibliaListaRepository bibliaListaRepository;
+	final private BibliaListaRepository bibliaListaRepository;
 
 	public List<BibliaLista> listarBiblias() {
 		return this.bibliaListaRepository.findAll();
@@ -34,8 +34,7 @@ public class BibliaViewService {
 
 	// LivroLista
 
-	@Autowired
-	private LivroListaRepository livroListaRepository;
+	final private LivroListaRepository livroListaRepository;
 
 	public List<LivroLista> listarLivros(Long idBiblia) {
 		return this.livroListaRepository.findByBibliaId(idBiblia);
@@ -50,8 +49,7 @@ public class BibliaViewService {
 
 	// CapituloLista
 
-	@Autowired
-	private CapituloListaRepository capituloListaRepository;
+	final private CapituloListaRepository capituloListaRepository;
 
 	public List<CapituloLista> listarCapitulos(Long idLivro) {
 		return this.capituloListaRepository.findByLivroId(idLivro);
@@ -66,8 +64,7 @@ public class BibliaViewService {
 
 	// VersiculoLista
 
-	@Autowired
-	private VersiculoListaRepository versiculoListaRepository;
+	final private VersiculoListaRepository versiculoListaRepository;
 
 	public List<VersiculoLista> listarVersiculos(Long idCapitulo) {
 		return this.versiculoListaRepository.findByCapituloId(idCapitulo);

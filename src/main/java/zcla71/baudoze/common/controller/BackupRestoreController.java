@@ -1,17 +1,17 @@
 package zcla71.baudoze.common.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.common.model.BackupRestore;
 import zcla71.baudoze.tarefa.model.service.TarefaService;
 
+@RequiredArgsConstructor
 @Controller
 public class BackupRestoreController {
-	@Autowired
-	private TarefaService tarefaService;
+	final private TarefaService tarefaService;
 
 	@GetMapping("/backupRestore/exportar")
 	@ResponseBody

@@ -1,6 +1,5 @@
 package zcla71.baudoze.tarefa.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
@@ -20,12 +20,11 @@ import zcla71.baudoze.tarefa.model.service.TarefaService;
 import zcla71.baudoze.tarefa.view.entity.TarefaLista;
 import zcla71.baudoze.tarefa.view.service.TarefaViewService;
 
+@RequiredArgsConstructor
 @Controller
 public class TarefaController extends BauBaseController {
-	@Autowired
-	private TarefaService tarefaService;
-	@Autowired
-	private TarefaViewService tarefaViewService;
+	final private TarefaService tarefaService;
+	final private TarefaViewService tarefaViewService;
 
 	@GetMapping("/tarefa")
 	public ModelAndView listar(@AuthenticationPrincipal AuthUser authUser) {
@@ -65,6 +64,7 @@ public class TarefaController extends BauBaseController {
 				throw new IllegalArgumentException("Tarefa não encontrada");
 			}
 			if (tarefaLista.getDisabled()) {
+				// TODO Está sempre caindo aqui nas alterações
 				bindingResult.addError(new FieldError(bindingResult.getObjectName(), "tarefaMae", "A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas"));
 			}
 		}

@@ -1,6 +1,5 @@
 package zcla71.baudoze.tarefa.model.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -10,14 +9,15 @@ import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 
+@RequiredArgsConstructor
 @Service
 public class TarefaService {
-	@Autowired
-	private TarefaRepository tarefaRepository;
+	final private TarefaRepository tarefaRepository;
 	@PersistenceContext
 	private EntityManager entityManager;
 

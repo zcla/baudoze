@@ -20,7 +20,7 @@
 						<a href="/biblia">Bíblias</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a th:href="'/biblia/' + ${data.biblia.id}" th:text="${data.biblia.nome}"></a>
+						<a th:href="@{'/biblia/' + ${data.biblia.id}}" th:text="${data.biblia.nome}"></a>
 					</li>
 					<li class="breadcrumb-item active">
 						<span th:text="${htmlTitle}"></span>
@@ -51,7 +51,7 @@
 						<tbody>
 							<tr th:each="capitulo : ${data.capitulos}">
 								<td>
-									<a th:href="'/biblia/livro/capitulo/' + ${capitulo.id}" th:text="'Capítulo ' + ${capitulo.numero}"></a>
+									<a th:href="@{'/biblia/livro/capitulo/' + ${capitulo.id}}" th:text="'Capítulo ' + ${capitulo.numero}"></a>
 								</td>
 								<td th:text="${capitulo.versiculos}" class="text-end"></td>
 								<td class="botoes d-print-none">

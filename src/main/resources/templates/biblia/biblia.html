@@ -51,7 +51,7 @@
 							<tr th:each="livro : ${data.livros}">
 								<td th:text="${livro.sigla}"></td>
 								<td>
-									<a th:href="'/biblia/livro/' + ${livro.id}" th:text="${livro.nome}"></a>
+									<a th:href="@{'/biblia/livro/' + ${livro.id}}" th:text="${livro.nome}"></a>
 								</td>
 								<td th:text="${livro.capitulos}" class="text-end"></td>
 								<td class="botoes d-print-none">

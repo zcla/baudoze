@@ -20,10 +20,10 @@
 						<a href="/biblia">Bíblias</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a th:href="'/biblia/' + ${data.biblia.id}" th:text="${data.biblia.nome}"></a>
+						<a th:href="@{'/biblia/' + ${data.biblia.id}}" th:text="${data.biblia.nome}"></a>
 					</li>
 					<li class="breadcrumb-item">
-						<a th:href="'/biblia/livro/' + ${data.livro.id}" th:text="${data.livro.nome}"></a>
+						<a th:href="@{'/biblia/livro/' + ${data.livro.id}}" th:text="${data.livro.nome}"></a>
 					</li>
 					<li class="breadcrumb-item active">
 						<span th:text="${htmlTitle}"></span>

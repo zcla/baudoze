@@ -38,7 +38,6 @@ public class ImportMyBible {
 	@EventListener(ApplicationStartedEvent.class)
     public void init() {
 		try {
-			// TODO Criar um flag no BibliaService para não permitir uso enquanto estiver inicializando
 			log.info("init start");
 			importaTudo();
 			log.info("init end");

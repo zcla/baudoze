@@ -3,6 +3,7 @@ package zcla71.baudoze.biblia.model.service;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.biblia.model.entity.Biblia;
 import zcla71.baudoze.biblia.model.entity.Capitulo;
@@ -18,6 +19,7 @@ public class BibliaService {
 
 	final private BibliaRepository bibliaRepository;
 	
+	@Transactional
 	public void incluir(@NonNull Biblia biblia) {
 		this.bibliaRepository.save(biblia);
 	}

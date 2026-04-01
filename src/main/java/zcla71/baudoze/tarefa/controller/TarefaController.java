@@ -57,14 +57,13 @@ public class TarefaController extends BauBaseController {
 				throw new IllegalArgumentException("Tarefa não encontrada");
 			}
 			TarefaLista tarefaLista = tarefaViewService.listaTarefasMaePossiveis(authUser, existente).stream()
-					.filter(t -> t.getId().equals(tarefa.getId()))
+					.filter(t -> t.getId().equals(tarefa.getTarefaMae().getId()))
 					.findAny()
 					.orElse(null);
 			if (tarefaLista == null) {
 				throw new IllegalArgumentException("Tarefa não encontrada");
 			}
 			if (tarefaLista.getDisabled()) {
-				// TODO Está sempre caindo aqui nas alterações
 				bindingResult.addError(new FieldError(bindingResult.getObjectName(), "tarefaMae", "A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas"));
 			}
 		}

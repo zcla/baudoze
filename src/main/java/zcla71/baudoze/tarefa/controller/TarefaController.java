@@ -1,5 +1,8 @@
 package zcla71.baudoze.tarefa.controller;
 
+import java.util.ArrayList;
+
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -10,11 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
+import zcla71.baudoze.common.model.BauMensagem;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.service.TarefaService;
 import zcla71.baudoze.tarefa.view.entity.TarefaLista;
@@ -28,15 +33,13 @@ public class TarefaController extends BauBaseController {
 
 	@GetMapping("/tarefa")
 	public ModelAndView listar(@AuthenticationPrincipal AuthUser authUser) {
-		ModelAndView result = new ModelAndView("/tarefa/tarefas");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("/tarefa/tarefas", authUser);
 		result.addObject("tarefas", tarefaViewService.listaTarefas(authUser.getId()));
 		return result;
 	}
 
 	private ModelAndView getEditarModelAndView(@AuthenticationPrincipal AuthUser authUser, Tarefa tarefa) {
-		ModelAndView result = new ModelAndView("tarefa/tarefa");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("tarefa/tarefa", authUser);
 		result.addObject("tarefa", tarefa);
 		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(authUser, tarefa));
 		return result;
@@ -73,7 +76,7 @@ public class TarefaController extends BauBaseController {
 		}
 
 		this.tarefaService.salvar(tarefa, authUser);
-		return new ModelAndView("redirect:/tarefa");
+		return redirect("/tarefa");
 	}
 
 	@GetMapping("/tarefa/{id}/alterar")
@@ -82,9 +85,14 @@ public class TarefaController extends BauBaseController {
 	}
 
 	@PostMapping("/tarefa/{id}/excluir")
-	public ModelAndView excluir(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id) {
-		// TODO Verificar se tem filhos e o que fazer: impedir ou cascata
-		this.tarefaService.excluir(id, authUser);
-		return new ModelAndView("redirect:/tarefa");
+	public ModelAndView excluir(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
+		try {
+			this.tarefaService.excluir(id, authUser);
+		} catch (DataIntegrityViolationException e) { // Erro de FK
+			ArrayList<BauMensagem> mensagens = new ArrayList<>();
+			mensagens.add(new BauMensagem("danger", "Não é possível excluir uma tarefa que tem filhos."));
+			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
+		}
+		return redirect("/tarefa");
 	}
 }

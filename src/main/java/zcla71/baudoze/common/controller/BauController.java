@@ -13,8 +13,7 @@ public class BauController extends BauBaseController {
 
 	@GetMapping("/")
 	public ModelAndView index(@AuthenticationPrincipal AuthUser authUser) {
-		ModelAndView result = new ModelAndView("/index");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("/index", authUser);
 		return result;
 	}
 }

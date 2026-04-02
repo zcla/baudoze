@@ -27,8 +27,7 @@ public class BibliaController extends BauBaseController {
 
 	@GetMapping("/biblia")
 	public ModelAndView biblia(@AuthenticationPrincipal AuthUser authUser) {
-		ModelAndView result = new ModelAndView("/biblia/biblias");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("/biblia/biblias", authUser);
 		result.addObject("data", Map.of(
 			"biblias", bibliaViewService.listarBiblias()
 		));
@@ -37,8 +36,7 @@ public class BibliaController extends BauBaseController {
 
 	@GetMapping("/biblia/{idBiblia}")
 	public ModelAndView bibliaId(@AuthenticationPrincipal AuthUser authUser, @PathVariable @NonNull Long idBiblia) {
-		ModelAndView result = new ModelAndView("/biblia/biblia");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("/biblia/biblia", authUser);
 		result.addObject("data", Map.of(
 			"biblia", bibliaViewService.buscarBiblia(idBiblia),
 			"livros", bibliaViewService.listarLivros(idBiblia)
@@ -48,8 +46,7 @@ public class BibliaController extends BauBaseController {
 
 	@GetMapping("/biblia/livro/{idLivro}")
 	public ModelAndView livroId(@AuthenticationPrincipal AuthUser authUser, @PathVariable @NonNull Long idLivro) {
-		ModelAndView result = new ModelAndView("/biblia/livro");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("/biblia/livro", authUser);
 		Livro livro = bibliaService.buscaLivroPorId(idLivro);
 		Long idBiblia = livro.getBiblia().getId();
 		result.addObject("data", Map.of(
@@ -62,8 +59,7 @@ public class BibliaController extends BauBaseController {
 
 	@GetMapping("/biblia/livro/capitulo/{idCapitulo}")
 	public ModelAndView capituloId(@AuthenticationPrincipal AuthUser authUser, @PathVariable @NonNull Long idCapitulo) {
-		ModelAndView result = new ModelAndView("/biblia/capitulo");
-		addAuthInfo(result, authUser);
+		ModelAndView result = getModelAndView("/biblia/capitulo", authUser);
 		Capitulo capitulo = bibliaService.buscaCapituloPorId(idCapitulo);
 		Long idLivro = capitulo.getLivro().getId();
 		Long idBiblia = capitulo.getLivro().getBiblia().getId();

@@ -17,12 +17,24 @@ import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 @RequiredArgsConstructor
 @Service
 public class TarefaService {
+	private static boolean alterouMae(Tarefa antes, Tarefa depois) {
+		if (antes.getTarefaMae() == null) {
+			return depois.getTarefaMae() != null;
+		} else {
+			if (depois.getTarefaMae() == null) {
+				return true;
+			} else {
+				return !antes.getTarefaMae().getId().equals(depois.getTarefaMae().getId());
+			}
+		}
+	}
+
 	final private TarefaRepository tarefaRepository;
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	public Tarefa buscar(@NonNull Long id) {
-		return this.tarefaRepository.findById(id).orElse(null);
+		return tarefaRepository.findById(id).orElse(null);
 	}
 
 	public Tarefa novaTarefa() {
@@ -51,8 +63,9 @@ public class TarefaService {
 			tarefa.setAuthUser(authUser);
 			tarefa.setOrdem(proximaOrdem(authUser));
 			tarefa.setCumprida(false);
-			return this.tarefaRepository.save(tarefa);
+			return tarefaRepository.save(tarefa);
 		}
+		// Alteração
 		@SuppressWarnings("null") // Já foi tratado no if, acima
 		Tarefa existente = tarefaRepository.findById(tarefa.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		if (!existente.getAuthUser().getId().equals(authUser.getId())) {
@@ -60,9 +73,12 @@ public class TarefaService {
 		}
 		existente.setTitulo(tarefa.getTitulo());
 		existente.setDescricao(tarefa.getDescricao());
-		// TODO Se a tarefa mãe mudou, tem que rearrumar a ordem
-		existente.setTarefaMae(tarefa.getTarefaMae());
-		return this.tarefaRepository.save(existente);
+		if (alterouMae(existente, tarefa)) {
+			// Sempre que mudar a mãe, fica como última filha
+			existente.setOrdem(proximaOrdem(authUser));
+			existente.setTarefaMae(tarefa.getTarefaMae());
+		}
+		return tarefaRepository.save(existente);
 	}
 
 	@Transactional
@@ -71,6 +87,7 @@ public class TarefaService {
 		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de excluir tarefa de outro usuário!");
 		}
+		// Não precisa rearrumar a ordem
 		tarefaRepository.delete(tarefa);
 	}
 }

@@ -14,9 +14,4 @@ public class BauDoZeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BauDoZeApplication.class, args);
 	}
-
-	// TODO Autenticação do Google -> botão "sair"
-	// TODO Gravar dados fora do container
-	// TODO Backup
-	// TODO Restore
 }

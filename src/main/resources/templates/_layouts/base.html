@@ -57,19 +57,23 @@
 						</li>
 					</ul>
 					<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-						<li class="nav-item dropdown">
-							<a class="d-block nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="/img/backup-restore-16.png"> Backup/Restore</a>
-							<ul class="dropdown-menu dropdown-menu-end text-small">
-								<li><a id="bau_exportar" class="dropdown-item">Exportar</a></li>
-								<li><a id="bau_importar" class="dropdown-item">Importar</a></li>
-								<li><a id="bau_limpar" class="dropdown-item">Limpar</a></li>
-							</ul>
-						</li>
 					</ul>
 					<ul class="navbar-nav ms-3">
-						<li class="nav-item d-flex align-items-center">
-							<img th:src="${_authUser.urlImagem}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
-							<span class="navbar-text me-3" th:text="${_authUser.nome}"></span>
+						<li th:if="${_authUser != null}" class="nav-item d-flex align-items-center dropdown">
+							<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img th:src="${_authUser.urlImagem}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+								<span class="navbar-text me-3" th:text="${_authUser.nome}"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end text-small">
+								<li><a id="bau_exportar" class="dropdown-item">Exportar dados</a></li>
+								<li><a id="bau_importar" class="dropdown-item">Importar dados</a></li>
+								<li><a id="bau_limpar" class="dropdown-item">Limpar dados</a></li>
+								<!-- TODO Sair -->
+							</ul>
+						</li>
+						<li th:if="${_authUser == null}" class="nav-item d-flex align-items-center">
+							<img src="/img/no-auth-user.png" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+							<span class="navbar-text me-3">Anônimo</span>
 						</li>
 					</ul>
 				</div>

@@ -13,7 +13,9 @@ public class BauModelAndView extends ModelAndView {
 
 	public BauModelAndView(String viewName, AuthUser authUser) {
 		super(viewName);
-		addObject("_authUser", new BauAuthUser(authUser.getNome(), authUser.getImagem() == null ? authUser.getUrlImagem() : "/auth_user/" + authUser.getId() + "/imagem/"));
+		if (authUser != null) {
+			addObject("_authUser", new BauAuthUser(authUser.getNome(), authUser.getImagem() == null ? authUser.getUrlImagem() : "/auth_user/" + authUser.getId() + "/imagem/"));
+		}
 		this.mensagens = new ArrayList<>();
 		addObject("_mensagens", this.mensagens);
 	}

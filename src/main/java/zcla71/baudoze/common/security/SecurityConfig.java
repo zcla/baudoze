@@ -13,7 +13,19 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http, CustomOidcUserService customOidcUserService) throws Exception {
 		http
 			.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/public/**").permitAll() // TODO Rever
+				// Arquivos estáticos
+				.requestMatchers(
+						"/",
+						"/favicon.ico",
+						"/3rdp/**",
+						"/css/**",
+						"/img/**",
+						"/js/**").permitAll()
+				// Páginas internas
+				.requestMatchers("/_erro/**").permitAll()
+				// Bíblia
+				.requestMatchers("/biblia/**").permitAll()
+				// Todo o resto precisa de login
 				.anyRequest().authenticated()
 			)
 			.oauth2Login(oauth2 -> oauth2

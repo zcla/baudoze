@@ -18,6 +18,9 @@ public class TarefaLista {
 	private String descricao;
     private Boolean cumprida;
 	private Long indent;
+	private Long qtdFilhos;
+	private Long primeiroFilho;
+	private Long ultimoFilho;
 	@Transient
 	private Boolean disabled;
 }

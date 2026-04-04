@@ -19,6 +19,8 @@ CREATE TABLE tarefa (
 	cumprida BOOLEAN
 );
 
+CREATE INDEX idx_tarefa_mae_ordem ON tarefa(id_mae, ordem);
+
 -- create view
 
 CREATE VIEW tarefa_lista
@@ -48,8 +50,24 @@ SELECT
 	t.titulo,
 	t.descricao,
 	t.cumprida,
-	_.indent
+	_.indent,
+	COALESCE(tm.qtd_filhos, 0) AS qtd_filhos,
+	(ord.pos = 1) AS primeiro_filho,
+	(ord.pos = ord.total) AS ultimo_filho
 FROM temp _
 JOIN tarefa t
 	ON t.id = _.id
+LEFT JOIN (
+	SELECT id_mae, COUNT(*) AS qtd_filhos
+	FROM tarefa
+	GROUP BY id_mae
+) tm ON tm.id_mae = t.id
+LEFT JOIN (
+	SELECT
+		id,
+		id_mae,
+		ROW_NUMBER() OVER (PARTITION BY id_mae ORDER BY ordem) AS pos,
+		COUNT(*) OVER (PARTITION BY id_mae) AS total
+	FROM tarefa
+) ord ON ord.id = t.id
 ORDER BY _.path, _.id;

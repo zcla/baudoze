@@ -3,7 +3,7 @@
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 		layout:decorate="~{_layouts/base}"
-		th:with="htmlTitle=${tarefa.id == null} ? 'Nova tarefa' : 'Alterar tarefa'">
+		th:with="htmlTitle=(${tarefa.id == null} ? 'Nova tarefa' : 'Alterar tarefa'), imgBadge=(${tarefa.id == null} ? 'incluir' : 'alterar')">
 	<head>
 		<title th:text="${htmlTitle}"></title>
 	</head>
@@ -14,7 +14,7 @@
 					<li th:replace="~{_fragments/breadcrumb :: bau()}"></li>
 					<li th:replace="~{_fragments/breadcrumb :: tarefa_index(text=${'Tarefas'})}"></li>
 					<li class="breadcrumb-item active">
-						<img th:src="${'/img/button-' + (tarefa.id == null ? 'incluir' : 'alterar') + '.png'}">
+						<img th:src="'/img/button-' + ${imgBadge} + '.png'">
 						<span th:text="${htmlTitle}"></span>
 					</li>
 				</ol>
@@ -22,7 +22,7 @@
 			<h1>
 				<span style="position: relative">
 					<img th:src="${'/img/tarefa-32.png'}">
-					<img th:src="${'/img/layer-' + (tarefa.id == null ? 'incluir' : 'alterar') + '-32.png'}" style="position: absolute; bottom: 0px; left: 0px; z-index: 1;">
+					<img th:src="'/img/layer-' + ${imgBadge} + '-32.png'" style="position: absolute; bottom: 0px; left: 0px; z-index: 1;">
 				</span>
 				<span th:text="${htmlTitle}"></span>
 			</h1>

@@ -12,10 +12,7 @@
 			<img src="/img/bau-512.png" style="width: 512px; float: right;">
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item active">
-						<img src="/img/bau-16.png">
-						<span>Baú</span>
-					</li>
+					<li th:replace="~{_fragments/breadcrumb :: bau(active=true)}"></li>
 				</ol>
 			</nav>
 			<div class="row mb-3">

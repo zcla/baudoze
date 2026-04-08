@@ -11,14 +11,8 @@
 		<div layout:fragment="conteudo">
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item">
-						<img src="/img/bau-16.png">
-						<a href="/">Baú</a>
-					</li>
-					<li class="breadcrumb-item">
-						<img src="/img/tarefa-16.png">
-						<a href="/tarefa">Tarefas</a>
-					</li>
+					<li th:replace="~{_fragments/breadcrumb :: bau()}"></li>
+					<li th:replace="~{_fragments/breadcrumb :: tarefa_index(text=${'Tarefas'})}"></li>
 					<li class="breadcrumb-item active">
 						<img th:src="${'/img/button-' + (tarefa.id == null ? 'incluir' : 'alterar') + '.png'}">
 						<span th:text="${htmlTitle}"></span>

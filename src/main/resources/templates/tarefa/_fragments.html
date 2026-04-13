@@ -1,3 +1,10 @@
+<!-- breadcrumb_index() -->
+<li th:fragment="breadcrumb_index(text)" th:with="active=${active} ?: false" th:class="'breadcrumb-item' + (active ? ' active' : '')">
+	<img src="/img/tarefa-16.png">
+	<a th:if="${!active}" th:text="${text}" href="/tarefa"></a>
+	<span th:if="${active}" th:text="${text}"></span>
+</li>
+
 <!-- theadTr() -->
 <tr th:fragment="theadTr()">
 	<th>Tarefa</th>
@@ -22,7 +29,23 @@
 	<td>
 		<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
 		<span class="col-1" style="width: 1px !important">
-			<input class="form-check-input me-1" type="checkbox" th:checked="${tarefa.cumprida}">
+			<form
+					th:id="'marcar-form-' + ${tarefa.id}"
+					th:action="@{'/tarefa/' + ${tarefa.id}} + '/marcar'"
+					method="post"
+					style="display:none;">
+			</form>
+			<form
+					th:id="'desmarcar-form-' + ${tarefa.id}"
+					th:action="@{'/tarefa/' + ${tarefa.id}} + '/desmarcar'"
+					method="post"
+					style="display:none;">
+			</form>
+			<input
+					class="form-check-input me-1"
+					type="checkbox"
+					th:checked="${tarefa.cumprida}"
+					th:onclick="'document.getElementById(\'' + (${tarefa.cumprida} ? 'des' : '') + 'marcar-form-' + ${tarefa.id} + '\').submit();'">
 		</span>
 		<span class="col">
 			<label th:utext="${tarefa.titulo}" class="form-check-label"></label>

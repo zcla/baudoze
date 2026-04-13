@@ -5,9 +5,5 @@
 	<span th:if="${active}">Baú</span>
 </li>
 
-<!-- tarefa_index() -->
-<li th:fragment="tarefa_index(text)" th:with="active=${active} ?: false" th:class="'breadcrumb-item' + (active ? ' active' : '')">
-	<img src="/img/tarefa-16.png">
-	<a th:if="${!active}" th:text="${text}" href="/tarefa"></a>
-	<span th:if="${active}" th:text="${text}"></span>
-</li>
+<!-- TODO biblia_index() -->
+ 

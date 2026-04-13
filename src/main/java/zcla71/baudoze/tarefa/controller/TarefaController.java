@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,14 +33,14 @@ public class TarefaController extends BauBaseController {
 	final private TarefaViewService tarefaViewService;
 
 	@GetMapping("/tarefa")
-	public ModelAndView listar(@AuthenticationPrincipal AuthUser authUser) {
-		ModelAndView result = getModelAndView("/tarefa/tarefas", authUser);
+	public ModelAndView index(@AuthenticationPrincipal AuthUser authUser) {
+		ModelAndView result = getModelAndView("/tarefa/index", authUser);
 		result.addObject("tarefas", tarefaViewService.listaTarefas(authUser.getId()));
 		return result;
 	}
 
 	private ModelAndView getEditarModelAndView(@AuthenticationPrincipal AuthUser authUser, Tarefa tarefa) {
-		ModelAndView result = getModelAndView("tarefa/tarefa", authUser);
+		ModelAndView result = getModelAndView("/tarefa/editar", authUser);
 		result.addObject("tarefa", tarefa);
 		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(authUser, tarefa));
 		return result;
@@ -52,6 +53,7 @@ public class TarefaController extends BauBaseController {
 
 	@PostMapping("/tarefa/salvar")
 	public ModelAndView salvar(@AuthenticationPrincipal AuthUser authUser, @NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
+		// TODO Isso é regra de negócio; mover para o Service.
 		// A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
 		Long tarefaId = tarefa.getId();
 		if ((tarefaId != null) && (tarefa.getTarefaMae() != null)) {
@@ -88,9 +90,34 @@ public class TarefaController extends BauBaseController {
 	public ModelAndView excluir(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
 		try {
 			this.tarefaService.excluir(id, authUser);
+		// TODO Erros de banco deveriam ser tratados pelo Service, não?
 		} catch (DataIntegrityViolationException e) { // Erro de FK
 			ArrayList<BauMensagem> mensagens = new ArrayList<>();
 			mensagens.add(new BauMensagem("danger", "Não é possível excluir uma tarefa que tem filhos."));
+			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
+		}
+		return redirect("/tarefa");
+	}
+
+	@PostMapping("/tarefa/{id}/marcar")
+	public ModelAndView marcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
+		try {
+			this.tarefaService.marcar(id, authUser);
+		} catch (ResponseStatusException e) {
+			ArrayList<BauMensagem> mensagens = new ArrayList<>();
+			mensagens.add(new BauMensagem("danger", e.getMessage()));
+			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
+		}
+		return redirect("/tarefa");
+	}
+
+	@PostMapping("/tarefa/{id}/desmarcar")
+	public ModelAndView desmarcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
+		try {
+			this.tarefaService.desmarcar(id, authUser);
+		} catch (ResponseStatusException e) {
+			ArrayList<BauMensagem> mensagens = new ArrayList<>();
+			mensagens.add(new BauMensagem("danger", e.getMessage()));
 			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
 		}
 		return redirect("/tarefa");

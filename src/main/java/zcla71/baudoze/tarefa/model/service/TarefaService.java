@@ -17,6 +17,7 @@ import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 @RequiredArgsConstructor
 @Service
 public class TarefaService {
+	// TODO Essa classe deveria ser independente de tecnologia, por tanto não deveria lançar ResponseStatusException; ver qual é a melhor prática.
 	private static boolean alterouMae(Tarefa antes, Tarefa depois) {
 		if (antes.getTarefaMae() == null) {
 			return depois.getTarefaMae() != null;
@@ -43,6 +44,7 @@ public class TarefaService {
 		return result;
 	}
 
+	// TODO Parece que isso ficaria melhor no repository, não?
 	@Transactional(propagation = Propagation.MANDATORY)
 	public Long proximaOrdem(AuthUser authUser) {
 		Long result = (Long) entityManager
@@ -83,11 +85,53 @@ public class TarefaService {
 
 	@Transactional
 	public void excluir(@NonNull Long id, AuthUser authUser) {
-		Tarefa tarefa = tarefaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		Tarefa tarefa = buscar(id);
+		if (tarefa == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de excluir tarefa de outro usuário!");
 		}
 		// Não precisa rearrumar a ordem
 		tarefaRepository.delete(tarefa);
+	}
+
+	// TODO Criar um método marcarDesmarcar() para ser usado por marcar() e desmarcar()
+	@Transactional
+	public Tarefa marcar(@NonNull Long id, AuthUser authUser) {
+		// TODO Esse trecho é muito repetido; juntar.
+		Tarefa tarefa = buscar(id);
+		if (tarefa == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de marcar tarefa de outro usuário!");
+		}
+		// TODO Até aqui
+
+		if (tarefa.getCumprida()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tarefa já está cumprida.");
+		}
+		tarefa.setCumprida(true);
+		return tarefaRepository.save(tarefa);
+	}
+
+	@Transactional
+	public Tarefa desmarcar(@NonNull Long id, AuthUser authUser) {
+		// TODO Esse trecho é muito repetido; juntar.
+		Tarefa tarefa = buscar(id);
+		if (tarefa == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de marcar tarefa de outro usuário!");
+		}
+		// TODO Até aqui
+
+		if (!tarefa.getCumprida()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tarefa já está descumprida.");
+		}
+		tarefa.setCumprida(false);
+		return tarefaRepository.save(tarefa);
 	}
 }

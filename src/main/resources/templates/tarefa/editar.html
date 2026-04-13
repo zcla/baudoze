@@ -12,7 +12,7 @@
 			<nav>
 				<ol class="breadcrumb">
 					<li th:replace="~{_fragments/breadcrumb :: bau()}"></li>
-					<li th:replace="~{_fragments/breadcrumb :: tarefa_index(text=${'Tarefas'})}"></li>
+					<li th:replace="~{tarefa/_fragments :: breadcrumb_index(text=${'Tarefas'})}"></li>
 					<li class="breadcrumb-item active">
 						<img th:src="'/img/button-' + ${imgBadge} + '.png'">
 						<span th:text="${htmlTitle}"></span>

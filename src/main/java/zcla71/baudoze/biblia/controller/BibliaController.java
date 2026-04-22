@@ -27,7 +27,7 @@ public class BibliaController extends BauBaseController {
 
 	@GetMapping("/biblia")
 	public ModelAndView biblia(@AuthenticationPrincipal AuthUser authUser) {
-		ModelAndView result = getModelAndView("/biblia/biblias", authUser);
+		ModelAndView result = getModelAndView("/biblia/index", authUser);
 		result.addObject("data", Map.of(
 			"biblias", bibliaViewService.listarBiblias()
 		));

@@ -16,3 +16,9 @@
 	<a th:if="${!active}" th:text="${nome}" th:href="@{'/biblia/livro/' + ${id}}"></a>
 	<span th:if="${active}" th:text="${nome}"></span>
 </li>
+
+<!-- breadcrumb_capitulo(id, nome) -->
+<li th:fragment="breadcrumb_capitulo(id, nome)" th:with="active=${active} ?: false" th:class="'breadcrumb-item' + (active ? ' active' : '')">
+	<a th:if="${!active}" th:text="${nome}" th:href="@{'/biblia/livro/capitulo/' + ${id}}"></a>
+	<span th:if="${active}" th:text="${nome}"></span>
+</li>

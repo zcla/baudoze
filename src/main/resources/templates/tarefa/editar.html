@@ -11,7 +11,7 @@
 		<div layout:fragment="conteudo">
 			<nav>
 				<ol class="breadcrumb">
-					<li th:replace="~{_fragments/breadcrumb :: bau()}"></li>
+					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
 					<li th:replace="~{tarefa/_fragments :: breadcrumb_index()}"></li>
 					<li class="breadcrumb-item active">
 						<img th:src="'/img/button-' + ${imgBadge} + '.png'">

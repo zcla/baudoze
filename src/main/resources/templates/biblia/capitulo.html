@@ -13,9 +13,7 @@
 				<ol class="breadcrumb">
 					<li th:replace="~{_fragments/breadcrumb :: bau()}"></li>
 					<li th:replace="~{biblia/_fragments :: breadcrumb_index()}"></li>
-					<li class="breadcrumb-item">
-						<a th:href="@{'/biblia/' + ${data.biblia.id}}" th:text="${data.biblia.nome}"></a>
-					</li>
+					<li th:replace="~{biblia/_fragments :: breadcrumb_biblia(id=${data.biblia.id}, nome=${data.biblia.nome})}"></li>
 					<li class="breadcrumb-item">
 						<a th:href="@{'/biblia/livro/' + ${data.livro.id}}" th:text="${data.livro.nome}"></a>
 					</li>

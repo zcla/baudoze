@@ -1,5 +1,5 @@
 <!-- breadcrumb_index() -->
-<li th:fragment="breadcrumb_index(text)" th:with="active=${active} ?: false" th:class="'breadcrumb-item' + (active ? ' active' : '')">
+<li th:fragment="breadcrumb_index()" th:with="active=${active} ?: false, text=${text} ?: 'Tarefas'" th:class="'breadcrumb-item' + (active ? ' active' : '')">
 	<img src="/img/tarefa-16.png">
 	<a th:if="${!active}" th:text="${text}" href="/tarefa"></a>
 	<span th:if="${active}" th:text="${text}"></span>

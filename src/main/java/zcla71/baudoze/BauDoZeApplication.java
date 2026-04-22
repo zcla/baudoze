@@ -14,12 +14,4 @@ public class BauDoZeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BauDoZeApplication.class, args);
 	}
-
-	// TODO Gravar dados fora do container
-	// TODO Backup
-	// TODO Restore
-	// Autenticação do Google
-	// TODO 1. Botão sair.
-	// TODO 2. Guardar o último usuário logado.
-	// TODO 3. "429. That’s an error. The rate limit for this service has been exceeded. That’s all we know." Guardar imagem do usuário logado?
 }

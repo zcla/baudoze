@@ -44,4 +44,12 @@ public class Utils {
 	public static Integer trataNull(Integer i, Integer nullValue) {
 		return i == null ? nullValue : i;
 	}
+
+	public static Long trataNull(Long l) {
+		return trataNull(l, 0L);
+	}
+
+	public static Long trataNull(Long l, Long nullValue) {
+		return l == null ? nullValue : l;
+	}
 }

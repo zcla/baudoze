@@ -1,12 +1,16 @@
 package zcla71.baudoze.common.controller;
 
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.ModelAndView;
 
+import zcla71.baudoze.auth_user.model.entity.AuthUser;
+
 public abstract class BauBaseController {
-	protected void addAuthInfo(ModelAndView mav, OidcUser user) {
-		mav.addObject("authUserName", user.getAttribute("name"));
-		mav.addObject("authUserPicture", user.getAttribute("picture"));
-		mav.addObject("authUserEmail", user.getAttribute("email"));
+	protected BauModelAndView getModelAndView(@NonNull String viewName, AuthUser authUser) {
+		return new BauModelAndView(viewName, authUser);
+	}
+
+	public ModelAndView redirect(String viewName) {
+		return new ModelAndView("redirect:" + viewName);
 	}
 }

@@ -2,10 +2,7 @@ package zcla71.baudoze.biblia.model.entity;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,14 +23,13 @@ public class Livro {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "biblia_id", nullable = false, referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_livro_biblia"))
+	@JoinColumn(name = "biblia_id", referencedColumnName = "id")
 	private Biblia biblia;
 
-	@Column(nullable = false)
 	private String sigla;
 
 	private String nome;
 
-	@OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "livro")
 	private List<Capitulo> capitulos;
 }

@@ -9,13 +9,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
+@Deprecated // Já foi usado com sucesso, mas não utilizo mais. Mantenho aqui caso seja necessário no futuro, pois funciona perfeitamente.
 public class JsonUtils {
 	private final ObjectMapper objectMapper;
 
+	@Deprecated
     public JsonUtils(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
+	@Deprecated
 	public String toJson(Object object) {
         try {
             return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
@@ -24,6 +27,7 @@ public class JsonUtils {
         }
     }
 
+	@Deprecated
 	public void writeToFile(Object object, File file) {
 		try {
 			objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, object);

@@ -2,7 +2,6 @@ package zcla71.baudoze.texto.model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +20,6 @@ public class Texto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToMany(mappedBy = "texto", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "texto")
 	private List<TextoParte> texto;
 }

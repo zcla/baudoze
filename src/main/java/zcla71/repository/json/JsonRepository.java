@@ -12,8 +12,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+@Deprecated // Já foi usado com sucesso, mas não utilizo mais. Mantenho aqui caso seja necessário no futuro, pois funciona perfeitamente.
 public abstract class JsonRepository<T, ID> {
+    @Deprecated
     public interface FilePathProvider {
+        @Deprecated
         Path get();
     }
 
@@ -24,6 +27,7 @@ public abstract class JsonRepository<T, ID> {
 
     private boolean autoIdLongEnabled = false;
 
+    @Deprecated
     protected JsonRepository(ObjectMapper mapper, FilePathProvider filePathProvider) {
         this.mapper = Objects.requireNonNull(mapper, "mapper");
         this.filePathProvider = Objects.requireNonNull(filePathProvider, "filePathProvider");
@@ -33,16 +37,21 @@ public abstract class JsonRepository<T, ID> {
      * Pontos de extensão
      * ========================= */
 
+    @Deprecated
     protected abstract ID getId(T entity);
+    @Deprecated
     protected abstract void setId(T entity, ID id);
+    @Deprecated
     protected abstract TypeReference<List<T>> listTypeRef();
 
     /** Habilita auto-id para IDs do tipo Long. */
+    @Deprecated
     protected final void enableAutoIdLong() {
         this.autoIdLongEnabled = true;
     }
 
     /** Permite customizar a criação/normalização do path. */
+    @Deprecated
     protected Path normalizePath(Path p) {
         return p.toAbsolutePath().normalize();
     }
@@ -51,6 +60,7 @@ public abstract class JsonRepository<T, ID> {
      * API estilo CrudRepository
      * ========================= */
 
+    @Deprecated
     public T save(T entity) {
         Objects.requireNonNull(entity, "entity");
         StoreState<T, ID> state = stateForCurrentPath();
@@ -79,6 +89,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public List<T> saveAll(Iterable<T> entities) {
         Objects.requireNonNull(entities, "entities");
         StoreState<T, ID> state = stateForCurrentPath();
@@ -112,6 +123,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public Optional<T> findById(ID id) {
         Objects.requireNonNull(id, "id");
         StoreState<T, ID> state = stateForCurrentPath();
@@ -125,6 +137,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public boolean existsById(ID id) {
         Objects.requireNonNull(id, "id");
         StoreState<T, ID> state = stateForCurrentPath();
@@ -138,6 +151,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public List<T> findAll() {
         StoreState<T, ID> state = stateForCurrentPath();
         ensureLoaded(state);
@@ -150,6 +164,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public List<T> findAllById(Iterable<ID> ids) {
         Objects.requireNonNull(ids, "ids");
         StoreState<T, ID> state = stateForCurrentPath();
@@ -169,6 +184,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public long count() {
         StoreState<T, ID> state = stateForCurrentPath();
         ensureLoaded(state);
@@ -181,6 +197,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public void deleteById(ID id) {
         Objects.requireNonNull(id, "id");
         StoreState<T, ID> state = stateForCurrentPath();
@@ -196,6 +213,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public void delete(T entity) {
         Objects.requireNonNull(entity, "entity");
 
@@ -217,6 +235,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public void deleteAllById(Iterable<? extends ID> ids) {
         Objects.requireNonNull(ids, "ids");
 
@@ -242,6 +261,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public void deleteAll(Iterable<? extends T> entities) {
         Objects.requireNonNull(entities, "entities");
 
@@ -271,6 +291,7 @@ public abstract class JsonRepository<T, ID> {
         }
     }
 
+    @Deprecated
     public void deleteAll() {
         StoreState<T, ID> state = stateForCurrentPath();
         ensureLoaded(state);

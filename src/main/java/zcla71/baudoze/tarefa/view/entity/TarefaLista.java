@@ -1,0 +1,26 @@
+package zcla71.baudoze.tarefa.view.entity;
+
+import org.hibernate.annotations.Immutable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+import lombok.Data;
+
+@Data
+@Entity
+@Immutable
+public class TarefaLista {
+	@Id
+	private Long id;
+	private Long authUserId;
+	private String titulo;
+	private String descricao;
+    private Boolean cumprida;
+	private Long indent;
+	private Long qtdFilhos;
+	private Long primeiroFilho;
+	private Long ultimoFilho;
+	@Transient
+	private Boolean disabled;
+}

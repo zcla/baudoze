@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title layout:title-pattern="$CONTENT_TITLE &bull; $LAYOUT_TITLE">Baú do Zé</title>
+		<!-- https://getbootstrap.com/docs/5.3/getting-started/download/ -->
+		<link rel="stylesheet" th:href="@{/3rdp/bootstrap-5.3.8/css/bootstrap.min.css}">
+		<script th:src="@{/3rdp/bootstrap-5.3.8/js/bootstrap.bundle.min.js}"></script>
+		<!-- https://jquery.com/download/ -->
+		<script th:src="@{/3rdp/jquery-4.0.0.min.js}"></script>
+		<!-- https://github.com/lipis/flag-icons -->
+		<link rel="stylesheet" th:href="@{/3rdp/flag-icons-7.5.0/css/flag-icons.min.css}">
+		<!-- baú -->
+		<meta name="description" content="Baú do Zé">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="stylesheet" href="/css/baudoze.css">
+		<script th:src="@{/js/utils.js}"></script>
+		<script>
+			$(window).on('load', function() {
+				$('#bau_exportar').click(async () => {
+					const data = await $.ajax({ 
+						type: "GET",
+						dataType: "json",
+						url: "/backupRestore/exportar",
+						success: function(data){
+							debugger;
+							StringUtils.downloadString(JSON.stringify(data), `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
+							// TODO Trazer frontend do projeto "todo"
+							frontend.addMessage('success', '', 'Exportação feita com sucesso.');
+						}
+						// TODO Tratar erro
+					});
+				});
+			});
+		</script>
+		<!-- Blocos adicionais do head (opcional) -->
+		<th:block layout:fragment="extra-head"></th:block>
+	</head>
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark d-print-none">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><img src="/img/bau-32.png"> Baú do Zé</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar">
+					<ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/biblia"><img src="/img/biblia-16.png"> Bíblias</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/tarefa"><img src="/img/tarefa-16.png"> Tarefas</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+					</ul>
+					<ul class="navbar-nav ms-3">
+						<li th:if="${_authUser != null}" class="nav-item d-flex align-items-center dropdown">
+							<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img th:src="${_authUser.urlImagem}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+								<span class="navbar-text me-3" th:text="${_authUser.nome}"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end text-small">
+								<!-- TODO Está com erro -->
+								<li><a id="bau_exportar" class="dropdown-item">Exportar dados</a></li>
+								<!-- TODO Implementar -->
+								<li><a id="bau_importar" class="dropdown-item">Importar dados</a></li>
+								<!-- TODO Implementar -->
+								<li><a id="bau_limpar" class="dropdown-item">Limpar dados</a></li>
+								<!-- TODO Sair -->
+							</ul>
+						</li>
+						<li th:if="${_authUser == null}" class="nav-item d-flex align-items-center">
+							<img src="/img/no-auth-user.png" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+							<span class="navbar-text me-3">Anônimo</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<!-- Mensagens -->
+			<div id="mensagens" class="mt-3">
+				<div th:each="mensagem : ${_mensagens}">
+					<div th:class="'alert alert-' + ${mensagem.tipo} + ' alert-dismissible fade show'" role="alert">
+						<span th:text="${mensagem.texto}"></span>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+					</div>
+				</div>
+				<div th:each="mensagem : ${_flash_mensagens}">
+					<div th:class="'alert alert-' + ${mensagem.tipo} + ' alert-dismissible fade show'" role="alert">
+						<span th:text="${mensagem.texto}"></span>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+					</div>
+				</div>
+			</div>
+	
+			<!-- CONTEÚDO DINÂMICO - onde o conteúdo da página será inserido -->
+			<div layout:fragment="conteudo">
+				<p>O conteúdo da página deveria estar aqui...</p>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="bg-dark d-print-none">
+			<p class="text-center text-white">Este código é livre e pode ser baixado do <a href="https://github.com/zcla/baudoze" target="_blank">GitHub<img class="align-text-bottom" src="/img/linkExterno.svg"></a>.</p>
+		</footer>
+
+		<!-- Blocos adicionais do body (opcional) -->
+		<th:block layout:fragment="extra-body"></th:block>
+	</body>
+</html>

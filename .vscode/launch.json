@@ -6,12 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
             "name": "BauDoZeApplication",
             "request": "launch",
             "mainClass": "zcla71.baudoze.BauDoZeApplication",

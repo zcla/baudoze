@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='ERRO 😬'">
 	<head>
-		<title>Baú do Zé : ERRO 😬</title>
-		<th:block th:insert="~{/_fragments/geral.html :: head}"></th:block>
+		<title th:text="${htmlTitle}"></title>
 	</head>
 	<body>
-		<nav th:replace="~{/_fragments/geral.html :: nav}"></nav>
-		<div class="container-fluid">
-			<div id="conteudo">
-				<h1>ERRO 😬</h1>
-				<dl>
-					<th:block th:if="${errors}">
-						<dt>Status code</dt>
-						<dd th:text="${statusCode}"></dd>
-					</th:block>
-					<dt>Exception</dt>
-					<dd th:text="${exception}"></dd>
-					<dt>Message</dt>
-					<dd th:text="${message}"></dd>
-					<th:block th:if="${errors}">
-						<dt>Binding errors</dt>
-						<dd th:text="${errors}"></dd>
-					</th:block>
-					<dt>Stack trace</dt>
-					<dd>
-						<pre><code th:text="${trace}"></code></pre>
-					</dd>
-				</dl>
-			</div>
+		<div layout:fragment="conteudo" class="container-fluid">
+			<h1 th:text="${htmlTitle}"></h1>
+			<dl>
+				<th:block th:if="${errors}">
+					<dt>Status code</dt>
+					<dd th:text="${statusCode}"></dd>
+				</th:block>
+				<dt>Exception</dt>
+				<dd th:text="${exception}"></dd>
+				<dt>Message</dt>
+				<dd th:text="${message}"></dd>
+				<th:block th:if="${errors}">
+					<dt>Binding errors</dt>
+					<dd th:text="${errors}"></dd>
+				</th:block>
+				<dt>Stack trace</dt>
+				<dd>
+					<pre><code th:text="${trace}"></code></pre>
+				</dd>
+			</dl>
 		</div>
-		<footer th:replace="~{/_fragments/geral.html :: footer}"></footer>
 	</body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='Tarefas'">
+	<head>
+		<title th:text="${htmlTitle}"></title>
+	</head>
+	<body>
+		<div layout:fragment="conteudo">
+			<nav>
+				<ol class="breadcrumb">
+					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{tarefa/_fragments :: breadcrumb_index(active=true)}"></li>
+				</ol>
+			</nav>
+			<h1>
+				<span>
+					<img src="/img/tarefa-32.png">
+					<span th:text="${htmlTitle}"></span>
+				</span>
+			</h1>
+			<th:block th:if="${#lists.isEmpty(tarefas)}">
+				<p>Não há tarefas cadastradas.</p>
+			</th:block>
+			<th:block th:if="${!#lists.isEmpty(tarefas)}">
+				<div id="crudLista" class="mb-3">
+					<table class="table table-sm table-hover">
+						<thead>
+							<th:block th:replace="~{tarefa/_fragments :: theadTr()}"></th:block>
+						</thead>
+						<tbody>
+							<th:block th:each="tarefa : ${tarefas}">
+								<th:block th:replace="~{tarefa/_fragments :: tbodyTr(tarefa=${tarefa})}"></th:block>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</th:block>
+		</div>
+	</body>
+</html>

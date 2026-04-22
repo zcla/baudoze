@@ -1,0 +1,83 @@
+<!-- breadcrumb_index() -->
+<li th:fragment="breadcrumb_index()" th:with="active=${active} ?: false, text=${text} ?: 'Tarefas'" th:class="'breadcrumb-item' + (active ? ' active' : '')">
+	<img src="/img/tarefa-16.png">
+	<a th:if="${!active}" th:text="${text}" href="/tarefa"></a>
+	<span th:if="${active}" th:text="${text}"></span>
+</li>
+
+<!-- theadTr() -->
+<tr th:fragment="theadTr()">
+	<th>Tarefa</th>
+	<th class="botoes d-print-none text-end">
+		<div class="btn-group" role="group">
+			<a
+					th:href="@{'/tarefa/incluir'}"
+					type="button"
+					class="btn btn-sm bg-success-subtle"
+					title="Incluir">
+				<img src="/img/button-incluir.png">
+			</a>
+			<!--
+			<button id="btnUnselectAll" type="button" class="btn bg-warning-subtle" title="Desmarcar todas"><img src="/img/tarefa-button-desmarcar-todas.png" style="padding-bottom: 3px;"></button></div>
+			-->
+		</div>
+	</th>
+</tr>
+
+<!-- tbodyTr(tarefa) -->
+<tr th:fragment="tbodyTr(tarefa)" th:id="'tarefa-' + ${tarefa.id}">
+	<td>
+		<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
+		<span class="col-1" style="width: 1px !important">
+			<form
+					th:id="'marcar-form-' + ${tarefa.id}"
+					th:action="@{'/tarefa/' + ${tarefa.id}} + '/marcar'"
+					method="post"
+					style="display:none;">
+			</form>
+			<form
+					th:id="'desmarcar-form-' + ${tarefa.id}"
+					th:action="@{'/tarefa/' + ${tarefa.id}} + '/desmarcar'"
+					method="post"
+					style="display:none;">
+			</form>
+			<input
+					class="form-check-input me-1"
+					type="checkbox"
+					th:checked="${tarefa.cumprida}"
+					th:onclick="'document.getElementById(\'' + (${tarefa.cumprida} ? 'des' : '') + 'marcar-form-' + ${tarefa.id} + '\').submit();'">
+		</span>
+		<span class="col">
+			<label th:utext="${tarefa.titulo}" class="form-check-label"></label>
+			<small th:utext="${tarefa.descricao}"></small>
+		</span>
+	</td>
+	<td class="botoes d-print-none">
+		<div class="btn-group" role="group">
+			<!-- TODO Subir ordem -->
+			<!-- TODO Descer ordem -->
+			<!-- TODO Incluir subtarefa -->
+			<a
+					th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'"
+					type="button"
+					class="btn btn-sm bg-warning-subtle"
+					title="Alterar">
+				<img src="/img/button-alterar.png">
+			</a>
+			<form
+					th:id="'delete-form-' + ${tarefa.id}"
+					th:action="@{'/tarefa/' + ${tarefa.id}} + '/excluir'"
+					method="post"
+					style="display:none;">
+			</form>
+			<a
+					href="#"
+					type="button"
+					class="btn btn-sm bg-danger-subtle"
+					title="Excluir"
+					th:onclick="'if(confirm(\'Tem certeza que deseja excluir esta tarefa?\')) document.getElementById(\'delete-form-' + ${tarefa.id} + '\').submit(); return false;'">
+				<img src="/img/button-excluir.png">
+			</a>
+		</div>
+	</td>
+</tr>

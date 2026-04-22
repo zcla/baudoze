@@ -14,9 +14,7 @@
 					<li th:replace="~{_fragments/breadcrumb :: bau()}"></li>
 					<li th:replace="~{biblia/_fragments :: breadcrumb_index()}"></li>
 					<li th:replace="~{biblia/_fragments :: breadcrumb_biblia(id=${data.biblia.id}, nome=${data.biblia.nome})}"></li>
-					<li class="breadcrumb-item">
-						<a th:href="@{'/biblia/livro/' + ${data.livro.id}}" th:text="${data.livro.nome}"></a>
-					</li>
+					<li th:replace="~{biblia/_fragments :: breadcrumb_livro(id=${data.livro.id}, nome=${data.livro.nome} + ' (' + ${data.livro.sigla} + ')')}"></li>
 					<li class="breadcrumb-item active">
 						<span th:text="${htmlTitle}"></span>
 					</li>

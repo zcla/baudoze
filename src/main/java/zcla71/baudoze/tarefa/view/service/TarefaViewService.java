@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.view.entity.TarefaLista;
 import zcla71.baudoze.tarefa.view.repository.TarefaListaRepository;
@@ -21,17 +20,18 @@ public class TarefaViewService {
 		return this.tarefaListaRepository.findByAuthUserId(authUserId);
 	}
 
-	public List<TarefaLista> listaTarefasMaePossiveis(AuthUser authUser, Tarefa tarefa) {
-		List<TarefaLista> result = listaTarefas(authUser.getId());
-		if (tarefa.getId() != null) {
-			// Não pode ser nem ela mesma nem nenhuma de suas filhas
-			Long indent = null;
+	public List<TarefaLista> listaTarefasMaePossiveis(Tarefa tarefa) {
+		List<TarefaLista> result = listaTarefas(tarefa.getAuthUser().getId());
+
+		// Não pode ser nem ela mesma nem nenhuma de suas filhas
+		if (tarefa.getId() != null) { // Se for inclusão não precisa desse check
+			Long indent = null; // Se null, pode ser mãe; usada também para desabilitar todas as filhas
 			for (TarefaLista tarefaLista : result) {
-				if (tarefaLista.getId().equals(tarefa.getId())) {
+				if (tarefaLista.getId().equals(tarefa.getId())) { // Não pode ser mãe dela mesma
 					indent = tarefaLista.getIndent();
 				} else {
-					if (indent != null) {
-						if (tarefaLista.getIndent() <= indent) {
+					if (indent != null) { // É a mãe ou filha da mãe :)
+						if (tarefaLista.getIndent() <= indent) { // Se saiu da árvore da mãe, volta a poder ser mãe
 							indent = null;
 						}
 					}
@@ -39,6 +39,7 @@ public class TarefaViewService {
 				tarefaLista.setDisabled(indent != null);
 			}
 		}
+
 		return result;
 	}
 }

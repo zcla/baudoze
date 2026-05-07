@@ -17,7 +17,7 @@
 					title="Incluir">
 				<img src="/img/button-incluir.png">
 			</a>
-			<!--
+			<!-- TODO
 			<button id="btnUnselectAll" type="button" class="btn bg-warning-subtle" title="Desmarcar todas"><img src="/img/tarefa-button-desmarcar-todas.png" style="padding-bottom: 3px;"></button></div>
 			-->
 		</div>
@@ -57,6 +57,7 @@
 			<!-- TODO Subir ordem -->
 			<!-- TODO Descer ordem -->
 			<!-- TODO Incluir subtarefa -->
+			<!-- TODO Fazer isso com ajax? -->
 			<a
 					th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'"
 					type="button"
@@ -64,6 +65,7 @@
 					title="Alterar">
 				<img src="/img/button-alterar.png">
 			</a>
+			<!-- TODO Fazer isso com ajax -->
 			<form
 					th:id="'delete-form-' + ${tarefa.id}"
 					th:action="@{'/tarefa/' + ${tarefa.id}} + '/excluir'"

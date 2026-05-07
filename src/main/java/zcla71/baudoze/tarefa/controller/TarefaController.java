@@ -1,6 +1,7 @@
 package zcla71.baudoze.tarefa.controller;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.lang.NonNull;
@@ -20,106 +21,135 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
+import zcla71.baudoze.common.controller.BauModelAndView;
 import zcla71.baudoze.common.model.BauMensagem;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.service.TarefaService;
-import zcla71.baudoze.tarefa.view.entity.TarefaLista;
+import zcla71.baudoze.tarefa.model.service.TarefaServiceException;
 import zcla71.baudoze.tarefa.view.service.TarefaViewService;
 
 @RequiredArgsConstructor
 @Controller
 public class TarefaController extends BauBaseController {
+	// Services
+
 	final private TarefaService tarefaService;
 	final private TarefaViewService tarefaViewService;
+
+	// Tela: index
 
 	@GetMapping("/tarefa")
 	public ModelAndView index(@AuthenticationPrincipal AuthUser authUser) {
 		ModelAndView result = getModelAndView("/tarefa/index", authUser);
+
 		result.addObject("tarefas", tarefaViewService.listaTarefas(authUser.getId()));
+
 		return result;
 	}
 
-	private ModelAndView getEditarModelAndView(@AuthenticationPrincipal AuthUser authUser, Tarefa tarefa) {
-		ModelAndView result = getModelAndView("/tarefa/editar", authUser);
+	// Utilitários: preparação para edição
+
+	private BauModelAndView getEditarModelAndView(Tarefa tarefa) {
+		BauModelAndView result = getModelAndView("/tarefa/editar", tarefa.getAuthUser());
+
 		result.addObject("tarefa", tarefa);
-		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(authUser, tarefa));
+		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(tarefa));
+
 		return result;
 	}
+
+	private BauModelAndView getEditarModelAndView(Tarefa tarefa, TarefaServiceException ex, BindingResult bindingResult) {
+		BauModelAndView result = getEditarModelAndView(tarefa);
+
+		if (ex.getContexto() == null) {
+			result.addMensagem("danger", ex.getMessage());
+		} else {
+			result.addFieldError(bindingResult, ex.getContexto(), ex.getMessage());
+		}
+
+		return result;
+	}
+
+	// Tela: incluir
 
 	@GetMapping("/tarefa/incluir")
 	public ModelAndView incluir(@AuthenticationPrincipal AuthUser authUser) {
-		return getEditarModelAndView(authUser, tarefaService.novaTarefa());
+		return getEditarModelAndView(tarefaService.novaTarefa(authUser));
 	}
 
-	@PostMapping("/tarefa/salvar")
-	public ModelAndView salvar(@AuthenticationPrincipal AuthUser authUser, @NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
-		// TODO Isso é regra de negócio; mover para o Service.
-		// A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
-		Long tarefaId = tarefa.getId();
-		if ((tarefaId != null) && (tarefa.getTarefaMae() != null)) {
-			Tarefa existente = tarefaService.buscar(tarefaId);
-			if (existente == null) {
-				throw new IllegalArgumentException("Tarefa não encontrada");
-			}
-			TarefaLista tarefaLista = tarefaViewService.listaTarefasMaePossiveis(authUser, existente).stream()
-					.filter(t -> t.getId().equals(tarefa.getTarefaMae().getId()))
-					.findAny()
-					.orElse(null);
-			if (tarefaLista == null) {
-				throw new IllegalArgumentException("Tarefa não encontrada");
-			}
-			if (tarefaLista.getDisabled()) {
-				bindingResult.addError(new FieldError(bindingResult.getObjectName(), "tarefaMae", "A tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas"));
-			}
-		}
-
-		if (bindingResult.hasErrors()) {
-			return getEditarModelAndView(authUser, tarefa);
-		}
-
-		this.tarefaService.salvar(tarefa, authUser);
-		return redirect("/tarefa");
-	}
+	// Tela: alterar
 
 	@GetMapping("/tarefa/{id}/alterar")
 	public ModelAndView alterar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id) {
-		return getEditarModelAndView(authUser, tarefaService.buscar(id));
+		try {
+			return getEditarModelAndView(tarefaService.buscar(authUser, id));
+		} catch (TarefaServiceException ex) {
+			BauModelAndView result = getModelAndView("/tarefa/editar", authUser);
+			result.addMensagem("danger", ex.getMessage());
+			return result;
+		}
 	}
+
+	// Ação: salvar
+
+	@PostMapping("/tarefa/salvar")
+	public ModelAndView salvar(
+			@AuthenticationPrincipal AuthUser authUser,
+			@NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa,
+			BindingResult bindingResult) {
+
+		if (tarefa.getAuthUser() == null) {
+			tarefa.setAuthUser(authUser);
+		}
+
+		if (bindingResult.hasErrors()) {
+			return getEditarModelAndView(tarefa);
+		}
+
+		try {
+			tarefaService.salvar(tarefa);
+			return redirect("/tarefa");
+		} catch (TarefaServiceException ex) {
+			return getEditarModelAndView(tarefa, ex, bindingResult);
+		}
+	}
+
+	// Ação: excluir
 
 	@PostMapping("/tarefa/{id}/excluir")
-	public ModelAndView excluir(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
+	public ModelAndView excluir(
+			@AuthenticationPrincipal AuthUser authUser,
+			@NonNull @PathVariable Long id,
+			RedirectAttributes redirectAttrs) {
 		try {
-			this.tarefaService.excluir(id, authUser);
-		// TODO Erros de banco deveriam ser tratados pelo Service, não?
-		} catch (DataIntegrityViolationException e) { // Erro de FK
-			ArrayList<BauMensagem> mensagens = new ArrayList<>();
-			mensagens.add(new BauMensagem("danger", "Não é possível excluir uma tarefa que tem filhos."));
-			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
+			tarefaService.excluir(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
+			return redirect("/tarefa");
+		} catch (TarefaServiceException ex) {
+			return redirect("/tarefa", redirectAttrs, new BauMensagem("danger", ex.getMessage()));
 		}
-		return redirect("/tarefa");
 	}
 
-	@PostMapping("/tarefa/{id}/marcar")
-	public ModelAndView marcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
-		try {
-			this.tarefaService.marcar(id, authUser);
-		} catch (ResponseStatusException e) {
-			ArrayList<BauMensagem> mensagens = new ArrayList<>();
-			mensagens.add(new BauMensagem("danger", e.getMessage()));
-			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
-		}
-		return redirect("/tarefa");
-	}
+	// @PostMapping("/tarefa/{id}/marcar")
+	// public ModelAndView marcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
+	// 	try {
+	// 		tarefaService.marcar(id, authUser);
+	// 	} catch (ResponseStatusException e) {
+	// 		ArrayList<BauMensagem> mensagens = new ArrayList<>();
+	// 		mensagens.add(new BauMensagem("danger", e.getMessage()));
+	// 		redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
+	// 	}
+	// 	return redirect("/tarefa");
+	// }
 
-	@PostMapping("/tarefa/{id}/desmarcar")
-	public ModelAndView desmarcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
-		try {
-			this.tarefaService.desmarcar(id, authUser);
-		} catch (ResponseStatusException e) {
-			ArrayList<BauMensagem> mensagens = new ArrayList<>();
-			mensagens.add(new BauMensagem("danger", e.getMessage()));
-			redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
-		}
-		return redirect("/tarefa");
-	}
+	// @PostMapping("/tarefa/{id}/desmarcar")
+	// public ModelAndView desmarcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
+	// 	try {
+	// 		tarefaService.desmarcar(id, authUser);
+	// 	} catch (ResponseStatusException e) {
+	// 		ArrayList<BauMensagem> mensagens = new ArrayList<>();
+	// 		mensagens.add(new BauMensagem("danger", e.getMessage()));
+	// 		redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
+	// 	}
+	// 	return redirect("/tarefa");
+	// }
 }

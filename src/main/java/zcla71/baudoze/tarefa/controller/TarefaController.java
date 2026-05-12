@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,6 +27,7 @@ import zcla71.baudoze.tarefa.view.service.TarefaViewService;
 
 @RequiredArgsConstructor
 @Controller
+@RequestMapping("/tarefa")
 public class TarefaController extends BauBaseController {
 	// Services
 
@@ -34,7 +36,7 @@ public class TarefaController extends BauBaseController {
 
 	// Tela: index
 
-	@GetMapping("/tarefa")
+	@GetMapping({"", "/"})
 	public ModelAndView index(@AuthenticationPrincipal AuthUser authUser) {
 		ModelAndView result = getModelAndView("/tarefa/index", authUser);
 
@@ -68,14 +70,14 @@ public class TarefaController extends BauBaseController {
 
 	// Tela: incluir
 
-	@GetMapping("/tarefa/incluir")
+	@GetMapping("/incluir")
 	public ModelAndView incluir(@AuthenticationPrincipal AuthUser authUser) {
 		return getEditarModelAndView(tarefaService.novaTarefa(authUser));
 	}
 
 	// Tela: alterar
 
-	@GetMapping("/tarefa/{id}/alterar")
+	@GetMapping("/{id}/alterar")
 	public ModelAndView alterar(
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @PathVariable Long id) {
@@ -90,7 +92,7 @@ public class TarefaController extends BauBaseController {
 
 	// Ação: salvar
 
-	@PostMapping("/tarefa/salvar")
+	@PostMapping("/salvar")
 	public ModelAndView salvar(
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa,
@@ -114,7 +116,7 @@ public class TarefaController extends BauBaseController {
 
 	// Ação: excluir
 
-	@PostMapping("/tarefa/{id}/excluir")
+	@PostMapping("/{id}/excluir")
 	public ModelAndView excluir(
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @PathVariable Long id,
@@ -127,7 +129,7 @@ public class TarefaController extends BauBaseController {
 		}
 	}
 
-	@PostMapping("/tarefa/{id}/marcar")
+	@PostMapping("/{id}/marcar")
 	public ModelAndView marcar(
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @PathVariable Long id,
@@ -140,7 +142,7 @@ public class TarefaController extends BauBaseController {
 		return redirect("/tarefa");
 	}
 
-	@PostMapping("/tarefa/{id}/desmarcar")
+	@PostMapping("/{id}/desmarcar")
 	public ModelAndView desmarcar(
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @PathVariable Long id,

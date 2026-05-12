@@ -1,19 +1,15 @@
 package zcla71.baudoze.tarefa.controller;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -80,7 +76,9 @@ public class TarefaController extends BauBaseController {
 	// Tela: alterar
 
 	@GetMapping("/tarefa/{id}/alterar")
-	public ModelAndView alterar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id) {
+	public ModelAndView alterar(
+			@AuthenticationPrincipal AuthUser authUser,
+			@NonNull @PathVariable Long id) {
 		try {
 			return getEditarModelAndView(tarefaService.buscar(authUser, id));
 		} catch (TarefaServiceException ex) {
@@ -129,27 +127,29 @@ public class TarefaController extends BauBaseController {
 		}
 	}
 
-	// @PostMapping("/tarefa/{id}/marcar")
-	// public ModelAndView marcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
-	// 	try {
-	// 		tarefaService.marcar(id, authUser);
-	// 	} catch (ResponseStatusException e) {
-	// 		ArrayList<BauMensagem> mensagens = new ArrayList<>();
-	// 		mensagens.add(new BauMensagem("danger", e.getMessage()));
-	// 		redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
-	// 	}
-	// 	return redirect("/tarefa");
-	// }
+	@PostMapping("/tarefa/{id}/marcar")
+	public ModelAndView marcar(
+			@AuthenticationPrincipal AuthUser authUser,
+			@NonNull @PathVariable Long id,
+			RedirectAttributes redirectAttrs) {
+		try {
+			tarefaService.marcar(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
+		} catch (TarefaServiceException ex) {
+			return redirect("/tarefa", redirectAttrs, new BauMensagem("danger", ex.getMessage()));
+		}
+		return redirect("/tarefa");
+	}
 
-	// @PostMapping("/tarefa/{id}/desmarcar")
-	// public ModelAndView desmarcar(@AuthenticationPrincipal AuthUser authUser, @NonNull @PathVariable Long id, RedirectAttributes redirectAttrs) {
-	// 	try {
-	// 		tarefaService.desmarcar(id, authUser);
-	// 	} catch (ResponseStatusException e) {
-	// 		ArrayList<BauMensagem> mensagens = new ArrayList<>();
-	// 		mensagens.add(new BauMensagem("danger", e.getMessage()));
-	// 		redirectAttrs.addFlashAttribute("_flash_mensagens", mensagens);
-	// 	}
-	// 	return redirect("/tarefa");
-	// }
+	@PostMapping("/tarefa/{id}/desmarcar")
+	public ModelAndView desmarcar(
+			@AuthenticationPrincipal AuthUser authUser,
+			@NonNull @PathVariable Long id,
+			RedirectAttributes redirectAttrs) {
+		try {
+			tarefaService.desmarcar(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
+		} catch (TarefaServiceException ex) {
+			return redirect("/tarefa", redirectAttrs, new BauMensagem("danger", ex.getMessage()));
+		}
+		return redirect("/tarefa");
+	}
 }

@@ -5,12 +5,9 @@ import java.util.Objects;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
@@ -53,15 +50,15 @@ public class TarefaService {
 
 	@Transactional
 	public Tarefa salvar(@Valid @NonNull Tarefa tarefa) {
-		// TODO Testar tentativa de alteração de tarefa de outro usuário
 		if (tarefa.getId() == null) {
 			// É inclusão
 			tarefa.setOrdem(tarefaRepository.proximaOrdem(tarefa.getAuthUser()));
 			tarefa.setCumprida(false);
 			return tarefaRepository.save(tarefa);
 		}
-
+		
 		// É alteração
+		// TODO Testar tentativa de alteração de tarefa de outro usuário
 		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
 		// Validação: a tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
@@ -92,9 +89,10 @@ public class TarefaService {
 
 	@Transactional
 	public void excluir(@NonNull Tarefa tarefa) {
-		// TODO Impedir exclusão da tarefa de outro usuário
+		// TODO Testar tentativa de exclusão de tarefa de outro usuário
 		try {
-			tarefaRepository.delete(tarefa);
+			Tarefa existente = Objects.requireNonNull(buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId())));
+			tarefaRepository.delete(existente);
 			tarefaRepository.flush();
 		} catch (DataIntegrityViolationException ex) {
 			// Erro de FK
@@ -102,42 +100,27 @@ public class TarefaService {
 		}
 	}
 
-	// // TODO Criar um método marcarDesmarcar() para ser usado por marcar() e desmarcar()
-	// @Transactional
-	// public Tarefa marcar(@NonNull Long id, AuthUser authUser) {
-	// 	// TODO Esse trecho é muito repetido; juntar.
-	// 	Tarefa tarefa = buscar(id);
-	// 	if (tarefa == null) {
-	// 		throw new TarefaServiceException("Tarefa não encontrada.");
-	// 	}
-	// 	if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
-	// 		throw new TarefaServiceException("Tentativa de marcar tarefa de outro usuário.");
-	// 	}
-	// 	// TODO Até aqui
+	@Transactional
+	public Tarefa marcar(@NonNull Tarefa tarefa) {
+		// TODO Testar tentativa de marcar tarefa de outro usuário
+		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
-	// 	if (tarefa.getCumprida()) {
-	// 		throw new TarefaServiceException("Tarefa já está cumprida.");
-	// 	}
-	// 	tarefa.setCumprida(true);
-	// 	return tarefaRepository.save(tarefa);
-	// }
+		if (existente.getCumprida()) {
+			throw new TarefaServiceException("Tarefa já está cumprida.");
+		}
+		existente.setCumprida(true);
+		return tarefaRepository.save(existente);
+	}
 
-	// @Transactional
-	// public Tarefa desmarcar(@NonNull Long id, AuthUser authUser) {
-	// 	// TODO Esse trecho é muito repetido; juntar.
-	// 	Tarefa tarefa = buscar(id);
-	// 	if (tarefa == null) {
-	// 		throw new TarefaServiceException("Tarefa não encontrada.");
-	// 	}
-	// 	if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
-	// 		throw new TarefaServiceException("Tentativa de marcar tarefa de outro usuário.");
-	// 	}
-	// 	// TODO Até aqui
+	@Transactional
+	public Tarefa desmarcar(@NonNull Tarefa tarefa) {
+		// TODO Testar tentativa de desmarcar tarefa de outro usuário
+		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
-	// 	if (!tarefa.getCumprida()) {
-	// 		throw new TarefaServiceException("Tarefa já está descumprida.");
-	// 	}
-	// 	tarefa.setCumprida(false);
-	// 	return tarefaRepository.save(tarefa);
-	// }
+		if (!existente.getCumprida()) {
+			throw new TarefaServiceException("Tarefa já está descumprida.");
+		}
+		existente.setCumprida(false);
+		return tarefaRepository.save(existente);
+	}
 }

@@ -8,4 +8,9 @@ import lombok.Data;
 public class BauMensagem {
 	private String tipo;
 	private String texto;
+	private String contexto;
+
+	public BauMensagem(String tipo, String texto) {
+		this(tipo, texto, null);
+	}
 }

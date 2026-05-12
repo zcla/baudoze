@@ -1,23 +1,27 @@
 package zcla71.baudoze.tarefa.model.service;
 
-import org.springframework.http.HttpStatus;
+import java.util.Objects;
+
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.validation.annotation.Validated;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
+import zcla71.baudoze.tarefa.view.entity.TarefaLista;
+import zcla71.baudoze.tarefa.view.service.TarefaViewService;
 
 @RequiredArgsConstructor
 @Service
+@Validated
 public class TarefaService {
-	// TODO Essa classe deveria ser independente de tecnologia, por tanto não deveria lançar ResponseStatusException; ver qual é a melhor prática.
+	final private TarefaViewService tarefaViewService;
+
 	private static boolean alterouMae(Tarefa antes, Tarefa depois) {
 		if (antes.getTarefaMae() == null) {
 			return depois.getTarefaMae() != null;
@@ -31,107 +35,92 @@ public class TarefaService {
 	}
 
 	final private TarefaRepository tarefaRepository;
-	@PersistenceContext
-	private EntityManager entityManager;
 
-	public Tarefa buscar(@NonNull Long id) {
-		return tarefaRepository.findById(id).orElse(null);
+	public Tarefa buscar(AuthUser authUser, @NonNull Long id) {
+		return tarefaRepository.findByAuthUserAndId(authUser, id).orElseThrow(() -> new TarefaServiceException("Tarefa não encontrada."));
 	}
 
-	public Tarefa novaTarefa() {
+	public Tarefa novaTarefa(AuthUser authUser) {
 		Tarefa result = new Tarefa();
+		result.setAuthUser(authUser);
 		result.setTitulo("Nova tarefa");
+		result.setCumprida(false);
 		return result;
 	}
 
-	// TODO Parece que isso ficaria melhor no repository, não?
-	@Transactional(propagation = Propagation.MANDATORY)
-	public Long proximaOrdem(AuthUser authUser) {
-		Long result = (Long) entityManager
-				.createNativeQuery("""
-						SELECT MAX(t.ordem)
-						FROM tarefa t
-						WHERE t.auth_user_id = :authUserId
-						FOR UPDATE
-						""")
-				.setParameter("authUserId", authUser.getId())
-				.getSingleResult();
-		return (result == null ? 0 : result) + 1;
-	}
-
 	@Transactional
-	public Tarefa salvar(@NonNull Tarefa tarefa, AuthUser authUser) {
-		if (tarefa.getId() == null) { // Tarefa nova
-			tarefa.setAuthUser(authUser);
-			tarefa.setOrdem(proximaOrdem(authUser));
+	public Tarefa salvar(@Valid @NonNull Tarefa tarefa) {
+		if (tarefa.getId() == null) {
+			// É inclusão
+			tarefa.setOrdem(tarefaRepository.proximaOrdem(tarefa.getAuthUser()));
 			tarefa.setCumprida(false);
 			return tarefaRepository.save(tarefa);
 		}
-		// Alteração
-		@SuppressWarnings("null") // Já foi tratado no if, acima
-		Tarefa existente = tarefaRepository.findById(tarefa.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		if (!existente.getAuthUser().getId().equals(authUser.getId())) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de alterar uma tarefa de outro usuário!");
+		
+		// É alteração
+		// TODO Testar tentativa de alteração de tarefa de outro usuário
+		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
+
+		// Validação: a tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
+		if (tarefa.getTarefaMae() != null) {
+			TarefaLista tarefaLista = tarefaViewService.listaTarefasMaePossiveis(existente).stream()
+					.filter(t -> t.getId().equals(tarefa.getTarefaMae().getId()))
+					.findAny()
+					.orElse(null);
+			if (tarefaLista.getDisabled()) {
+				if (tarefaLista.getId().equals(existente.getId())) {
+					throw new TarefaServiceException("A tarefa mãe não pode ser ela mesma.", "tarefaMae");
+				} else {
+					throw new TarefaServiceException("A tarefa mãe não pode ser nenhuma de suas filhas.", "tarefaMae");
+				}
+			}
 		}
+
+		// Faz a alteração
 		existente.setTitulo(tarefa.getTitulo());
 		existente.setDescricao(tarefa.getDescricao());
 		if (alterouMae(existente, tarefa)) {
 			// Sempre que mudar a mãe, fica como última filha
-			existente.setOrdem(proximaOrdem(authUser));
+			existente.setOrdem(tarefaRepository.proximaOrdem(existente.getAuthUser()));
 			existente.setTarefaMae(tarefa.getTarefaMae());
 		}
 		return tarefaRepository.save(existente);
 	}
 
 	@Transactional
-	public void excluir(@NonNull Long id, AuthUser authUser) {
-		Tarefa tarefa = buscar(id);
-		if (tarefa == null) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+	public void excluir(@NonNull Tarefa tarefa) {
+		// TODO Testar tentativa de exclusão de tarefa de outro usuário
+		try {
+			Tarefa existente = Objects.requireNonNull(buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId())));
+			tarefaRepository.delete(existente);
+			tarefaRepository.flush();
+		} catch (DataIntegrityViolationException ex) {
+			// Erro de FK
+			throw new TarefaServiceException("Não é possível excluir uma tarefa que tem filhos.");
 		}
-		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de excluir tarefa de outro usuário!");
-		}
-		// Não precisa rearrumar a ordem
-		tarefaRepository.delete(tarefa);
-	}
-
-	// TODO Criar um método marcarDesmarcar() para ser usado por marcar() e desmarcar()
-	@Transactional
-	public Tarefa marcar(@NonNull Long id, AuthUser authUser) {
-		// TODO Esse trecho é muito repetido; juntar.
-		Tarefa tarefa = buscar(id);
-		if (tarefa == null) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de marcar tarefa de outro usuário!");
-		}
-		// TODO Até aqui
-
-		if (tarefa.getCumprida()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tarefa já está cumprida.");
-		}
-		tarefa.setCumprida(true);
-		return tarefaRepository.save(tarefa);
 	}
 
 	@Transactional
-	public Tarefa desmarcar(@NonNull Long id, AuthUser authUser) {
-		// TODO Esse trecho é muito repetido; juntar.
-		Tarefa tarefa = buscar(id);
-		if (tarefa == null) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		if (!tarefa.getAuthUser().getId().equals(authUser.getId())) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Tentativa de marcar tarefa de outro usuário!");
-		}
-		// TODO Até aqui
+	public Tarefa marcar(@NonNull Tarefa tarefa) {
+		// TODO Testar tentativa de marcar tarefa de outro usuário
+		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
-		if (!tarefa.getCumprida()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tarefa já está descumprida.");
+		if (existente.getCumprida()) {
+			throw new TarefaServiceException("Tarefa já está cumprida.");
 		}
-		tarefa.setCumprida(false);
-		return tarefaRepository.save(tarefa);
+		existente.setCumprida(true);
+		return tarefaRepository.save(existente);
+	}
+
+	@Transactional
+	public Tarefa desmarcar(@NonNull Tarefa tarefa) {
+		// TODO Testar tentativa de desmarcar tarefa de outro usuário
+		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
+
+		if (!existente.getCumprida()) {
+			throw new TarefaServiceException("Tarefa já está descumprida.");
+		}
+		existente.setCumprida(false);
+		return tarefaRepository.save(existente);
 	}
 }

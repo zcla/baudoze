@@ -17,7 +17,7 @@
 					title="Incluir">
 				<img src="/img/button-incluir.png">
 			</a>
-			<!--
+			<!-- TODO
 			<button id="btnUnselectAll" type="button" class="btn bg-warning-subtle" title="Desmarcar todas"><img src="/img/tarefa-button-desmarcar-todas.png" style="padding-bottom: 3px;"></button></div>
 			-->
 		</div>
@@ -29,6 +29,7 @@
 	<td>
 		<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
 		<span class="col-1" style="width: 1px !important">
+			<!-- TODO Fazer isso com ajax -->
 			<form
 					th:id="'marcar-form-' + ${tarefa.id}"
 					th:action="@{'/tarefa/' + ${tarefa.id}} + '/marcar'"
@@ -64,6 +65,7 @@
 					title="Alterar">
 				<img src="/img/button-alterar.png">
 			</a>
+			<!-- TODO Fazer isso com ajax -->
 			<form
 					th:id="'delete-form-' + ${tarefa.id}"
 					th:action="@{'/tarefa/' + ${tarefa.id}} + '/excluir'"

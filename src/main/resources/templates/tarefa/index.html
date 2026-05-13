@@ -6,6 +6,26 @@
 		th:with="htmlTitle='Tarefas'">
 	<head>
 		<title th:text="${htmlTitle}"></title>
+		<script>
+			$(document).on("click", ".acao-excluir", async function () {
+				const botao = $(this);
+				const id = botao.data("id");
+
+				if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
+					$.ajax({
+						url: "/api/v1/tarefa/" + id,
+						type: "DELETE",
+						success: function () {
+							Ui.sucesso("Tarefa excluída com sucesso");
+							botao.closest("tr").remove();
+						},
+						error: function (xhr) {
+							Ui.erro(xhr.responseJSON.mensagem);
+						}
+					});
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<div layout:fragment="conteudo">

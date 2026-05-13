@@ -114,20 +114,7 @@ public class TarefaController extends BauBaseController {
 		}
 	}
 
-	// Ação: excluir
-
-	@PostMapping("/{id}/excluir")
-	public ModelAndView excluir(
-			@AuthenticationPrincipal AuthUser authUser,
-			@NonNull @PathVariable Long id,
-			RedirectAttributes redirectAttrs) {
-		try {
-			tarefaService.excluir(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
-			return redirect("/tarefa");
-		} catch (TarefaServiceException ex) {
-			return redirect("/tarefa", redirectAttrs, new BauMensagem("danger", ex.getMessage()));
-		}
-	}
+	// TODO Daqui pra baixo tudo vai para a API
 
 	@PostMapping("/{id}/marcar")
 	public ModelAndView marcar(

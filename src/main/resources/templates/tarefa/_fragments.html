@@ -75,9 +75,9 @@
 			<a
 					href="#"
 					type="button"
-					class="btn btn-sm bg-danger-subtle"
-					title="Excluir"
-					th:onclick="'if(confirm(\'Tem certeza que deseja excluir esta tarefa?\')) document.getElementById(\'delete-form-' + ${tarefa.id} + '\').submit(); return false;'">
+					class="acao-excluir btn btn-sm bg-danger-subtle"
+					th:attr="data-id=${tarefa.id}"
+					title="Excluir">
 				<img src="/img/button-excluir.png">
 			</a>
 		</div>

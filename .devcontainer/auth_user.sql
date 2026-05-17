@@ -17,6 +17,6 @@ CREATE TABLE auth_user (
     imagem BLOB,
     imagem_content_type VARCHAR(255),
     criado_em TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    ultimo_login_em TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+    ultimo_login_em TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6)
         ON UPDATE CURRENT_TIMESTAMP(6)
 );

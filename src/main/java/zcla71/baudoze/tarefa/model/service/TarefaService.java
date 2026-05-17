@@ -58,7 +58,6 @@ public class TarefaService {
 		}
 		
 		// É alteração
-		// TODO Testar tentativa de alteração de tarefa de outro usuário
 		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
 		// Validação: a tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
@@ -89,11 +88,10 @@ public class TarefaService {
 
 	@Transactional
 	public void excluir(@NonNull Tarefa tarefa) {
-		// TODO Testar tentativa de exclusão de tarefa de outro usuário
 		try {
 			Tarefa existente = Objects.requireNonNull(buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId())));
 			tarefaRepository.delete(existente);
-			tarefaRepository.flush();
+			tarefaRepository.flush(); // Sem o flush o delete só acontece depois, e nunca entra no catch abaixo
 		} catch (DataIntegrityViolationException ex) {
 			// Erro de FK
 			throw new TarefaServiceException("Não é possível excluir uma tarefa que tem filhos.");
@@ -102,7 +100,6 @@ public class TarefaService {
 
 	@Transactional
 	public Tarefa marcar(@NonNull Tarefa tarefa) {
-		// TODO Testar tentativa de marcar tarefa de outro usuário
 		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
 		if (existente.getCumprida()) {
@@ -114,7 +111,6 @@ public class TarefaService {
 
 	@Transactional
 	public Tarefa desmarcar(@NonNull Tarefa tarefa) {
-		// TODO Testar tentativa de desmarcar tarefa de outro usuário
 		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
 		if (!existente.getCumprida()) {

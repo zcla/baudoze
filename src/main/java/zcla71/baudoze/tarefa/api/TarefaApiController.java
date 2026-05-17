@@ -32,9 +32,7 @@ public class TarefaApiController {
 			return ResponseEntity
 					.ok(new TarefaApiResponse(true, "ok"));
 		} catch (TarefaServiceException ex) {
-			// TODO internalServerError é muito feio :)
-			return ResponseEntity
-					.internalServerError()
+			return ex.getResponseEntity()
 					.body(new TarefaApiResponse(false, ex.getMessage()));
 		}
 	}

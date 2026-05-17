@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.common.service.BauServiceTipoException;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
 import zcla71.baudoze.tarefa.view.entity.TarefaLista;
@@ -37,7 +38,7 @@ public class TarefaService {
 	final private TarefaRepository tarefaRepository;
 
 	public Tarefa buscar(AuthUser authUser, @NonNull Long id) {
-		return tarefaRepository.findByAuthUserAndId(authUser, id).orElseThrow(() -> new TarefaServiceException("Tarefa não encontrada."));
+		return tarefaRepository.findByAuthUserAndId(authUser, id).orElseThrow(() -> new TarefaServiceException(BauServiceTipoException.NAO_ENCONTRADO, "Tarefa não encontrada."));
 	}
 
 	public Tarefa novaTarefa(AuthUser authUser) {
@@ -68,9 +69,9 @@ public class TarefaService {
 					.orElse(null);
 			if (tarefaLista.getDisabled()) {
 				if (tarefaLista.getId().equals(existente.getId())) {
-					throw new TarefaServiceException("A tarefa mãe não pode ser ela mesma.", "tarefaMae");
+					throw new TarefaServiceException(BauServiceTipoException.REGRA_DE_NEGOCIO, "A tarefa mãe não pode ser ela mesma.", "tarefaMae");
 				} else {
-					throw new TarefaServiceException("A tarefa mãe não pode ser nenhuma de suas filhas.", "tarefaMae");
+					throw new TarefaServiceException(BauServiceTipoException.REGRA_DE_NEGOCIO, "A tarefa mãe não pode ser nenhuma de suas filhas.", "tarefaMae");
 				}
 			}
 		}
@@ -94,7 +95,7 @@ public class TarefaService {
 			tarefaRepository.flush(); // Sem o flush o delete só acontece depois, e nunca entra no catch abaixo
 		} catch (DataIntegrityViolationException ex) {
 			// Erro de FK
-			throw new TarefaServiceException("Não é possível excluir uma tarefa que tem filhos.");
+			throw new TarefaServiceException(BauServiceTipoException.REGRA_DE_NEGOCIO, "Não é possível excluir uma tarefa que tem filhos.");
 		}
 	}
 
@@ -103,7 +104,7 @@ public class TarefaService {
 		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
 		if (existente.getCumprida()) {
-			throw new TarefaServiceException("Tarefa já está cumprida.");
+			throw new TarefaServiceException(BauServiceTipoException.CONFLITO, "Tarefa já está cumprida.");
 		}
 		existente.setCumprida(true);
 		return tarefaRepository.save(existente);
@@ -114,7 +115,7 @@ public class TarefaService {
 		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
 
 		if (!existente.getCumprida()) {
-			throw new TarefaServiceException("Tarefa já está descumprida.");
+			throw new TarefaServiceException(BauServiceTipoException.CONFLITO, "Tarefa já está descumprida.");
 		}
 		existente.setCumprida(false);
 		return tarefaRepository.save(existente);

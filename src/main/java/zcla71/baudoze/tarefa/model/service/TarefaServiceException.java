@@ -1,13 +1,14 @@
 package zcla71.baudoze.tarefa.model.service;
 
 import zcla71.baudoze.common.service.BauServiceException;
+import zcla71.baudoze.common.service.BauServiceTipoException;
 
 public class TarefaServiceException extends BauServiceException {
-	public TarefaServiceException(String message) {
-		super(message);
+	public TarefaServiceException(BauServiceTipoException motivo, String message) {
+		super(motivo, message);
 	}
 
-	public TarefaServiceException(String message, String contexto) {
-		super(message, contexto);
+	public TarefaServiceException(BauServiceTipoException motivo, String message, String contexto) {
+		super(motivo, message, contexto);
 	}
 }

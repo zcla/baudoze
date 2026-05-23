@@ -12,7 +12,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ComponentScan(basePackages = { "zcla71" })
 public class BauDoZeApplication {
 	public static void main(String[] args) {
-		// TODO Descobrir por que o Spring Boot recarrega quando eu salvo um arquivo após dar stop no debugger
 		SpringApplication.run(BauDoZeApplication.class, args);
 	}
 }

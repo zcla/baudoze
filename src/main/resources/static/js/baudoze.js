@@ -4,7 +4,8 @@ const csrfHeader = $('meta[name="_csrf_header"]').attr('content');
 $.ajaxSetup({
 	beforeSend: function (xhr) {
 		xhr.setRequestHeader(csrfHeader, csrfToken);
-	}
+	},
+	timeout: 5000
 });
 
 // Classe com utilitários de ui
@@ -86,5 +87,62 @@ class Ui {
 			$toast.remove();
 		});
 		toast.show();
+	}
+
+	static showLoading(message = "Aguarde...") {
+		// Evita criar múltiplos overlays
+		if (document.getElementById("global-loading-overlay")) {
+			return;
+		}
+
+		const overlay = document.createElement("div");
+
+		overlay.id = "global-loading-overlay";
+
+		overlay.className = [
+			"position-fixed",
+			"top-0",
+			"start-0",
+			"w-100",
+			"h-100",
+			"d-flex",
+			"justify-content-center",
+			"align-items-center"
+		].join(" ");
+
+		overlay.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+		overlay.style.zIndex = "9999";
+		overlay.style.backdropFilter = "blur(2px)";
+
+		overlay.innerHTML = `
+			<div class="text-center">
+				<div
+					class="spinner-border text-primary"
+					role="status"
+					style="width: 4rem; height: 4rem;"
+				>
+					<span class="visually-hidden">Carregando...</span>
+				</div>
+
+				<div class="mt-3 fw-semibold text-dark">
+					${message}
+				</div>
+			</div>
+		`;
+
+		document.body.appendChild(overlay);
+
+		// Impede scroll/interação indireta
+		document.body.style.overflow = "hidden";
+	}
+
+	static hideLoading() {
+		const overlay = document.getElementById("global-loading-overlay");
+
+		if (overlay) {
+			overlay.remove();
+		}
+
+		document.body.style.overflow = "";
 	}
 }

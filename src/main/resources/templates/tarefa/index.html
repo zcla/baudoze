@@ -14,50 +14,59 @@
 						e.preventDefault();
 						const id = linkExcluir.dataset.id;
 						if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
+							Ui.showLoading();
 							$.ajax({
 								url: "/api/v1/tarefa/" + id,
 								type: "DELETE",
 								success: function () {
 									Ui.sucesso("Tarefa excluída com sucesso");
-									e.target.closest("tr").remove();
+									linkExcluir.closest("tr").remove();
+									Ui.hideLoading();
 								},
 								error: function (xhr) {
-									Ui.erro(xhr.responseJSON.mensagem);
+									Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+									Ui.hideLoading();
 								}
 							});
 						}
 					}
 
-					const linkMarcar = e.target.closest(".acao-marcar");
-					if (linkMarcar) {
+					const chkMarcar = e.target.closest(".acao-marcar");
+					if (chkMarcar) {
 						e.preventDefault();
-						const id = linkMarcar.dataset.id;
+						const id = chkMarcar.dataset.id;
+						Ui.showLoading();
 						$.ajax({
 							url: "/api/v1/tarefa/" + id + "/marcar",
 							type: "PATCH",
 							success: function () {
-								e.target.checked = true;
-								e.target.classList.replace("acao-marcar", "acao-desmarcar");
+								chkMarcar.checked = true;
+								chkMarcar.classList.replace("acao-marcar", "acao-desmarcar");
+								Ui.hideLoading();
 							},
 							error: function (xhr) {
-								Ui.erro(xhr.responseJSON.mensagem);
+								Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+								Ui.hideLoading();
 							}
 						});
 					}
 
-					const linkDesmarcar = e.target.closest(".acao-desmarcar");
-					if (linkDesmarcar) {
+					const chkDesmarcar = e.target.closest(".acao-desmarcar");
+					if (chkDesmarcar) {
 						e.preventDefault();
-						const id = linkDesmarcar.dataset.id;
+						const id = chkDesmarcar.dataset.id;
+						Ui.showLoading();
 						$.ajax({
 							url: "/api/v1/tarefa/" + id + "/desmarcar",
 							type: "PATCH",
 							success: function () {
-								e.target.checked = false;
-								e.target.classList.replace("acao-desmarcar", "acao-marcar");
+								chkDesmarcar.checked = false;
+								chkDesmarcar.classList.replace("acao-desmarcar", "acao-marcar");
+								Ui.hideLoading();
 							},
 							error: function (xhr) {
-								Ui.erro(xhr.responseJSON.mensagem);
+								Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+								Ui.hideLoading();
 							}
 						});
 					}

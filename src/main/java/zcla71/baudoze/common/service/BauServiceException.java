@@ -15,6 +15,7 @@ public class BauServiceException extends RuntimeException {
 
 	public BauServiceException(BauServiceTipoException motivo, String message) {
 		super(message);
+		this.motivo = motivo;
 	}
 
 	public BauServiceException(BauServiceTipoException motivo, String message, String contexto) {

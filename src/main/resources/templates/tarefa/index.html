@@ -7,23 +7,61 @@
 	<head>
 		<title th:text="${htmlTitle}"></title>
 		<script>
-			$(document).on("click", ".acao-excluir", async function () {
-				const botao = $(this);
-				const id = botao.data("id");
-
-				if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
-					$.ajax({
-						url: "/api/v1/tarefa/" + id,
-						type: "DELETE",
-						success: function () {
-							Ui.sucesso("Tarefa excluída com sucesso");
-							botao.closest("tr").remove();
-						},
-						error: function (xhr) {
-							Ui.erro(xhr.responseJSON.mensagem);
+			document.addEventListener("DOMContentLoaded", () => {
+				document.addEventListener("click", async (e) => {
+					const linkExcluir = e.target.closest(".acao-excluir");
+					if (linkExcluir) {
+						e.preventDefault();
+						const id = linkExcluir.dataset.id;
+						if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
+							$.ajax({
+								url: "/api/v1/tarefa/" + id,
+								type: "DELETE",
+								success: function () {
+									Ui.sucesso("Tarefa excluída com sucesso");
+									e.target.closest("tr").remove();
+								},
+								error: function (xhr) {
+									Ui.erro(xhr.responseJSON.mensagem);
+								}
+							});
 						}
-					});
-				}
+					}
+
+					const linkMarcar = e.target.closest(".acao-marcar");
+					if (linkMarcar) {
+						e.preventDefault();
+						const id = linkMarcar.dataset.id;
+						$.ajax({
+							url: "/api/v1/tarefa/" + id + "/marcar",
+							type: "PATCH",
+							success: function () {
+								e.target.checked = true;
+								e.target.classList.replace("acao-marcar", "acao-desmarcar");
+							},
+							error: function (xhr) {
+								Ui.erro(xhr.responseJSON.mensagem);
+							}
+						});
+					}
+
+					const linkDesmarcar = e.target.closest(".acao-desmarcar");
+					if (linkDesmarcar) {
+						e.preventDefault();
+						const id = linkDesmarcar.dataset.id;
+						$.ajax({
+							url: "/api/v1/tarefa/" + id + "/desmarcar",
+							type: "PATCH",
+							success: function () {
+								e.target.checked = false;
+								e.target.classList.replace("acao-desmarcar", "acao-marcar");
+							},
+							error: function (xhr) {
+								Ui.erro(xhr.responseJSON.mensagem);
+							}
+						});
+					}
+				});
 			});
 		</script>
 	</head>
@@ -41,22 +79,22 @@
 					<span th:text="${htmlTitle}"></span>
 				</span>
 			</h1>
-			<th:block th:if="${#lists.isEmpty(tarefas)}">
-				<p>Não há tarefas cadastradas.</p>
-			</th:block>
-			<th:block th:if="${!#lists.isEmpty(tarefas)}">
-				<div id="crudLista" class="mb-3">
-					<table class="table table-sm table-hover">
-						<thead>
-							<th:block th:replace="~{tarefa/_fragments :: theadTr()}"></th:block>
-						</thead>
+			<div id="crudLista" class="mb-3">
+				<table class="table table-sm table-hover">
+					<thead>
+						<th:block th:replace="~{tarefa/_fragments :: theadTr()}"></th:block>
+					</thead>
+					<th:block th:if="${!#lists.isEmpty(tarefas)}">
 						<tbody>
 							<th:block th:each="tarefa : ${tarefas}">
 								<th:block th:replace="~{tarefa/_fragments :: tbodyTr(tarefa=${tarefa})}"></th:block>
 							</th:block>
 						</tbody>
-					</table>
-				</div>
+					</th:block>
+				</table>
+			</div>
+			<th:block th:if="${#lists.isEmpty(tarefas)}">
+				<p>Não há tarefas cadastradas.</p>
 			</th:block>
 		</div>
 	</body>

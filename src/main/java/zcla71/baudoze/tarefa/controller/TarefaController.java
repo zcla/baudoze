@@ -1,7 +1,5 @@
 package zcla71.baudoze.tarefa.controller;
 
-import java.util.Objects;
-
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,14 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.common.controller.BauModelAndView;
-import zcla71.baudoze.common.model.BauMensagem;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.service.TarefaService;
 import zcla71.baudoze.tarefa.model.service.TarefaServiceException;
@@ -112,33 +108,5 @@ public class TarefaController extends BauBaseController {
 		} catch (TarefaServiceException ex) {
 			return getEditarModelAndView(tarefa, ex, bindingResult);
 		}
-	}
-
-	// TODO Daqui pra baixo tudo vai para a API
-
-	@PostMapping("/{id}/marcar")
-	public ModelAndView marcar(
-			@AuthenticationPrincipal AuthUser authUser,
-			@NonNull @PathVariable Long id,
-			RedirectAttributes redirectAttrs) {
-		try {
-			tarefaService.marcar(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
-		} catch (TarefaServiceException ex) {
-			return redirect("/tarefa", redirectAttrs, new BauMensagem("danger", ex.getMessage()));
-		}
-		return redirect("/tarefa");
-	}
-
-	@PostMapping("/{id}/desmarcar")
-	public ModelAndView desmarcar(
-			@AuthenticationPrincipal AuthUser authUser,
-			@NonNull @PathVariable Long id,
-			RedirectAttributes redirectAttrs) {
-		try {
-			tarefaService.desmarcar(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
-		} catch (TarefaServiceException ex) {
-			return redirect("/tarefa", redirectAttrs, new BauMensagem("danger", ex.getMessage()));
-		}
-		return redirect("/tarefa");
 	}
 }

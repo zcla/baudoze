@@ -10,7 +10,7 @@ TODO Ver se não foi mudado
 
 * `<aplicação>`
   * `common`
-    * Classes que não estão ligados a nenhum módulo
+    * Classes comuns que não estão ligados a nenhum módulo específico.
     * `controller`
       * Classes com afinidade com a camada controller.
     * `model`
@@ -20,7 +20,7 @@ TODO Ver se não foi mudado
 
   * `<módulo>`
     * `controller`
-      * Controllers do módulo.
+      * Controllers do módulo. Não trata de regra de negócio e tem que criar try/catch dos exceptions lançados pelos serviços, para jogar pra tela através de BauModelAndView.addMensagem().
     * `model`
       * Pacote de classes relativas ao modelo (tabelas de banco).
       * `entity`
@@ -28,7 +28,7 @@ TODO Ver se não foi mudado
       * `repository`
         * Repositories (extends Repository<T, ID>).
       * `service`
-        * Classes de serviço (@Service), para serem usadas externamente.
+        * Classes de serviço, para serem usadas externamente. Deve fazer validação das regras de negócio e lançar exceções de negócio, derivadas de RuntimeException.
     * `view`
       * Pacote de classes relativas ao view (views de banco).
       * `entity`
@@ -36,7 +36,7 @@ TODO Ver se não foi mudado
       * `repository`
         * Repositories (extends Repository<T, ID>).
       * `service`
-        * Classes de serviço (@Service), para serem usadas pelo controller.
+        * Classes de serviço, para serem usadas externamente. Busca os dados já no formato exigido pelas telas.
 
 ## Módulos & Roadmap
 

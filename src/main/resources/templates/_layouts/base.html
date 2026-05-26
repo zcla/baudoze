@@ -5,6 +5,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="_csrf" th:content="${_csrf.token}">
+		<meta name="_csrf_header" th:content="${_csrf.headerName}">
 		<title layout:title-pattern="$CONTENT_TITLE &bull; $LAYOUT_TITLE">Baú do Zé</title>
 		<!-- https://getbootstrap.com/docs/5.3/getting-started/download/ -->
 		<link rel="stylesheet" th:href="@{/3rdp/bootstrap-5.3.8/css/bootstrap.min.css}">
@@ -17,24 +19,26 @@
 		<meta name="description" content="Baú do Zé">
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="stylesheet" href="/css/baudoze.css">
+		<script th:src="@{/js/baudoze.js}"></script>
 		<script th:src="@{/js/utils.js}"></script>
 		<script>
-			$(window).on('load', function() {
-				$('#bau_exportar').click(async () => {
-					const data = await $.ajax({ 
-						type: "GET",
-						dataType: "json",
-						url: "/backupRestore/exportar",
-						success: function(data){
-							debugger;
-							StringUtils.downloadString(JSON.stringify(data), `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
-							// TODO Trazer frontend do projeto "todo"
-							frontend.addMessage('success', '', 'Exportação feita com sucesso.');
-						}
-						// TODO Tratar erro
-					});
-				});
-			});
+			// TODO Isso aqui não tá funcionando
+			// $(window).on('load', function() {
+			// 	$('#bau_exportar').click(async () => {
+			// 		const data = await $.ajax({ 
+			// 			type: "GET",
+			// 			dataType: "json",
+			// 			url: "/backupRestore/exportar",
+			// 			success: function(data){
+			// 				debugger;
+			// 				StringUtils.downloadString(JSON.stringify(data), `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
+			// 				// TODO Trazer frontend do projeto "todo"
+			// 				frontend.addMessage('success', '', 'Exportação feita com sucesso.');
+			// 			}
+			// 			// TODO Tratar erro
+			// 		});
+			// 	});
+			// });
 		</script>
 		<!-- Blocos adicionais do head (opcional) -->
 		<th:block layout:fragment="extra-head"></th:block>

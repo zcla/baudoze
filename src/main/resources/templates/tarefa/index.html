@@ -6,6 +6,73 @@
 		th:with="htmlTitle='Tarefas'">
 	<head>
 		<title th:text="${htmlTitle}"></title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				document.addEventListener("click", async (e) => {
+					const linkExcluir = e.target.closest(".acao-excluir");
+					if (linkExcluir) {
+						e.preventDefault();
+						const id = linkExcluir.dataset.id;
+						if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
+							Ui.showLoading();
+							$.ajax({
+								url: "/api/v1/tarefa/" + id,
+								type: "DELETE",
+								success: function () {
+									Ui.sucesso("Tarefa excluída com sucesso");
+									linkExcluir.closest("tr").remove();
+									Ui.hideLoading();
+								},
+								error: function (xhr) {
+									Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+									Ui.hideLoading();
+								}
+							});
+						}
+					}
+
+					const chkMarcar = e.target.closest(".acao-marcar");
+					if (chkMarcar) {
+						e.preventDefault();
+						const id = chkMarcar.dataset.id;
+						Ui.showLoading();
+						$.ajax({
+							url: "/api/v1/tarefa/" + id + "/marcar",
+							type: "PATCH",
+							success: function () {
+								chkMarcar.checked = true;
+								chkMarcar.classList.replace("acao-marcar", "acao-desmarcar");
+								Ui.hideLoading();
+							},
+							error: function (xhr) {
+								Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+								Ui.hideLoading();
+							}
+						});
+					}
+
+					const chkDesmarcar = e.target.closest(".acao-desmarcar");
+					if (chkDesmarcar) {
+						e.preventDefault();
+						const id = chkDesmarcar.dataset.id;
+						Ui.showLoading();
+						$.ajax({
+							url: "/api/v1/tarefa/" + id + "/desmarcar",
+							type: "PATCH",
+							success: function () {
+								chkDesmarcar.checked = false;
+								chkDesmarcar.classList.replace("acao-desmarcar", "acao-marcar");
+								Ui.hideLoading();
+							},
+							error: function (xhr) {
+								Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+								Ui.hideLoading();
+							}
+						});
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div layout:fragment="conteudo">
@@ -21,22 +88,22 @@
 					<span th:text="${htmlTitle}"></span>
 				</span>
 			</h1>
-			<th:block th:if="${#lists.isEmpty(tarefas)}">
-				<p>Não há tarefas cadastradas.</p>
-			</th:block>
-			<th:block th:if="${!#lists.isEmpty(tarefas)}">
-				<div id="crudLista" class="mb-3">
-					<table class="table table-sm table-hover">
-						<thead>
-							<th:block th:replace="~{tarefa/_fragments :: theadTr()}"></th:block>
-						</thead>
+			<div id="crudLista" class="mb-3">
+				<table class="table table-sm table-hover">
+					<thead>
+						<th:block th:replace="~{tarefa/_fragments :: theadTr()}"></th:block>
+					</thead>
+					<th:block th:if="${!#lists.isEmpty(tarefas)}">
 						<tbody>
 							<th:block th:each="tarefa : ${tarefas}">
 								<th:block th:replace="~{tarefa/_fragments :: tbodyTr(tarefa=${tarefa})}"></th:block>
 							</th:block>
 						</tbody>
-					</table>
-				</div>
+					</th:block>
+				</table>
+			</div>
+			<th:block th:if="${#lists.isEmpty(tarefas)}">
+				<p>Não há tarefas cadastradas.</p>
 			</th:block>
 		</div>
 	</body>

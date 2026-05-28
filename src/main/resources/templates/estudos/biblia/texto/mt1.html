@@ -104,7 +104,22 @@ tr#notas {
 	</head>
 	<body>
 		<div layout:fragment="conteudo">
-			<h1>Mt 1</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/_fragments :: breadcrumb_index()}"></li>
+					<li class="breadcrumb-item active">Bíblia</li>
+					<li class="breadcrumb-item active">Estrutura</li>
+					<li class="breadcrumb-item active" th:text="${htmlTitle}"></li>
+				</ol>
+			</nav>
+			<h1>
+				<span>
+					<img src="/img/estudos-32.png">
+					<span th:text="${htmlTitle}"></span>
+				</span>
+			</h1>
+			<!-- TODO Isso tem que virar um fragment -->
 			<div class="btn-toolbar" role="toolbar">
 				<div class="btn-group btn-group-sm me-2" role="group">
 					<input type="checkbox" class="btn-check" id="chkCNBB2008" autocomplete="off">

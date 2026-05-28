@@ -25,6 +25,8 @@ public class SecurityConfig {
 				.requestMatchers("/_erro/**").permitAll()
 				// Bíblia
 				.requestMatchers("/biblia/**").permitAll()
+				// Estudos
+				.requestMatchers("/estudos/**").permitAll()
 				// Todo o resto precisa de login
 				.anyRequest().authenticated()
 			)

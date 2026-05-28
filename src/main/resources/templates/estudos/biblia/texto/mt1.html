@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='Mt 1'">
+	<head>
+		<title th:text="${htmlTitle}"></title>
+		<script>
+$(document).ready(function() {
+    $('.versiculo').mouseenter(
+        function (event) {
+            var classe = getVersiculo(event);
+            if (classe) {
+                $('.' + classe).addClass('highlight');
+            }
+        }
+    );
+    $('.versiculo').mouseleave(
+        function (event) {
+            var classe = getVersiculo(event);
+            if (classe) {
+                $('.' + classe).removeClass('highlight');
+            }
+        }
+    );
+    $('label[id^="lbl_"]').click(
+        function () {
+            $('.' + $(this).attr('id').replace('lbl_', 'col_')).toggle();
+        }
+    );
+});
+
+function getVersiculo(event) {
+    var classList = event.currentTarget.className.split(' ');
+    for (c of classList) {
+        if ((c != 'versiculo') && (c != 'highlight') && (c != 'indent')) {
+            return c;
+        }
+    }
+    return '';
+}
+		</script>
+		<style>
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1.1rem;
+}
+
+p {
+    margin: 0;
+}
+
+table {
+    font-size: 10pt;
+}
+
+thead th {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+tbody th {
+    text-align: right;
+    width: 1%;
+}
+
+td {
+    width: 5%;
+}
+
+.highlight {
+    background-color: #ff6;
+}
+
+p.indent {
+    text-indent: 10pt;
+}
+
+sup.nota {
+    color: #f00;
+    font-style: italic;
+}
+
+tr#notas {
+    background-color: #ccc;
+}
+		</style>
+	</head>
+	<body>
+		<div layout:fragment="conteudo">
+			<h1>Mt 1</h1>
+			<div class="btn-toolbar" role="toolbar">
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkCNBB2008" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkCNBB2008" title="Bíblia Sagrada - Tradução da CNBB (2008)">CNBB2008</label>
+					<input type="checkbox" class="btn-check" id="chkCNBB2019" autocomplete="off">
+					<label class="btn btn-outline-primary" for="chkCNBB2019" title="Bíblia Sagrada - Tradução Oficial da CNBB (2019)">CNBB2019</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBSAM1987" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBSAM1987" title="Bíblia Sagrada Ave-Maria (1987)">BSAM1987</label>
+					<input type="checkbox" class="btn-check" id="chkBSAM2016" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBSAM2016" title="Bíblia Sagrada Ave-Maria - Edição de Estudos (2016)">BSAM2016</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBJ1987" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBJ1987" title="Bíblia de Jerusalém - Nova edição, revista (1987)">BJ1987</label>
+					<input type="checkbox" class="btn-check" id="chkBJ2002" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBJ2002" title="Bíblia de Jerusalém - Nova edição, revista e ampliada (2002)">BJ2002</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBMD2016" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBMD2016" title="Bíblia Mensagem de Deus (Loyola, 2016)">BMD2016</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBN1985" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBN1985" title="Bíblia de Navarra (1985, 1990, 1991; somente NT)">BN1985</label>
+					<input type="checkbox" class="btn-check" id="chkBN2023" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBN2023" title="Bíblia de Navarra (2023; somente NT)">BN2023</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkPMS1932" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkPMS1932" title="Bíblia Sagrada (Tradição, Padre Matos Soares, 1932)">PMS1932</label>
+					<input type="checkbox" class="btn-check" id="chkPMS1956" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkPMS1956" title="Bíblia Sagrada (Ecclesiae, Padre Matos Soares, 1956)">PMS1956</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkAB2023" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkAB2023" title="A Bíblia (Paulinas, 2023)">AB2023</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBSEP1990" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBSEP1990" title="Bíblia Sagrada Edição Pastoral (Paulus, 1990)">BSEP1990</label>
+					<input type="checkbox" class="btn-check" id="chkBPas2015" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBPas2015" title="Bíblia Pastoral (Paulus, 2015)">BPas2015</label>
+					<input type="checkbox" class="btn-check" id="chkBPer2017" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBPer2017" title="Bíblia do Peregrino (Paulus, 2017)">BPer2017</label>
+					<input type="checkbox" class="btn-check" id="chkBPV2022" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBPV2022" title="Bíblia Palavra Viva (Paulus, 2022)">BPV2022</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBA2024" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBA2024" title="Bíblia de Aparecida (Santuário, 2024)">BA2024</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkTEB2002" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkTEB2002" title="A Bíblia - Tradução Ecumênica (TEB, 2002)">TEB2002</label>
+					<input type="checkbox" class="btn-check" id="chkTEB2015" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkTEB2015" title="Bíblia - Tradução Ecumênica (TEB, 2015)">TEB2015</label>
+					<input type="checkbox" class="btn-check" id="chkTEB2020" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkTEB2020" title="Bíblia TEB: notas integrais tradução ecumênica (TEB, 2020)">TEB2020</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkBSEF2012" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkBSEF2012" title="Bíblia Sagrada Edição da Família (Vozes, 2012)">BSEF2012</label>
+				</div>
+				<div class="btn-group btn-group-sm me-2" role="group">
+					<input type="checkbox" class="btn-check" id="chkY2017" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="chkY2017" title="Bíblia Jovem (Youcat, 2017; trechos)">Y2017</label>
+				</div>
+				<!--
+					vatican.va
+					Missal Romano
+					Scott Hahn
+						Revised Standard Version, Second Catholic Edition
+						Cadernos de Estudo Bíblico
+					Catena Aurea
+					Comentários bíblicos
+					BJ em espanhol
+					Bíblias no Kindle
+					Bíblias baixadas
+				-->
+			</div>
+			<hr>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="javascript:location.reload();">Bíblia - Mt 1</a>
+				<div class="collapse navbar-collapse" id="form">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-secondary btn-sm active" id="lbl_BAM" title="Bíblia Ave-Maria">
+							<input type="checkbox" checked autocomplete="off" id="chk_BAM">Ave-Maria
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_BJ1987" title="Bíblia de Jerusalém 1987">
+							<input type="checkbox" checked autocomplete="off">Jerusalém 1987
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_BJ2002" title="Bíblia de Jerusalém 2002">
+							<input type="checkbox" checked autocomplete="off">Jerusalém 2002
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_BP" title="Bíblia do Peregrino">
+							<input type="checkbox" checked autocomplete="off">Peregrino
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_BSN" title="Bíblia Sagrada (Navarra)">
+							<input type="checkbox" checked autocomplete="off">Navarra
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_TEB" title="Bíblia TEB">
+							<input type="checkbox" checked autocomplete="off">TEB
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_MR" title="Missal Romano">
+							<input type="checkbox" checked autocomplete="off">Missal Romano
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_CA" title="Catena Aurea">
+							<input type="checkbox" checked autocomplete="off">Catena Aurea
+						</label>
+						<label class="btn btn-secondary btn-sm active" id="lbl_NA" title="New Advent">
+							<input type="checkbox" checked autocomplete="off">New Advent
+						</label>
+					</div>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</nav>
+			<div id="principal" class="container-fluid">
+				<table class="table table-sm">
+					<thead>
+						<tr>
+							<th class="col_BAM">Bíblia Ave-Maria</th>
+							<th class="col_BJ1987">Bíblia de Jerusalém 1987</th>
+							<th class="col_BJ2002">Bíblia de Jerusalém 2002</th>
+							<th class="col_BP">Bíblia do Peregrino</th>
+							<th class="col_BSN" colspan="2">Bíblia Sagrada (Navarra)</th>
+							<th class="col_TEB">Bíblia TEB</th>
+							<th class="col_MR">Missal Romano</th>
+							<th class="col_CA">Catena Aurea</th>
+							<th class="col_NA" colspan="3"><a href="http://www.newadvent.org/bible/mat001.htm" target="_blank">New Advent</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="Mt_1_1">
+							<td class="col_BAM" rowspan="5">
+								<h1>I - Infância de Jesus (1-2)</h1>
+								<h6>Genealogia (=Lc 3,23-38)</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_1"><sup class="versiculo">1</sup>Genealogia de Jesus Cristo, filho de Davi, filho de Abraão.</span>
+									<span class="versiculo Mt_1_2"><sup class="versiculo">2</sup>Abraão gerou Isaac. Isaac gerou Jacó. Jacó gerou Judá e seus irmãos.</span>
+									<span class="versiculo Mt_1_3"><sup class="versiculo">3</sup>Judá gerou, de Tamar, Farés e Zara. Farés gerou Esron. Esron gerou Arão.</span>
+									<span class="versiculo Mt_1_4"><sup class="versiculo">4</sup>Arão gerou Aminadab. Aminadab gerou Naasson. Naasson gerou Salmon.</span>
+									<span class="versiculo Mt_1_5"><sup class="versiculo">5</sup>Salmon gerou Booz, de Raab. Booz gerou Obed, de Rute. Obed gerou Jessé. Jessé gerou o rei Davi.</span>
+								</p>
+							</td>
+							<td class="col_BJ1987">
+								<h1>I. O nascimento e a infância de Jesus</h1>
+								<h6>Genealogia de Jesus</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_1"><sup class="versiculo">1</sup>Livro da origem de Jesus Cristo, filho de Davi, filho de Abraão:</span>
+								</p>
+							</td>
+							<td class="col_BJ2002">
+								<h1>I. O nascimento e a infância de Jesus</h1>
+								<h6>Ascendência de Jesus</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_1"><sup class="versiculo">1</sup>Livro da origem de Jesus Cristo, filho de Davi, filho de Abraão:</span>
+								</p>
+							</td>
+							<td class="col_BP">
+								<h6><b>Genealogia</b> (Lc 3,23-38)</h6>
+								<p class="versiculo Mt_1_1 indent"><sup class="versiculo">1</sup>Genealogia de Jesus Cristo, da linhagem de Davi, da linhagem de Abraão:</p>
+							</td>
+							<td class="col_BSN">
+								<p class="versiculo Mt_1_1 indent"><sup class="versiculo">1</sup>Liber generationis Iesu Christi filii David filii Abraham.</p>
+							</td>
+							<td class="col_BSN">
+								<h1>Nascimento e Infância de Jesus</h1>
+								<h6>Genealogia de Jesus Cristo</h6>
+								<p class="versiculo Mt_1_1 indent"><sup class="versiculo">1</sup>Genealogia de <i>Jesus Cristo</i>, filho de David, filho de Abraão.</p>
+							</td>
+							<td class="col_TEB">
+								<h6><b>Genealogia de Jesus Cristo</b>. <i>(Lc 3,23-38).</i></h6>
+								<p class="versiculo Mt_1_1 indent"><sup class="versiculo">1</sup>Livro das origens de Jesus Cristo, filho de David, filho de Abraão,</p>
+							</td>
+							<td class="col_MR">
+								<p class="versiculo Mt_1_1 indent"><sup class="versiculo">1</sup>Livro da origem de Jesus Cristo, filho de Davi, filho de Abraão.</p>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio I: v. 1</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_1">Genealogia de Jesus Cristo, filho de Davi, filho de Abraão.</span>
+								</p>
+							</td>
+							<td class="col_NA" rowspan="17">
+								<p>
+									<span class="versiculo Mt_1_1"><sup class="versiculo">1</sup>Βίβλος γενέσεως Ἰησοῦ Χριστοῦ υἱοῦ Δαυὶδ υἱοῦ Ἀβραάμ.</span>
+									<span class="versiculo Mt_1_2"><sup class="versiculo">2</sup>Ἀβραὰμ ἐγέννησεν τὸν Ἰσαάκ, Ἰσαὰκ δὲ ἐγέννησεν τὸν Ἰακώβ, Ἰακὼβ δὲ ἐγέννησεν τὸν Ἰούδαν καὶ τοὺς ἀδελφοὺς αὐτοῦ,</span>
+									<span class="versiculo Mt_1_3"><sup class="versiculo">3</sup>Ἰούδας δὲ ἐγέννησεν τὸν Φάρες καὶ τὸν Ζάρα ἐκ τῆς Θαμάρ, Φάρες δὲ ἐγέννησεν τὸν Ἑσρώμ, Ἑσρὼμ δὲ ἐγέννησεν τὸν Ἀράμ,</span>
+									<span class="versiculo Mt_1_4"><sup class="versiculo">4</sup>Ἀρὰμ δὲ ἐγέννησεν τὸν Ἀμιναδάβ, Ἀμιναδὰβ δὲ ἐγέννησεν τὸν Ναασσών, Ναασσὼν δὲ ἐγέννησεν τὸν Σαλμών,</span>
+									<span class="versiculo Mt_1_5"><sup class="versiculo">5</sup>Σαλμὼν δὲ ἐγέννησεν τὸν Βόες ἐκ τῆς Ῥαχάβ, Βόες δὲ ἐγέννησεν τὸν Ἰωβὴδ ἐκ τῆς Ῥούθ, Ἰωβὴδ δὲ ἐγέννησεν τὸν Ἰεσσαί,</span>
+									<span class="versiculo Mt_1_6"><sup class="versiculo">6</sup>Ἰεσσαὶ δὲ ἐγέννησεν τὸν Δαυὶδ τὸν βασιλέα. Δαυὶδ δὲ ἐγέννησεν τὸν Σολομῶνα ἐκ τῆς τοῦ Οὐρίου,</span>
+									<span class="versiculo Mt_1_7"><sup class="versiculo">7</sup>Σολομὼν δὲ ἐγέννησεν τὸν Ῥοβοάμ, Ῥοβοὰμ δὲ ἐγέννησεν τὸν Ἀβιά, Ἀβιὰ δὲ ἐγέννησεν τὸν Ἀσάφ,</span>
+									<span class="versiculo Mt_1_8"><sup class="versiculo">8</sup>Ἀσὰφ δὲ ἐγέννησεν τὸν Ἰωσαφάτ, Ἰωσαφὰτ δὲ ἐγέννησεν τὸν Ἰωράμ, Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζίαν,</span>
+									<span class="versiculo Mt_1_9"><sup class="versiculo">9</sup>Ὀζίας δὲ ἐγέννησεν τὸν Ἰωαθάμ, Ἰωαθὰμ δὲ ἐγέννησεν τὸν Ἀχάζ, Ἀχὰζ δὲ ἐγέννησεν τὸν Ἑζεκίαν,</span>
+									<span class="versiculo Mt_1_10"><sup class="versiculo">10</sup>Ἑζεκίας δὲ ἐγέννησεν τὸν Μανασσῆ, Μανασσῆς δὲ ἐγέννησεν τὸν Ἀμώς, Ἀμὼς δὲ ἐγέννησεν τὸν Ἰωσίαν,</span>
+									<span class="versiculo Mt_1_11"><sup class="versiculo">11</sup>Ἰωσίας δὲ ἐγέννησεν τὸν Ἰεχονίαν καὶ τοὺς ἀδελφοὺς αὐτοῦ ἐπὶ τῆς μετοικεσίας Βαβυλῶνος.</span>
+									<span class="versiculo Mt_1_12"><sup class="versiculo">12</sup>μετὰ δὲ τὴν μετοικεσίαν Βαβυλῶνος Ἰεχονίας ἐγέννησεν τὸν Σαλαθιήλ, Σαλαθιὴλ δὲ ἐγέννησεν τὸν Ζοροβαβέλ,</span>
+									<span class="versiculo Mt_1_13"><sup class="versiculo">13</sup>Ζοροβαβὲλ δὲ ἐγέννησεν τὸν Ἀβιούδ, Ἀβιοὺδ δὲ ἐγέννησεν τὸν Ἐλιακίμ, Ἐλιακὶμ δὲ ἐγέννησεν τὸν Ἀζώρ,</span>
+									<span class="versiculo Mt_1_14"><sup class="versiculo">14</sup>Ἀζὼρ δὲ ἐγέννησεν τὸν Σαδώκ, Σαδὼκ δὲ ἐγέννησεν τὸν Ἀχίμ, Ἀχὶμ δὲ ἐγέννησεν τὸν Ἐλιούδ,</span>
+									<span class="versiculo Mt_1_15"><sup class="versiculo">15</sup>Ἐλιοὺδ δὲ ἐγέννησεν τὸν Ἐλεάζαρ, Ἐλεάζαρ δὲ ἐγέννησεν τὸν Ματθάν, Ματθὰν δὲ ἐγέννησεν τὸν Ἰακώβ,</span>
+									<span class="versiculo Mt_1_16"><sup class="versiculo">16</sup>Ἰακὼβ δὲ ἐγέννησεν τὸν Ἰωσὴφ τὸν ἄνδρα Μαρίας, ἐξ ἧς ἐγεννήθη Ἰησοῦς ὁ λεγόμενος Χριστός.</span>
+									<span class="versiculo Mt_1_17"><sup class="versiculo">17</sup>Πᾶσαι οὖν αἱ γενεαὶ ἀπὸ Ἀβραὰμ ἕως Δαυὶδ γενεαὶ δεκατέσσαρες, καὶ ἀπὸ Δαυὶδ ἕως τῆς μετοικεσίας Βαβυλῶνος γενεαὶ δεκατέσσαρες, καὶ ἀπὸ τῆς μετοικεσίας Βαβυλῶνος ἕως τοῦ Χριστοῦ γενεαὶ δεκατέσσαρες.</span>
+								</p>
+							</td>
+							<td class="col_NA" rowspan="17">
+								<p>
+									<span class="versiculo Mt_1_1"><sup class="versiculo">1</sup>A record of the ancestry from which Jesus Christ, the son of David, son of Abraham, was born.</span>
+									<span class="versiculo Mt_1_2"><sup class="versiculo">2</sup>Abraham was the father of Isaac, Isaac of Jacob, Jacob of Juda and his brethren;</span>
+									<span class="versiculo Mt_1_3"><sup class="versiculo">3</sup>Juda of Phares and Zara, by Thamar; Phares of Esron, Esron of Aram,</span>
+									<span class="versiculo Mt_1_4"><sup class="versiculo">4</sup>Aram of Aminadab, Aminadab of Naasson, Naasson of Salmon;</span>
+									<span class="versiculo Mt_1_5"><sup class="versiculo">5</sup>Salmon of Booz, by Rahab; Booz of Obed, by Ruth; Obed of Jesse;</span>
+									<span class="versiculo Mt_1_6"><sup class="versiculo">6</sup>and Jesse was the father of king David. And king David was the father of Solomon, by her that had been the wife of Urias.</span>
+									<span class="versiculo Mt_1_7"><sup class="versiculo">7</sup>Solomon was the father of Roboam, Roboam of Abias, Abias of Asa,</span>
+									<span class="versiculo Mt_1_8"><sup class="versiculo">8</sup>Asa of Josaphat, Josaphat of Joram, Joram of Ozias,</span>
+									<span class="versiculo Mt_1_9"><sup class="versiculo">9</sup>Ozias of Joatham, Joatham of Achaz, Achaz of Ezechias,</span>
+									<span class="versiculo Mt_1_10"><sup class="versiculo">10</sup>Ezechias of Manasses, Manasses of Amon, Amon of Josias;</span>
+									<span class="versiculo Mt_1_11"><sup class="versiculo">11</sup>and Josias was the father of Jechonias and his brethren, at the time of the removal to Babylon.</span>
+									<span class="versiculo Mt_1_12"><sup class="versiculo">12</sup>And after the removal to Babylon, Jechonias was the father of Salathiel, Salathiel of Zorobabel,</span>
+									<span class="versiculo Mt_1_13"><sup class="versiculo">13</sup>Zorobabel of Abiud, Abiud of Eliacim, Eliacim of Azor,</span>
+									<span class="versiculo Mt_1_14"><sup class="versiculo">14</sup>Azor of Sadoc, Sadoc of Achim, Achim of Eliud,</span>
+									<span class="versiculo Mt_1_15"><sup class="versiculo">15</sup>Eliud of Eleazar, Eleazar of Mathan, Mathan of Jacob,</span>
+									<span class="versiculo Mt_1_16"><sup class="versiculo">16</sup>and Jacob was the father of Joseph, the husband of Mary; it was of her that Jesus was born, who is called Christ.<sup class="nota">a</sup></span>
+									<span class="versiculo Mt_1_17"><sup class="versiculo">17</sup>Thus there are fourteen generations in all from Abraham to David, fourteen from David to the captivity in Babylon, and fourteen from the captivity in Babylon to Christ.</span>
+								</p>
+							</td>
+							<td class="col_NA" rowspan="17">
+								<p>
+									<span class="versiculo Mt_1_1"><sup class="versiculo">1</sup>Liber generationis Jesu Christi filii David, filii Abraham.</span>
+									<span class="versiculo Mt_1_2"><sup class="versiculo">2</sup>Abraham genuit Isaac. Isaac autem genuit Jacob. Jacob autem genuit Judam, et fratres ejus.</span>
+									<span class="versiculo Mt_1_3"><sup class="versiculo">3</sup>Judas autem genuit Phares, et Zaram de Thamar. Phares autem genuit Esron. Esron autem genuit Aram.</span>
+									<span class="versiculo Mt_1_4"><sup class="versiculo">4</sup>Aram autem genuit Aminadab. Aminadab autem genuit Naasson. Naasson autem genuit Salmon.</span>
+									<span class="versiculo Mt_1_5"><sup class="versiculo">5</sup>Salmon autem genuit Booz de Rahab. Booz autem genuit Obed ex Ruth. Obed autem genuit Jesse. Jesse autem genuit David regem.</span>
+									<span class="versiculo Mt_1_6"><sup class="versiculo">6</sup>David autem rex genuit Salomonem ex ea quæ fuit Uriæ.</span>
+									<span class="versiculo Mt_1_7"><sup class="versiculo">7</sup>Salomon autem genuit Roboam. Roboam autem genuit Abiam. Abias autem genuit Asa.</span>
+									<span class="versiculo Mt_1_8"><sup class="versiculo">8</sup>Asa autem genuit Josophat. Josophat autem genuit Joram. Joram autem genuit Oziam.</span>
+									<span class="versiculo Mt_1_9"><sup class="versiculo">9</sup>Ozias autem genuit Joatham. Joatham autem genuit Achaz. Achaz autem genuit Ezechiam.</span>
+									<span class="versiculo Mt_1_10"><sup class="versiculo">10</sup>Ezechias autem genuit Manassen. Manasses autem genuit Amon. Amon autem genuit Josiam.</span>
+									<span class="versiculo Mt_1_11"><sup class="versiculo">11</sup>Josias autem genuit Jechoniam, et fratres ejus in transmigratione Babylonis.</span>
+									<span class="versiculo Mt_1_12"><sup class="versiculo">12</sup>Et post transmigrationem Babylonis: Jechonias genuit Salathiel. Salathiel autem genuit Zorobabel.</span>
+									<span class="versiculo Mt_1_13"><sup class="versiculo">13</sup>Zorobabel autem genuit Abiud. Abiud autem genuit Eliacim. Eliacim autem genuit Azor.</span>
+									<span class="versiculo Mt_1_14"><sup class="versiculo">14</sup>Azor autem genuit Sadoc. Sadoc autem genuit Achim. Achim autem genuit Eliud.</span>
+									<span class="versiculo Mt_1_15"><sup class="versiculo">15</sup>Eliud autem genuit Eleazar. Eleazar autem genuit Mathan. Mathan autem genuit Jacob.</span>
+									<span class="versiculo Mt_1_16"><sup class="versiculo">16</sup>Jacob autem genuit Joseph virum Mariæ, de qua natus est Jesus, qui vocatur Christus.</span>
+									<span class="versiculo Mt_1_17"><sup class="versiculo">17</sup>Omnes itaque generationes ab Abraham usque ad David, generationes quatuordecim: et a David usque ad transmigrationem Babylonis, generationes quatuordecim: et a transmigratione Babylonis usque ad Christum, generationes quatuordecim.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_2">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_2">
+									<p><sup class="versiculo">2</sup>Abraão gerou Isaac,</p>
+									<p>Isaac gerou Jacó,</p>
+									<p>Jacó gerou Judá e seus irmãos,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_2">
+									<p><sup class="versiculo">2</sup>Abraão gerou Isaac,</p>
+									<p>Isaac gerou Jacó,</p>
+									<p>Jacó gerou Judá e seus irmãos,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_2 indent"><sup class="versiculo">2</sup>Abraão gerou Isaac, Isaac gerou Jacó, Jacó gerou Judá e seus irmãos.</p>
+							</td>
+							<td class="col_BSN" rowspan="4">
+								<p class="indent">
+									<span class="versiculo Mt_1_2 indent"><sup class="versiculo">2</sup>Abraham genuit Isaac, Isaac autem genuit Iacob, Iacob autem genuit Iudam et fratres eius,</span>
+									<span class="versiculo Mt_1_3 indent"><sup class="versiculo">3</sup>Iudas autem genuit Phares et Zara de Thamar, Phares autem genuit Esrom, Esrom autem genuit Aram,</span>
+									<span class="versiculo Mt_1_4 indent"><sup class="versiculo">4</sup>Aram autem genuit Aminadab, Aminadab autem genuit Naásson, Naásson autem genuit Salmon,</span>
+									<span class="versiculo Mt_1_5 indent"><sup class="versiculo">5</sup>Salmon autem genuit Booz de Rahab, Booz autem genuit Iobed ex Ruth, Iobed autem genuit Iesse,</span>
+									<span class="versiculo Mt_1_6 indent"><sup class="versiculo">6</sup>Iesse autem genuit David regem.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="4">
+								<p class="indent">
+									<span class="versiculo Mt_1_2 indent"><sup class="versiculo">2</sup>Abraão gerou a Isaac, Isaac gerou a Jacob, Jacob gerou a Judas e seus irmãos.</span>
+									<span class="versiculo Mt_1_3 indent"><sup class="versiculo">3</sup>Judas gerou a Fares e a Zara, de Tamar.<br>Fares gerou a Esron,<br>Esron gerou a Arão,</span>
+									<span class="versiculo Mt_1_4 indent"><sup class="versiculo">4</sup>Arão gerou a Aminabad, Aminabad gerou a Naasson, Naasson gerou a Salmon.</span>
+									<span class="versiculo Mt_1_5 indent"><sup class="versiculo">5</sup>Salmon gerou a Booz, de Raab. Booz gerou a Obed, de Rute. Obed gerou a Jessé, Jessé gerou a el-rei David.</span>
+								</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_2">
+									<p class="indent"><sup class="versiculo">2</sup>Abraão gerou Isaac,</p>
+									<p class="indent">Isaac gerou Jacó,</p>
+									<p class="indent">Jacó gerou Judá e seus irmãos,</p>
+								</div>
+							</td>
+							<td class="col_MR" rowspan="5">
+								<p class="indent">
+									<span class="versiculo Mt_1_2 indent"><sup class="versiculo">2</sup>Abraão gerou Isaac; Isaac gerou Jacó; Jacó gerou Judá e seus irmãos.</span>
+									<span class="versiculo Mt_1_3 indent"><sup class="versiculo">3</sup>Judá gerou Farés e Zara, cuja mãe era Tamar. Farés gerou Esrom; Esrom gerou Aram;</span>
+									<span class="versiculo Mt_1_4 indent"><sup class="versiculo">4</sup>Aram gerou Aminadab; Aminadab gerou Naasson; Naasson Gerou Salmon;</span>
+									<span class="versiculo Mt_1_5 indent"><sup class="versiculo">5</sup>Salmon gerou Booz, cuja mãe era Raab. Booz gerou Obed, cuja mãe era Rute. Obed gerou Jessé.</span>
+									<span class="versiculo Mt_1_6 indent"><sup class="versiculo">6</sup>Jessé gerou o rei Davi. Davi gerou Salomão, daquela que tinha sido a mulher de Urias.</span>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio II: v. 2</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_2">Abraão gerou Isaac, Isaac gerou Jacó, Jacó gerou Judá e seus irmãos.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_3">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_3">
+									<p><sup class="versiculo">3</sup>Judá gerou Farés e Zara, de Tamar,</p>
+									<p>Farés gerou Esrom,</p>
+									<p>Esrom gerou Aram,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_3">
+									<p><sup class="versiculo">3</sup>Judá gerou Farés e Zara, de Tamar,</p>
+									<p>Farés gerou Esrom,</p>
+									<p>Esrom gerou Aram,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_3 indent"><sup class="versiculo">3</sup>De Tamar, Judá gerou Farés e Zara; Farés gerou Esrom, Esrom gerou Aram.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_3">
+									<p class="indent"><sup class="versiculo">3</sup>Judá gerou Farés e Zara, de Tamar,</p>
+									<p class="indent">Farés gerou Esrom,</p>
+									<p class="indent">Esrom gerou Arâm,</p>
+								</div>
+							</td>
+							<td class="col_CA" rowspan="3">
+								<h1>Lectio III: v. 3-5</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_3">Judá gerou, de Tamar, Farés e Zara, Farés gerou Esrom, Esrom gerou Arão,</span>
+									<span class="versiculo Mt_1_4">Arão gerou Aminadab, Aminadab gerou Naasson, Naasson gerou Salmon,</span>
+									<span class="versiculo Mt_1_5">Salmon gerou Booz de Raab, Booz gerou Obed de Rute, Obed gerou Jessé,</span>
+									<span class="versiculo Mt_1_6">Jessé gerou o rei Davi.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_4">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_4">
+									<p><sup class="versiculo">4</sup>Aram gerou Aminadab,</p>
+									<p>Aminadab gerou Naasson,</p>
+									<p>Naasson gerou Salmon,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_4">
+									<p><sup class="versiculo">4</sup>Aram gerou Aminadab,</p>
+									<p>Aminadab gerou Naasson,</p>
+									<p>Naasson gerou Salmon,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_4 indent"><sup class="versiculo">4</sup>Aram gerou Aminadab, Aminadab gerou Naasson, Naasson gerou Salmon.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_4">
+									<p class="indent"><sup class="versiculo">4</sup>Arâm gerou Aminadab,</p>
+									<p class="indent">Aminadab gerou Naasson,</p>
+									<p class="indent">Naasson gerou Salmon,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_5">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_5">
+									<p><sup class="versiculo">5</sup>Salmon gerou Booz, de Raab,</p>
+									<p>Booz gerou Jobed, de Rute,</p>
+									<p>Jobed gerou Jessé,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_5">
+									<p><sup class="versiculo">5</sup>Salmon gerou Booz, de Raab,</p>
+									<p>Booz gerou Jobed, de Rute,</p>
+									<p>Jobed gerou Jessé,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_5 indent"><sup class="versiculo">5</sup>De Raab, Salmon gerou Booz; De Rute, Booz gerou Obed, Obed gerou Jessé.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_5">
+									<p class="indent"><sup class="versiculo">5</sup>Salmon gerou Booz, de Raab,</p>
+									<p class="indent">Booz gerou Jobed, de Rute,</p>
+									<p class="indent">Jobed gerou Jessé,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_6">
+							<td class="col_BAM" rowspan="6">
+								<p class="indent">
+									<span class="versiculo Mt_1_6"><sup class="versiculo">6</sup>O rei Davi gerou Salomão, daquela que fora mulher de Urias.</span>
+									<span class="versiculo Mt_1_7"><sup class="versiculo">7</sup>Salomão gerou Roboão. Roboão gerou Abias. Abias gerou Asa.</span>
+									<span class="versiculo Mt_1_8"><sup class="versiculo">8</sup>Asa gerou Josafá. Josafá gerou Jorão. Jorão gerou Ozias.</span>
+									<span class="versiculo Mt_1_9"><sup class="versiculo">9</sup>Ozias gerou Joatão. Joatão gerou Acaz. Acaz gerou Ezequias.</span>
+									<span class="versiculo Mt_1_10"><sup class="versiculo">10</sup>Ezequias gerou Manassés. Manassés gerou Amon. Amon gerou Josias.</span>
+									<span class="versiculo Mt_1_11"><sup class="versiculo">11</sup>Josias gerou Jeconias e seus irmãos, no cativeiro da Babilônia.</span>
+								</p>
+							</td>
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_6">
+									<p><sup class="versiculo">6</sup>Jessé gerou o rei Davi.</p>
+									<p>Davi gerou Salomão, daquela que foi mulher de Urias,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_6">
+									<p><sup class="versiculo">6</sup>Jessé gerou o rei Davi.</p>
+									<p>Davi gerou Salomão, daquela que foi mulher de Urias,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_6 indent"><sup class="versiculo">6</sup>Jessé gerou o rei Davi. Da mulher de Urias, Davi gerou Salomão.</p>
+							</td>
+							<td class="col_BSN" rowspan="6">
+								<p class="indent">
+									<span class="versiculo Mt_1_6 indent">David autem genuit Salomonem ex ea, quae fuit Uriae,</span>
+									<span class="versiculo Mt_1_7 indent"><sup class="versiculo">7</sup>Sálomon autem genuit Róboam. Róboam autem genuit Abíam, Abía autem genuit Asa.</span>
+									<span class="versiculo Mt_1_8 indent"><sup class="versiculo">8</sup>Asa autem genuit Iósaphat, Iósaphat autem genuit Ioram, Ioram autem genuit Ozíam,</span>
+									<span class="versiculo Mt_1_9 indent"><sup class="versiculo">9</sup>Ozías autem genuit Ióatham, Ióatham autem genuit Achaz, Achaz autem genuit Ezechiam,</span>
+									<span class="versiculo Mt_1_10 indent"><sup class="versiculo">10</sup>Ezechias autem genuit Manassen, Manasses autem genuit Amon, Amon autem genuit Iosíam,</span>
+									<span class="versiculo Mt_1_11 indent"><sup class="versiculo">11</sup>Iosías autem genuit Iechoníam et fratres eius in transmigratione Babylonis.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="6">
+								<p class="indent">
+									<span class="versiculo Mt_1_6 indent"><sup class="versiculo">6</sup>David gerou a Salomão, da que fora mulher de Urias.</span>
+									<span class="versiculo Mt_1_7 indent"><sup class="versiculo">7</sup>Salomão gerou a Roboão, Roboão gerou a Abias, Abias gerou a Asa.</span>
+									<span class="versiculo Mt_1_8 indent"><sup class="versiculo">8</sup>Asa gerou a Josafá, Josafá gerou a Jorão; Jorão gerou a Ozias.</span>
+									<span class="versiculo Mt_1_9 indent"><sup class="versiculo">9</sup>Ozias gerou a Joatã, Joatã gerou a Acaz, Acaz gerou a Ezequias.</span>
+									<span class="versiculo Mt_1_10 indent"><sup class="versiculo">10</sup>Ezequias gerou a Manassés, Manassés gerou a Amós, Amós gerou a Josias.</span>
+									<span class="versiculo Mt_1_11 indent"><sup class="versiculo">11</sup>Josias gerou a Jeconias e seus irmãos, no tempo da deportação para Babilónia.</span>
+								</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_6">
+									<p class="indent"><sup class="versiculo">6</sup>Jessé gerou o rei David.</p>
+									<p class="indent">David gerou Salomão, da mulher de Urias,</p>
+								</div>
+							</td>
+							<td class="col_CA" rowspan="2">
+								<h1>Lectio IV: v. 6-8</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_6">Davi gerou Salomão daquela que foi mulher de Urias.</span>
+									<span class="versiculo Mt_1_7">Salomão gerou Roboão, Roboão gerou Abias, Abias gerou Asa,</span>
+									<span class="versiculo Mt_1_8">Asa gerou Josafat.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_7">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_7">
+									<p><sup class="versiculo">7</sup>Salomão gerou Roboão,</p>
+									<p>Roboão gerou Abias,</p>
+									<p>Abias gerou Asa,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_7">
+									<p><sup class="versiculo">7</sup>Salomão gerou Roboão,</p>
+									<p>Roboão gerou Abias,</p>
+									<p>Abias gerou Asa,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_7 indent"><sup class="versiculo">7</sup>Salomão gerou Roboão, Roboão gerou Abias, Abias gerou Asaf.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_7">
+									<p class="indent"><sup class="versiculo">7</sup>Salomão gerou Roboão,</p>
+									<p class="indent">Roboão gerou Abias,</p>
+									<p class="indent">Abias gerou Asa,</p>
+								</div>
+							</td>
+							<td class="col_MR" rowspan="5">
+								<p class="indent">
+									<span class="versiculo Mt_1_7 indent"><sup class="versiculo">7</sup>Salomão gerou Roboão; Roboão gerou Abias; Abias gerou Asa;</span>
+									<span class="versiculo Mt_1_8 indent"><sup class="versiculo">8</sup>Asa gerou Josafá; Josafá gerou Jorão; Jorão gerou Ozias;</span>
+									<span class="versiculo Mt_1_9 indent"><sup class="versiculo">9</sup>Ozias gerou Jotão; Jotão gerou Acaz; Acaz gerou Ezequias;</span>
+									<span class="versiculo Mt_1_10 indent"><sup class="versiculo">10</sup>Ezequias gerou Manassés; Manassés gerou Amon; Amon gerou Josias.</span>
+									<span class="versiculo Mt_1_11 indent"><sup class="versiculo">11</sup>Josias gerou Jeconias e seus irmãos, no tempo do exílio na Babilônia.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_8">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_8">
+									<p><sup class="versiculo">8</sup>Asa gerou Josafá,</p>
+									<p>Josafá gerou Jorão,</p>
+									<p>Jorão gerou Ozias,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_8">
+									<p><sup class="versiculo">8</sup>Asa gerou Josafá,</p>
+									<p>Josafá gerou Jorão,</p>
+									<p>Jorão gerou Ozias,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_8 indent"><sup class="versiculo">8</sup>Asaf gerou Josafá, Josafá gerou Jorão, Jorão gerou Ozias.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_8">
+									<p class="indent"><sup class="versiculo">8</sup>Asa gerou Josafat,</p>
+									<p class="indent">Josafat gerou Jorão,</p>
+									<p class="indent">Jorão gerou Ozias,</p>
+								</div>
+							</td>
+							<td class="col_CA" rowspan="4">
+								<h1>Lectio V: v. 8-11</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_8">Josafat gerou Jorão, Jorão gerou Ozias,</span>
+									<span class="versiculo Mt_1_9">Ozias gerou Joatão, Joatão gerou Acaz. Acaz gerou Ezequias,</span>
+									<span class="versiculo Mt_1_10">Ezequias gerou Manassés, Manassés gerou Amon, Amon gerou Josias,</span>
+									<span class="versiculo Mt_1_11">Josias gerou Joaquim, Joaquim gerou Jeconias e seus irmãos, na época da deportação para Babilônia,</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_9">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_9">
+									<p><sup class="versiculo">9</sup>Ozias gerou Joatão,</p>
+									<p>Joatão gerou Acaz,</p>
+									<p>Acaz gerou Ezequias,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_9">
+									<p><sup class="versiculo">9</sup>Ozias gerou Joatão,</p>
+									<p>Joatão gerou Acaz,</p>
+									<p>Acaz gerou Ezequias,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_9 indent"><sup class="versiculo">9</sup>Ozias gerou Joatão, Joatão gerou Acaz, Acaz gerou Ezequias.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_9">
+									<p class="indent"><sup class="versiculo">9</sup>Ozias gerou Joatão,</p>
+									<p class="indent">Joatão gerou Acaz,</p>
+									<p class="indent">Acaz gerou Ezequias,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_10">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_10">
+									<p><sup class="versiculo">10</sup>Ezequias gerou Manassés,</p>
+									<p>Manassés gerou Amon</p>
+									<p>Amon gerou Josias,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_10">
+									<p><sup class="versiculo">10</sup>Ezequias gerou Manassés,</p>
+									<p>Manassés gerou Amon,</p>
+									<p>Amon gerou Josias,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_10 indent"><sup class="versiculo">10</sup>Ezequias gerou Manassés, Manassés gerou Amon, Amon gerou Josias.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_10">
+									<p class="indent"><sup class="versiculo">10</sup>Ezequias gerou Manassés,</p>
+									<p class="indent">Manassés gerou Amon,</p>
+									<p class="indent">Amon gerou Josias,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_11">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_11">
+									<p><sup class="versiculo">11</sup>Josias gerou Jeconias e seus irmãos</p>
+									<p>por ocasião do exílio na Babilônia.</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_11">
+									<p><sup class="versiculo">11</sup>Josias gerou Jeconias e seus irmãos</p>
+									<p>por ocasião do exílio na Babilônia.</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_11 indent"><sup class="versiculo">11</sup>Josias gerou Jeconias e seus irmãos, por ocasião da deportação para Babilônia.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_11">
+									<p class="indent"><sup class="versiculo">11</sup>Josias gerou Jeconias e seus irmãos;</p>
+									<p class="indent">sucedeu então a deportação para Babilônia.</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_12">
+							<td class="col_BAM" rowspan="5">
+								<p class="indent">
+									<span class="versiculo Mt_1_12"><sup class="versiculo">12</sup>E, depois do cativeiro da Babilônia, Jeconias gerou Salatiel. Salatiel gerou Zorobabel.</span>
+									<span class="versiculo Mt_1_13"><sup class="versiculo">13</sup>Zorobabel gerou Abiud. Abiud gerou Eliacim. Eliacim gerou Azor.</span>
+									<span class="versiculo Mt_1_14"><sup class="versiculo">14</sup>Azor gerou Sadoc. Sadoc gerou Aquim. Aquim gerou Eliud.</span>
+									<span class="versiculo Mt_1_15"><sup class="versiculo">15</sup>Eliud gerou Eleazar. Eleazar gerou Matã. Matã gerou Jacó.</span>
+									<span class="versiculo Mt_1_16"><sup class="versiculo">16</sup>Jacó gerou José, esposo de Maria, da qual nasceu Jesus, que é chamado Cristo.</span>
+								</p>
+							</td>
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_12">
+									<p><sup class="versiculo">12</sup>Depois do exílio na Babilônia,</p>
+									<p>Jeconias gerou Salatiel,</p>
+									<p>Salatiel gerou Zorobabel,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_12">
+									<p><sup class="versiculo">12</sup>Depois do exílio na Babilônia,</p>
+									<p>Jeconias gerou Salatiel,</p>
+									<p>Salatiel gerou Zorobatel,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_12 indent"><sup class="versiculo">12</sup>Depois da deportação para Babilônia, Jeconias gerou Salatiel, Salatiel gerou Zorobabel.</p>
+							</td>
+							<td class="col_BSN" rowspan="5">
+								<p class="indent">
+									<span class="versiculo Mt_1_12 indent"><sup class="versiculo">12</sup>Et post transmigrationem Babylonis Iechonías genuit Saláthiel, Saláthiel autem genuit Zoróbabel,</span>
+									<span class="versiculo Mt_1_13 indent"><sup class="versiculo">13</sup>Zoróbabel autem genuit Abíud, Abíud autem genuit Eliachim, Elíachim autem genuit Azor,</span>
+									<span class="versiculo Mt_1_14 indent"><sup class="versiculo">14</sup>Azor autem genuit Sadoc, Sadoc autem genuit Achim, Achim autem genuit Eliud,</span>
+									<span class="versiculo Mt_1_15 indent"><sup class="versiculo">15</sup>Eliud autem genuit Eléazar, Eléazar autem genuit Matthan, Matthan autem genuit Iacob,</span>
+									<span class="versiculo Mt_1_16 indent"><sup class="versiculo">16</sup>Iacob autem genuit Ioseph virum Mariae, de qua natus est Iesus, qui vocatur Christus.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="6">
+								<p class="indent">
+									<span class="versiculo Mt_1_12 indent"><sup class="versiculo">12</sup>Depois da deportação para Babilónia, Jeconias gerou a Salatiel, Salatiel gerou a Zorobabel.</span>
+									<span class="versiculo Mt_1_13 indent"><sup class="versiculo">13</sup>Zorobabel gerou a Abiud, Abiud gerou a Eliacim, Eliacim gerou a Azor.</span>
+									<span class="versiculo Mt_1_14 indent"><sup class="versiculo">14</sup>Azor gerou a Sadoc, Sadoc gerou a Aquim, Aquim gerou a Eliud.</span>
+									<span class="versiculo Mt_1_15 indent"><sup class="versiculo">15</sup>Eliud gerou a Eleazar, Eleazar gerou a Matã, Matã gerou a Jacob.</span>
+									<span class="versiculo Mt_1_16 indent"><sup class="versiculo">16</sup>Jacob gerou a José, o esposo de Maria da qual nasceu <i>Jesus</i>, que se chama Cristo.</span>
+									<span class="versiculo Mt_1_17 indent"><sup class="versiculo">17</sup>Portanto, as gerações são ao todo: desde Abraão até David catorze gerações; desde David até à deportação para Babilónia, catorze gerações; e desde a deportação para Babilónia até Cristo, catorze gerações.</span>
+								</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_12">
+									<p class="indent"><sup class="versiculo">12</sup>Depois da deportação para Babilônia,</p>
+									<p class="indent">Jeconias gerou Salatiel,</p>
+									<p class="indent">Salatiel gerou Zorobabel,</p>
+								</div>
+							</td>
+							<td class="col_MR" rowspan="5">
+								<p class="indent">
+									<span class="versiculo Mt_1_12 indent"><sup class="versiculo">12</sup>Depois do exílio na Babilônia, Jeconias gerou Salatiel; Salatiel gerou Zorobabel;</span>
+									<span class="versiculo Mt_1_13 indent"><sup class="versiculo">13</sup>Zorobabel gerou Abiud; Abiud gerou Eliaquim; Eliaquim gerou Azor;</span>
+									<span class="versiculo Mt_1_14 indent"><sup class="versiculo">14</sup>Azor gerou Sadoc; Sadoc gerou Aquim; Aquim gerou Eliud;</span>
+									<span class="versiculo Mt_1_15 indent"><sup class="versiculo">15</sup>Eliud gerou Eleazar; Eleazar gerou Matã; Matã gerou Jacó.</span>
+									<span class="versiculo Mt_1_16 indent"><sup class="versiculo">16</sup>Jacó gerou José, o esposo de Maria, da qual nasceu Jesus, que é chamado o Cristo.</span>
+								</p>
+							</td>
+							<td class="col_CA" rowspan="4">
+								<h1>Lectio VI: v. 12-15</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_12">E, depois da deportação para Babilônia, Jeconias gerou Salatiel, Salatiel gerou Zorobabel,</span>
+									<span class="versiculo Mt_1_13">Zorobabel gerou Abiud, Abiud gerou Eliacim, Eliacim gerou Azor,</span>
+									<span class="versiculo Mt_1_14">Azor gerou Sadoc, Sadoc gerou Aquim, Aquim gerou Eliud,</span>
+									<span class="versiculo Mt_1_15">Eliud gerou Eleazar, Eleazar gerou Matan, Matan gerou Jacó.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_13">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_13">
+									<p><sup class="versiculo">13</sup>Zorobabel gerou Abiud,</p>
+									<p>Abiud gerou Eliacim,</p>
+									<p>Eliacim gerou Azor,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_13">
+									<p><sup class="versiculo">13</sup>Zorobabel gerou Abiud,</p>
+									<p>Abiud gerou Eliacim,</p>
+									<p>Eliacim gerou Azor,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_13 indent"><sup class="versiculo">13</sup>Zorobabel gerou Abiud, Abiud gerou Eliacim, Eliacim gerou Azor.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_13">
+									<p class="indent"><sup class="versiculo">13</sup>Zorobabel gerou Abiud,</p>
+									<p class="indent">Abiud gerou Eliaquim,</p>
+									<p class="indent">Eliaquim gerou Azor,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_14">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_14">
+									<p><sup class="versiculo">14</sup>Azor gerou Sadoc,</p>
+									<p>Sadoc gerou Aquim,</p>
+									<p>Aquim gerou Eliud,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_14">
+									<p><sup class="versiculo">14</sup>Azor gerou Sadoc,</p>
+									<p>Sadoc gerou Aquim,</p>
+									<p>Aquim gerou Eliud,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_14 indent"><sup class="versiculo">14</sup>Azor gerou Sadoc, Sadoc gerou Aquim, Aquim gerou Eliud.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_14">
+									<p class="indent"><sup class="versiculo">14</sup>Azor gerou Sadoc,</p>
+									<p class="indent">Sadoc gerou Aquim,</p>
+									<p class="indent">Aquim gerou Eliud,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_15">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_15">
+									<p><sup class="versiculo">15</sup>Eliud gerou Eleazar,</p>
+									<p>Eleazar gerou Matã,</p>
+									<p>Matã gerou Jacó,</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_15">
+									<p><sup class="versiculo">15</sup>Eliud gerou Eleazar,</p>
+									<p>Eleazar gerou Matã,</p>
+									<p>Matã gerou Jacó,</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_15 indent"><sup class="versiculo">15</sup>Eliud gerou Eleazar, Eleazar gerou Matã, Matã gerou Jacó.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_15">
+									<p class="indent"><sup class="versiculo">15</sup>Eliud gerou Eleazar,</p>
+									<p class="indent">Eleazar gerou Matan,</p>
+									<p class="indent">Matan gerou Jacó,</p>
+								</div>
+							</td>
+						</tr>
+						<tr id="Mt_1_16">
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_16">
+									<p><sup class="versiculo">16</sup>Jacó gerou José, o esposo de Maria,</p>
+									<p>da qual nasceu Jesus chamado Cristo.</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<div class="versiculo Mt_1_16">
+									<p><sup class="versiculo">16</sup>Jacó gerou José, o esposo de Maria,</p>
+									<p>da qual nasceu Jesus chamado Cristo.</p>
+								</div>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_16 indent"><sup class="versiculo">16</sup>Jacó gerou José, esposo de Maria, da qual nasceu Jesus, chamado Messias.</p>
+							</td>
+							<td class="col_TEB">
+								<div class="versiculo Mt_1_16">
+									<p class="indent"><sup class="versiculo">16</sup>Jacó gerou José, o esposo de Maria,</p>
+									<p class="indent">de que nasceu Jesus, a quem chamam de Cristo.</p>
+								</div>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio VII: v. 16</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_16">E Jacó gerou José, o esposo de Maria, da qual nasceu Jesus, chamado Cristo.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_17">
+							<td class="col_BAM">
+								<p class="indent">
+									<span class="versiculo Mt_1_17"><sup class="versiculo">17</sup>Portanto, as gerações, desde Abraão até Davi, são catorze. Desde Davi até o cativeiro da Babilônia, catorze gerações. E, depois do cativeiro até Cristo, catorze gerações.</span>
+								</p>
+							</td>
+							<td class="col_BJ1987">
+								<div class="versiculo Mt_1_17">
+									<p><sup class="versiculo">17</sup>Portanto, o total das gerações é:</p>
+									<p>de Abraão até Davi, quatorze gerações; de Davi até o exílio na Babilônia, quatorze gerações; e do exílio na Babilônia até Cristo, quatorze gerações.</p>
+								</div>
+							</td>
+							<td class="col_BJ2002">
+								<p class="indent">
+									<span class="versiculo Mt_1_17"><sup class="versiculo">17</sup>Portanto, o total das gerações é: de Abraão até Davi, quatorze gerações; de Davi até o exílio na Babilônia, quatorze gerações; e do exílio na Babilônia até Cristo, quatorze gerações.</span>
+								</p>
+							</td>
+							<td class="col_BP">
+								<p class="versiculo Mt_1_17 indent"><sup class="versiculo">17</sup>Portanto, as gerações de Abraão até Davi são catorze; de Davi até a deportação para Babilônia, catorze; da deportação para Babilônia até o Messias, catorze.</p>
+							</td>
+							<td class="col_BSN">
+								<p class="versiculo Mt_1_17 indent"><sup class="versiculo">17</sup>Omnes ergo generationes ab Abraham usque ad David generationes quattuórdecim; et a David usque ad transmigrationem Babylonis generationes quattuórdecim; et a transmigratione Babylonis usque ad Christum generationes quattuórdecim.</p>
+							</td>
+							<td class="col_TEB">
+								<p class="versiculo Mt_1_17 indent"><sup class="versiculo">17</sup>O número total de gerações é, pois: quatorze de Abraão a David, quatorze de Davi à deportação para Babilônia, quatorze da deportação para Babilônia até Cristo.</p>
+							</td>
+							<td class="col_MR">
+								<p class="versiculo Mt_1_17 indent"><sup class="versiculo">17</sup>Assim, as gerações desde Abraão até Davi são quatorze; de Davi até o exílio na Babilônia, quatorze; e do exílio na Babilônia até Cristo, quatorze.</p>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio VIII: v. 17</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_17">Todas as gerações, pois, desde Abraão até Davi, são catorze gerações; e, desde Davi até a deportação para Babilônia, catorze gerações; e, desde a deportação para Babilônia até Cristo, catorze gerações.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_18">
+							<td class="col_BAM" rowspan="8">
+								<h6>Anúncio do nascimento de Jesus</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>Eis como nasceu Jesus Cristo: Maria, sua mãe, estava desposada com José. Antes de coabitarem, aconteceu que ela concebeu por virtude do Espírito Santo.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu esposo, que era homem de bem, não querendo difamá-la, resolveu rejeitá-la secretamente.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Enquanto assim pensava, eis que um anjo do Senhor lhe apareceu em sonhos e lhe disse: "José, filho de Davi, não temas receber Maria por esposa, pois o que nela foi concebido vem do Espírito Santo.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Ela dará à luz um filho, a quem porás o nome de Jesus, porque ele salvará o seu povo de seus pecados".</span>
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Tudo isto aconteceu para que se cumprisse o que o Senhor falou pelo profeta:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>Eis que uma Virgem conceberá e dará à luz um filho, que se chamará Emanuel (Is 7,14), que significa: Deus conosco.</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>Despertando, José fez como o anjo do Senhor lhe havia mandado e recebeu em sua casa sua esposa.</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>E, sem que ele a tivesse conhecido, ela deu à luz o seu filho, que recebeu o nome de Jesus.</span>
+								</p>
+							</td>
+							<td class="col_BJ1987" rowspan="8">
+								<h6>José assume a paternidade legal de Jesus</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>A origem de Jesus Cristo foi assim: Maria, sua mãe, comprometida em casamento com José, antes que coabitassem, achou-se grávida pelo Espírito Santo.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu esposo, sendo justo e não querendo denunciá-la publicamente, resolveu repudiá-la em segredo.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Enquanto assim decidia, eis que o Anjo do Senhor manifestou-se a ele em sonho, dizendo: "José, filho de Davi, não temas receber Maria, tua mulher, pois o que nela foi gerado vem do Espírito Santo.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Ela dará à luz um filho e tu o chamarás com o nome de Jesus, pois ele salvará o seu povo dos seus pecados".</span>
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Tudo isso aconteceu para que se cumprisse o que o Senhor havia dito pelo profeta:</span>
+								</p>
+								<div class="versiculo Mt_1_23">
+									<p><sup class="versiculo">23</sup><i>Eis que a virgem conceberá e dará à luz um filho</i></p>
+									<p><i>e o chamarão com o nome de Emanuel</i>,</p>
+								</div>
+								<p>
+									<span class="versiculo Mt_1_23">o que traduzido significa: "Deus está conosco".</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>José, ao despertar do sono, agiu conforme o Anjo do Senhor lhe ordenara e recebeu em casa sua mulher.</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>Mas não a conheceu até o dia em que ela deu à luz um filho. E ele o chamou com o nome de Jesus.</span>
+								</p>
+							</td>
+							<td class="col_BJ2002" rowspan="8">
+								<h6>José assume a paternidade legal de Jesus</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>A origem de Jesus Cristo foi assim: Maria, sua mãe, comprometida em casamento com José, antes que coabitassem, achou-se grávida pelo Espírito Santo.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu esposo, sendo justo e não querendo denunciá-la publicamente, resolveu repudiá-la em segredo.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Enquanto assim decidia, eis que o Anjo do Senhor manifestou-se a ele em sonho, dizendo: "José, filho de Davi, não temas receber Maria, tua mulher, pois o que nela foi gerado vem do Espírito Santo.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Ela dará à luz um filho e tu o chamarás com o nome de Jesus, pois ele salvará o seu povo dos seus pecados".</span>
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Tudo isso aconteceu para que se cumprisse o que o Senhor havia dito pelo profeta:</span>
+								</p>
+								<div class="versiculo Mt_1_23">
+									<p><sup class="versiculo">23</sup><i>Eis que a virgem conceberá e dará à luz um filho</i></p>
+									<p><i>e o chamarão com o nome de Emanuel</i>,</p>
+								</div>
+								<p>
+									<span class="versiculo Mt_1_23">o que traduzido significa: "Deus está conosco".</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>José, ao despertar do sono, agiu conforme o Anjo do Senhor lhe ordenara e recebeu em casa sua mulher.</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>Mas não a conheceu até o dia em que ela deu à luz um filho. E ele o chamou com o nome de Jesus.</span>
+								</p>
+							</td>
+							<td class="col_BP" rowspan="2">
+								<h6><b>Anúncio a José</b> (Lc 2,1-7)</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>O nascimento de Jesus o Messias aconteceu assim: Sua mãe, Maria, estava prometida a José, e antes do matrimônio engravidou por obra do Espírito Santo.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu esposo, que era honrado e não queria difamá-la, decidiu repudiá-la privadamente.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Já o tinha decidido, quando um anjo do Senhor lhe apareceu em sonhos e lhe disse:</span>
+								</p>
+							</td>
+							<td class="col_BSN">
+								<p class="versiculo Mt_1_18 indent"><sup class="versiculo">18</sup>Iesu Christi autem generatio sic erat. Cum esset desponsata mater eius Maria Ioseph, ántequam convenirent, inventa est in útero habens de Spiritu Sancto.</p>
+							</td>
+							<td class="col_BSN" rowspan="2">
+								<h6>Conceição Virginal e Nascimento de Jesus</h6>
+								<p class="indent">
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>Ora o nascimento de Jesus foi assim: Estando Maria, sua Mãe, desposada com José, antes de morarem juntos, notou-se que tinha concebido por virtude do Espírito Santo.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu esposo, como era justo e não a queria infamar, resolveu deixá-la secretamente.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Mas, andando ele com este pensamento, apareceu-lhe, em sonhos, um anjo do Senhor, que lhe disse:</span>
+								</p>
+							</td>
+							<td class="col_TEB" rowspan="8">
+								<h6>O anúncio a José</h6>
+								<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>Eis qual foi a origem de Jesus Cristo. Maria, sua mãe, estava prometida em casamento a José. Ora, antes de terem coabitado, achou-se ela grávida por obra do Espírito Santo.</span>
+								<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu esposo, que era um homem justo e não queria difamá-la publicamente, resolveu repudiá-la secretamente.</span>
+								<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Tal era o projeto que concebera, mas eis que o Anjo do Senhor lhe apareceu em sonho e disse: "José, filho de David, não temas receber em tua casa Maria, tua esposa: o que goi gerado nela provém do Espírito Santo,</span>
+								<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>e ela dará à luz um filho a quem porás o nome de Jesus, pois é ele que salvará o seu povo dos seus pecados".</span>
+								<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Tudo isso aconteceu para se cumprir o que o Senhor dissera pelo profeta:</span>
+								<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup><i>Eis que a virgem conceberá e dará à luz um filho, ao qual darão o nome de Emanuel</i>, o que se traduz: "<i>Deus conosco</i>".</span>
+								<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>Ao despertar, José fez o que o Anjo do Senhor lhe prescrevera: acolheu em sua casa a sua esposa,</span>
+								<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>mas não a conheceu até quando ela deu à luz um filho, ao qual ele deu o nome de Jesus.</span>
+							</td>
+							<td class="col_MR" rowspan="4">
+								<p class="indent">
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>A origem de Jesus Cristo foi assim: Maria, sua mãe, estava prometida em casamento a José, e, antes de viverem juntos, ela ficou grávida pela ação do Espírito Santo.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>José, seu marido, era justo e, não querendo denunciá-la, resolveu abandonar Maria, em segredo.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Enquanto José pensava nisso, eis que o anjo do Senhor apareceu-lhe, em sonho, e lhe disse: "José, Filho de Davi, não tenhas medo de receber Maria como tua esposa, porque ela concebeu pela ação do Espírito Santo.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Ela dará à luz um filho, e tu lhe darás o nome de Jesus, pois ele vai salvar o seu povo dos seus pecados".</span>
+								</p>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio IX: v. 18</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_18">A geração de Jesus Cristo foi deste modo: Estando Maria, sua mãe, desposada com José, achou-se ter concebido por obra do Espírito Santo, antes de coabitarem.</span>
+								</p>
+							</td>
+							<td class="col_NA" rowspan="8">
+								<p>
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>Τοῦ δὲ Ἰησοῦ Χριστοῦ ἡ γένεσις οὕτως ἦν. μνηστευθείσης τῆς μητρὸς αὐτοῦ Μαρίας τῷ Ἰωσήφ, πρὶν ἢ συνελθεῖν αὐτοὺς εὑρέθη ἐν γαστρὶ ἔχουσα ἐκ πνεύματος ἁγίου.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>Ἰωσὴφ δὲ ὁ ἀνὴρ αὐτῆς, δίκαιος ὢν καὶ μὴ θέλων αὐτὴν δειγματίσαι, ἐβουλήθη λάθρᾳ ἀπολῦσαι αὐτήν.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>ταῦτα δὲ αὐτοῦ ἐνθυμηθέντος ἰδοὺ ἄγγελος κυρίου κατ' ὄναρ ἐφάνη αὐτῷ λέγων, Ἰωσὴφ υἱὸς Δαυίδ, μὴ φοβηθῇς παραλαβεῖν Μαρίαν τὴν γυναῖκά σου, τὸ γὰρ ἐν αὐτῇ γεννηθὲν ἐκ πνεύματός ἐστιν ἁγίου:</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>τέξεται δὲ υἱὸν καὶ καλέσεις τὸ ὄνομα αὐτοῦ Ἰησοῦν, αὐτὸς γὰρ σώσει τὸν λαὸν αὐτοῦ ἀπὸ τῶν ἁμαρτιῶν αὐτῶν.</span>
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>τοῦτο δὲ ὅλον γέγονεν ἵνα πληρωθῇ τὸ ῥηθὲν ὑπὸ κυρίου διὰ τοῦ προφήτου λέγοντος,</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>ἰδοὺ ἡ παρθένος ἐν γαστρὶ ἕξει καὶ τέξεται υἱόν, καὶ καλέσουσιν τὸ ὄνομα αὐτοῦ Ἐμμανουήλ, ὅ ἐστιν μεθερμηνευόμενον μεθ' ἡμῶν ὁ θεός.</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>ἐγερθεὶς δὲ ὁ Ἰωσὴφ ἀπὸ τοῦ ὕπνου ἐποίησεν ὡς προσέταξεν αὐτῷ ὁ ἄγγελος κυρίου καὶ παρέλαβεν τὴν γυναῖκα αὐτοῦ:</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>καὶ οὐκ ἐγίνωσκεν αὐτὴν ἕως οὗ ἔτεκεν υἱόν: καὶ ἐκάλεσεν τὸ ὄνομα αὐτοῦ Ἰησοῦν.</span>
+								</p>
+							</td>
+							<td class="col_NA" rowspan="8">
+								<p>
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>And this was the manner of Christ’s birth. His mother Mary was espoused to Joseph, but they had not yet come together, when she was found to be with child, by the power of the Holy Ghost.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>Whereupon her husband Joseph (for he was a right-minded man, and would not have her put to open shame) was for sending her away in secret.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>But hardly had this thought come to his mind, when an angel of the Lord appeared to him in a dream, and said, Joseph, son of David, do not be afraid to take thy wife Mary to thyself, for it is by the power of the Holy Ghost that she has conceived this child;</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>and she will bear a son, whom thou shalt call Jesus, for he is to save his people from their sins.</span>
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>All this was so ordained to fulfil the word which the Lord spoke by his prophet:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>Behold, the virgin shall be with child, and shall bear a son, and they shall call him Emmanuel (which means, God with us).<sup class="nota">b</sup></span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>And Joseph awoke from sleep, and did as the angel of the Lord had bidden him, taking his wife to himself;</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>and he had not known her when she bore a son, her first-born, to whom he gave the name Jesus.<sup class="nota">c</sup></span>
+								</p>
+							</td>
+							<td class="col_NA" rowspan="8">
+								<p>
+									<span class="versiculo Mt_1_18"><sup class="versiculo">18</sup>Christi autem generatio sic erat: cum esset desponsata mater ejus Maria Joseph, antequam convenirent inventa est in utero habens de Spiritu Sancto.</span>
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>Joseph autem vir ejus cum esset justus, et nollet eam traducere, voluit occulte dimittere eam.</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Hæc autem eo cogitante, ecce angelus Domini apparuit in somnis ei, dicens: Joseph, fili David, noli timere accipere Mariam conjugem tuam: quod enim in ea natum est, de Spiritu Sancto est.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Pariet autem filium: et vocabis nomen ejus Jesum: ipse enim salvum faciet populum suum a peccatis eorum.</span>
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Hoc autem totum factum est, ut adimpleretur quod dictum est a Domino per prophetam dicentem:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>Ecce virgo in utero habebit, et pariet filium: et vocabunt nomen ejus Emmanuel, quod est interpretatum Nobiscum Deus.</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>Exsurgens autem Joseph a somno, fecit sicut præcepit ei angelus Domini, et accepit conjugem suam.</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>Et non cognoscebat eam donec peperit filium suum primogenitum: et vocavit nomen ejus Jesum.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_19">
+							<td class="col_BSN" rowspan="3">
+								<p class="indent">
+									<span class="versiculo Mt_1_19"><sup class="versiculo">19</sup>Ioseph autem vir eius, cum esset iustus et nollet eam traducere, voluit occulte dimittere eam,</span>
+									<span class="versiculo Mt_1_20"><sup class="versiculo">20</sup>Haec autem eo cogitante, ecce ángelus Dómini in somnis apparuit ei dicens: "Ioseph fili David noli timere accipere Maríam cóniugem tuam. Quod enim in ea natum est, de Spiritu Sancto est;</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>pariet autem filium, et vocabis nomen eius Iesum: ipse enim salvum faciet pópulum suum a peccatis eorum".</span>
+								</p>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio X: v. 19</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_19">José, seu esposo, sendo justo, e não a querendo difamar, resolveu repudia-la secretamente.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_20">
+							<td class="col_BP" rowspan="2">
+								<p class="indent">
+									<span class="versiculo Mt_1_20">-José, filho de Davi, não tenhas medo de acolher Maria como tua esposa, pois o ela concebeu é obra do Espírito Santo.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Dará à luz um filho, a quem tu chamarás Jesus, porque ele salvará o seu povo de seus pecados.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="2">
+								<p class="indent">
+									<span class="versiculo Mt_1_20">-José, filho de David, não temas receber Maria, tua esposa, pois o que nela se gerou, é obra do Espírito Santo.</span>
+									<span class="versiculo Mt_1_21"><sup class="versiculo">21</sup>Ela dará à luz um filho, a quem porás o nome de <i>Jesus</i>, porque Ele salvará o seu povo dos seus pecados".</span>
+								</p>
+							</td>
+							<td class="col_CA">
+								<h1>Lectio XI: v. 20</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_20">Andando ele com isto no pensamento, eis que um anjo do Senhor lhe apareceu em sonhos, e lhe disse: José, filho de Davi, não temas receber em tua casa Maria, tua esposa, porque o que nela foi concebido é obra do Espírito Santo.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_21">
+							<td class="col_CA">
+								<h1>Lectio XII: v. 21</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_21">Dará à luz um filho, ao qual porás o nome de Jesus, porque ele salvará o seu povo dos seus pecados.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_22">
+							<td class="col_BP" rowspan="4">
+								<p class="indent">
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Tudo isto aconteceu para que se cumprisse o que o Senhor havia anunciado por meio do profeta:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup><i>Vê, a virgem etá grávida, dará à luz um filho que será chamado Emanuel</i> (que significa Deus-conosco).</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>Quando despertou do sono, José fez o que o anjo do Senhor lhe havia ordenado, e acolheu sua esposa.</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>Porém não teve relações com ela, até que deu à luz um filho, a quem chamou Jesus.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="2">
+								<p class="indent">
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Hoc autem totum factum est, ut adimpleretur id, quod dictum est a Dómino per prophetam dicentem:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>"<i>Ecce, virgo in útero habebit et pariet filium, et vocabunt nomen eius Emmanuel</i>", quod est interpretatum <i>Nobiscum Deus</i>.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="2">
+								<p class="indent">
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Ora tudo isto aconteceu para se cumprir o que o Senhor tinha anunciado pelo profeta, que disse:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>"<i>Eis que uma virgem conceberá e dará à luz um filho, a quem será dado o nome de Emanuel</i>", que quer dizer "Deus connosco".</span>
+								</p>
+							</td>
+							<td class="col_MR" rowspan="4">
+								<p class="indent">
+									<span class="versiculo Mt_1_22"><sup class="versiculo">22</sup>Tudo isso aconteceu para se cumprir o que o Senhor havia dito pelo profeta:</span>
+									<span class="versiculo Mt_1_23"><sup class="versiculo">23</sup>"Eis que a virgem conceberá e dará à luz um filho. Ele será chamado pelo nome de Emanuel, que significa: Deus está conosco."</span>
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>Quando acordou, José fez conforme o anjo do Senhor havia mandado, e aceitou sua esposa.</span>
+								</p>
+							</td>
+							<td class="col_CA" rowspan="2">
+								<h1>Lectio XIII: v. 22-23</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_22">Tudo isto aconteceu para que se cumprisse o que foi dito pelo Senhor por meio do profeta, que diz:</span>
+									<span class="versiculo Mt_1_23">"Eis que a Virgem conceberá e dará à luz um filho, e lhe porão o nome de Emanuel", que significa Deus conosco.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_23">
+						</tr>
+						<tr id="Mt_1_24">
+							<td class="col_BSN" rowspan="2">
+								<p class="indent">
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>Exsurgens autem Ioseph a somno fecit, sicut praecepit ei angelus Dómini, et accepit cóniugem suam;</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>et non cognoscebat eam, donec péperit filium, et vocavit nomen eius Iesum.</span>
+								</p>
+							</td>
+							<td class="col_BSN" rowspan="2">
+								<p class="indent">
+									<span class="versiculo Mt_1_24"><sup class="versiculo">24</sup>E José, despertando do sono, fez como lhe ordenara o anjo do Senhor e recebeu a sua esposa;</span>
+									<span class="versiculo Mt_1_25"><sup class="versiculo">25</sup>a qual, sem ele a conhecer, deu à luz um filho, e ele pôs-Lhe o nome de Jesus.</span>
+								</p>
+							</td>
+							<td class="col_CA" rowspan="2">
+								<h1>Lectio XIV: v. 24-25</h1>
+								<p class="indent">
+									<span class="versiculo Mt_1_24">Ao despertar José do sono, fez como lhe tinha mandado o anjo do Senhor, e recebeu em sua casa Maria, sua esposa.</span>
+									<span class="versiculo Mt_1_25">E, sem que ele a tivesse conhecido, deu à luz um filho, e pôs-lhe o nome de Jesus.</span>
+								</p>
+							</td>
+						</tr>
+						<tr id="Mt_1_25">
+						</tr>
+						<tr id="notas">
+							<td class="col_BAM">
+							<td class="col_BJ1987">
+							<td class="col_BJ2002">
+							<td class="col_BP"></td>
+							<td class="col_BSN" colspan="2"></td>
+							<td class="col_TEB"></td>
+							<td class="col_MR"></td>
+							<td class="col_CA"></td>
+							<td class="col_NA" colspan="3">
+								<p><sup class="nota">a</sup>If this genealogy is compared with that given by St Luke (3.23 and following), it is clear that one at least of the two Evangelists must have reckoned descent by adoption as sufficient to make our Lord the legal inheritor of Abraham’s blessing and of David’s Kingdom. It is therefore not surprising that both have traced his ancestry through his foster-father. It is a common opinion, derived from the Fathers, that St Joseph and the Blessed Virgin were closely related.</p>
+								<p><sup class="nota">b</sup>Is. 7.14. ‘The virgin’ is a literal translation of the Hebrew; ‘a virgin’ would equally express the sense of the original prophecy.</p>
+								<p><sup class="nota">c</sup>The text here is more literally rendered ‘he knew her not till she bore a son’; but the Hebrew word represented by ‘till’ does not imply that the event which might have been expected did take place afterwards. (Cf. Gen. 8.7, Ps. 109.2, Dan. 6.24, I Mac. 5.54.) So that this phrase does not impugn the perpetual virginity of our Lady. Nor is any such inference to be drawn when our Lord is called her ‘first-born’ Son, which refers to his position as redeemable under the old law (Lk. 2.23).</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

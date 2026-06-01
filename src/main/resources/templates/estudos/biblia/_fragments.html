@@ -1,0 +1,97 @@
+<!-- breadcrumb_index() -->
+<!-- TODO Parece que a classe active tá aparecendo sempre com o código abaixo; talvez seja o finalzinho, onde está "active ?" seja "${active} ?", não sei; consertar em todos os breadcrumb_index() e breadcrumb-item do projeto -->
+<!-- Quando houver a página /estudos/biblia, trocar por esse:
+<li th:fragment="breadcrumb_index()" th:with="active=${active} ?: false, text=${text} ?: 'Bíblia'" th:class="'breadcrumb-item' + (active ? ' active' : '')">
+	<a th:if="${!active}" th:text="${text}" href="/estudos/biblia"></a>
+	<span th:if="${active}" th:text="${text}"></span>
+</li>
+-->
+<li th:fragment="breadcrumb_index()" th:with="text=${text} ?: 'Bíblia'" th:class="'breadcrumb-item'">
+	<span th:text="${text}"></span>
+</li>
+
+<!-- toolbar_minhas_biblias() -->
+<th:block th:fragment="toolbar_minhas_biblias()">
+	<div class="btn-toolbar" role="toolbar">
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkCNBB2008" autocomplete="off" checked>
+			<label class="btn btn-outline-secondary" for="chkCNBB2008" title="Bíblia Sagrada - Tradução da CNBB (2008)">CNBB2008</label>
+			<input type="checkbox" class="btn-check" id="chkCNBB2019" autocomplete="off" disabled>
+			<label class="btn btn-outline-primary" for="chkCNBB2019" title="Bíblia Sagrada - Tradução Oficial da CNBB (2019)">CNBB2019</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBSAM1987" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBSAM1987" title="Bíblia Sagrada Ave-Maria (1987)">BSAM1987</label>
+			<input type="checkbox" class="btn-check" id="chkBSAM2016" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBSAM2016" title="Bíblia Sagrada Ave-Maria - Edição de Estudos (2016)">BSAM2016</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBJ1987" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBJ1987" title="Bíblia de Jerusalém - Nova edição, revista (1987)">BJ1987</label>
+			<input type="checkbox" class="btn-check" id="chkBJ2002" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBJ2002" title="Bíblia de Jerusalém - Nova edição, revista e ampliada (2002)">BJ2002</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBMD2016" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBMD2016" title="Bíblia Mensagem de Deus (Loyola, 2016)">BMD2016</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBN1985" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBN1985" title="Bíblia de Navarra (1985, 1990, 1991; somente NT)">BN1985</label>
+			<input type="checkbox" class="btn-check" id="chkBN2023" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBN2023" title="Bíblia de Navarra (2023; somente NT)">BN2023</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkPMS1932" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkPMS1932" title="Bíblia Sagrada (Tradição, Padre Matos Soares, 1932)">PMS1932</label>
+			<input type="checkbox" class="btn-check" id="chkPMS1956" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkPMS1956" title="Bíblia Sagrada (Ecclesiae, Padre Matos Soares, 1956)">PMS1956</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkAB2023" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkAB2023" title="A Bíblia (Paulinas, 2023)">AB2023</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBSEP1990" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBSEP1990" title="Bíblia Sagrada Edição Pastoral (Paulus, 1990)">BSEP1990</label>
+			<input type="checkbox" class="btn-check" id="chkBPas2015" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBPas2015" title="Bíblia Pastoral (Paulus, 2015)">BPas2015</label>
+			<input type="checkbox" class="btn-check" id="chkBPer2017" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBPer2017" title="Bíblia do Peregrino (Paulus, 2017)">BPer2017</label>
+			<input type="checkbox" class="btn-check" id="chkBPV2022" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBPV2022" title="Bíblia Palavra Viva (Paulus, 2022)">BPV2022</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBA2024" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBA2024" title="Bíblia de Aparecida (Santuário, 2024)">BA2024</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkTEB2002" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkTEB2002" title="A Bíblia - Tradução Ecumênica (TEB, 2002)">TEB2002</label>
+			<input type="checkbox" class="btn-check" id="chkTEB2015" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkTEB2015" title="Bíblia - Tradução Ecumênica (TEB, 2015)">TEB2015</label>
+			<input type="checkbox" class="btn-check" id="chkTEB2020" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkTEB2020" title="Bíblia TEB: notas integrais tradução ecumênica (TEB, 2020)">TEB2020</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkBSEF2012" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkBSEF2012" title="Bíblia Sagrada Edição da Família (Vozes, 2012)">BSEF2012</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkY2017" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkY2017" title="Bíblia Jovem (Youcat, 2017; trechos)">Y2017</label>
+		</div>
+		<!--
+			vatican.va
+			Missal Romano
+			Scott Hahn
+				Revised Standard Version, Second Catholic Edition
+				Cadernos de Estudo Bíblico
+			Catena Aurea
+			Comentários bíblicos
+			BJ em espanhol
+			Bíblias no Kindle
+			Bíblias baixadas
+		-->
+	</div>
+</th:block>

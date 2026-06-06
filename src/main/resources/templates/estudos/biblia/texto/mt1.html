@@ -8,11 +8,6 @@
 		<title th:text="${htmlTitle}"></title>
 		<script>
 			$(document).ready(function() {
-				// Checkboxes de Bíblias
-				$("#chkCNBB2008").on("change", function() {
-					$(".colCNBB2008").toggle();
-				});
-
 				// Highlight dos versículos
 				$(".numVersiculo span").each(function(index, element) {
 					const classe = $(this)[0].classList[0];
@@ -28,6 +23,10 @@
 			});
 		</script>
 		<style>
+			.texto th {
+				text-align: center;
+			}
+
 			.texto td.numVersiculo {
 				text-align: right;
 				font-size: 0.5rem;
@@ -96,13 +95,13 @@
 				<thead>
 					<tr>
 						<th title="Versículo">v</th>
-						<th class="colCNBB2008">CNBB2008</th>
+						<th class="toggleCNBB2008">CNBB2008</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td></td>
-						<td class="titulo colCNBB2008">
+						<td class="titulo toggleCNBB2008">
 							<p class="titulo1">
 								O NASCIMENTO DO MESSIAS
 							</p>
@@ -115,7 +114,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_1">1</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008">
+						<td class="textoVersiculo toggleCNBB2008">
 							<p class="paragrafo">
 								<span class="mt_1_1"><sup>1</sup>Livro da origem de Jesus Cristo, filho de Davi, filho de Abraão:</span>
 							</p>
@@ -125,7 +124,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_2">2</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008" rowspan="5">
+						<td class="textoVersiculo toggleCNBB2008" rowspan="5">
 							<p class="paragrafo">
 								<span class="mt_1_2"><sup>2</sup>Abraão gerou Isaac, Isaac gerou Jacó, Jacó gerou Judá e seus irmãos,</span>
 								<span class="mt_1_3"><sup>3</sup>Judá gerou Farés e Zara, de Tamar. Farés gerou Esrom; Esrom gerou Aram;</span>
@@ -157,7 +156,7 @@
 					</tr>
 					<tr>
 						<!-- 6, cont. -->
-						<td class="textoVersiculo colCNBB2008" rowspan="6">
+						<td class="textoVersiculo toggleCNBB2008" rowspan="6">
 							<p class="paragrafo">
 								<span class="mt_1_6">Davi gerou Salomão, da mulher de Urias.</span>
 								<span class="mt_1_7"><sup>7</sup>Salomão gerou Roboão; Roboão gerou Abias; Abias gerou Asa;</span>
@@ -197,7 +196,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_12">12</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008" rowspan="5">
+						<td class="textoVersiculo toggleCNBB2008" rowspan="5">
 							<p class="paragrafo">
 								<span class="mt_1_12"><sup>12</sup>Depois do exílio na Babilônia, Jeconias gerou Salatiel; Salatiel gerou Zorobabel;</span>
 								<span class="mt_1_13"><sup>13</sup>Zorobabel gerou Abiud; Abiud gerou Eliaquim; Eliaquim gerou Azor;</span>
@@ -231,7 +230,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_17">17</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008">
+						<td class="textoVersiculo toggleCNBB2008">
 							<p class="paragrafo">
 								<span class="mt_1_17"><sup>17</sup>No total, pois, as gerações desde Abraão até Davi são quatorze; de Davi até o exílio na Babilônia, quatorze; e do exílio na Babilônia até o Cristo, quatorze.</span>
 							</p>
@@ -239,7 +238,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td class="titulo colCNBB2008">
+						<td class="titulo toggleCNBB2008">
 							<p class="titulo2">
 								Nascimento de Jesus
 							</p>
@@ -249,7 +248,7 @@
 						<td class="numVersiculo" rowspan="2">
 							<span class="mt_1_18">18</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008">
+						<td class="textoVersiculo toggleCNBB2008">
 							<p class="paragrafo">
 								<span class="mt_1_18"><sup>18</sup>Ora, a origem de Jesus Cristo foi assim:</span>
 							</p>
@@ -257,7 +256,7 @@
 					</tr>
 					<tr>
 						<!-- 18, cont. -->
-						<td class="textoVersiculo colCNBB2008" rowspan="4">
+						<td class="textoVersiculo toggleCNBB2008" rowspan="4">
 							<p class="paragrafo">
 								<span class="mt_1_18">Maria, sua mãe, estava prometida em casamento a José e, antes de passarem a conviver, ela encontrou-se grávida pela ação do Espírito Santo.</span>
 								<span class="mt_1_19"><sup>19</sup>José, seu esposo, sendo justo e não querendo denunciá-la publicamente, pensou em despedi-la secretamente.</span>
@@ -285,7 +284,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_22">22</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008">
+						<td class="textoVersiculo toggleCNBB2008">
 							<p class="paragrafo">
 								<span class="mt_1_22"><sup>22</sup>Tudo isso aconteceu para se cumprir o que o Senhor tinha dito pelo profeta:</span>
 							</p>
@@ -295,7 +294,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_23">23</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008">
+						<td class="textoVersiculo toggleCNBB2008">
 							<p class="citacao">
 								<span class="mt_1_23"><sup>23</sup><i>“Eis que a virgem ficará grávida e dará à luz um filho. Ele será chamado pelo nome de Emanuel</i>, que significa: <i>Deus-conosco”.</i></span>
 							</p>
@@ -305,7 +304,7 @@
 						<td class="numVersiculo">
 							<span class="mt_1_24">24</span>
 						</td>
-						<td class="textoVersiculo colCNBB2008" rowspan="2">
+						<td class="textoVersiculo toggleCNBB2008" rowspan="2">
 							<p class="paragrafo">
 								<span class="mt_1_24"><sup>24</sup>Quando acordou, José fez conforme o anjo do Senhor tinha mandado e acolheu sua esposa.</span>
 								<span class="mt_1_25"><sup>25</sup>E não teve relações com ela até o dia em que deu à luz o filho, ao qual ele pôs o nome de Jesus.</span>
@@ -319,7 +318,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td class="notaCapitulo colCNBB2008">
+						<td class="notaCapitulo toggleCNBB2008">
 							<p class="notaDeRodape">
 								&diams;<u>1,1-17</u> Através de José, <b>Jesus é juridicamente descendente de Abraão e da casa de Davi</b> (da qual devia nascer o Messias). Os vv. 18-25 mostrarão sua origem divina. <sup>></sup>Lc 3,23-38.
 								&bull; <span class="mt_1_1"><b>1</b> <i>Livro da origem</i>: outras trds.: <i>genealogia / lista dos antepassados / das gerações</i> (<sup>></sup>Gn 5,1). O termo <i>origem</i> volta no <span class="mt_1_18">v. 18</span>. Os termos <i>genealogia, gerar, nascer, origem</i> são aparentados no grego.</span>

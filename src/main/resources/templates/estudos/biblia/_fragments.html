@@ -12,7 +12,7 @@
 
 <!-- toolbar_minhas_biblias() -->
 <th:block th:fragment="toolbar_minhas_biblias()">
-	<div class="btn-toolbar" role="toolbar">
+	<div class="btn-toolbar mb-2" role="toolbar">
 		<div class="btn-group btn-group-sm me-2" role="group">
 			<input type="checkbox" class="btn-check" id="chkCNBB2008" autocomplete="off" checked>
 			<label class="btn btn-outline-secondary" for="chkCNBB2008" title="Bíblia Sagrada - Tradução da CNBB (CNBB, 2008)">CNBB2008</label>
@@ -100,4 +100,12 @@
 			Bíblias baixadas
 		-->
 	</div>
+	<script>
+		$(document).ready(function() {
+			// Checkboxes de Bíblias
+			$("#chkCNBB2008").on("change", function() {
+				$(".toggleCNBB2008").toggle();
+			});
+		});
+	</script>
 </th:block>

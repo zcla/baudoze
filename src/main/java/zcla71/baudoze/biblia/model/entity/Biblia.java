@@ -2,6 +2,7 @@ package zcla71.baudoze.biblia.model.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,6 @@ public class Biblia {
 
 	private String fonte;
 
-	@OneToMany(mappedBy = "biblia")
+	@OneToMany(mappedBy = "biblia", cascade = CascadeType.PERSIST)
 	private List<Livro> livros;
 }

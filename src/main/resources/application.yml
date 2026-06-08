@@ -49,6 +49,11 @@ app:
           uri: https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c
           nome: Revised Standard Version, Second Catholic Edition
           idioma: en-us
+      html-importa:
+        - codigo: paroquiadasgracas.com
+          uri: https://www.paroquiadasgracas.com/biblia/
+          nome: Bíblia CNBB 2008?
+          idioma: pt-br
 
 logging:
   level:

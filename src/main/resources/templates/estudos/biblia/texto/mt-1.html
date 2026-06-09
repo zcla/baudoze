@@ -26,10 +26,11 @@
 
 			.texto p {
 				margin-bottom: 0;
+				line-height: 1.2rem;
 			}
-
+			
 			.texto sup {
-				font-size: 0.5rem;
+				font-size: 0.6rem;
 			}
 
 			.texto .titulo1 {
@@ -39,10 +40,8 @@
 			}
 
 			.texto .titulo2 {
-				background-color: #ccc;
 				font-size: 1.1rem;
 				font-weight: bold;
-				text-align: center;
 			}
 
 			.texto .paragrafo {
@@ -53,7 +52,35 @@
 				margin-left: 10pt;
 			}
 
-			.texto .notaDeRodape {
+			/* Formatação do texto - CNBB2008 */
+
+			.texto td.toggleCNBB2008 {
+				font-family: serif;
+			}
+
+			.texto .toggleCNBB2008 .titulo2 {
+				background-color: #ccc;
+				text-align: center;
+			}
+
+			.texto .toggleCNBB2008.notaCapitulo {
+				border-top: 1px solid black;
+			}
+
+			/* Formatação do texto - CNBB2019 */
+
+			.texto td.toggleCNBB2019 {
+				font-family: serif;
+			}
+
+			.texto .toggleCNBB2019 .titulo2 {
+				background-color: #ccc;
+				font-style: italic;
+				font-weight: normal;
+				text-align: center;
+			}
+
+			.texto .toggleCNBB2019.notaCapitulo {
 				border-top: 1px solid black;
 			}
 		</style>

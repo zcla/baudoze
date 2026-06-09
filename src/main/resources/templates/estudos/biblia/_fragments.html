@@ -16,8 +16,16 @@
 		<div class="btn-group btn-group-sm me-2" role="group">
 			<input type="checkbox" class="btn-check" id="chkCNBB2008" autocomplete="off" checked>
 			<label class="btn btn-outline-secondary" for="chkCNBB2008" title="Bíblia Sagrada - Tradução da CNBB (CNBB, 2008)">CNBB2008</label>
-			<input type="checkbox" class="btn-check" id="chkCNBB2019" autocomplete="off" disabled>
+			<input type="checkbox" class="btn-check" id="chkCNBB2019" autocomplete="off" checked>
 			<label class="btn btn-outline-primary" for="chkCNBB2019" title="Bíblia Sagrada - Tradução Oficial da CNBB (CNBB, 2019)">CNBB2019</label>
+		</div>
+		<div class="btn-group btn-group-sm me-2" role="group">
+			<input type="checkbox" class="btn-check" id="chkPMS2021" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkPMS2021" title="Bíblia Sagrada (Padre Matos Soares 1956; Ecclesiae, 2021)">PMS2021</label>
+			<input type="checkbox" class="btn-check" id="chkPMS2022" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkPMS2022" title="Bíblia Sagrada (Padre Matos Soares 1932; Tradição, 2022)">PMS2022</label>
+			<input type="checkbox" class="btn-check" id="chkPMS2025" autocomplete="off" disabled>
+			<label class="btn btn-outline-secondary" for="chkPMS2025" title="Bíblia Sagrada (Padre Matos Soares 1932; Minha Biblioteca Católica, 2025)">PMS2025</label>
 		</div>
 		<div class="btn-group btn-group-sm me-2" role="group">
 			<input type="checkbox" class="btn-check" id="chkBSAM1987" autocomplete="off" disabled>
@@ -40,14 +48,6 @@
 			<label class="btn btn-outline-secondary" for="chkBN1985" title="Bíblia de Navarra (1985, 1990, 1991; somente NT)">BN1985</label>
 			<input type="checkbox" class="btn-check" id="chkBN2023" autocomplete="off" disabled>
 			<label class="btn btn-outline-secondary" for="chkBN2023" title="Bíblia de Navarra (2023; somente NT)">BN2023</label>
-		</div>
-		<div class="btn-group btn-group-sm me-2" role="group">
-			<input type="checkbox" class="btn-check" id="chkPMS2021" autocomplete="off" disabled>
-			<label class="btn btn-outline-secondary" for="chkPMS2021" title="Bíblia Sagrada (Padre Matos Soares 1956; Ecclesiae, 2021)">PMS2021</label>
-			<input type="checkbox" class="btn-check" id="chkPMS2022" autocomplete="off" disabled>
-			<label class="btn btn-outline-secondary" for="chkPMS2022" title="Bíblia Sagrada (Padre Matos Soares 1932; Tradição, 2022)">PMS2022</label>
-			<input type="checkbox" class="btn-check" id="chkPMS2025" autocomplete="off" disabled>
-			<label class="btn btn-outline-secondary" for="chkPMS2025" title="Bíblia Sagrada (Padre Matos Soares 1932; Minha Biblioteca Católica, 2025)">PMS2025</label>
 		</div>
 		<div class="btn-group btn-group-sm me-2" role="group">
 			<input type="checkbox" class="btn-check" id="chkAB2023" autocomplete="off" disabled>
@@ -105,6 +105,9 @@
 			// Checkboxes de Bíblias
 			$("#chkCNBB2008").on("change", function() {
 				$(".toggleCNBB2008").toggle();
+			});
+			$("#chkCNBB2019").on("change", function() {
+				$(".toggleCNBB2019").toggle();
 			});
 		});
 	</script>

@@ -6,22 +6,6 @@
 		th:with="htmlTitle='Mt 1'">
 	<head>
 		<title th:text="${htmlTitle}"></title>
-		<script>
-			$(document).ready(function() {
-				// Highlight dos versículos
-				$(".numVersiculo span").each(function(index, element) {
-					const classe = $(this)[0].classList[0];
-					$("." + classe).hover(
-						function() {
-							$("." + classe).css('background-color', '#ff6');
-						}, 
-						function() {
-							$("." + classe).css('background-color', 'transparent');
-						}
-					);
-				});
-			});
-		</script>
 		<style>
 			.texto th {
 				text-align: center;
@@ -33,7 +17,8 @@
 				vertical-align: top;
 			}
 
-			.texto td.textoVersiculo {
+			.texto td.textoVersiculo,
+			.texto td.notaCapitulo {
 				vertical-align: top;
 			}
 
@@ -72,6 +57,22 @@
 				border-top: 1px solid black;
 			}
 		</style>
+		<script>
+			$(document).ready(function() {
+				// Highlight dos versículos
+				$(".numVersiculo span").each(function(index, element) {
+					const classe = $(this)[0].classList[0];
+					$("." + classe).hover(
+						function() {
+							$("." + classe).css('background-color', '#ff6');
+						}, 
+						function() {
+							$("." + classe).css('background-color', 'transparent');
+						}
+					);
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div layout:fragment="conteudo">
@@ -96,6 +97,7 @@
 					<tr>
 						<th title="Versículo">v</th>
 						<th class="toggleCNBB2008">CNBB2008</th>
+						<th class="toggleCNBB2019">CNBB2019</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -109,6 +111,14 @@
 								Genealogia de Jesus
 							</p>
 						</td>
+						<td class="titulo toggleCNBB2019">
+							<p class="titulo1">
+								O NASCIMENTO DO MESSIAS
+							</p>
+							<p class="titulo2">
+								A origem humana de Jesus
+							</p>
+						</td>
 					</tr>
 					<tr>
 						<td class="numVersiculo">
@@ -119,12 +129,26 @@
 								<span class="mt_1_1"><sup>1</sup>Livro da origem de Jesus Cristo, filho de Davi, filho de Abraão:</span>
 							</p>
 						</td>
+						<td class="textoVersiculo toggleCNBB2019">
+							<p class="paragrafo">
+								<span class="mt_1_1"><sup>1</sup>Livro da origem de Jesus Cristo, filho de Davi, filho de Abraão:</span>
+							</p>
+						</td>
 					</tr>
 					<tr>
 						<td class="numVersiculo">
 							<span class="mt_1_2">2</span>
 						</td>
 						<td class="textoVersiculo toggleCNBB2008" rowspan="5">
+							<p class="paragrafo">
+								<span class="mt_1_2"><sup>2</sup>Abraão gerou Isaac, Isaac gerou Jacó, Jacó gerou Judá e seus irmãos,</span>
+								<span class="mt_1_3"><sup>3</sup>Judá gerou Farés e Zara, de Tamar. Farés gerou Esrom; Esrom gerou Aram;</span>
+								<span class="mt_1_4"><sup>4</sup>Aram gerou Aminadab; Aminadab gerou Naasson; Naasson gerou Salmon;</span>
+								<span class="mt_1_5"><sup>5</sup>Salmon gerou Booz, de Raab. Booz gerou Obed, de Rute. Obed gerou Jessé.</span>
+								<span class="mt_1_6"><sup>6</sup>Jessé gerou o rei Davi.</span>
+							</p>
+						</td>
+						<td class="textoVersiculo toggleCNBB2019" rowspan="5">
 							<p class="paragrafo">
 								<span class="mt_1_2"><sup>2</sup>Abraão gerou Isaac, Isaac gerou Jacó, Jacó gerou Judá e seus irmãos,</span>
 								<span class="mt_1_3"><sup>3</sup>Judá gerou Farés e Zara, de Tamar. Farés gerou Esrom; Esrom gerou Aram;</span>
@@ -157,6 +181,16 @@
 					<tr>
 						<!-- 6, cont. -->
 						<td class="textoVersiculo toggleCNBB2008" rowspan="6">
+							<p class="paragrafo">
+								<span class="mt_1_6">Davi gerou Salomão, da mulher de Urias.</span>
+								<span class="mt_1_7"><sup>7</sup>Salomão gerou Roboão; Roboão gerou Abias; Abias gerou Asa;</span>
+								<span class="mt_1_8"><sup>8</sup>Asa gerou Josafá; Josafá gerou Jorão; Jorão gerou Ozias;</span>
+								<span class="mt_1_9"><sup>9</sup>Ozias gerou Jotão; Jotão gerou Acaz; Acaz gerou Ezequias;</span>
+								<span class="mt_1_10"><sup>10</sup>Ezequias gerou Manassés; Manassés gerou Amon; Amon gerou Josias.</span>
+								<span class="mt_1_11"><sup>11</sup>Josias gerou Jeconias e seus irmãos, no tempo do exílio na Babilônia.</span>
+							</p>
+						</td>
+						<td class="textoVersiculo toggleCNBB2019" rowspan="6">
 							<p class="paragrafo">
 								<span class="mt_1_6">Davi gerou Salomão, da mulher de Urias.</span>
 								<span class="mt_1_7"><sup>7</sup>Salomão gerou Roboão; Roboão gerou Abias; Abias gerou Asa;</span>
@@ -205,6 +239,15 @@
 								<span class="mt_1_16"><sup>16</sup>Jacó gerou José, o esposo de Maria, da qual nasceu Jesus, que é chamado o Cristo.</span>
 							</p>
 						</td>
+						<td class="textoVersiculo toggleCNBB2019" rowspan="5">
+							<p class="paragrafo">
+								<span class="mt_1_12"><sup>12</sup>Depois do exílio na Babilônia, Jeconias gerou Salatiel; Salatiel gerou Zorobabel;</span>
+								<span class="mt_1_13"><sup>13</sup>Zorobabel gerou Abiud; Abiud gerou Eliaquim; Eliaquim gerou Azor;</span>
+								<span class="mt_1_14"><sup>14</sup>Azor gerou Sadoc; Sadoc gerou Aquim; Aquim gerou Eliud;</span>
+								<span class="mt_1_15"><sup>15</sup>Eliud gerou Eleazar; Eleazar gerou Matã; Matã gerou Jacó.</span>
+								<span class="mt_1_16"><sup>16</sup>Jacó gerou José, o esposo de Maria, da qual nasceu Jesus, que é chamado o Cristo.</span>
+							</p>
+						</td>
 					</tr>
 					<tr>
 						<td class="numVersiculo">
@@ -235,12 +278,22 @@
 								<span class="mt_1_17"><sup>17</sup>No total, pois, as gerações desde Abraão até Davi são quatorze; de Davi até o exílio na Babilônia, quatorze; e do exílio na Babilônia até o Cristo, quatorze.</span>
 							</p>
 						</td>
+						<td class="textoVersiculo toggleCNBB2019">
+							<p class="paragrafo">
+								<span class="mt_1_17"><sup>17</sup>Assim, todas as gerações de Abraão até Davi são quatorze; de Davi até o exílio na Babilônia, quatorze; e do exílio na Babilônia até o Cristo, quatorze.</span>
+							</p>
+						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td class="titulo toggleCNBB2008">
 							<p class="titulo2">
 								Nascimento de Jesus
+							</p>
+						</td>
+						<td class="titulo toggleCNBB2019">
+							<p class="titulo2">
+								A origem divina de Jesus
 							</p>
 						</td>
 					</tr>
@@ -251,6 +304,14 @@
 						<td class="textoVersiculo toggleCNBB2008">
 							<p class="paragrafo">
 								<span class="mt_1_18"><sup>18</sup>Ora, a origem de Jesus Cristo foi assim:</span>
+							</p>
+						</td>
+						<td class="textoVersiculo toggleCNBB2019" rowspan="4">
+							<p class="paragrafo">
+								<span class="mt_1_18"><sup>18</sup>Eis como foi a origem de Jesus Cristo. Sua mãe Maria, desposada com José, antes de conviverem, achou-se grávida pela ação do Espírito Santo.</span>
+								<span class="mt_1_19"><sup>19</sup>José, seu esposo prometido, sendo justo e não querendo expô-la, cogitou em despedi-la secretamente.</span>
+								<span class="mt_1_20"><sup>20</sup>Enquanto assim ponderava, apareceu-lhe em sonho um anjo do Senhor, que lhe disse: “José, Filho de Davi, não temas receber Maria, tua mulher, pois o que nela foi gerado vem do Espírito Santo.</span>
+								<span class="mt_1_21"><sup>21</sup>Ela dará à luz um filho, e tu lhe porás o nome de Jesus, pois ele salvará o seu povo dos seus pecados”.</span>
 							</p>
 						</td>
 					</tr>
@@ -289,6 +350,12 @@
 								<span class="mt_1_22"><sup>22</sup>Tudo isso aconteceu para se cumprir o que o Senhor tinha dito pelo profeta:</span>
 							</p>
 						</td>
+						<td class="textoVersiculo toggleCNBB2019" rowspan="2">
+							<p class="paragrafo">
+								<span class="mt_1_22"><sup>22</sup>Tudo isso aconteceu para se cumprir o que havia sido dito pelo Senhor, por meio do profeta:</span>
+								<span class="mt_1_23"><sup>23</sup><i>“Eis que a virgem ficará grávida e dará à luz um filho. Ele será chamado pelo nome de Emanuel”</i>, que significa: <i>Deus-conosco</i>.</span>
+							</p>
+						</td>
 					</tr>
 					<tr>
 						<td class="numVersiculo">
@@ -296,7 +363,7 @@
 						</td>
 						<td class="textoVersiculo toggleCNBB2008">
 							<p class="citacao">
-								<span class="mt_1_23"><sup>23</sup><i>“Eis que a virgem ficará grávida e dará à luz um filho. Ele será chamado pelo nome de Emanuel</i>, que significa: <i>Deus-conosco”.</i></span>
+								<span class="mt_1_23"><sup>23</sup><i>“Eis que a virgem ficará grávida e dará à luz um filho. Ele será chamado pelo nome de Emanuel</i>, que significa: <i>Deus-conosco</i>”.</span>
 							</p>
 						</td>
 					</tr>
@@ -310,6 +377,12 @@
 								<span class="mt_1_25"><sup>25</sup>E não teve relações com ela até o dia em que deu à luz o filho, ao qual ele pôs o nome de Jesus.</span>
 							</p>
 						</td>
+						<td class="textoVersiculo toggleCNBB2019" rowspan="2">
+							<p class="paragrafo">
+								<span class="mt_1_24"><sup>24</sup>Ao despertar do sono, José fez o que o anjo do Senhor lhe havia ordenado e acolheu sua mulher.</span>
+								<span class="mt_1_25"><sup>25</sup>E não conviveu com ela enquanto não deu à luz o filho&deg;, ao qual ele pôs o nome de Jesus.</span>
+							</p>
+						</td>
 					</tr>
 					<tr>
 						<td class="numVersiculo">
@@ -320,20 +393,48 @@
 						<td></td>
 						<td class="notaCapitulo toggleCNBB2008">
 							<p class="notaDeRodape">
-								&diams;<u>1,1-17</u> Através de José, <b>Jesus é juridicamente descendente de Abraão e da casa de Davi</b> (da qual devia nascer o Messias). Os vv. 18-25 mostrarão sua origem divina. <sup>></sup>Lc 3,23-38.
+								&diams;<b><u>1,1-17</u></b> Através de José, <b>Jesus é juridicamente descendente de Abraão e da casa de Davi</b> (da qual devia nascer o Messias). Os vv. 18-25 mostrarão sua origem divina. <sup>></sup>Lc 3,23-38.
 								&bull; <span class="mt_1_1"><b>1</b> <i>Livro da origem</i>: outras trds.: <i>genealogia / lista dos antepassados / das gerações</i> (<sup>></sup>Gn 5,1). O termo <i>origem</i> volta no <span class="mt_1_18">v. 18</span>. Os termos <i>genealogia, gerar, nascer, origem</i> são aparentados no grego.</span>
 								&bull; <span class="mt_1_2"><b>2</b> <sup>></sup>Gn 21,2s; 25,26; 29,32-30,24.</span>
 								&bull; <b>3-6</b> <sup>></sup>Rt 4,18-22. Mt menciona na genealogia cinco mulheres, todas elas ilustrando os caminhos imprevisíveis de Deus: <span class="mt_1_3">v. 3: <i>Tamar</i> ganhou um filho de Judá de modo astucioso, sendo porém mais justa do que ele (<sup>></sup>Gn 38,29s)</span>; <span class="mt_1_5">v. 5 <i>Raab</i>, a prostituta (<sup>></sup>Js 2); <i>Rute</i>, a moabita (<sup>></sup>Rt)</span>; <span class="mt_1_6">v. 6, Betsabéia, lit: <i>a que foi de Urias</i> (<sup>></sup>2Sm 12,24)</span>; e no <span class="mt_1_16">v. 16, <i>Maria</i></span>.
 								&bull; <b>7-12</b> <sup>></sup>1Cr 3,10-19.
 								&bull; <span class="mt_1_16"><b>16</b> <sup>></sup>Lc 1,27.</span>
-								&diams;<u>1,18-25</u> <b>Sinal da origem divina de Jesus. Realiza-se a profecia do "Emanuel"</b>.
+								&diams;<b><u>1,18-25</u></b> <b>Sinal da origem divina de Jesus. Realiza-se a profecia do "Emanuel"</b>.
 								&bull; <b>18-20</b> <sup>></sup>Lc 1,35.
-								&bull; <span class="mt_1_18"><b>18</b> a origem, <span class="mt_1_1"><sup>></sup>v. 1</span></span>.
+								&bull; <span class="mt_1_18"><b>18</b> a origem, <span class="mt_1_1"><sup>></sup>v. 1</span>.</span>
 								&bull; <span class="mt_1_19">19 <i>justo</i> = observante da Lei, mas num espírito que anuncia a prática de Jesus. Quis evitar o foro público, com possível apedrejamento de Maria.</span>
 								<span class="mt_1_21"><b>21</b> <sup>></sup>Lc 1,31; 2,21.
 								&bull; <i>Jesus</i> significa Deus salva.</span>
 								<span class="mt_1_23"><b>23</b> <sup>></sup>Is 7,14<sup>G</sup> + Is 8,8.10<sup>G</sup>.</span>
 								<span class="mt_1_25">&bull; 25 <i>sem... relacões conjugais</i>: lit.: <i>E ele não a conheceu</i> (semit.).</span>
+							</p>
+						</td>
+						<td class="notaCapitulo toggleCNBB2019">
+							<p class="notaDeRodape">
+								&diams;<u>Mt 1,1-2,23</u> Na base de cinco citações das Escrituras (<span class="mt_1_22">1,22</span>; 2,6.15.17s.23), Mt descreve o nascimento de Jesus-Messias como cumprimento do plano de Deus para salvar seu povo. O evangelho termina no mandato de levar esta salvação a todas as nações (28,17-20).
+							</p>
+							<p class="notaDeRodape">
+								<b><u>1,1-17</u></b> Genealogia de Jesus (||Lc 3,23-38). Humanamente, Jesus é descendente de Abraão e da casa de Davi, da qual devia nascer o Messias, através do pai putativo José (os v. 18-25 mostrarão sua origem divina). Inesperadamente, Mt menciona nesta genealogia patrilinear cinco mulheres, ilustrando os caminhos imprevisíveis de Deus: <span class="mt_1_3">v. 3: <i>Tamar</i> (ganhou um filho de Judá que lhe recusara seu filho para honrar o *levirato, Gn 38,29s)</span>; <span class="mt_1_5">v. 5 <i>Raab</i> (a prostituta, Js 2); <i>Rute</i> (a moabita, Rt)</span>; <span class="mt_1_6">v. 6 (lit.): <i>a mulher de Urias</i> (Betsabeia, 2Sm 12,24)</span>; <span class="mt_1_16">v. 16, <i>Maria</i></span>.
+								| <span class="mt_1_1"><b>1</b> <i>Livro da origem</i> (>Gn 5,1); o termo <i>origem</i> (correspondente a t&omacr;ledôt, "gerações", no A.T.) volta no <span class="mt_1_18">v. 18</span>.</span>
+								| <span class="mt_1_2"><b>2</b> Gn 21,2s; 25,26; 29,32-30,24.</span>
+								| <b>3-6</b> Rt 4,18-22.
+								| <span class="mt_1_6"><b>6</b> <i>mulher</i>, lit. <i>daquela que foi</i> (de Urias).</span>
+								| <b>7-12</b> 1Cr 3,10-19.
+								| <span class="mt_1_16"><b>16</b> Lc 1,27.</span>
+							</p>
+							<p class="notaDeRodape">
+								<b><u>1,18-25</u></b> Na origem divina de Jesus (pelo Espírito de Deus), a profecia do "Emanuel" (Is 7,14) recebe seu sentido pleno.
+								| <b>18-20</b> Lc 1,35.
+								| <span class="mt_1_18"><b>18</b> <i>origem</i>, >nota <span class="mt_1_1">v. 1</span>.</span>
+								| <span class="mt_1_19"><b>19</b> <i>esposo prometido</i> = desposado desde a infância conforme os costumes de então, com direito sobre sua "futura".
+								&bull; <i>justo</i>: querendo evitar o foro público, que poderia julgar Maria com adúltera, José se mostra fiel à Lei de Deus, porém num espírito que anuncia a prática de Jesus (>5,20).</span>
+								| <span class="mt_1_20"><b>20</b> <i>Maria, tua mulher</i>: legalmente ela já era sua mulher (><span class="mt_1_24">v. 24</span>.)</span>
+								| <span class="mt_1_21"><b>21</b> Lc 1,31; 2,21.
+								&bull; <i>Jesus</i> significa "Deus salva".</span>
+								| <span class="mt_1_22"><b>22</b> <i>por meio do...</i>: quem falou foi Deus, por meio do profeta.</span>
+								| <span class="mt_1_23"><b>23</b> <i>a virgem... Emanuel</i>: <i>Is 7,14<sup>G</sup>;8,10<sup>G</sup>.</span>
+								| <span class="mt_1_25"><b>25</b> <i>não conviveu com ela</i>: lit.: <i>não a *conheceu</i> (semitismo).
+								&bull; <i>o filho</i>, cf. G/N (V acr. <i>unigênito</i>).</span>
 							</p>
 						</td>
 					</tr>

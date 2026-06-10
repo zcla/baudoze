@@ -38,11 +38,24 @@ TODO Ver se não foi mudado
       * `service`
         * Classes de serviço, para serem usadas externamente. Busca os dados já no formato exigido pelas telas.
 
-## Módulos & Roadmap
+## TODO-List
 
-### Em andamento
+* biblia: https://www.oraetlabora.com.br/desenvolvedores
+  * /api/biblia
+  * /api/catecismo
 
-* tarefa (feito de forma inicial, como piloto; falta muito para ficar funcional)
+* tarefa: Resolver TODOs e finalizar
+
+* infra: Mudar banco geral para PostGreSQL
+
+* infra: Mudar banco do usuário para SQLite
+
+* biblia: definir uma Bíblia base e fazer rotina de edição (CNBB2019? Comprar uma 6ª edição?)
+
+* biblia: conectar as Bíblias para permitir visão lado a lado
+
+## Outras anotações
+
 * biblia
   * Consulta
     * Dados

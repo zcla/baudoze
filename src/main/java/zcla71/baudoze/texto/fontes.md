@@ -39,12 +39,18 @@
 ### Sugestões do ChatGPT
 
 * https://chatgpt.com/c/69a0c566-2220-832c-a7e9-1dbb58f34156 (conversa)
-*https://chatgpt.com/share/69a38832-5e6c-8004-8b30-533c2ddcd6ec (link de compartilhamento)
+* https://chatgpt.com/share/69a38832-5e6c-8004-8b30-533c2ddcd6ec (link de compartilhamento)
 
 ### Falta analisar
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json
+
+* oraetlabora.com.br
+  * API: https://www.oraetlabora.com.br/desenvolvedores
+  * `json` [pt] Bíblia ("Tradução baseada na Vulgata Latina de São Jerônimo"; parece ser a de 1956): https://www.oraetlabora.com.br/biblia
+  * Catecismo (parece faltar do 1 ao 25): https://www.oraetlabora.com.br/catecismo
+  * Documentos da Igreja: https://www.oraetlabora.com.br/documentos
 
 * die-bibel.de => Versões usadas na tradução da Bíblia CNBB 2019
   * [he] https://www.die-bibel.de/en/bible/BHS/

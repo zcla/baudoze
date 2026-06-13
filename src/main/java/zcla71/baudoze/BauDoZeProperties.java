@@ -37,10 +37,20 @@ public class BauDoZeProperties {
 				private String idioma;
 			}
 
-			// app.biblia.importacao.sqLite-importa
+			// app.biblia.importacao.html-importa
 			private List<PropHtmlImporta> htmlImporta;
 			@Data
 			public static class PropHtmlImporta {
+				private String codigo;
+				private String uri;
+				private String nome;
+				private String idioma;
+			}
+
+			// app.biblia.importacao.json-importa
+			private List<PropJsonImporta> jsonImporta;
+			@Data
+			public static class PropJsonImporta {
 				private String codigo;
 				private String uri;
 				private String nome;

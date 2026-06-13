@@ -54,6 +54,11 @@ app:
           uri: https://www.paroquiadasgracas.com/biblia/
           nome: Bíblia CNBB 2008?
           idioma: pt-br
+      json-importa:
+        - codigo: oraetlabora.com.br
+          uri: https://www.oraetlabora.com.br/api/biblia
+          nome: Bíblia Padre Matos Soares 1956?
+          idioma: pt-br
 
 logging:
   level:

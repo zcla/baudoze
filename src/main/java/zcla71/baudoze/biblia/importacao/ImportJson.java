@@ -79,7 +79,7 @@ public class ImportJson {
 		// Livro
 		ObjectMapper mapper = new ObjectMapper();
 		ApiBiblia apiBiblia = readValueWithRetry(mapper, new URI(uri), ApiBiblia.class);
-		result.setFonte(apiBiblia.getFonte());
+		// result.setFonte(apiBiblia.getFonte());
 		List<ApiLivro> apiLivros = new ArrayList<>();
 		apiLivros.addAll(apiBiblia.getAntigoTestamento());
 		apiLivros.addAll(apiBiblia.getNovoTestamento());

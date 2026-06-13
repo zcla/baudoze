@@ -40,12 +40,11 @@ TODO Ver se não foi mudado
 
 ## TODO-List
 
-* biblia: mostrar origem
+* biblia: backup do banco
 
 * biblia: https://www.oraetlabora.com.br/desenvolvedores
   * https://www.oraetlabora.com.br/api/catecismo
-
-* biblia: backup do banco
+  * https://www.oraetlabora.com.br/api/documentos
 
 * tarefa: Resolver TODOs e finalizar
 

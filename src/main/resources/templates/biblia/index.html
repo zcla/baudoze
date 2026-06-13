@@ -33,6 +33,7 @@
 							<tr id="selectTitle">
 								<th>Nome</th>
 								<th>Livros</th>
+								<th>Fonte</th>
 								<th class="botoes d-print-none">
 								</th>
 							</tr>
@@ -44,6 +45,9 @@
 									<a th:href="@{'/biblia/' + ${biblia.id}}" th:text="${biblia.nome}"></a>
 								</td>
 								<td th:text="${biblia.livros}" class="text-end"></td>
+								<td>
+									<a th:href="${biblia.fonte}" th:text="${biblia.fonteDominio}" target="_blank"></a>
+								</td>
 								<td class="botoes d-print-none">
 									<div class="btn-group" role="group">
 									</div>

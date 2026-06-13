@@ -16,6 +16,7 @@ public class BibliaLista {
 	private String nome;
 	private String idioma;
 	private Integer livros;
+	private String fonte;
 
 	@Transient
 	public String getBandeira() {
@@ -24,5 +25,10 @@ public class BibliaLista {
 		}
 		String[] spl = this.idioma.split("-");
 		return spl[spl.length - 1];
+	}
+
+	@Transient
+	public String getFonteDominio() {
+		return fonte.split("/")[2];
 	}
 }

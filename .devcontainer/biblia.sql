@@ -57,6 +57,7 @@ SELECT
 	b.id,
 	b.nome,
 	b.idioma,
+	b.fonte,
 	(
 		SELECT COUNT(l.id)
 		FROM livro l

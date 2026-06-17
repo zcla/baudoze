@@ -27,6 +27,8 @@ public class SecurityConfig {
 				.requestMatchers("/biblia/**").permitAll()
 				// Estudos
 				.requestMatchers("/estudos/**").permitAll()
+				// Download dos dados públicos
+				.requestMatchers("/backupRestore/download").permitAll()
 				// Todo o resto precisa de login
 				.anyRequest().authenticated()
 			)

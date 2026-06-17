@@ -6,6 +6,18 @@ class DateUtils {
     }
 }
 
+class FrontendUtils {
+    static addMensagem(tipo, titulo, texto) {
+        $("#mensagens").append(`
+            <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+                <strong>${titulo}</strong>
+                <span>${texto}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+        `);
+    }
+}
+
 class StringUtils {
     static downloadString(str, fileName) {
         const downloader = document.createElement('a');

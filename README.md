@@ -40,7 +40,12 @@ TODO Ver se não foi mudado
 
 ## TODO-List
 
-* biblia: backup do banco
+* backup do banco
+  * geral (biblia)
+    * restore
+  * pessoal (tarefa)
+    * backup
+    * restore
 
 * biblia: https://www.oraetlabora.com.br/desenvolvedores
   * https://www.oraetlabora.com.br/api/catecismo

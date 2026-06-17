@@ -10,17 +10,7 @@
 
 ### Já importadas
 
-* [`github/believers-sword/BAM1959`](https://github.com/Bible-Projects/believers-sword-next/blob/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3) Bíblia Ave-Maria 1959
-* [`github/believers-sword/BPMS1950`](https://github.com/Bible-Projects/believers-sword-next/blob/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3) Bíblia Padre Matos Soares 1950
-* [`ph4.org/BAM`](https://www.ph4.org/_dl.php?back=bbl&a=BAM&b=mybible&c) Bíblia Ave Maria (pt-br)
-* [`ph4.org/BEP`](https://www.ph4.org/_dl.php?back=bbl&a=BEP&b=mybible&c) Bíblia Sagrada Edição Pastoral 1990 (pt-br)
-* [`ph4.org/BJRD`](https://www.ph4.org/_dl.php?back=bbl&a=BJRD&b=mybible&c) Bíblia de Jerusalém 2002 (pt-br)
-* [`ph4.org/BPT'09D`](https://www.ph4.org/_dl.php?back=bbl&a=BPT'09D&b=mybible&c) A Bíblia para todos Edição Católica (pt-pt)
-* [`ph4.org/CNBB`](https://www.ph4.org/_dl.php?back=bbl&a=CNBB&b=mybible&c) Bíblia CNBB 2002
-* [`ph4.org/DBFC`](https://www.ph4.org/_dl.php?back=bbl&a=DBFC&b=mybible&c) Bíblia Difusora Bíblica (pt-pt)
-* [`ph4.org/DIF`](https://www.ph4.org/_dl.php?back=bbl&a=DIF&b=mybible&c) Bíblia Difusora Bíblica (pt-pt)
-* [`ph4.org/EUNSA`](https://www.ph4.org/_dl.php?back=bbl&a=EUNSA&b=mybible&c) Bíblia de Navarra (es)
-* [`ph4.org/RSV-CE`](https://www.ph4.org/_dl.php?back=bbl&a=RSV-CE&b=mybible&c) Revised Standard Version, Second Catholic Edition (en)
+* Ver [application.yml](/src/main/resources/application.yml)
 
 ### Já no projeto [`wikimaker`](https://github.com/zcla/wikimaker); é só adaptar
 
@@ -41,16 +31,22 @@
 * https://chatgpt.com/c/69a0c566-2220-832c-a7e9-1dbb58f34156 (conversa)
 * https://chatgpt.com/share/69a38832-5e6c-8004-8b30-533c2ddcd6ec (link de compartilhamento)
 
-### Falta analisar
+### Candidatas
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json
 
 * oraetlabora.com.br
   * API: https://www.oraetlabora.com.br/desenvolvedores
-  * `json` [pt] Bíblia ("Tradução baseada na Vulgata Latina de São Jerônimo"; parece ser a de 1956): https://www.oraetlabora.com.br/biblia
+  * A Bíblia já está importada
   * Catecismo (parece faltar do 1 ao 25): https://www.oraetlabora.com.br/catecismo
   * Documentos da Igreja: https://www.oraetlabora.com.br/documentos
+
+* ecclesia.pt
+  * [pt(-br?)] Compêndio da Doutrina Social da Igreja https://sites.ecclesia.pt/dsi/
+
+* conferenciaepiscopal.pt
+  * [pt-pt] Bíblia oficial portuguesa (WIP!) https://conferenciaepiscopal.pt/biblia/index.php/Main_Page
 
 * die-bibel.de => Versões usadas na tradução da Bíblia CNBB 2019
   * [he] https://www.die-bibel.de/en/bible/BHS/

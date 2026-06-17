@@ -22,23 +22,24 @@
 		<script th:src="@{/js/baudoze.js}"></script>
 		<script th:src="@{/js/utils.js}"></script>
 		<script>
-			// TODO Isso aqui não tá funcionando
-			// $(window).on('load', function() {
-			// 	$('#bau_exportar').click(async () => {
-			// 		const data = await $.ajax({ 
-			// 			type: "GET",
-			// 			dataType: "json",
-			// 			url: "/backupRestore/exportar",
-			// 			success: function(data){
-			// 				debugger;
-			// 				StringUtils.downloadString(JSON.stringify(data), `todo.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
-			// 				// TODO Trazer frontend do projeto "todo"
-			// 				frontend.addMessage('success', '', 'Exportação feita com sucesso.');
-			// 			}
-			// 			// TODO Tratar erro
-			// 		});
-			// 	});
-			// });
+			$(window).on('load', function() {
+				$('#bau_download').click(async () => {
+					const data = await $.ajax({
+						url: "/backupRestore/download",
+						type: "GET",
+						timeout: 60000, // 1 minuto
+						dataType: "json"
+					})
+					.done(function(data) {
+						debugger;
+						StringUtils.downloadString(JSON.stringify(data), `bau.${DateUtils.formatYYYYMMDDHHNNSS(new Date())}.json`);
+						FrontendUtils.addMensagem('success', "", 'Exportação feita com sucesso.');
+					})
+					.fail(function(xhr, status, error) {
+						FrontendUtils.addMensagem('danger', "Erro", error);
+					});
+				});
+			});
 		</script>
 		<!-- Blocos adicionais do head (opcional) -->
 		<th:block layout:fragment="extra-head"></th:block>
@@ -65,28 +66,31 @@
 					</ul>
 					<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
 					</ul>
-					<ul class="navbar-nav ms-3">
-						<li th:if="${_authUser != null}" class="nav-item d-flex align-items-center dropdown">
+					<ul class="navbar-nav ms-3"
+						th:with="userName=${_authUser != null ? _authUser.nome : 'Anônimo'},
+              					 userImage=${_authUser != null && _authUser.urlImagem != null ? _authUser.urlImagem : '/img/no-auth-user.png'}">
+						<li class="nav-item d-flex align-items-center dropdown">
 							<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<img th:src="${_authUser.urlImagem}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
-								<span class="navbar-text me-3" th:text="${_authUser.nome}"></span>
+								<img th:src="${userImage}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+								<span class="navbar-text me-3" th:text="${userName}"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end text-small">
-								<!-- TODO Está com erro -->
-								<li><a id="bau_exportar" class="dropdown-item">Exportar dados</a></li>
 								<!-- TODO Implementar -->
-								<li><a id="bau_importar" class="dropdown-item">Importar dados</a></li>
-								<!-- TODO Implementar -->
-								<li><a id="bau_limpar" class="dropdown-item">Limpar dados</a></li>
-								<!-- TODO Sair -->
+								<li><a id="bau_download" class="dropdown-item" href="#">Fazer download dos dados públicos</a></li>
+								<th:block th:if="${_authUser != null}">
+									<li><hr class="dropdown-divider"></li>
+									<!-- TODO Implementar -->
+									<li><a id="bau_exportar" class="dropdown-item" href="#">Fazer backup dos meus dados</a></li>
+									<!-- TODO Implementar -->
+									<li><a id="bau_importar" class="dropdown-item" href="#">Restaurar backup dos meus dados</a></li>
+									<!-- TODO Implementar -->
+									<li><a id="bau_limpar" class="dropdown-item" href="#">Limpar meus dados</a></li>
+									<li><hr class="dropdown-divider"></li>
+									<!-- TODO Implementar -->
+									<li><a id="bau_sair" class="dropdown-item" href="#">Sair</a></li>
+								</th:block>
 							</ul>
 						</li>
-						<!--
-						<li th:if="${_authUser == null}" class="nav-item d-flex align-items-center">
-							<img src="/img/no-auth-user.png" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
-							<span class="navbar-text me-3">Anônimo</span>
-						</li>
-						-->
 					</ul>
 				</div>
 			</div>

@@ -4,13 +4,13 @@ app:
       sqlite-importa:
         # believers-sword https://github.com/Bible-Projects/believers-sword-next/tree/main/Modules/Bible
         - codigo: github/believers-sword/BAM1959
-          uri: https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3
-          # Excluída; link para a última versão: https://github.com/JenuelDev/Believers-Sword/raw/e70b447dce3004deee0a826489cd2f8dd1ccbc1e/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3
+          uri: https://github.com/JenuelDev/Believers-Sword/raw/e70b447dce3004deee0a826489cd2f8dd1ccbc1e/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3
+          # Excluída; era: https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3
           nome: Bíblia Ave-Maria 1959
           idioma: pt-br
         - codigo: github/believers-sword/BPMS1950
-          uri: https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3
-          # Excluída; link para a última versão: https://github.com/JenuelDev/Believers-Sword/raw/e70b447dce3004deee0a826489cd2f8dd1ccbc1e/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3
+          uri: https://github.com/JenuelDev/Believers-Sword/raw/e70b447dce3004deee0a826489cd2f8dd1ccbc1e/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3
+          # Excluída; era: https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3
           nome: Bíblia Padre Matos Soares 1950
           idioma: pt-br
       ph4-importa:
@@ -52,11 +52,13 @@ app:
           nome: Revised Standard Version, Second Catholic Edition
           idioma: en-us
       html-importa:
+        # paroquiadasgracas.com
         - codigo: paroquiadasgracas.com
           uri: https://www.paroquiadasgracas.com/biblia/
           nome: Bíblia CNBB 2008?
           idioma: pt-br
       json-importa:
+        # oraetlabora.com.br
         - codigo: oraetlabora.com.br
           uri: https://www.oraetlabora.com.br/api/biblia
           nome: Bíblia Padre Matos Soares 1956?
@@ -74,11 +76,8 @@ logging:
 spring:
   application:
     name: Bau do Zé
-  datasource:
-    password: ${DATABASE_PASSWORD}
-    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_DB}
-    username: ${DATABASE_USER}
   jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
     hibernate:
       ddl-auto: none
   security:
@@ -89,6 +88,9 @@ spring:
             client-id: ${GOOGLE_AUTH_CLIENT_ID}
             client-secret: ${GOOGLE_AUTH_CLIENT_SECRET}
             scope: openid,profile,email
+  sql:
+    init:
+      mode: always
   thymeleaf:
     cache: false
     suffix: .html

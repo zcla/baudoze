@@ -1,0 +1,3 @@
+-- TIRAR O "_" DO NOME DO ARQUIVO; COM O ARQUIVO VAZIO DÁ ERRO.
+-- Colocar aqui INSERTS nas tabelas, quando necessário.
+-- Lembro de ter usado um INSERT ... WHERE <true somente se o banco está vazio>, senão causava duplicação.

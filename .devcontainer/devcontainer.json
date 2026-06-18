@@ -25,11 +25,11 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"cweijan.vscode-mysql-client2",
 				"FanaticPythoner.better-todo-tree",
 				"humao.rest-client",
 				"ms-azuretools.vscode-docker",
-				"vscjava.vscode-java-pack"
+				"vscjava.vscode-java-pack",
+				"yy0931.vscode-sqlite3-editor"
 			]
 		}
 	}

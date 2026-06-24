@@ -9,12 +9,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -23,10 +24,6 @@ public class Tarefa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@ManyToOne
-	@JoinColumn(name = "auth_user_id", referencedColumnName = "id")
-	private AuthUser authUser;
 
 	@NotBlank(message = "Informe o título.")
 	@Size(max = 150, message = "O título deve ter no máximo 255 caracteres")

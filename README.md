@@ -40,6 +40,8 @@ TODO Ver se não foi mudado
 
 ## TODO-List
 
+* infra: Hoje só tem um banco para todos os usuários; separar um banco por usuário
+
 * backup do banco
   * geral (biblia)
     * restore
@@ -52,10 +54,6 @@ TODO Ver se não foi mudado
   * https://www.oraetlabora.com.br/api/documentos
 
 * tarefa: Resolver TODOs e finalizar
-
-* infra: Mudar banco geral para PostGreSQL
-
-* infra: Mudar banco do usuário para SQLite
 
 * biblia: definir uma Bíblia base e fazer rotina de edição (CNBB2019? Comprar uma 6ª edição?)
 

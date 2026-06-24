@@ -1,52 +1,38 @@
--- drop view if exists
-DROP VIEW IF EXISTS tarefa_lista;
+--------- tarefa ---------
 
--- drop table if exists
-DROP TABLE IF EXISTS tarefa;
-
--- crete table
-
-CREATE TABLE tarefa (  
-	id BIGINT NOT NULL AUTO_INCREMENT,
-		PRIMARY KEY (id),
-	auth_user_id BIGINT NOT NULL,
-		FOREIGN KEY (auth_user_id) REFERENCES auth_user(id),
-	titulo VARCHAR(255),
+CREATE TABLE IF NOT EXISTS tarefa (
+	id INTEGER PRIMARY KEY,
+	titulo TEXT NOT NULL,
 	descricao TEXT,
-	id_mae BIGINT,
-		FOREIGN KEY (id_mae) REFERENCES tarefa(id),
-	ordem BIGINT,
-	cumprida BOOLEAN
+	id_mae INTEGER,
+	ordem INTEGER NOT NULL,
+	cumprida BOOLEAN NOT NULL DEFAULT FALSE,
+	FOREIGN KEY (id_mae) REFERENCES tarefa(id)
 );
 
-CREATE INDEX idx_tarefa_mae_ordem ON tarefa(id_mae, ordem);
+CREATE INDEX IF NOT EXISTS idx_tarefa_mae_ordem ON tarefa(id_mae, ordem);
 
--- create view
-
-CREATE VIEW tarefa_lista
+CREATE VIEW IF NOT EXISTS tarefa_lista
 AS
 WITH RECURSIVE temp AS (
 	-- Tarefas "root"
 	SELECT
 		t.id,
-		t.auth_user_id, -- Performance: para que o MySQL possa aplicar um WHERE externo antes de executar a view, evitando a montagem da tabela inteira
 		0 AS indent,
-		CAST(LPAD(t.ordem, 10, '0') AS CHAR(255)) AS path
+		PRINTF('%010d', t.ordem) AS path
 	FROM tarefa t
 	WHERE t.id_mae IS NULL
 	UNION ALL
 	-- Tarefas "filhas"
 	SELECT
 		tf.id,
-		tf.auth_user_id,
 		tm.indent + 1 AS indent,
-		CONCAT(tm.path, '.', LPAD(tf.ordem, 10, '0')) AS path
+		tm.path || '.' || PRINTF('%010d', tf.ordem) AS path
 	FROM tarefa tf
 	JOIN temp tm ON tf.id_mae = tm.id
 )
 SELECT
 	t.id,
-	t.auth_user_id,
 	t.titulo,
 	t.descricao,
 	t.cumprida,

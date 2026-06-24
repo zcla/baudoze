@@ -29,7 +29,7 @@ public class TarefaApiController {
 			@NonNull @PathVariable Long id,
 			RedirectAttributes redirectAttrs) {
 		try {
-			tarefaService.excluir(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
+			tarefaService.excluir(Objects.requireNonNull(tarefaService.buscar(id)));
 			return ResponseEntity
 					.ok(new TarefaApiResponse(true, "ok"));
 		} catch (TarefaServiceException ex) {
@@ -44,7 +44,7 @@ public class TarefaApiController {
 			@NonNull @PathVariable Long id,
 			RedirectAttributes redirectAttrs) {
 		try {
-			tarefaService.marcar(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
+			tarefaService.marcar(Objects.requireNonNull(tarefaService.buscar(id)));
 			return ResponseEntity
 					.ok(new TarefaApiResponse(true, "ok"));
 		} catch (TarefaServiceException ex) {
@@ -59,7 +59,7 @@ public class TarefaApiController {
 			@NonNull @PathVariable Long id,
 			RedirectAttributes redirectAttrs) {
 		try {
-			tarefaService.desmarcar(Objects.requireNonNull(tarefaService.buscar(authUser, id)));
+			tarefaService.desmarcar(Objects.requireNonNull(tarefaService.buscar(id)));
 			return ResponseEntity
 					.ok(new TarefaApiResponse(true, "ok"));
 		} catch (TarefaServiceException ex) {

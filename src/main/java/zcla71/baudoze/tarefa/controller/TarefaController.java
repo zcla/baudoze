@@ -36,15 +36,15 @@ public class TarefaController extends BauBaseController {
 	public ModelAndView index(@AuthenticationPrincipal AuthUser authUser) {
 		ModelAndView result = getModelAndView("/tarefa/index", authUser);
 
-		result.addObject("tarefas", tarefaViewService.listaTarefas(authUser.getId()));
+		result.addObject("tarefas", tarefaViewService.listaTarefas());
 
 		return result;
 	}
 
 	// Utilitários: preparação para edição
 
-	private BauModelAndView getEditarModelAndView(Tarefa tarefa) {
-		BauModelAndView result = getModelAndView("/tarefa/editar", tarefa.getAuthUser());
+	private BauModelAndView getEditarModelAndView(Tarefa tarefa, @AuthenticationPrincipal AuthUser authUser) {
+		BauModelAndView result = getModelAndView("/tarefa/editar", authUser);
 
 		result.addObject("tarefa", tarefa);
 		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(tarefa));
@@ -52,8 +52,8 @@ public class TarefaController extends BauBaseController {
 		return result;
 	}
 
-	private BauModelAndView getEditarModelAndView(Tarefa tarefa, TarefaServiceException ex, BindingResult bindingResult) {
-		BauModelAndView result = getEditarModelAndView(tarefa);
+	private BauModelAndView getEditarModelAndView(Tarefa tarefa, TarefaServiceException ex, BindingResult bindingResult, @AuthenticationPrincipal AuthUser authUser) {
+		BauModelAndView result = getEditarModelAndView(tarefa, authUser);
 
 		if (ex.getContexto() == null) {
 			result.addMensagem("danger", ex.getMessage());
@@ -68,7 +68,7 @@ public class TarefaController extends BauBaseController {
 
 	@GetMapping("/incluir")
 	public ModelAndView incluir(@AuthenticationPrincipal AuthUser authUser) {
-		return getEditarModelAndView(tarefaService.novaTarefa(authUser));
+		return getEditarModelAndView(tarefaService.novaTarefa(), authUser);
 	}
 
 	// Tela: alterar
@@ -78,7 +78,7 @@ public class TarefaController extends BauBaseController {
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @PathVariable Long id) {
 		try {
-			return getEditarModelAndView(tarefaService.buscar(authUser, id));
+			return getEditarModelAndView(tarefaService.buscar(id), authUser);
 		} catch (TarefaServiceException ex) {
 			BauModelAndView result = getModelAndView("/tarefa/editar", authUser);
 			result.addMensagem("danger", ex.getMessage());
@@ -94,19 +94,15 @@ public class TarefaController extends BauBaseController {
 			@NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa,
 			BindingResult bindingResult) {
 
-		if (tarefa.getAuthUser() == null) {
-			tarefa.setAuthUser(authUser);
-		}
-
 		if (bindingResult.hasErrors()) {
-			return getEditarModelAndView(tarefa);
+			return getEditarModelAndView(tarefa, authUser);
 		}
 
 		try {
 			tarefaService.salvar(tarefa);
 			return redirect("/tarefa");
 		} catch (TarefaServiceException ex) {
-			return getEditarModelAndView(tarefa, ex, bindingResult);
+			return getEditarModelAndView(tarefa, ex, bindingResult, authUser);
 		}
 	}
 }

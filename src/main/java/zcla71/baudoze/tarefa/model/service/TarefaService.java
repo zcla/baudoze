@@ -2,15 +2,16 @@ package zcla71.baudoze.tarefa.model.service;
 
 import java.util.Objects;
 
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.core.NestedExceptionUtils;
 import org.springframework.lang.NonNull;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
+import org.sqlite.SQLiteErrorCode;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.service.BauServiceTipoException;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
 import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
@@ -37,13 +38,12 @@ public class TarefaService {
 
 	final private TarefaRepository tarefaRepository;
 
-	public Tarefa buscar(AuthUser authUser, @NonNull Long id) {
-		return tarefaRepository.findByAuthUserAndId(authUser, id).orElseThrow(() -> new TarefaServiceException(BauServiceTipoException.NAO_ENCONTRADO, "Tarefa não encontrada."));
+	public Tarefa buscar(@NonNull Long id) {
+		return tarefaRepository.findById(id).orElseThrow(() -> new TarefaServiceException(BauServiceTipoException.NAO_ENCONTRADO, "Tarefa não encontrada."));
 	}
 
-	public Tarefa novaTarefa(AuthUser authUser) {
+	public Tarefa novaTarefa() {
 		Tarefa result = new Tarefa();
-		result.setAuthUser(authUser);
 		result.setTitulo("Nova tarefa");
 		result.setCumprida(false);
 		return result;
@@ -53,13 +53,13 @@ public class TarefaService {
 	public Tarefa salvar(@Valid @NonNull Tarefa tarefa) {
 		if (tarefa.getId() == null) {
 			// É inclusão
-			tarefa.setOrdem(tarefaRepository.proximaOrdem(tarefa.getAuthUser()));
+			tarefa.setOrdem(tarefaRepository.proximaOrdem());
 			tarefa.setCumprida(false);
 			return tarefaRepository.save(tarefa);
 		}
 		
 		// É alteração
-		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
+		Tarefa existente = buscar(Objects.requireNonNull(tarefa.getId()));
 
 		// Validação: a tarefa mãe não pode ser nem ela mesma nem nenhuma de suas filhas
 		if (tarefa.getTarefaMae() != null) {
@@ -81,7 +81,7 @@ public class TarefaService {
 		existente.setDescricao(tarefa.getDescricao());
 		if (alterouMae(existente, tarefa)) {
 			// Sempre que mudar a mãe, fica como última filha
-			existente.setOrdem(tarefaRepository.proximaOrdem(existente.getAuthUser()));
+			existente.setOrdem(tarefaRepository.proximaOrdem());
 			existente.setTarefaMae(tarefa.getTarefaMae());
 		}
 		return tarefaRepository.save(existente);
@@ -90,18 +90,24 @@ public class TarefaService {
 	@Transactional
 	public void excluir(@NonNull Tarefa tarefa) {
 		try {
-			Tarefa existente = Objects.requireNonNull(buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId())));
+			Tarefa existente = Objects.requireNonNull(buscar(Objects.requireNonNull(tarefa.getId())));
 			tarefaRepository.delete(existente);
 			tarefaRepository.flush(); // Sem o flush o delete só acontece depois, e nunca entra no catch abaixo
-		} catch (DataIntegrityViolationException ex) {
-			// Erro de FK
-			throw new TarefaServiceException(BauServiceTipoException.REGRA_DE_NEGOCIO, "Não é possível excluir uma tarefa que tem filhos.");
+		} catch (JpaSystemException ex) {
+			Throwable root = NestedExceptionUtils.getMostSpecificCause(ex);
+			if (root instanceof org.sqlite.SQLiteException sqlEx) {
+				if (sqlEx.getResultCode() == SQLiteErrorCode.SQLITE_CONSTRAINT_FOREIGNKEY) {
+					// Erro de FK
+					throw new TarefaServiceException(BauServiceTipoException.REGRA_DE_NEGOCIO, "Não é possível excluir uma tarefa que tem filhos.");
+				}
+			}
+			throw ex;
 		}
 	}
 
 	@Transactional
 	public Tarefa marcar(@NonNull Tarefa tarefa) {
-		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
+		Tarefa existente = buscar(Objects.requireNonNull(tarefa.getId()));
 
 		if (existente.getCumprida()) {
 			throw new TarefaServiceException(BauServiceTipoException.CONFLITO, "Tarefa já está cumprida.");
@@ -112,7 +118,7 @@ public class TarefaService {
 
 	@Transactional
 	public Tarefa desmarcar(@NonNull Tarefa tarefa) {
-		Tarefa existente = buscar(tarefa.getAuthUser(), Objects.requireNonNull(tarefa.getId()));
+		Tarefa existente = buscar(Objects.requireNonNull(tarefa.getId()));
 
 		if (!existente.getCumprida()) {
 			throw new TarefaServiceException(BauServiceTipoException.CONFLITO, "Tarefa já está descumprida.");

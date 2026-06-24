@@ -16,12 +16,12 @@ public class TarefaViewService {
 
 	final private TarefaListaRepository tarefaListaRepository;
 
-	public List<TarefaLista> listaTarefas(Long authUserId) {
-		return this.tarefaListaRepository.findByAuthUserId(authUserId);
+	public List<TarefaLista> listaTarefas() {
+		return this.tarefaListaRepository.findAll();
 	}
 
 	public List<TarefaLista> listaTarefasMaePossiveis(Tarefa tarefa) {
-		List<TarefaLista> result = listaTarefas(tarefa.getAuthUser().getId());
+		List<TarefaLista> result = listaTarefas();
 
 		// Não pode ser nem ela mesma nem nenhuma de suas filhas
 		if (tarefa.getId() != null) { // Se for inclusão não precisa desse check

@@ -11,6 +11,8 @@ import java.time.Instant;
 import java.util.Collection;
 import java.util.Map;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
@@ -20,7 +22,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -113,7 +114,7 @@ public class AuthUser implements OidcUser {
 
 	private String urlImagem;
 
-	@Lob
+	@JdbcTypeCode(SqlTypes.VARBINARY)
 	private byte[] imagem;
 
 	private String imagemContentType;

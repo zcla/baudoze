@@ -6,16 +6,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode
 @Entity
 @Immutable
 public class TarefaLista {
 	@Id
 	private Long id;
-	private Long authUserId;
 	private String titulo;
 	private String descricao;
     private Boolean cumprida;

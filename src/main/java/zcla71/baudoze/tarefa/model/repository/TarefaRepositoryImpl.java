@@ -4,24 +4,22 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import jakarta.transaction.Transactional;
 
 @Repository
 public class TarefaRepositoryImpl implements TarefaRepositoryCustom {
-    @PersistenceContext
+	@PersistenceContext(unitName = "user")
     private EntityManager entityManager;
 
     @Override
-	public Long proximaOrdem(AuthUser authUser) {
-		Long result = (Long) entityManager
+	@Transactional
+	public Long proximaOrdem() {
+		Number result = (Number) entityManager
 				.createNativeQuery("""
-						SELECT MAX(t.ordem)
-						FROM tarefa t
-						WHERE t.auth_user_id = :authUserId
-						FOR UPDATE
+						SELECT COALESCE(MAX(ordem), 0) + 1
+						FROM tarefa
 						""")
-				.setParameter("authUserId", authUser.getId())
 				.getSingleResult();
-		return (result == null ? 0 : result) + 1;
+		return result.longValue();
 	}
 }

@@ -1,8 +1,6 @@
 package zcla71.baudoze.common.config;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Objects;
 
 import javax.sql.DataSource;
@@ -15,8 +13,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.sqlite.SQLiteConfig;
-import org.sqlite.SQLiteDataSource;
 
 import jakarta.persistence.EntityManagerFactory;
 
@@ -30,18 +26,8 @@ import jakarta.persistence.EntityManagerFactory;
 )
 public class UserDatabaseConfig {
 	@Bean
-	public DataSource userDataSource() throws IOException {
-		Path dbPath = Path.of("data", "users", "teste.sqlite");
-		Files.createDirectories(dbPath.getParent());
-
-		SQLiteConfig sqlite = new SQLiteConfig();
-		sqlite.enforceForeignKeys(true);
-		sqlite.setBusyTimeout(10_000);
-
-		SQLiteDataSource ds = new SQLiteDataSource(sqlite);
-		ds.setUrl("jdbc:sqlite:" + dbPath);
-
-		return ds;
+	public DataSource userDataSource() {
+		return new UserDataSource();
 	}
 
 	@Bean

@@ -6,12 +6,11 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.model.BauMensagem;
 
 public abstract class BauBaseController {
-	protected BauModelAndView getModelAndView(@NonNull String viewName, AuthUser authUser) {
-		return new BauModelAndView(viewName, authUser);
+	protected BauModelAndView getModelAndView(@NonNull String viewName) {
+		return new BauModelAndView(viewName);
 	}
 
 	public ModelAndView redirect(String viewName) {

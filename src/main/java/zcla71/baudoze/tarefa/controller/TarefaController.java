@@ -1,7 +1,6 @@
 package zcla71.baudoze.tarefa.controller;
 
 import org.springframework.lang.NonNull;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.common.controller.BauModelAndView;
 import zcla71.baudoze.tarefa.model.entity.Tarefa;
@@ -33,8 +31,8 @@ public class TarefaController extends BauBaseController {
 	// Tela: index
 
 	@GetMapping({"", "/"})
-	public ModelAndView index(@AuthenticationPrincipal AuthUser authUser) {
-		ModelAndView result = getModelAndView("/tarefa/index", authUser);
+	public ModelAndView index() {
+		ModelAndView result = getModelAndView("/tarefa/index");
 
 		result.addObject("tarefas", tarefaViewService.listaTarefas());
 
@@ -43,8 +41,8 @@ public class TarefaController extends BauBaseController {
 
 	// Utilitários: preparação para edição
 
-	private BauModelAndView getEditarModelAndView(Tarefa tarefa, @AuthenticationPrincipal AuthUser authUser) {
-		BauModelAndView result = getModelAndView("/tarefa/editar", authUser);
+	private BauModelAndView getEditarModelAndView(Tarefa tarefa) {
+		BauModelAndView result = getModelAndView("/tarefa/editar");
 
 		result.addObject("tarefa", tarefa);
 		result.addObject("tarefasMae", tarefaViewService.listaTarefasMaePossiveis(tarefa));
@@ -52,8 +50,8 @@ public class TarefaController extends BauBaseController {
 		return result;
 	}
 
-	private BauModelAndView getEditarModelAndView(Tarefa tarefa, TarefaServiceException ex, BindingResult bindingResult, @AuthenticationPrincipal AuthUser authUser) {
-		BauModelAndView result = getEditarModelAndView(tarefa, authUser);
+	private BauModelAndView getEditarModelAndView(Tarefa tarefa, TarefaServiceException ex, BindingResult bindingResult) {
+		BauModelAndView result = getEditarModelAndView(tarefa);
 
 		if (ex.getContexto() == null) {
 			result.addMensagem("danger", ex.getMessage());
@@ -67,20 +65,18 @@ public class TarefaController extends BauBaseController {
 	// Tela: incluir
 
 	@GetMapping("/incluir")
-	public ModelAndView incluir(@AuthenticationPrincipal AuthUser authUser) {
-		return getEditarModelAndView(tarefaService.novaTarefa(), authUser);
+	public ModelAndView incluir() {
+		return getEditarModelAndView(tarefaService.novaTarefa());
 	}
 
 	// Tela: alterar
 
 	@GetMapping("/{id}/alterar")
-	public ModelAndView alterar(
-			@AuthenticationPrincipal AuthUser authUser,
-			@NonNull @PathVariable Long id) {
+	public ModelAndView alterar(@NonNull @PathVariable Long id) {
 		try {
-			return getEditarModelAndView(tarefaService.buscar(id), authUser);
+			return getEditarModelAndView(tarefaService.buscar(id));
 		} catch (TarefaServiceException ex) {
-			BauModelAndView result = getModelAndView("/tarefa/editar", authUser);
+			BauModelAndView result = getModelAndView("/tarefa/editar");
 			result.addMensagem("danger", ex.getMessage());
 			return result;
 		}
@@ -89,19 +85,16 @@ public class TarefaController extends BauBaseController {
 	// Ação: salvar
 
 	@PostMapping("/salvar")
-	public ModelAndView salvar(
-			@AuthenticationPrincipal AuthUser authUser,
-			@NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa,
-			BindingResult bindingResult) {
+	public ModelAndView salvar(@NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return getEditarModelAndView(tarefa, authUser);
+			return getEditarModelAndView(tarefa);
 		}
 
 		try {
 			tarefaService.salvar(tarefa);
 			return redirect("/tarefa");
 		} catch (TarefaServiceException ex) {
-			return getEditarModelAndView(tarefa, ex, bindingResult, authUser);
+			return getEditarModelAndView(tarefa, ex, bindingResult);
 		}
 	}
 }

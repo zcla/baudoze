@@ -3,19 +3,23 @@ package zcla71.baudoze.common.controller;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.servlet.ModelAndView;
 
 import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.common.config.UserContext;
 import zcla71.baudoze.common.model.BauAuthUser;
 import zcla71.baudoze.common.model.BauMensagem;
 
 public class BauModelAndView extends ModelAndView {
 	private ArrayList<BauMensagem> mensagens;
 
-	public BauModelAndView(String viewName, AuthUser authUser) {
+	public BauModelAndView(String viewName) {
 		super(viewName);
+		AuthUser authUser = UserContext.getUser();
 		if (authUser != null) {
 			addObject("_authUser", new BauAuthUser(authUser.getNome(), authUser.getImagem() == null ? authUser.getUrlImagem() : "/auth_user/" + authUser.getId() + "/imagem/"));
 		}

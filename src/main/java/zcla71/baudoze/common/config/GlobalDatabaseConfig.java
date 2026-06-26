@@ -34,7 +34,7 @@ public class GlobalDatabaseConfig {
     @Bean
     @Primary
     public DataSource globalDataSource() throws IOException {
-        Path dbPath = Path.of("data", "global.sqlite");
+        Path dbPath = Path.of("data", "bau.sqlite");
         Files.createDirectories(dbPath.getParent());
 
         SQLiteConfig sqlite = new SQLiteConfig();

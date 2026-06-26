@@ -93,7 +93,6 @@ public class TarefaController extends BauBaseController {
 			@AuthenticationPrincipal AuthUser authUser,
 			@NonNull @Valid @ModelAttribute("tarefa") Tarefa tarefa,
 			BindingResult bindingResult) {
-
 		if (bindingResult.hasErrors()) {
 			return getEditarModelAndView(tarefa, authUser);
 		}

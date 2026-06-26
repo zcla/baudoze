@@ -40,14 +40,14 @@ TODO Ver se não foi mudado
 
 ## TODO-List
 
-* infra: Hoje só tem um banco para todos os usuários; separar um banco por usuário
-
 * backup do banco
   * geral (biblia)
     * restore
   * pessoal (tarefa)
     * backup
     * restore
+
+* Arrumar pacotes: não separar em model e view. Mudar documentação acima.
 
 * biblia: https://www.oraetlabora.com.br/desenvolvedores
   * https://www.oraetlabora.com.br/api/catecismo

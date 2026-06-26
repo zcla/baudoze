@@ -3,8 +3,6 @@ package zcla71.baudoze.common.controller;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.servlet.ModelAndView;

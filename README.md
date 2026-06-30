@@ -40,8 +40,13 @@ TODO Ver se não foi mudado
 
 ## TODO-List
 
+* Arrumar pacotes: não separar em model e view. Mudar documentação acima.
+
+* tarefa: Resolver TODOs e finalizar
+
 * Bíblia "padrão": Nova Vulgata:
   * Adaptar a importação já feita.
+  * Conectar as Bíblias para permitir visão lado a lado
 
 * backup do banco
   * geral (biblia)
@@ -51,25 +56,14 @@ TODO Ver se não foi mudado
     * backup
     * restore
 
-* Arrumar pacotes: não separar em model e view. Mudar documentação acima.
-
 * biblia: https://www.oraetlabora.com.br/desenvolvedores
   * https://www.oraetlabora.com.br/api/catecismo
   * https://www.oraetlabora.com.br/api/documentos
-
-* tarefa: Resolver TODOs e finalizar
-
-* biblia: definir uma Bíblia base e fazer rotina de edição (CNBB2019? Comprar uma 6ª edição?)
-
-* biblia: conectar as Bíblias para permitir visão lado a lado
 
 ## Outras anotações
 
 * biblia
   * Consulta
-    * Dados
-      * Criar uma Bíblia padrão: https://www.vatican.va/archive/bible/index_po.htm &rarr; Latim em primeiro lugar; Espanhol e Inglês se tiverem **exatamente** a mesma estrutura.
-      * Criar a correspondência das outras Bíblias a ela.
     * Importação
       * Fazer importação não só do texto, mas de tudo o que estiver disponível (notas, referências cruzadas, etc.)
     * Leitura

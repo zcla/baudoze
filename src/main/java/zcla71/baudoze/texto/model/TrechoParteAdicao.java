@@ -12,5 +12,4 @@ import lombok.EqualsAndHashCode;
 // @Entity
 @DiscriminatorValue("ADICAO")
 public class TrechoParteAdicao extends TrechoParte {
-	private String texto;
 }

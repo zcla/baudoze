@@ -20,6 +20,6 @@ public class Texto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToMany(mappedBy = "texto")
-	private List<TextoParte> texto;
+	@OneToMany(mappedBy = "parte")
+	private List<TextoParte> partes;
 }

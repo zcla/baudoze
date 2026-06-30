@@ -28,4 +28,6 @@ public abstract class TrechoParte {
 	@ManyToOne
 	@JoinColumn(name = "trecho_id")
 	private Trecho trecho;
+
+	private String texto;
 }

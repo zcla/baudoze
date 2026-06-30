@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -242,7 +243,7 @@ public class ImportHtmlVaticanVaLa extends ImportHtml {
 							ultVersiculo = versiculo;
 						} else {
 							String textoVersiculo = texto.strip();
-							ultVersiculo.setTexto(ultVersiculo.getTexto() + "\n" + textoVersiculo);
+							Objects.requireNonNull(ultVersiculo).setTexto(ultVersiculo.getTexto() + "\n" + textoVersiculo);
 						}
 					}
 				}

@@ -12,17 +12,28 @@
 			<nav>
 				<ol class="breadcrumb">
 					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
-					<li th:replace="~{estudos/_fragments :: breadcrumb_index(active=true)}"></li>
+					<li th:replace="~{estudos/_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/biblia/_fragments :: breadcrumb_index(active=true)}"></li>
 				</ol>
 			</nav>
 			<div class="row mb-3">
 				<div class="col-sm-3">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title"><img src="/img/biblia-32.png"> <a href="/estudos/biblia">Bíblia</a></h3>
+							<h3 class="card-title">Bíblia: estrutura</h3>
 						</div>
 						<div class="card-body">
-							Estudos relativos à Bíblia em geral
+							<a href="/estudos/biblia/estrutura/mt">Mt</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Bíblia: texto</h3>
+						</div>
+						<div class="card-body">
+							<a href="/estudos/biblia/texto/mt-1">Mt 1</a>
 						</div>
 					</div>
 				</div>

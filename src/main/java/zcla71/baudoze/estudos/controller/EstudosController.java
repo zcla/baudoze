@@ -21,6 +21,12 @@ public class EstudosController extends BauBaseController {
 		return result;
 	}
 
+	@GetMapping("/biblia")
+	public ModelAndView biblia() {
+		ModelAndView result = getModelAndView("/estudos/biblia/index");
+		return result;
+	}
+
 	@GetMapping("/**")
     public ModelAndView texto(HttpServletRequest request) {
         String path = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.4</version>
+		<version>3.4.13</version> <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>zcla71</groupId>
@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.22.2</version>
+			<version>1.22.2</version> <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		</dependency>
 
 		<dependency>

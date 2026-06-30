@@ -16,6 +16,25 @@ CREATE TABLE IF NOT EXISTS auth_user (
 
 --------- biblia ---------
 
+-- CREATE TABLE IF NOT EXISTS nova_vulgata (
+-- 	id INTEGER PRIMARY KEY,
+-- 	livro TEXT NOT NULL,
+-- 	capitulo INTEGER NOT NULL,
+-- 	versiculo TEXT NOT NULL,
+-- 	texto TEXT NOT NULL,
+-- 	fonte TEXT NOT NULL,
+--     UNIQUE (livro, capitulo, versiculo)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS versiculo_nova_vulgata (
+-- 	id INTEGER PRIMARY KEY,
+-- 	versiculo_id INTEGER,
+-- 	nova_vulgata_id INTEGER,
+-- 	FOREIGN KEY (versiculo_id) REFERENCES versiculo(id),
+-- 	FOREIGN KEY (nova_vulgata_id) REFERENCES nova_vulgata(id),
+-- 	UNIQUE (versiculo_id, nova_vulgata_id)
+-- );
+
 CREATE TABLE IF NOT EXISTS biblia (
 	id INTEGER PRIMARY KEY,
 	codigo TEXT NOT NULL, -- necessário para a importação

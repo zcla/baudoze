@@ -3,7 +3,7 @@
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 		layout:decorate="~{_layouts/base}"
-		th:with="htmlTitle='Home'">
+		th:with="htmlTitle='Bíblia'">
 	<head>
 		<title th:text="${htmlTitle}"></title>
 	</head>
@@ -20,7 +20,17 @@
 				<div class="col-sm-3">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Bíblia: estrutura</h3>
+							<h3 class="card-title"><a href="/estudos/biblia/minhas">Minhas</a></h3>
+						</div>
+						<div class="card-body">
+							Lista das Bíblias que eu tenho
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Estrutura</h3>
 						</div>
 						<div class="card-body">
 							<a href="/estudos/biblia/estrutura/mt">Mt</a>
@@ -30,7 +40,7 @@
 				<div class="col-sm-3">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Bíblia: texto</h3>
+							<h3 class="card-title">Texto</h3>
 						</div>
 						<div class="card-body">
 							<a href="/estudos/biblia/texto/mt-1">Mt 1</a>

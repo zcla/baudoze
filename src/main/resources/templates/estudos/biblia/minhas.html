@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='Minhas Bíblias'">
+	<head>
+		<title th:text="${htmlTitle}"></title>
+	</head>
+	<body>
+		<div layout:fragment="conteudo">
+			<nav>
+				<ol class="breadcrumb">
+					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/biblia/_fragments :: breadcrumb_index()}"></li>
+					<li class="breadcrumb-item active" th:text="${htmlTitle}"></li>
+				</ol>
+			</nav>
+			<h1>
+				<span>
+					<span th:text="${htmlTitle}"></span>
+				</span>
+				<div id="toolbar" class="btn-toolbar float-end d-print-none">
+				</div>
+			</h1>
+			<div id="crudLista" class="mb-3">
+				<table class="table table-sm table-hover">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Nome</th>
+							<th>Editora(s)</th>
+							<th>Edição</th>
+							<th>Publicação</th>
+							<th>Idioma</th>
+							<th>ISBN</th>
+							<th>Formato</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>BSAM1987</td>
+							<td>Bíblia Sagrada</td>
+							<td>Ave-Maria</td>
+							<td>58ª</td>
+							<td>1987</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>-</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BSAM2016</td>
+							<td>Bíblia Sagrada - Edição de Estudos</td>
+							<td>Ave-Maria</td>
+							<td>7ª</td>
+							<td>2016</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-276-1302-6</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>CNBB2008</td>
+							<td>Bíblia Sagrada - Tradução da CNBB</td>
+							<td>CNBB, Canção Nova</td>
+							<td>7ª</td>
+							<td>2008+</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-60263-05-9</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>CNBB2019</td>
+							<td>Bíblia Sagrada - Tradução Oficial da CNBB</td>
+							<td>CNBB</td>
+							<td>2ª</td>
+							<td>2019</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-7972-696-5</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BJ1987</td>
+							<td>Bíblia de Jerusalém - Nova edição, revista</td>
+							<td>Paulinas</td>
+							<td>-</td>
+							<td>1987</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>-</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BJ2002</td>
+							<td>Bíblia de Jerusalém - Nova edição, revista e ampliada</td>
+							<td>Paulus</td>
+							<td>-</td>
+							<td>2002</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-349-2000-1</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BMD2016</td>
+							<td>Bíblia Mensagem de Deus</td>
+							<td>Loyola</td>
+							<td>3ª</td>
+							<td>2016-06</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-15-02449-0</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td rowspan="3">BN1985</td>
+							<td>Bíblia Sagrada - Santos Evangelhos</td>
+							<td>Theologica</td>
+							<td>-</td>
+							<td>1985</td>
+							<td><span class="fi fi-pt"></span> pt-pt / <span class="fi fi-va"></span> la-va</td>
+							<td>9788574652108</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>Bíblia Sagrada - Actos dos Apóstolos / Epístolas de São Paulo (1)</td>
+							<td>Theologica</td>
+							<td>-</td>
+							<td>1990</td>
+							<td><span class="fi fi-pt"></span> pt-pt / <span class="fi fi-va"></span> la-va</td>
+							<td>9788574652115</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>Bíblia Sagrada - Epístolas de São Paulo (2) / Epístolas aos Hebreus / Epístolas Católicas / Apocalipse</td>
+							<td>Theologica</td>
+							<td>-</td>
+							<td>1991</td>
+							<td><span class="fi fi-pt"></span> pt-pt / <span class="fi fi-va"></span> la-va</td>
+							<td>9788574652122</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td rowspan="2">BN2023</td>
+							<td>Bíblia de Navarra, Santos Evangelhos</td>
+							<td>Quadrante</td>
+							<td>2ª</td>
+							<td>2023</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-7465-577-2</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>Bíblia de Navarra, Atos dos Apóstolos, Cartas Paulinas, Cartas Católicas, Apocalipse de São João</td>
+							<td>Quadrante</td>
+							<td>1ª</td>
+							<td>2024</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-7465-623-6</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>PMS1932T</td>
+							<td>Bíblia Sagrada</td>
+							<td>Christus Regnat, Tradição</td>
+							<td>-</td>
+							<td>2022</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-65-89613-29-9</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>PMS1932MBC</td>
+							<td>Bíblia - Tradução do Pe. Matos Soares a partir da Vulgata Clementina (1927-1932)</td>
+							<td>Minha Biblioteca Católica</td>
+							<td>-</td>
+							<td>2025</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-65-5301-000-0</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>PMS1956E</td>
+							<td>Bíblia Sagrada</td>
+							<td>Ecclesiae</td>
+							<td>1ª</td>
+							<td>2021-11</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-65-87135-44-1</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>PMSNT</td>
+							<td>Novo Testamento</td>
+							<td>Ecclesiae</td>
+							<td>1ª</td>
+							<td>2019-10</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-8491-145-5</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>AB2023</td>
+							<td>A Bíblia</td>
+							<td>Paulinas</td>
+							<td>1ª</td>
+							<td>2023</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-65-5808-213-2</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BSEP1990</td>
+							<td>Bíblia Sagrada Edição Pastoral</td>
+							<td>Paulus</td>
+							<td>-</td>
+							<td>1990</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-349-1257-0</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BPas2015</td>
+							<td>Bíblia Pastoral</td>
+							<td>Paulus</td>
+							<td>-</td>
+							<td>2015</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-349-4672-8</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BPer2017</td>
+							<td>Bíblia do Peregrino</td>
+							<td>Paulus</td>
+							<td>3ª</td>
+							<td>2017</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-349-2005-6</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BPV2022</td>
+							<td>Bíblia Palavra Viva</td>
+							<td>Paulus</td>
+							<td>-</td>
+							<td>2022</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-65-5562-686-5</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>TICSB2024</td>
+							<td>The Ignatius Catholic Study Bible - Revised Standard Version - Second Catholic Edition</td>
+							<td>Ignatius</td>
+							<td>-</td>
+							<td>2024</td>
+							<td><span class="fi fi-us"></span> en-us</td>
+							<td>978-1-58617-613-6</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BA2024</td>
+							<td>Bíblia de Aparecida</td>
+							<td>Santuário</td>
+							<td>-</td>
+							<td>2024</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>9788536900759</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>TEB2002</td>
+							<td>A Bíblia - Tradução Ecumênica</td>
+							<td>Loyola, Paulinas</td>
+							<td>-</td>
+							<td>2002-03</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>85-15-01258-8</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>TEB2015</td>
+							<td>Bíblia - Tradução Ecumênica</td>
+							<td>Loyola</td>
+							<td>2ª</td>
+							<td>2015</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-15-03016-3</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>TEB2020</td>
+							<td>Bíblia TEB: notas integrais tradução ecumênica</td>
+							<td>Loyola</td>
+							<td>3ª</td>
+							<td>2020</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-15-03016-3</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>BSEF2012</td>
+							<td>Bíblia Sagrada Edição da Família</td>
+							<td>Vozes</td>
+							<td>51ª</td>
+							<td>2012</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>9788532602985</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>Y2017</td>
+							<td>Bíblia Jovem</td>
+							<td>Paulus</td>
+							<td>1ª</td>
+							<td>2017</td>
+							<td><span class="fi fi-br"></span> pt-br</td>
+							<td>978-85-349-4569-1</td>
+							<td>Física</td>
+						</tr>
+						<tr>
+							<td>SBUN2016</td>
+							<td>Sagrada Biblia Universidad de Navarra</td>
+							<td>EUNSA</td>
+							<td>-</td>
+							<td>2016</td>
+							<td><span class="fi fi-es"></span> es-es</td>
+							<td>9788431355630</td>
+							<td>Kindle</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

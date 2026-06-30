@@ -57,6 +57,11 @@ app:
           uri: https://www.paroquiadasgracas.com/biblia/
           nome: Bíblia CNBB 2008?
           idioma: pt-br
+        # vatican.va/lt
+        - codigo: vatican.va/la
+          uri: https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_index_lt.html
+          nome: Nova Vulgata
+          idioma: la-va
       json-importa:
         # oraetlabora.com.br
         - codigo: oraetlabora.com.br

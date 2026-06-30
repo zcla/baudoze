@@ -40,8 +40,12 @@ TODO Ver se não foi mudado
 
 ## TODO-List
 
+* Bíblia "padrão": Nova Vulgata:
+  * Adaptar a importação já feita.
+
 * backup do banco
   * geral (biblia)
+    * backup
     * restore
   * pessoal (tarefa)
     * backup

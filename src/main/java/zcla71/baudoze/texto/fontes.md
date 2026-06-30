@@ -17,10 +17,7 @@
 * [`a12_com_biblia`](https://www.a12.com/biblia) Bíblia de Aparecida
 * [`biblia_parresia_com_bible`](https://claretianos.com.br/biblia-ave-maria-online/) Bíblia Ave-Maria
 * [`biblia_paulus_com_br_biblia`](https://biblia.paulus.com.br/) Bíblia Sagrada Edição Pastoral
-* [`github_com_Bible-Projects_believers-sword-next_AveMaria1959`](https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Ave-Maria%201959.SQLite3) Bíblia Ave-Maria
-* [`github_com_Bible-Projects_believers-sword-next_MatosSoares1950`](https://github.com/Bible-Projects/believers-sword-next/raw/refs/heads/main/Modules/Bible/B%C3%ADblia%20Padre%20Matos%20Soares%201950.SQLite3) Bíblia Matos Soares 1932
 * [`liturgiadashoras_online_biblia`](https://liturgiadashoras.online/biblia/biblia-jerusalem/) Bíblia de Jerusalém
-* [`vatican_va_bible_nova_vulgata_lt`](https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_index_lt.html) Nova Vulgata (Vaticano)
 
 ### Não importar
 
@@ -35,6 +32,25 @@
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json
+
+* github.com/scrollmapper - dezenas de versões em dezenas de línguas; não sei se há católicas.
+  * `json` [várias] https://github.com/scrollmapper/bible_databases/tree/master/sources
+  * `json` [la] https://github.com/scrollmapper/bible_databases/tree/master/sources/la - várias versões da vulgata
+
+* github.com/syncbible - não sei se há católicas.
+  * `json` [várias] https://github.com/syncbible/syncbible/tree/gh-pages/bibles
+
+* romanliturgy.org
+  * `xml` [la] https://www.romanliturgy.org/xml/include/nova-vulgata/
+
+* perseus.tufts.edu
+  * `xml` [la] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.02.0060 (Jerome. Vulgate Bible.)
+  * `xml` [el] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.01.0155 (The New Testament in the original Greek.)
+  * `xml` [en] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.01.0156 (World English Bible.)
+
+* scaife.perseus.org
+  * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0527/ (AT Septuaginta / World English Bible)
+  * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0031/ (The New Testament in the original Greek / World English Bible)
 
 * oraetlabora.com.br
   * API: https://www.oraetlabora.com.br/desenvolvedores
@@ -100,13 +116,6 @@
   * [el] https://ebible.org/find/details.php?id=grcbrent The Greek Septuagint with Apocrypha, compiled by Sir Lancelot C. L. Brenton
   * [várias] https://ebible.org/find/ (não achei nenhuma católica em português; há versões em grego, tem que verificar se são confiáveis e úteis)
 
-* github.com/scrollmapper - dezenas de versões em dezenas de línguas; não sei se há católicas.
-  * `json` [várias] https://github.com/scrollmapper/bible_databases/tree/master/sources
-  * `json` [lt] https://github.com/scrollmapper/bible_databases/tree/master/sources/la - várias versões da vulgata
-
-* github.com/syncbible - não sei se há católicas.
-  * `json` [várias] https://github.com/syncbible/syncbible/tree/gh-pages/bibles
-
 * intratext.com
   * [várias] https://www.intratext.com/BIBLE/default.htm
     * https://www.intratext.com/IXT/POR0013/ Edição IntraText
@@ -117,7 +126,7 @@
   * https://www.liturgiacatolica.com/ (só alguns livros, mas também Catecismo e alguns documentos oficiais da Igreja)
 
 * newadvent.org
-  * [el/en/lt] https://www.newadvent.org/bible/ Greek + Knox + Latin, lado a lado
+  * [el/en/la] https://www.newadvent.org/bible/ Greek + Knox + Latin, lado a lado
 
 * paroquiadasgracas.com
   * [pt-br] https://www.paroquiadasgracas.com/biblia Parece ser a CNBB antiga
@@ -127,15 +136,6 @@
 
 * paulus.com.br - Bíblia Pastoral. Os textos parecem ser idênticos; ambos contêm notas.
   * [pt] https://www.paulus.com.br/biblia-pastoral/_INDEX.HTM Deve ser igual à `biblia_paulus_com_br_biblia`
-
-* perseus.tufts.edu
-  * `xml` [lt] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.02.0060 (Jerome. Vulgate Bible.)
-  * `xml` [el] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.01.0155 (The New Testament in the original Greek.)
-  * `xml` [en] https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3atext%3a1999.01.0156 (World English Bible.)
-
-* scaife.perseus.org
-  * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0527/ (AT Septuaginta / World English Bible)
-  * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0031/ (The New Testament in the original Greek / World English Bible)
 
 * tuapalavra.com.br - **MUITAS** versões; não consegui encontrar os deuterocanônicos.
   * [pt] https://amp.tuapalavra.com.br/pt-BR/CNBB CNBB antiga (1987?); talvez o código sirva para todas as outras dezenas de bíblias que há no mesmo site. Não consegui encontrar os deuterocanônicos.

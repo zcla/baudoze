@@ -5,39 +5,6 @@
 * [devcontainer.md](.devcontainer/devcontainer.md) Configurações que não podem estar no Git.
 * [fontes.md](src/main/java/zcla71/baudoze/texto/fontes.md) Fontes de textos encontrados na internet, para uso futuro.
 
-## Modelo de execução
-TODO Ver se não foi mudado
-
-* `<aplicação>`
-  * `common`
-    * Classes comuns que não estão ligados a nenhum módulo específico.
-    * `controller`
-      * Classes com afinidade com a camada controller.
-    * `model`
-      * Classes com afinidade com a camada model.
-    * `view`
-      * Classes com afinidade com a camada view.
-
-  * `<módulo>`
-    * `controller`
-      * Controllers do módulo. Não trata de regra de negócio e tem que criar try/catch dos exceptions lançados pelos serviços, para jogar pra tela através de BauModelAndView.addMensagem().
-    * `model`
-      * Pacote de classes relativas ao modelo (tabelas de banco).
-      * `entity`
-        * DTOs (@Entity).
-      * `repository`
-        * Repositories (extends Repository<T, ID>).
-      * `service`
-        * Classes de serviço, para serem usadas externamente. Deve fazer validação das regras de negócio e lançar exceções de negócio, derivadas de RuntimeException.
-    * `view`
-      * Pacote de classes relativas ao view (views de banco).
-      * `entity`
-        * DTOs (@Entity).
-      * `repository`
-        * Repositories (extends Repository<T, ID>).
-      * `service`
-        * Classes de serviço, para serem usadas externamente. Busca os dados já no formato exigido pelas telas.
-
 ## TODO-List
 
 * Arrumar pacotes: não separar em model e view. Mudar documentação acima.

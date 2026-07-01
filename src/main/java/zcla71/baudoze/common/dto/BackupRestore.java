@@ -3,8 +3,8 @@ package zcla71.baudoze.common.dto;
 import java.util.Collection;
 
 import lombok.Data;
-import zcla71.baudoze.tarefa.model.entity.Tarefa;
-import zcla71.baudoze.tarefa.model.service.TarefaService;
+import zcla71.baudoze.tarefa.entity.Tarefa;
+import zcla71.baudoze.tarefa.service.TarefaService;
 
 @Data
 public class BackupRestore {

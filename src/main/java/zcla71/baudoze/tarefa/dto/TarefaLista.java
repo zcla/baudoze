@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.view.entity;
+package zcla71.baudoze.tarefa.dto;
 
 import org.hibernate.annotations.Immutable;
 

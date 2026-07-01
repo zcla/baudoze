@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.api;
+package zcla71.baudoze.tarefa.controller;
 
 import java.util.Objects;
 
@@ -14,8 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.auth_user.entity.AuthUser;
-import zcla71.baudoze.tarefa.model.service.TarefaService;
-import zcla71.baudoze.tarefa.model.service.TarefaServiceException;
+import zcla71.baudoze.tarefa.dto.TarefaApiResponse;
+import zcla71.baudoze.tarefa.service.TarefaService;
+import zcla71.baudoze.tarefa.service.TarefaServiceException;
 
 @RequiredArgsConstructor
 @RestController

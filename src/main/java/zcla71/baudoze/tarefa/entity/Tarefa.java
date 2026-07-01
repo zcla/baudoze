@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.model.entity;
+package zcla71.baudoze.tarefa.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

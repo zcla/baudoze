@@ -1,17 +1,17 @@
-package zcla71.baudoze.tarefa.view.service;
+package zcla71.baudoze.tarefa.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import zcla71.baudoze.tarefa.model.entity.Tarefa;
-import zcla71.baudoze.tarefa.view.entity.TarefaLista;
-import zcla71.baudoze.tarefa.view.repository.TarefaListaRepository;
+import zcla71.baudoze.tarefa.dto.TarefaLista;
+import zcla71.baudoze.tarefa.entity.Tarefa;
+import zcla71.baudoze.tarefa.repository.TarefaListaRepository;
 
 @RequiredArgsConstructor
 @Service
-public class TarefaViewService {
+public class TarefaListaService {
 	// TarefaLista
 
 	final private TarefaListaRepository tarefaListaRepository;

@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.model.service;
+package zcla71.baudoze.tarefa.service;
 
 import java.util.Objects;
 
@@ -13,16 +13,15 @@ import org.sqlite.SQLiteErrorCode;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.common.service.BauServiceTipoException;
-import zcla71.baudoze.tarefa.model.entity.Tarefa;
-import zcla71.baudoze.tarefa.model.repository.TarefaRepository;
-import zcla71.baudoze.tarefa.view.entity.TarefaLista;
-import zcla71.baudoze.tarefa.view.service.TarefaViewService;
+import zcla71.baudoze.tarefa.dto.TarefaLista;
+import zcla71.baudoze.tarefa.entity.Tarefa;
+import zcla71.baudoze.tarefa.repository.TarefaRepository;
 
 @RequiredArgsConstructor
 @Service
 @Validated
 public class TarefaService {
-	final private TarefaViewService tarefaViewService;
+	final private TarefaListaService tarefaViewService;
 
 	private static boolean alterouMae(Tarefa antes, Tarefa depois) {
 		if (antes.getTarefaMae() == null) {

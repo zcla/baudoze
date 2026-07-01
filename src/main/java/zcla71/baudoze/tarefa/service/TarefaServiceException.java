@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.model.service;
+package zcla71.baudoze.tarefa.service;
 
 import zcla71.baudoze.common.service.BauServiceException;
 import zcla71.baudoze.common.service.BauServiceTipoException;

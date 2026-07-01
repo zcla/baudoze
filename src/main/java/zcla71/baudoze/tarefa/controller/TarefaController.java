@@ -14,10 +14,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.common.controller.BauModelAndView;
-import zcla71.baudoze.tarefa.model.entity.Tarefa;
-import zcla71.baudoze.tarefa.model.service.TarefaService;
-import zcla71.baudoze.tarefa.model.service.TarefaServiceException;
-import zcla71.baudoze.tarefa.view.service.TarefaViewService;
+import zcla71.baudoze.tarefa.entity.Tarefa;
+import zcla71.baudoze.tarefa.service.TarefaService;
+import zcla71.baudoze.tarefa.service.TarefaServiceException;
+import zcla71.baudoze.tarefa.service.TarefaListaService;
 
 @RequiredArgsConstructor
 @Controller
@@ -26,7 +26,7 @@ public class TarefaController extends BauBaseController {
 	// Services
 
 	final private TarefaService tarefaService;
-	final private TarefaViewService tarefaViewService;
+	final private TarefaListaService tarefaViewService;
 
 	// Tela: index
 

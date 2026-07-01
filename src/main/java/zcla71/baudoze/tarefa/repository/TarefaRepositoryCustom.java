@@ -1,4 +1,4 @@
-package zcla71.baudoze.tarefa.model.repository;
+package zcla71.baudoze.tarefa.repository;
 
 public interface TarefaRepositoryCustom {
 	public Long proximaOrdem();

@@ -7,8 +7,6 @@
 
 ## TODO-List
 
-* Arrumar pacotes: não separar em model e view. Mudar documentação acima.
-
 * tarefa: Resolver TODOs e finalizar
 
 * Bíblia "padrão": Nova Vulgata:

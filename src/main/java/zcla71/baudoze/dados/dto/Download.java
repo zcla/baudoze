@@ -1,4 +1,4 @@
-package zcla71.baudoze.dados.model;
+package zcla71.baudoze.dados.dto;
 
 import java.util.ArrayList;
 import java.util.List;

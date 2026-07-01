@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.biblia.repository.BibliaRepository;
-import zcla71.baudoze.dados.model.Download;
+import zcla71.baudoze.dados.dto.Download;
 
 @RequiredArgsConstructor
 @Controller

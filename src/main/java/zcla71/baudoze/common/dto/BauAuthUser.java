@@ -1,4 +1,4 @@
-package zcla71.baudoze.common.model;
+package zcla71.baudoze.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

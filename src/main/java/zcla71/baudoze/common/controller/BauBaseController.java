@@ -6,7 +6,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import zcla71.baudoze.common.model.BauMensagem;
+import zcla71.baudoze.common.dto.BauMensagem;
 
 public abstract class BauBaseController {
 	protected BauModelAndView getModelAndView(@NonNull String viewName) {

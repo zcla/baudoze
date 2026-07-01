@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import zcla71.baudoze.auth_user.entity.AuthUser;
 import zcla71.baudoze.common.config.UserContext;
-import zcla71.baudoze.common.model.BauAuthUser;
-import zcla71.baudoze.common.model.BauMensagem;
+import zcla71.baudoze.common.dto.BauAuthUser;
+import zcla71.baudoze.common.dto.BauMensagem;
 
 public class BauModelAndView extends ModelAndView {
 	private ArrayList<BauMensagem> mensagens;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.auth_user.entity.AuthUser;
 import zcla71.baudoze.tarefa.model.service.TarefaService;
 import zcla71.baudoze.tarefa.model.service.TarefaServiceException;
 

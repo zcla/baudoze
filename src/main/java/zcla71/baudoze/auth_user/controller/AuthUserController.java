@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.auth_user.entity.AuthUser;
 import zcla71.baudoze.common.controller.BauBaseController;
 
 @Controller

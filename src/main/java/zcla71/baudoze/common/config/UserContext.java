@@ -3,7 +3,7 @@ package zcla71.baudoze.common.config;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.auth_user.entity.AuthUser;
 
 public final class UserContext {
 	public static AuthUser getUser() {

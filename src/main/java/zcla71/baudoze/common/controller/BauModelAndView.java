@@ -7,7 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.servlet.ModelAndView;
 
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
+import zcla71.baudoze.auth_user.entity.AuthUser;
 import zcla71.baudoze.common.config.UserContext;
 import zcla71.baudoze.common.model.BauAuthUser;
 import zcla71.baudoze.common.model.BauMensagem;

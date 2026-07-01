@@ -5,8 +5,8 @@ import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Component;
 
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
-import zcla71.baudoze.auth_user.model.service.AuthUserService;
+import zcla71.baudoze.auth_user.entity.AuthUser;
+import zcla71.baudoze.auth_user.service.AuthUserService;
 
 @Component
 public class CustomOidcUserService extends OidcUserService {

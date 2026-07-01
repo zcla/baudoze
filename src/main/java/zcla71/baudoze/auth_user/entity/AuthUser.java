@@ -1,4 +1,4 @@
-package zcla71.baudoze.auth_user.model.entity;
+package zcla71.baudoze.auth_user.entity;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

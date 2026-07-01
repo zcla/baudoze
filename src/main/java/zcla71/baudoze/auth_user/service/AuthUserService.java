@@ -1,11 +1,11 @@
-package zcla71.baudoze.auth_user.model.service;
+package zcla71.baudoze.auth_user.service;
 
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
-import zcla71.baudoze.auth_user.model.entity.AuthUser;
-import zcla71.baudoze.auth_user.model.repository.AuthUserRepository;
+import zcla71.baudoze.auth_user.entity.AuthUser;
+import zcla71.baudoze.auth_user.repository.AuthUserRepository;
 
 @Service
 public class AuthUserService {

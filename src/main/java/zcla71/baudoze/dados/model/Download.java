@@ -3,11 +3,11 @@ package zcla71.baudoze.dados.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import zcla71.baudoze.biblia.model.entity.Biblia;
-import zcla71.baudoze.biblia.model.entity.Capitulo;
-import zcla71.baudoze.biblia.model.entity.Livro;
-import zcla71.baudoze.biblia.model.entity.Versiculo;
-import zcla71.baudoze.biblia.model.repository.BibliaRepository;
+import zcla71.baudoze.biblia.entity.Biblia;
+import zcla71.baudoze.biblia.entity.Capitulo;
+import zcla71.baudoze.biblia.entity.Livro;
+import zcla71.baudoze.biblia.entity.Versiculo;
+import zcla71.baudoze.biblia.repository.BibliaRepository;
 
 public class Download {
 	public List<DownloadBiblia> biblia;

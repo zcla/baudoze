@@ -21,15 +21,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import zcla71.baudoze.BauDoZeProperties;
 import zcla71.baudoze.BauDoZeProperties.PropBiblia.PropImportacao.PropJsonImporta;
+import zcla71.baudoze.biblia.entity.Biblia;
+import zcla71.baudoze.biblia.entity.Capitulo;
+import zcla71.baudoze.biblia.entity.Livro;
+import zcla71.baudoze.biblia.entity.Versiculo;
 import zcla71.baudoze.biblia.importacao.oraetlabora.model.ApiBiblia;
 import zcla71.baudoze.biblia.importacao.oraetlabora.model.ApiCapitulo;
 import zcla71.baudoze.biblia.importacao.oraetlabora.model.ApiLivro;
 import zcla71.baudoze.biblia.importacao.oraetlabora.model.ApiVersiculo;
-import zcla71.baudoze.biblia.model.entity.Biblia;
-import zcla71.baudoze.biblia.model.entity.Capitulo;
-import zcla71.baudoze.biblia.model.entity.Livro;
-import zcla71.baudoze.biblia.model.entity.Versiculo;
-import zcla71.baudoze.biblia.model.service.BibliaService;
+import zcla71.baudoze.biblia.service.BibliaService;
 
 @RequiredArgsConstructor
 @Component

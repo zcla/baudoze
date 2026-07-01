@@ -1,10 +1,10 @@
-package zcla71.baudoze.biblia.view.repository;
+package zcla71.baudoze.biblia.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.Repository;
 
-import zcla71.baudoze.biblia.view.entity.VersiculoLista;
+import zcla71.baudoze.biblia.dto.VersiculoLista;
 
 public interface VersiculoListaRepository extends Repository<VersiculoLista, Long> {
 	public List<VersiculoLista> findByCapituloId(Long idCapitulo);

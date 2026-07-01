@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 
 import lombok.extern.slf4j.Slf4j;
 import zcla71.baudoze.BauDoZeProperties.PropBiblia.PropImportacao.PropHtmlImporta;
-import zcla71.baudoze.biblia.model.entity.Biblia;
+import zcla71.baudoze.biblia.entity.Biblia;
 
 @Slf4j
 public abstract class ImportHtml {

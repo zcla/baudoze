@@ -1,4 +1,4 @@
-package zcla71.baudoze.biblia.view.entity;
+package zcla71.baudoze.biblia.dto;
 
 import org.hibernate.annotations.Immutable;
 
@@ -9,12 +9,11 @@ import lombok.Data;
 @Data
 @Entity
 @Immutable
-public class VersiculoLista {
+public class CapituloLista {
 	@Id
 	private Long id;
 	private Long bibliaId;
 	private Long livroId;
-	private Long capituloId;
 	private String numero;
-	private String texto;
+	private Integer versiculos;
 }

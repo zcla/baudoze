@@ -1,4 +1,4 @@
-package zcla71.baudoze.biblia.model.entity;
+package zcla71.baudoze.biblia.entity;
 
 import java.util.List;
 

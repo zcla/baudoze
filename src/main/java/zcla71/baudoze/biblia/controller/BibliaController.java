@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
-import zcla71.baudoze.biblia.model.entity.Capitulo;
-import zcla71.baudoze.biblia.model.entity.Livro;
-import zcla71.baudoze.biblia.model.service.BibliaService;
-import zcla71.baudoze.biblia.view.service.BibliaViewService;
+import zcla71.baudoze.biblia.entity.Capitulo;
+import zcla71.baudoze.biblia.entity.Livro;
+import zcla71.baudoze.biblia.service.BibliaService;
+import zcla71.baudoze.biblia.service.BibliaListaService;
 import zcla71.baudoze.common.controller.BauBaseController;
 
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ import zcla71.baudoze.common.controller.BauBaseController;
 @RequestMapping("/biblia")
 public class BibliaController extends BauBaseController {
 	final private BibliaService bibliaService;
-	final private BibliaViewService bibliaViewService;
+	final private BibliaListaService bibliaViewService;
 
 	// Controller
 

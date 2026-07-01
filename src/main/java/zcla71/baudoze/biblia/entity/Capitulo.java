@@ -1,11 +1,15 @@
-package zcla71.baudoze.biblia.model.entity;
+package zcla71.baudoze.biblia.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,16 +20,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Versiculo {
+public class Capitulo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "capitulo_id", referencedColumnName = "id")
-	private Capitulo capitulo;
+	@JoinColumn(name = "livro_id", referencedColumnName = "id")
+	private Livro livro;
 
 	private String numero;
 
-	private String texto;
+	@OneToMany(mappedBy = "capitulo", cascade = CascadeType.PERSIST)
+	private List<Versiculo> versiculos;
 }

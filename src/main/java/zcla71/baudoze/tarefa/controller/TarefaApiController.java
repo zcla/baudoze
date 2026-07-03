@@ -68,4 +68,18 @@ public class TarefaApiController {
 					.body(new TarefaApiResponse(false, ex.getMessage()));
 		}
 	}
+
+	@PatchMapping("/desmarcarTodas")
+	public ResponseEntity<TarefaApiResponse> desmarcarTodas(
+			@AuthenticationPrincipal AuthUser authUser,
+			RedirectAttributes redirectAttrs) {
+		try {
+			tarefaService.desmarcarTodas();
+			return ResponseEntity
+					.ok(new TarefaApiResponse(true, "ok"));
+		} catch (TarefaServiceException ex) {
+			return ex.getResponseEntity()
+					.body(new TarefaApiResponse(false, ex.getMessage()));
+		}
+	}
 }

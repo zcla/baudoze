@@ -9,6 +9,8 @@
 
 * tarefa: Resolver TODOs e finalizar
 
+* Não chamar /error na API.
+
 * Bíblia "padrão": Nova Vulgata:
   * Adaptar a importação já feita.
   * Conectar as Bíblias para permitir visão lado a lado

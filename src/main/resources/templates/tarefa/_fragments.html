@@ -5,11 +5,106 @@
 	<span th:if="${active}" th:text="${text}"></span>
 </li>
 
+<script th:fragment="script()">
+	document.addEventListener("DOMContentLoaded", () => {
+		document.addEventListener("click", async (e) => {
+			const linkExcluir = e.target.closest(".acao-excluir");
+			if (linkExcluir) {
+				e.preventDefault();
+				const id = linkExcluir.dataset.id;
+				if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
+					Ui.showLoading();
+					$.ajax({
+						url: "/api/v1/tarefa/" + id,
+						type: "DELETE",
+						success: function () {
+							Ui.sucesso("Tarefa excluída com sucesso");
+							linkExcluir.closest("tr").remove();
+							Ui.hideLoading();
+						},
+						error: function (xhr) {
+							Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+							Ui.hideLoading();
+						}
+					});
+				}
+			}
+
+			const chkMarcar = e.target.closest(".acao-marcar");
+			if (chkMarcar) {
+				e.preventDefault();
+				const id = chkMarcar.dataset.id;
+				Ui.showLoading();
+				$.ajax({
+					url: "/api/v1/tarefa/" + id + "/marcar",
+					type: "PATCH",
+					success: function () {
+						chkMarcar.checked = true;
+						chkMarcar.classList.replace("acao-marcar", "acao-desmarcar");
+						Ui.hideLoading();
+					},
+					error: function (xhr) {
+						Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+						Ui.hideLoading();
+					}
+				});
+			}
+
+			const chkDesmarcar = e.target.closest(".acao-desmarcar");
+			if (chkDesmarcar) {
+				e.preventDefault();
+				const id = chkDesmarcar.dataset.id;
+				Ui.showLoading();
+				$.ajax({
+					url: "/api/v1/tarefa/" + id + "/desmarcar",
+					type: "PATCH",
+					success: function () {
+						chkDesmarcar.checked = false;
+						chkDesmarcar.classList.replace("acao-desmarcar", "acao-marcar");
+						Ui.hideLoading();
+					},
+					error: function (xhr) {
+						Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+						Ui.hideLoading();
+					}
+				});
+			}
+
+			const chkDesmarcarTodas = e.target.closest(".acao-desmarcar-todas");
+			if (chkDesmarcarTodas) {
+				e.preventDefault();
+				if (await Ui.confirma("Tem certeza que deseja desmarcar todas as tarefas?")) {
+					Ui.showLoading();
+					$.ajax({
+						url: "/api/v1/tarefa/desmarcarTodas",
+						type: "PATCH",
+						success: function () {
+							// TODO Está dando só um WARN no log e caindo aqui sem fazer nada
+							$('#crudLista input:checkbox').prop('checked', false);
+							Ui.hideLoading();
+						},
+						error: function (xhr) {
+							Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+							Ui.hideLoading();
+						}
+					});
+				}
+			}
+		});
+	});
+</script>
+
+<style th:fragment="style()">
+	table .btn-group img {
+		vertical-align: center;
+	}
+</style>
+
 <!-- theadTr() -->
 <tr th:fragment="theadTr()">
-	<th>Tarefa</th>
-	<th class="botoes d-print-none text-end">
-		<div class="btn-group" role="group">
+	<th colspan="2">
+		Tarefa
+		<div class="btn-group float-end" role="group">
 			<a
 					th:href="@{'/tarefa/incluir'}"
 					type="button"
@@ -17,9 +112,13 @@
 					title="Incluir">
 				<img src="/img/button-incluir.png">
 			</a>
-			<!-- TODO
-			<button id="btnUnselectAll" type="button" class="btn bg-warning-subtle" title="Desmarcar todas"><img src="/img/tarefa-button-desmarcar-todas.png" style="padding-bottom: 3px;"></button></div>
-			-->
+			<a
+					href="#"
+					type="button"
+					class="acao-desmarcar-todas btn btn-sm bg-warning-subtle"
+					title="Desmarcar todas">
+				<img src="/img/tarefa-limpar-tudo.png">
+			</a>
 		</div>
 	</th>
 </tr>

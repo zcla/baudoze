@@ -6,73 +6,8 @@
 		th:with="htmlTitle='Tarefas'">
 	<head>
 		<title th:text="${htmlTitle}"></title>
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				document.addEventListener("click", async (e) => {
-					const linkExcluir = e.target.closest(".acao-excluir");
-					if (linkExcluir) {
-						e.preventDefault();
-						const id = linkExcluir.dataset.id;
-						if (await Ui.confirma("Tem certeza que deseja excluir esta tarefa?")) {
-							Ui.showLoading();
-							$.ajax({
-								url: "/api/v1/tarefa/" + id,
-								type: "DELETE",
-								success: function () {
-									Ui.sucesso("Tarefa excluída com sucesso");
-									linkExcluir.closest("tr").remove();
-									Ui.hideLoading();
-								},
-								error: function (xhr) {
-									Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
-									Ui.hideLoading();
-								}
-							});
-						}
-					}
-
-					const chkMarcar = e.target.closest(".acao-marcar");
-					if (chkMarcar) {
-						e.preventDefault();
-						const id = chkMarcar.dataset.id;
-						Ui.showLoading();
-						$.ajax({
-							url: "/api/v1/tarefa/" + id + "/marcar",
-							type: "PATCH",
-							success: function () {
-								chkMarcar.checked = true;
-								chkMarcar.classList.replace("acao-marcar", "acao-desmarcar");
-								Ui.hideLoading();
-							},
-							error: function (xhr) {
-								Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
-								Ui.hideLoading();
-							}
-						});
-					}
-
-					const chkDesmarcar = e.target.closest(".acao-desmarcar");
-					if (chkDesmarcar) {
-						e.preventDefault();
-						const id = chkDesmarcar.dataset.id;
-						Ui.showLoading();
-						$.ajax({
-							url: "/api/v1/tarefa/" + id + "/desmarcar",
-							type: "PATCH",
-							success: function () {
-								chkDesmarcar.checked = false;
-								chkDesmarcar.classList.replace("acao-desmarcar", "acao-marcar");
-								Ui.hideLoading();
-							},
-							error: function (xhr) {
-								Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
-								Ui.hideLoading();
-							}
-						});
-					}
-				});
-			});
-		</script>
+		<script th:replace="~{tarefa/_fragments :: script()}"></script>
+		<style th:replace="~{tarefa/_fragments :: style()}"></style>
 	</head>
 	<body>
 		<div layout:fragment="conteudo">

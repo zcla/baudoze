@@ -1,5 +1,6 @@
 package zcla71.baudoze.tarefa.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.core.NestedExceptionUtils;
@@ -124,5 +125,14 @@ public class TarefaService {
 		}
 		existente.setCumprida(false);
 		return tarefaRepository.save(existente);
+	}
+
+	@Transactional
+	public void desmarcarTodas() {
+		List<Tarefa> tarefas = tarefaRepository.findAll();
+		for (Tarefa tarefa : tarefas) {
+			tarefa.setCumprida(false);
+			tarefaRepository.save(tarefa);
+		}
 	}
 }

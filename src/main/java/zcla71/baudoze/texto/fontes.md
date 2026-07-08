@@ -61,6 +61,10 @@
 * ecclesia.pt
   * [pt(-br?)] Compêndio da Doutrina Social da Igreja https://sites.ecclesia.pt/dsi/
 
+* usccb.org
+  * [en-us] New American Bible, Revised Edition https://bible.usccb.org/bible
+  * [en-us] (os links parecem cair no mesmo lugar dos que estão no link acima) https://www.usccb.org/offices/new-american-bible/books-bible
+
 * conferenciaepiscopal.pt
   * [pt-pt] Bíblia oficial portuguesa (WIP!) https://conferenciaepiscopal.pt/biblia/index.php/Main_Page
 
@@ -70,6 +74,7 @@
 
 * clerus.org - Já importei em outro projeto, se não me engano, usando PowerShell; talvez o código sirva para todas as outras bíblias que há no mesmo site.
   * [pt] https://www.clerus.org/bibliaclerusonline/pt/66c.htm
+  * [pt] https://www.clerus.org/bibliaclerusonline/pt/index.htm Catecismos e outros livros
 
 * bibliacatolica.com.br - Parece conter captchas; talvez o código sirva para todas as outras bíblias que há no mesmo site. Há código a aproveitar no projeto `doccat`, pasta `/powershell/old`
   * [pt] https://www.bibliacatolica.com.br/biblia-ave-maria/genesis/1/ Ave Maria
@@ -148,9 +153,6 @@
   * [fr] https://amp.tuapalavra.com.br/fr-FR
   * [hi] https://amp.tuapalavra.com.br/hi-IN
   * [it] https://amp.tuapalavra.com.br/it-IT
-
-* usccb.org (OFICIAL EUA)
-  * [en] https://www.usccb.org/offices/new-american-bible/books-bible (New American Bible)
 
 * get.bible Links para vários downloads de bíblias
   * https://get.bible/blog/post/how-to-access-the-bible-via-api-or-download-the-bible-as-data

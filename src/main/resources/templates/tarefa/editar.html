@@ -27,11 +27,6 @@
 				<span th:text="${htmlTitle}"></span>
 			</h1>
 			<div id="form" th:if="${tarefa}">
-				<!--
-				<div th:unless="${tarefa}" class="mt-3">
-					<div class="alert alert-danger">Tarefa não encontrada!</div>
-				</div>
-				-->
 				<form th:action="@{/tarefa/salvar}" th:object="${tarefa}" method="post">
 					<input type="hidden" th:field="*{id}">
 					<div class="row mb-3">
@@ -76,6 +71,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- TODO Reordenar subtarefas imediatas -->
 					<div class="btn-group mb-3">
 						<button type="submit" class="btn bg-success-subtle" title="Ok"><img src="/img/button-ok.png"> Ok</button>
 						<a th:href="@{'/tarefa'}" type="button" class="btn bg-danger-subtle" title="Cancelar"><img src="/img/button-cancelar.png"> Cancelar</a>

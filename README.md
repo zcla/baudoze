@@ -7,13 +7,9 @@
 
 ## TODO-List
 
-* tarefa: Resolver TODOs e finalizar
+* tarefa: Resolver TODOs e finalizar.
 
 * Não chamar /error na API.
-
-* Bíblia "padrão": Nova Vulgata:
-  * Adaptar a importação já feita.
-  * Conectar as Bíblias para permitir visão lado a lado
 
 * backup do banco
   * geral (biblia)
@@ -22,6 +18,12 @@
   * pessoal (tarefa)
     * backup
     * restore
+
+* Colocar na internet
+
+* Bíblia "padrão": Nova Vulgata:
+  * Adaptar a importação já feita.
+  * Conectar as Bíblias para permitir visão lado a lado
 
 * biblia: https://www.oraetlabora.com.br/desenvolvedores
   * https://www.oraetlabora.com.br/api/catecismo

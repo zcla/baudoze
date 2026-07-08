@@ -28,13 +28,14 @@
 					<thead>
 						<th:block th:replace="~{tarefa/_fragments :: theadTr()}"></th:block>
 					</thead>
-					<th:block th:if="${!#lists.isEmpty(tarefas)}">
-						<tbody>
+					<tbody>
+						<!-- TODO Carregar dinamicamente -->
+						<th:block th:if="${!#lists.isEmpty(tarefas)}">
 							<th:block th:each="tarefa : ${tarefas}">
 								<th:block th:replace="~{tarefa/_fragments :: tbodyTr(tarefa=${tarefa})}"></th:block>
 							</th:block>
-						</tbody>
-					</th:block>
+						</th:block>
+					</tbody>
 				</table>
 			</div>
 			<th:block th:if="${#lists.isEmpty(tarefas)}">

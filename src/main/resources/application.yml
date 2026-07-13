@@ -60,7 +60,7 @@ app:
         # vatican.va/lt
         - codigo: vatican.va/la
           uri: https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_index_lt.html
-          nome: Nova Vulgata
+          nome: Biblia Sacra Vulgata Editio Typica Altera
           idioma: la-va
       json-importa:
         # oraetlabora.com.br

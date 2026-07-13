@@ -52,6 +52,9 @@
   * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0527/ (AT Septuaginta / World English Bible)
   * `xml` [el/en] https://scaife.perseus.org/library/urn:cts:greekLit:tlg0031/ (The New Testament in the original Greek / World English Bible)
 
+* sacredbible.org
+  * [vários] https://www.sacredbible.org/ *MUITA* coisa interessante aqui.
+
 * oraetlabora.com.br
   * API: https://www.oraetlabora.com.br/desenvolvedores
   * A Bíblia já está importada
@@ -122,10 +125,13 @@
   * [várias] https://ebible.org/find/ (não achei nenhuma católica em português; há versões em grego, tem que verificar se são confiáveis e úteis)
 
 * intratext.com
-  * [várias] https://www.intratext.com/BIBLE/default.htm
+  * [várias] https://www.intratext.com/BIBLE/
     * https://www.intratext.com/IXT/POR0013/ Edição IntraText
-    * https://www.intratext.com/IXT/LAT0001/ Vulgata
-    * https://www.intratext.com/IXT/LAT0669/ Neovulgata
+    * [la] https://www.intratext.com/IXT/LAT0001/ Vulgata de São Jerônimo
+    * [la] https://www.intratext.com/IXT/LAT0669/ Neovulgata
+    * [pt] https://www.intratext.com/y/POR0013.HTM A Bíblia
+    * [pt] https://www.intratext.com/y/POR0097.HTM Bíblia Sagrada Edição Pastoral 2002
+  * https://www.intratext.com/EVI/ Outros livros
 
 * liturgiacatolica.com
   * https://www.liturgiacatolica.com/ (só alguns livros, mas também Catecismo e alguns documentos oficiais da Igreja)
@@ -181,3 +187,16 @@
 
 * Suma teológica
   * https://permanencia.org.br/ (link Suma Teológica, em partes)
+
+# Anotações sobre diferenças
+
+## Vulgata vs Neovulgata
+
+* Sb 12,18
+  * Neovulgata: "cum magna indulgentia"
+	  * https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_sapientiae_lt.html#12
+	  * \\wsl.localhost\Ubuntu\home\zecla\git\baudoze\data\files\BSVETA1986.pdf
+    * https://www.clerus.org/bibliaclerusonline/pt/ksy.htm#iy
+  * Vulgata: "cum magna reverentia"
+	  * https://www.clerus.org/bibliaclerusonline/pt/ks2.htm#i5
+	  * https://www.bibliacatolica.com.br/vulgata-clementina/liber-sapientiae/12/

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -110,7 +112,7 @@ public class ImportHtmlVaticanVaLa extends ImportHtml {
 			Biblia biblia = fromHtml(phi);
 			if (biblia != null) {
 				this.bibliaService.incluir(biblia);
-				// TODO novo_testamento
+				// TODO tabela novo_testamento
 			}
 		}
 	}
@@ -202,6 +204,7 @@ public class ImportHtmlVaticanVaLa extends ImportHtml {
 					String texto = child.nodeValue().replace('\u00A0', ' ').strip();
 					if (texto.length() > 0) {
 						// ----- Erros conhecidos nas páginas -----
+
 						// Num 1,1: falta o número do versículo
 						if (result.getSigla().equals("Num") && capitulo.getNumero().equals("1") && capitulo.getVersiculos().size() == 0) {
 							texto = "1 " + texto;
@@ -242,8 +245,32 @@ public class ImportHtmlVaticanVaLa extends ImportHtml {
 							capitulo.getVersiculos().add(versiculo);
 							ultVersiculo = versiculo;
 						} else {
+							numVersiculo = Objects.requireNonNull(ultVersiculo).getNumero();
 							String textoVersiculo = texto.strip();
 							Objects.requireNonNull(ultVersiculo).setTexto(ultVersiculo.getTexto() + "\n" + textoVersiculo);
+						}
+
+						// ----- Versículos "embutidos" no versículo anterior -----
+
+						// Conhecidos: Gen 14,19; Lev 19,36; Num 1,46; ... (36 ocorrências)
+						if (ultVersiculo.getNumero().matches("\\d+") && numVersiculo.matches("\\d+")) {
+							int ultimo = Integer.parseInt(ultVersiculo.getNumero());
+							int proximo = ultimo + 1;
+							String regex = "\\s" + proximo + "\\s";
+							Pattern pattern = Pattern.compile(regex);
+							Matcher matcher = pattern.matcher(ultVersiculo.getTexto());
+							if (matcher.find()) {
+								System.out.println(result.getSigla() + " " + capitulo.getNumero() + "," + proximo);
+
+								String textoProximo = ultVersiculo.getTexto().split(regex)[1];
+								ultVersiculo.setTexto(ultVersiculo.getTexto().split(regex)[0]);
+								Versiculo versiculo = new Versiculo();
+								versiculo.setCapitulo(capitulo);
+								versiculo.setNumero(String.valueOf(proximo));
+								versiculo.setTexto(textoProximo);
+								capitulo.getVersiculos().add(versiculo);
+								ultVersiculo = versiculo;
+							}
 						}
 					}
 				}

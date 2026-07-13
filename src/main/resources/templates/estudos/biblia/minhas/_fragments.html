@@ -1,0 +1,5 @@
+<!-- breadcrumb_index() -->
+<li th:fragment="breadcrumb_index()" th:with="active=${active} ?: false, text=${text} ?: 'Minhas'" th:class="'breadcrumb-item' + (active ? ' active' : '')">
+	<a th:if="${!active}" th:text="${text}" href="/estudos/biblia/minhas"></a>
+	<span th:if="${active}" th:text="${text}"></span>
+</li>

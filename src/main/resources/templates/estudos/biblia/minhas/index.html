@@ -14,7 +14,7 @@
 					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
 					<li th:replace="~{estudos/_fragments :: breadcrumb_index()}"></li>
 					<li th:replace="~{estudos/biblia/_fragments :: breadcrumb_index()}"></li>
-					<li class="breadcrumb-item active" th:text="${htmlTitle}"></li>
+					<li th:replace="~{estudos/biblia/minhas/_fragments :: breadcrumb_index(active=true)}"></li>
 				</ol>
 			</nav>
 			<h1>
@@ -40,11 +40,21 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>CNBB2008</td>
+							<td>BSVETA1986</td>
+							<td>Biblia Sacra Vulgata Editio Typica Altera</td>
+							<td>Libreria Editrice Vaticana</td>
+							<td>-</td>
+							<td>1986</td>
+							<td><span class="fi fi-va"></span> la-va</td>
+							<td>88-209-1523-5</td>
+							<td>PDF</td>
+						</tr>
+						<tr>
+							<td><a href="/estudos/biblia/minhas/CNBB2008">CNBB2008</a></td>
 							<td>Bíblia Sagrada - Tradução da CNBB</td>
 							<td>CNBB, Canção Nova</td>
 							<td>7ª</td>
-							<td>2008+</td>
+							<td>&ge;2008</td>
 							<td><span class="fi fi-br"></span> pt-br</td>
 							<td>978-85-60263-05-9</td>
 							<td>Física</td>

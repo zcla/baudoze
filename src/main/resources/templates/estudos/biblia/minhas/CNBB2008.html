@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='[CNBB2008] Bíblia Sagrada - Tradução da CNBB'">
+	<head>
+		<title th:text="${htmlTitle}"></title>
+		<style>
+			#anotacoes .card-body {
+				padding: 1px;
+			}
+
+			#anotacoes .table {
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div layout:fragment="conteudo">
+			<nav>
+				<ol class="breadcrumb">
+					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/biblia/_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/biblia/minhas/_fragments :: breadcrumb_index()}"></li>
+					<li class="breadcrumb-item active" th:text="${htmlTitle}"></li>
+				</ol>
+			</nav>
+			<h1>
+				<span>
+					<span th:text="${htmlTitle}"></span>
+				</span>
+				<div id="toolbar" class="btn-toolbar float-end d-print-none">
+				</div>
+			</h1>
+			<div id="anotacoes" class="mb-3">
+				<div class="row">
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">Detalhes</h5>
+							</div>
+							<div class="card-body">
+								<table class="table table-sm table-borderless table-hover">
+									<tbody>
+										<tr>
+											<th>Código</th>
+											<td>CNBB2008</td>
+										</tr>
+										<tr>
+											<th>Nome</th>
+											<td>Bíblia Sagrada - Tradução da CNBB</td>
+										</tr>
+										<tr>
+											<th>Editoras</th>
+											<td>CNBB, Canção Nova</td>
+										</tr>
+										<tr>
+											<th>Edição</th>
+											<td>7ª</td>
+										</tr>
+										<tr>
+											<th>Publicação</th>
+											<td>≥2008</td>
+										</tr>
+										<tr>
+											<th>Idioma</th>
+											<td><span class="fi fi-br"></span> pt-br</td>
+										</tr>
+										<tr>
+											<th>ISBN</th>
+											<td>978-85-60263-05-9</td>
+										</tr>
+										<tr>
+											<th>Formato</th>
+											<td>Física</td>
+										</tr>
+										<tr>
+											<th>Primeira edição</th>
+											<!-- TODO href -->
+											<td>2001 <i>(<a href="/estudos/biblia/minhas/CNBB2019">CNBB2019</a>, p. 7)</i></td>
+										</tr>
+										<tr>
+											<th>Nihil obstat</th>
+											<td>Dom <a href="https://www.catholic-hierarchy.org/bishop/bolaz.html" target="_blank">Walmor Oliveira de Azevedo</a></td>
+										</tr>
+										<tr>
+											<th>Imprimatur</th>
+											<td>Dom <a href="https://www.catholic-hierarchy.org/bishop/blyro.html" target="_blank">Geraldo Lyrio Rocha</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">Textos referenciados</h5>
+							</div>
+							<div class="card-body">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item"><b>BH</b> texto hebraico massorético: <i>Biblia Hebraica Stuttgartensia</i> (ed. 1984) <i>(p. X)</i></li>
+									<li class="list-group-item"><b>GNT</b> NT grego: <i>Greek New Testament</i> (4ª ed. 1994 = <i>Novum Testamentum Graece</i>, de Nestle-Aland, 27ª ed. 1994) <i>(p. X)</i></li>
+									<li class="list-group-item"><b>LXX</b> tradução grega de Alexandria: <i>Septuaginta</i> (ed. A. Rahlfs, reimpr. Stuttgart 1979) <i>(p. X)</i></li>
+									<li class="list-group-item"><b>NV</b> nova tradução latina: <i>Nova Vulgata Bibliorum Sacrorum Editio</i> (2ª ed. típica, 1986) <i>(p. X)</i></li>
+									<li class="list-group-item"><b>Vg</b> antiga tradução "Vulgata": <i>Biblia Sacra iuxta Vulgatam Versionem</i> (Stuttgart 1983) <i>(p. X)</i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">Numeração</h5>
+							</div>
+							<div class="card-body">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">
+										<blockquote class="blockquote">A numeração de capítulos e versículos seguem a NV, sendo indicadas em subscrito itálico as numerações divergentes encontradas em outras edições.</blockquote>
+										<figcaption class="blockquote-footer">p. XI</figcaption>
+									</li>
+									<li class="list-group-item">
+										<blockquote class="blockquote">Os Salmos são numerados conforme as atuais edições do texto hebraico e a Nova Vulgata, trazendo entre ( ) a numeração litúrgica (= antiga Vulgata).</blockquote>
+										<figcaption class="blockquote-footer">p. XI</figcaption>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">Tradução</h5>
+							</div>
+							<div class="card-body">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">
+										<blockquote class="blockquote">A presente tradução foi, de fato, traduzida destes idiomas originais.</blockquote>
+										<figcaption class="blockquote-footer">p. 6</figcaption>
+									</li>
+									<li class="list-group-item">
+										<blockquote class="blockquote">A Nova Vulgata "serviu de modelo da presente tradução".</blockquote>
+										<figcaption class="blockquote-footer">p. 8</figcaption>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1741,7 +1741,8 @@ Apocalypsis Ioannis (Ap)
 							numVersiculo = "2";
 						}
 						if (numVersiculo.matches("\\d+.?")) {
-							while (!proximoVersiculo.equals(numVersiculo)) { // TODO Tratar os últimos versículos (Num 4, Est 4)
+							while (!proximoVersiculo.equals(numVersiculo)) {
+								// INFELIZMENTE os últimos versículos dos capítulos não passam aqui; tive que copiar o trecho logo abaixo
 								// ----- Versículos "embutidos" no versículo anterior -----
 								String regex = "[\\.|\\s|\\r|\\n]\\(?" + Pattern.quote(proximoVersiculo) + "\\)?\\s";
 								Pattern pattern = Pattern.compile(regex);
@@ -1799,6 +1800,40 @@ Apocalypsis Ioannis (Ap)
 					}
 				}
 			}
+
+			if (proximoVersiculo != null) {
+				while (proximoVersiculo != null) {
+					// INFELIZMENTE tive que copiar o trecho lá de cima; foram feitas tentativas, mas nenhuma ficou decente.
+					// ----- Versículos "embutidos" no versículo anterior -----
+					String regex = "[\\.|\\s|\\r|\\n]\\(?" + Pattern.quote(proximoVersiculo) + "\\)?\\s";
+					Pattern pattern = Pattern.compile(regex);
+					String regexInput = " " + ultVersiculo.getTexto() + " ";
+					Matcher matcher = pattern.matcher(regexInput);
+					if (matcher.find()) {
+						log.info("=> consertando " + result.getSigla() + " " + capitulo.getNumero() + "," + proximoVersiculo);
+						String[] spl = regexInput.split(regex);
+						String textoEsse = "";
+						String textoProximo = "";
+						if (spl.length > 0) {
+							textoEsse = spl[0].trim();
+						}
+						if (spl.length > 1) {
+							textoProximo = spl[1];
+						}
+						ultVersiculo.setTexto(textoEsse);
+						Versiculo versiculo = new Versiculo();
+						versiculo.setCapitulo(capitulo);
+						versiculo.setNumero(String.valueOf(proximoVersiculo));
+						versiculo.setTexto(textoProximo.trim());
+						capitulo.getVersiculos().add(versiculo);
+						ultVersiculo = versiculo;
+						proximoVersiculo = iCapitulo.proximoVersiculo(proximoVersiculo);
+					} else {
+						throw new RuntimeException("Isso não deveria acontecer");
+					}
+				}
+			}
+
 			result.getCapitulos().add(capitulo);
 
 			iCapitulo = iLivro.proximoCapitulo(iCapitulo);

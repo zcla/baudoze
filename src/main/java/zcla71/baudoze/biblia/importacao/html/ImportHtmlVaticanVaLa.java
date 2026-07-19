@@ -1438,10 +1438,6 @@ Apocalypsis Ioannis (Ap)
 	private class IBiblia {
 		private List<ILivro> livros;
 
-		private ILivro getLivroByNome(String nome) {
-			return biblia.livros.stream().filter(l -> nome.equals(l.nome)).findFirst().orElseThrow();
-		}
-
 		private ILivro getLivroBySigla(String sigla) {
 			return biblia.livros.stream().filter(l -> sigla.equals(l.sigla)).findFirst().orElseThrow();
 		}
@@ -1514,7 +1510,7 @@ Apocalypsis Ioannis (Ap)
 						capitulo.versiculos.add(trecho);
 					}
 				}
-				livro.capitulos.add(capitulo);
+				Objects.requireNonNull(livro).capitulos.add(capitulo);
 			} else {
 				// Novo livro
 				Pattern pattern = Pattern.compile("(.+)\\((.+)\\)");
@@ -1745,7 +1741,7 @@ Apocalypsis Ioannis (Ap)
 								// ----- Versículos "embutidos" no versículo anterior -----
 								String regex = "[\\.|\\s|\\r|\\n]\\(?" + Pattern.quote(proximoVersiculo) + "\\)?\\s";
 								Pattern pattern = Pattern.compile(regex);
-								String regexInput = " " + ultVersiculo.getTexto() + " ";
+								String regexInput = " " + Objects.requireNonNull(ultVersiculo).getTexto() + " ";
 								Matcher matcher = pattern.matcher(regexInput);
 								if (matcher.find()) {
 									log.info("=> consertando " + result.getSigla() + " " + capitulo.getNumero() + "," + proximoVersiculo);
@@ -1806,7 +1802,7 @@ Apocalypsis Ioannis (Ap)
 					// ----- Versículos "embutidos" no versículo anterior -----
 					String regex = "[\\.|\\s|\\r|\\n]\\(?" + Pattern.quote(proximoVersiculo) + "\\)?\\s";
 					Pattern pattern = Pattern.compile(regex);
-					String regexInput = " " + ultVersiculo.getTexto() + " ";
+					String regexInput = " " + Objects.requireNonNull(ultVersiculo).getTexto() + " ";
 					Matcher matcher = pattern.matcher(regexInput);
 					if (matcher.find()) {
 						log.info("=> consertando " + result.getSigla() + " " + capitulo.getNumero() + "," + proximoVersiculo);
@@ -1838,16 +1834,5 @@ Apocalypsis Ioannis (Ap)
 			iCapitulo = iLivro.proximoCapitulo(iCapitulo);
 		}
 		return result;
-	}
-
-	private String proximoVersiculo(String siglaLivro, String numCapitulo, String numVersiculo) {
-		ILivro livro = biblia.getLivroBySigla(siglaLivro);
-
-		ICapitulo capitulo = livro.capitulos.stream().filter(c -> ("".equals(numCapitulo) ? "0" : numCapitulo).equals(c.numero)).findFirst().orElseThrow();
-		int index = capitulo.versiculos.indexOf(numVersiculo) + 1;
-		if (index >= capitulo.versiculos.size()) {
-			return null;
-		}
-		return capitulo.versiculos.get(index);
 	}
 }

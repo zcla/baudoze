@@ -1561,7 +1561,6 @@ Apocalypsis Ioannis (Ap)
 			Biblia biblia = fromHtml(phi);
 			if (biblia != null) {
 				this.bibliaService.incluir(biblia);
-				// TODO tabela novo_testamento
 			}
 		}
 	}

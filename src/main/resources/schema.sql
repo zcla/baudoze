@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS auth_user (
 
 --------- biblia ---------
 
+-- TODO Nova Vulgata
 -- CREATE TABLE IF NOT EXISTS nova_vulgata (
 -- 	id INTEGER PRIMARY KEY,
 -- 	livro TEXT NOT NULL,

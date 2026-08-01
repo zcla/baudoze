@@ -195,7 +195,7 @@
 * Sb 12,18
   * Neovulgata: "cum magna indulgentia"
 	  * https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_sapientiae_lt.html#12
-	  * \\wsl.localhost\Ubuntu\home\zecla\git\baudoze\data\files\BSVETA1986.pdf
+	  * \\wsl.localhost\Ubuntu\home\zecla\git\baudoze\data\files\NVETA1986.pdf
     * https://www.clerus.org/bibliaclerusonline/pt/ksy.htm#iy
   * Vulgata: "cum magna reverentia"
 	  * https://www.clerus.org/bibliaclerusonline/pt/ks2.htm#i5

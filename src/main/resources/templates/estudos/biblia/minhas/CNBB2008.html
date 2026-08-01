@@ -8,7 +8,7 @@
 		<title th:text="${htmlTitle}"></title>
 		<style>
 			#anotacoes .card-body {
-				padding: 1px;
+				padding: 0.25rem;
 			}
 
 			#anotacoes .table {
@@ -141,10 +141,51 @@
 										<figcaption class="blockquote-footer">p. 6</figcaption>
 									</li>
 									<li class="list-group-item">
-										<blockquote class="blockquote">A Nova Vulgata "serviu de modelo da presente tradução".</blockquote>
+										<blockquote class="blockquote">A Nova Vulgata <i>[...]</i> serviu de modelo da presente tradução <i>[...]</i></blockquote>
 										<figcaption class="blockquote-footer">p. 8</figcaption>
 									</li>
 								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-auto">
+						<div class="card">
+							<img th:src=@{/estudos/biblia/minhas/img/CNBB2008.jpg}>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">Organização <i>(Índice; p. IX)</i></h5>
+							</div>
+							<div class="card-body">
+								<table class="table table-sm table-bordered table-hover">
+									<tbody>
+										<tr>
+											<th rowspan="4">Antigo Testamento</th>
+											<th>Pentateuco</th>
+											<td>Gênesis &bull; Êxodo &bull; Levítico &bull; Números &bull; Deuteronômio</td>
+										</tr>
+										<tr>
+											<th>Livros históricos</th>
+											<td>Josué &bull; Juízes &bull; Rute &bull; 1 Samuel &bull; 2 Samuel &bull; 1 Reis &bull; 2 Reis &bull; 1 Crônicas &bull; 2 Crônicas &bull; Esdras &bull; Neemias &bull; Tobias &bull; Judite &bull; Ester &bull; 1 Macabeus &bull; 2 Macabeus</td>
+										</tr>
+										<tr>
+											<th>Livros sapienciais</th>
+											<td>Jó &bull; Salmos &bull; Provérbios &bull; Eclesiastes &bull; Cântico dos Cânticos &bull; Sabedoria &bull; Eclesiástico</td>
+										</tr>
+										<tr>
+											<th>Profetas</th>
+											<td>Isaías &bull; Jeremias &bull; Lamentações &bull; Baruc &bull; Ezequiel &bull; Daniel &bull; Oseias &bull; Joel &bull; Amós &bull; Abdias &bull; Jonas &bull; Miquéias &bull; Naum &bull; Habacuc &bull; Sofonias &bull; Ageu &bull; Zacarias &bull; Malaquias</td>
+										</tr>
+										<tr>
+											<th colspan="2">Novo Testamento</th>
+											<td>Mateus &bull; Marcos &bull; Lucas &bull; João &bull; Atos dos Apóstolos &bull; Romanos &bull; 1 Coríntios &bull; 2 Coríntios &bull; Gálatas &bull; Efésios &bull; Filipenses &bull; Colossenses &bull; 1 Tessalonicenses &bull; 2 Tessalonicenses &bull; 1 Timóteo &bull; 2 Timóteo &bull; Tito &bull; Filêmon &bull; Hebreus &bull; Tiago &bull; 1 Pedro &bull; 2 Pedro &bull; 1 João &bull; 2 João &bull; 3 João &bull; Judas &bull; Apocalipse</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

@@ -22,10 +22,10 @@
 * Colocar na internet
 
 * Bíblia "padrão": Nova Vulgata:
-  * Adaptar a importação já feita.
-  * Conectar as Bíblias para permitir visão lado a lado
+  * Adaptar a importação já feita (tabela nova_vulgata em [schema.sql](src/main/resources/schema.sql)).
+  * Conectar as Bíblias para permitir visão lado a lado (tabela versiculo_nova_vulgata em [schema.sql](src/main/resources/schema.sql)).
 
-* biblia: https://www.oraetlabora.com.br/desenvolvedores
+* Outros documentos: https://www.oraetlabora.com.br/desenvolvedores
   * https://www.oraetlabora.com.br/api/catecismo
   * https://www.oraetlabora.com.br/api/documentos
 

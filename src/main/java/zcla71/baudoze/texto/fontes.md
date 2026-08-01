@@ -33,6 +33,15 @@
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json
 
+* die-bibel.de German Bible Society (também há traduções)
+  * `html` [he] https://www.die-bibel.de/en/bible/BHS Biblia Hebraica Stuttgartensia (BHS)
+  * `html` [el] https://www.die-bibel.de/en/bible/NA28 Novum Testamentum Graece
+  * `html` [el] https://www.die-bibel.de/en/bible/UBS5 Greek New Testament
+  * `html` [el] https://www.die-bibel.de/en/bible/LXX Septuaginta
+  * `html` [el] https://www.die-bibel.de/en/bible/LXXA Septuaginta - Alternative Texte (5 livros)
+  * `html` [la] https://www.die-bibel.de/en/bible/VUL Biblia Sacra Vulgata
+  * `html` [la] https://www.die-bibel.de/en/bible/VULA Biblia Sacra Vulgata – Alternative Texte (só Sl)
+
 * github.com/scrollmapper - dezenas de versões em dezenas de línguas; não sei se há católicas.
   * `json` [várias] https://github.com/scrollmapper/bible_databases/tree/master/sources
   * `json` [la] https://github.com/scrollmapper/bible_databases/tree/master/sources/la - várias versões da vulgata
@@ -70,10 +79,6 @@
 
 * conferenciaepiscopal.pt
   * [pt-pt] Bíblia oficial portuguesa (WIP!) https://conferenciaepiscopal.pt/biblia/index.php/Main_Page
-
-* die-bibel.de => Versões usadas na tradução da Bíblia CNBB 2019
-  * [he] https://www.die-bibel.de/en/bible/BHS/
-  * [el] https://www.die-bibel.de/en/bible/NA28/
 
 * clerus.org - Já importei em outro projeto, se não me engano, usando PowerShell; talvez o código sirva para todas as outras bíblias que há no mesmo site.
   * [pt] https://www.clerus.org/bibliaclerusonline/pt/66c.htm

@@ -41,6 +41,11 @@ public class EstudosController extends BauBaseController {
 		return getModelAndView("/estudos/biblia/minhas/CNBB2008");
 	}
 
+	@GetMapping("/biblia/minhas/NVETA1986")
+	public ModelAndView bibliaMinhasNVETA1986() {
+		return getModelAndView("/estudos/biblia/minhas/NVETA1986");
+	}
+
 	// ----- /biblia/texto
 
 	@GetMapping("/biblia/texto/mt-1")

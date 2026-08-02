@@ -1,5 +1,7 @@
 package zcla71.baudoze.tarefa.controller;
 
+import java.util.Objects;
+
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -95,6 +97,20 @@ public class TarefaController extends BauBaseController {
 			return redirect("/tarefa");
 		} catch (TarefaServiceException ex) {
 			return getEditarModelAndView(tarefa, ex, bindingResult);
+		}
+	}
+
+	// Ação: mover
+
+	@GetMapping("/{id}/mover/final")
+	public ModelAndView moverFinal(@NonNull @PathVariable Long id) {
+		try {
+			tarefaService.moverFinal(Objects.requireNonNull(tarefaService.buscar(id)));
+			return redirect("/tarefa");
+		} catch (TarefaServiceException ex) {
+			BauModelAndView result = getModelAndView("/tarefa");
+			result.addMensagem("danger", ex.getMessage());
+			return result;
 		}
 	}
 }

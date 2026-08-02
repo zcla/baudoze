@@ -135,4 +135,10 @@ public class TarefaService {
 			tarefaRepository.save(tarefa);
 		}
 	}
+
+	@Transactional
+	public void moverFinal(@NonNull Tarefa tarefa) {
+		tarefa.setOrdem(tarefaRepository.proximaOrdem());
+		tarefaRepository.save(tarefa);
+	}
 }

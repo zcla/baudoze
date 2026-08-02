@@ -79,7 +79,6 @@
 						url: "/api/v1/tarefa/desmarcarTodas",
 						type: "PATCH",
 						success: function () {
-							// TODO Está dando só um WARN no log e caindo aqui sem fazer nada
 							$('#crudLista input:checkbox').prop('checked', false);
 							Ui.hideLoading();
 						},
@@ -97,6 +96,10 @@
 <style th:fragment="style()">
 	table .btn-group img {
 		vertical-align: center;
+	}
+
+	.btn.disabled {
+		border-width: 0;
 	}
 </style>
 
@@ -144,7 +147,13 @@
 			<!-- TODO Subir para primeiro -->
 			<!-- TODO Subir ordem -->
 			<!-- TODO Descer ordem -->
-			<!-- TODO Descer para último -->
+			<a
+					th:href="@{'/tarefa/' + ${tarefa.id}} + '/mover/final'"
+					type="button"
+					th:class="|btn btn-sm bg-info-subtle${(tarefa.ultimoFilho == 0) ? '' : ' disabled'}|"
+					title="Mover para o final">
+				<img src="/img/button-bottom.png">
+			</a>
 			<!-- TODO Incluir subtarefa -->
 			<a
 					th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'"

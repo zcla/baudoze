@@ -78,6 +78,11 @@ logging:
       springframework:
         web: INFO
 
+server:
+  servlet:
+    session:
+      timeout: 8h
+
 spring:
   application:
     name: Bau do Zé

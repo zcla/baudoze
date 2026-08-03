@@ -42,6 +42,9 @@
   * `html` [la] https://www.die-bibel.de/en/bible/VUL Biblia Sacra Vulgata
   * `html` [la] https://www.die-bibel.de/en/bible/VULA Biblia Sacra Vulgata – Alternative Texte (só Sl)
 
+* biblia.com
+  * `xhtml` [la] https://biblia.com/books/vulgataclem Vulgata Clementina (parece haver uma espécie de API)
+
 * github.com/scrollmapper - dezenas de versões em dezenas de línguas; não sei se há católicas.
   * `json` [várias] https://github.com/scrollmapper/bible_databases/tree/master/sources
   * `json` [la] https://github.com/scrollmapper/bible_databases/tree/master/sources/la - várias versões da vulgata

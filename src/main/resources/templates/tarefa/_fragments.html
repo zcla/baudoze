@@ -99,7 +99,8 @@
 	}
 
 	.btn.disabled {
-		border-width: 0;
+		border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+		opacity: 0.25;
 	}
 </style>
 
@@ -127,6 +128,8 @@
 </tr>
 
 <!-- tbodyTr(tarefa) -->
+<!-- TODO Tarefa mãe em negrito -->
+<!-- TODO Tarefa mãe não (des)marcável (ou cascata) / (des)marcada automaticamente -->
 <tr th:fragment="tbodyTr(tarefa)" th:id="'tarefa-' + ${tarefa.id}">
 	<td>
 		<span th:text="${#strings.repeat('&nbsp;', 6 * tarefa.indent)}"></span>
@@ -138,15 +141,36 @@
 					th:attr="data-id=${tarefa.id}">
 		</span>
 		<span class="col">
-			<label th:utext="${tarefa.titulo}" class="form-check-label"></label>
-			<small th:utext="${tarefa.descricao}"></small>
+			<label th:text="${tarefa.titulo}" class="form-check-label"></label>
+			<small th:text="${tarefa.descricao}"></small>
 		</span>
 	</td>
 	<td class="botoes d-print-none">
 		<div class="btn-group" role="group">
-			<!-- TODO Subir para primeiro -->
-			<!-- TODO Subir ordem -->
-			<!-- TODO Descer ordem -->
+			<!-- TODO Implementar -->
+			<a
+					th:href="@{'/tarefa/' + ${tarefa.id}} + '/mover/inicio'"
+					type="button"
+					th:class="|btn btn-sm bg-info-subtle${(tarefa.primeiroFilho == 0) ? '' : ' disabled'}|"
+					title="Mover para o início">
+				<img src="/img/button-top.png">
+			</a>
+			<!-- TODO Implementar -->
+			<a
+					th:href="@{'/tarefa/' + ${tarefa.id}} + '/mover/cima'"
+					type="button"
+					th:class="|btn btn-sm bg-info-subtle${(tarefa.primeiroFilho == 0) ? '' : ' disabled'}|"
+					title="Mover para cima">
+				<img src="/img/button-up.png">
+			</a>
+			<!-- TODO Implementar -->
+			<a
+					th:href="@{'/tarefa/' + ${tarefa.id}} + '/mover/baixo'"
+					type="button"
+					th:class="|btn btn-sm bg-info-subtle${(tarefa.ultimoFilho == 0) ? '' : ' disabled'}|"
+					title="Mover para baixo">
+				<img src="/img/button-down.png">
+			</a>
 			<a
 					th:href="@{'/tarefa/' + ${tarefa.id}} + '/mover/final'"
 					type="button"
@@ -154,7 +178,14 @@
 					title="Mover para o final">
 				<img src="/img/button-bottom.png">
 			</a>
-			<!-- TODO Incluir subtarefa -->
+			<!-- TODO Implementar -->
+			<a
+					th:href="@{'/tarefa/incluir?idTarefaMae=' + ${tarefa.id}}"
+					type="button"
+					class="btn btn-sm bg-success-subtle"
+					title="Incluir subtarefa">
+				<img src="/img/button-incluir.png">
+			</a>
 			<a
 					th:href="@{'/tarefa/' + ${tarefa.id}} + '/alterar'"
 					type="button"

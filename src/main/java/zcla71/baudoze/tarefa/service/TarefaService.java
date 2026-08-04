@@ -137,6 +137,19 @@ public class TarefaService {
 	}
 
 	@Transactional
+	public void moverBaixo(@NonNull Tarefa tarefa) {
+		List<Tarefa> filhasDaMae = listaFilhasDaMaeEmOrdem(tarefa.getTarefaMae());
+		Tarefa existente = filhasDaMae.stream().filter(t -> t.getId().equals(tarefa.getId())).findFirst().orElseThrow();
+		int index = filhasDaMae.indexOf(existente);
+		Tarefa proxima = filhasDaMae.get(index + 1);
+		long existenteOrdem = existente.getOrdem();
+		existente.setOrdem(proxima.getOrdem());
+		proxima.setOrdem(existenteOrdem);
+		tarefaRepository.save(existente);
+		tarefaRepository.save(proxima);
+	}
+
+	@Transactional
 	public void moverCima(@NonNull Tarefa tarefa) {
 		List<Tarefa> filhasDaMae = listaFilhasDaMaeEmOrdem(tarefa.getTarefaMae());
 		Tarefa existente = filhasDaMae.stream().filter(t -> t.getId().equals(tarefa.getId())).findFirst().orElseThrow();

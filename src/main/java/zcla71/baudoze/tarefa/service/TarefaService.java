@@ -140,5 +140,24 @@ public class TarefaService {
 	public void moverFinal(@NonNull Tarefa tarefa) {
 		tarefa.setOrdem(tarefaRepository.proximaOrdem());
 		tarefaRepository.save(tarefa);
+		reordenaFilhas(tarefa.getTarefaMae());
+	}
+
+	@Transactional
+	public void moverInicio(@NonNull Tarefa tarefa) {
+		tarefa.setOrdem(0L);
+		tarefaRepository.save(tarefa);
+		reordenaFilhas(tarefa.getTarefaMae());
+	}
+
+	@Transactional
+	private void reordenaFilhas(Tarefa tarefaMae) {
+		List<Tarefa> filhasDaMae = tarefaRepository.findByTarefaMae(tarefaMae);
+		filhasDaMae.sort((t1, t2) -> t1.getOrdem().compareTo(t2.getOrdem()));
+		long ordem = 0;
+		for (Tarefa filha : filhasDaMae) {
+			filha.setOrdem(++ordem);
+			tarefaRepository.save(filha);
+		}
 	}
 }

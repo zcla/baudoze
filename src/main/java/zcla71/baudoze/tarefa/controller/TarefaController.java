@@ -113,4 +113,16 @@ public class TarefaController extends BauBaseController {
 			return result;
 		}
 	}
+
+	@GetMapping("/{id}/mover/inicio")
+	public ModelAndView moverInicio(@NonNull @PathVariable Long id) {
+		try {
+			tarefaService.moverInicio(Objects.requireNonNull(tarefaService.buscar(id)));
+			return redirect("/tarefa");
+		} catch (TarefaServiceException ex) {
+			BauModelAndView result = getModelAndView("/tarefa");
+			result.addMensagem("danger", ex.getMessage());
+			return result;
+		}
+	}
 }

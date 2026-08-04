@@ -137,6 +137,19 @@ public class TarefaService {
 	}
 
 	@Transactional
+	public void moverCima(@NonNull Tarefa tarefa) {
+		List<Tarefa> filhasDaMae = listaFilhasDaMaeEmOrdem(tarefa.getTarefaMae());
+		Tarefa existente = filhasDaMae.stream().filter(t -> t.getId().equals(tarefa.getId())).findFirst().orElseThrow();
+		int index = filhasDaMae.indexOf(existente);
+		Tarefa anterior = filhasDaMae.get(index - 1);
+		long existenteOrdem = existente.getOrdem();
+		existente.setOrdem(anterior.getOrdem());
+		anterior.setOrdem(existenteOrdem);
+		tarefaRepository.save(existente);
+		tarefaRepository.save(anterior);
+	}
+
+	@Transactional
 	public void moverFinal(@NonNull Tarefa tarefa) {
 		tarefa.setOrdem(tarefaRepository.proximaOrdem());
 		tarefaRepository.save(tarefa);
@@ -152,12 +165,17 @@ public class TarefaService {
 
 	@Transactional
 	private void reordenaFilhas(Tarefa tarefaMae) {
-		List<Tarefa> filhasDaMae = tarefaRepository.findByTarefaMae(tarefaMae);
-		filhasDaMae.sort((t1, t2) -> t1.getOrdem().compareTo(t2.getOrdem()));
+		List<Tarefa> filhasDaMae = listaFilhasDaMaeEmOrdem(tarefaMae);
 		long ordem = 0;
 		for (Tarefa filha : filhasDaMae) {
 			filha.setOrdem(++ordem);
 			tarefaRepository.save(filha);
 		}
+	}
+
+	private List<Tarefa> listaFilhasDaMaeEmOrdem(Tarefa tarefaMae) {
+		List<Tarefa> result = tarefaRepository.findByTarefaMae(tarefaMae);
+		result.sort((t1, t2) -> t1.getOrdem().compareTo(t2.getOrdem()));
+		return result;
 	}
 }

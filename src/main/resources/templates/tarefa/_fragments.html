@@ -90,6 +90,16 @@
 				}
 			}
 		});
+
+		// Inclui os links
+		document.querySelectorAll('.criarLinks').forEach(element => {
+			const texto = element.textContent;
+			const urlRegex = /(https?:\/\/[^\s]+)/g;
+			
+			element.innerHTML = texto.replace(urlRegex, function(url) {
+				return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+			});
+		});
 	});
 </script>
 
@@ -143,8 +153,7 @@
 		</span>
 		<span class="col">
 			<label th:text="${tarefa.titulo}" class="form-check-label"></label>
-			<!-- TODO Detectar links -->
-			<small th:text="${tarefa.descricao}"></small>
+			<small class="criarLinks" th:text="${tarefa.descricao}"></small>
 		</span>
 	</td>
 	<td class="botoes d-print-none">

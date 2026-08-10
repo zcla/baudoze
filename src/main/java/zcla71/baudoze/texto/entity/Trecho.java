@@ -1,4 +1,4 @@
-package zcla71.baudoze.texto.model;
+package zcla71.baudoze.texto.entity;
 
 import java.util.List;
 

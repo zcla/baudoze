@@ -22,8 +22,9 @@
 							linkExcluir.closest("tr").remove();
 							Ui.hideLoading();
 						},
-						error: function (xhr) {
-							Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+						error: function (jqXHR, textStatus, errorThrown) {
+							debugger;
+							Ui.erro(jqXHR.responseJSON ? jqXHR.responseJSON.mensagem : jqXHR.statusText);
 							Ui.hideLoading();
 						}
 					});
@@ -43,8 +44,9 @@
 						chkMarcar.classList.replace("acao-marcar", "acao-desmarcar");
 						Ui.hideLoading();
 					},
-					error: function (xhr) {
-						Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+					error: function (jqXHR, textStatus, errorThrown) {
+						debugger;
+						Ui.erro(jqXHR.responseJSON ? jqXHR.responseJSON.mensagem : jqXHR.statusText);
 						Ui.hideLoading();
 					}
 				});
@@ -63,8 +65,9 @@
 						chkDesmarcar.classList.replace("acao-desmarcar", "acao-marcar");
 						Ui.hideLoading();
 					},
-					error: function (xhr) {
-						Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+					error: function (jqXHR, textStatus, errorThrown) {
+						debugger;
+						Ui.erro(jqXHR.responseJSON ? jqXHR.responseJSON.mensagem : jqXHR.statusText);
 						Ui.hideLoading();
 					}
 				});
@@ -82,8 +85,9 @@
 							$('#crudLista input:checkbox').prop('checked', false);
 							Ui.hideLoading();
 						},
-						error: function (xhr) {
-							Ui.erro(xhr.responseJSON ? xhr.responseJSON.mensagem : xhr.statusText);
+						error: function (jqXHR, textStatus, errorThrown) {
+							debugger;
+							Ui.erro(jqXHR.responseJSON ? jqXHR.responseJSON.mensagem : jqXHR.statusText);
 							Ui.hideLoading();
 						}
 					});
@@ -186,7 +190,6 @@
 					title="Mover para o final">
 				<img src="/img/button-bottom.png">
 			</a>
-			<!-- TODO Implementar -->
 			<a
 					th:href="@{'/tarefa/incluir?idTarefaMae=' + ${tarefa.id}}"
 					type="button"

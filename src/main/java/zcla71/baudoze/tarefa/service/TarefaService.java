@@ -42,9 +42,13 @@ public class TarefaService {
 		return tarefaRepository.findById(id).orElseThrow(() -> new TarefaServiceException(BauServiceTipoException.NAO_ENCONTRADO, "Tarefa não encontrada."));
 	}
 
-	public Tarefa novaTarefa() {
+	public Tarefa novaTarefa(Long idTarefaMae) {
 		Tarefa result = new Tarefa();
 		result.setTitulo("Nova tarefa");
+		if (idTarefaMae != null) {
+			Tarefa tarefaMae = buscar(idTarefaMae);
+			result.setTarefaMae(tarefaMae);
+		}
 		result.setCumprida(false);
 		return result;
 	}

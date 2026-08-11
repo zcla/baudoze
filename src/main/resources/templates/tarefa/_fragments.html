@@ -83,6 +83,8 @@
 						type: "PATCH",
 						success: function () {
 							$('#crudLista input:checkbox').prop('checked', false);
+							$('#crudLista input:checkbox').removeClass("acao-desmarcar");
+							$('#crudLista input:checkbox').addClass("acao-marcar");
 							Ui.hideLoading();
 						},
 						error: function (jqXHR, textStatus, errorThrown) {

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='Concordância dos Santos Evangelhos'">
+	<head>
+		<title th:text="${htmlTitle}"></title>
+	</head>
+	<body>
+		<div layout:fragment="conteudo">
+			<nav>
+				<ol class="breadcrumb">
+					<li th:replace="~{_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/_fragments :: breadcrumb_index()}"></li>
+					<li th:replace="~{estudos/biblia/_fragments :: breadcrumb_index()}"></li>
+					<li class="breadcrumb-item active" th:text="${htmlTitle}"></li>
+				</ol>
+			</nav>
+			<h1>
+				<span>
+					<span th:text="${htmlTitle}"></span>
+				</span>
+				<div id="toolbar" class="btn-toolbar float-end d-print-none">
+				</div>
+			</h1>
+			<div id="crudLista" class="mb-3">
+				<table class="table table-sm table-hover">
+					<thead>
+						<tr>
+							<th>Parte</th>
+							<th colspan="2">Título</th>
+							<th>Mt</th>
+							<th>Mc</th>
+							<th>Lc</th>
+							<th>Jo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- TODO Montar a partir do JSON-->
+						<tr>
+							<td rowspan="16">Primeira parte: Infância de Jesus / Sua vida oculta</td>
+							<td colspan="2">I. Prólogo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>1,1-4</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">II. Geração eterna do Verbo</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>1,1-14</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

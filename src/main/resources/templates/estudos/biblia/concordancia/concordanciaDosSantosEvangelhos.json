@@ -1,0 +1,45 @@
+{
+	"partes": [
+		{
+			"titulo": "Primeira parte: Infância de Jesus / Sua vida oculta",
+			"pagina": 35,
+			"titulos": [
+				{
+					"titulo": "I. Prólogo",
+					"pagina": 37,
+					"pericopes": [
+						"Lc 1,1-4"
+					]
+				},
+				{
+					"titulo": "II. Geração eterna do Verbo",
+					"pagina": 38,
+					"pericopes": [
+						"Jo 1,1-14"
+					]
+				},
+				{
+					"titulo": "III. Genealogia legal de Jesus Cristo",
+					"pagina": 41,
+					"pericopes": [
+						"Mt 1,1-17"
+					]
+				},
+				{
+					"titulo": "IV. Visão de Zacarias",
+					"pagina": 42,
+					"pericopes": [
+						"Lc 1,5-25"
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						""
+					]
+				}
+			]
+		}
+	]
+}

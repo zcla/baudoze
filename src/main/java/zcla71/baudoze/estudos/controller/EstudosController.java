@@ -22,6 +22,13 @@ public class EstudosController extends BauBaseController {
 		return getModelAndView("/estudos/biblia/index");
 	}
 
+	// ----- /biblia/concordancia
+
+	@GetMapping("/biblia/concordancia")
+	public ModelAndView concordancia() {
+		return getModelAndView("/estudos/biblia/concordancia/index");
+	}
+
 	// ----- /biblia/estrutura
 
 	@GetMapping("/biblia/estrutura/mt")

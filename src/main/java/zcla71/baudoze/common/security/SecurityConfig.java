@@ -23,6 +23,7 @@ public class SecurityConfig {
 						"/js/**").permitAll()
 				// Páginas internas
 				.requestMatchers("/_erro/**").permitAll()
+				.requestMatchers("/error/**").permitAll()
 				// Bíblia
 				.requestMatchers("/biblia/**").permitAll()
 				// Estudos

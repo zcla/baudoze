@@ -38,7 +38,7 @@
 					</thead>
 					<tbody>
 						<tr th:each="linha : ${data.concordancia}">
-							<td th:if="${linha.parte}" th:text="${linha.parte.texto}" th:rowspan="${linha.parte.rowspan}"></td>
+							<td th:if="${linha.parte}" th:text="${linha.parte}" th:rowspan="${linha.parteRowspan}"></td>
 							<td th:text="${linha.titulo}"></td>
 							<td th:text="${linha.mt}" style="text-align: center;"></td>
 							<td th:text="${linha.mc}" style="text-align: center;"></td>

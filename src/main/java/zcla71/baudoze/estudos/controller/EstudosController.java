@@ -45,10 +45,8 @@ public class EstudosController extends BauBaseController {
 
 		List<TabelaLinha> tabela = new ArrayList<>();
 		for (Parte parte : concordancia.getPartes()) {
-			Map<String, Object> mapParte = new HashMap<>();
-			mapParte.put("texto", parte.getTitulo());
-			mapParte.put("rowspan", 0);
-			Map<String, Object> addParte = mapParte;
+			String parteTitulo = parte.getTitulo();
+			TabelaLinha linhaParte = null;
 
 			for (Titulo titulo : parte.getTitulos()) {
 				// TODO Tirar o if abaixo quando o estudo terminar
@@ -57,15 +55,14 @@ public class EstudosController extends BauBaseController {
 				}
 
 				TabelaLinha linha = new TabelaLinha();
+				if (linhaParte == null) {
+					linhaParte = linha;
+				}
+				linhaParte.setParteRowspan(linhaParte.getParteRowspan() + 1);
 
-				linha.setParte(addParte);
-				addParte = null;
-				mapParte.put("rowspan", ((Integer) mapParte.get("rowspan")) + 1);
+				linha.setParte(parteTitulo);
+				parteTitulo = null;
 				linha.setTitulo(titulo.getTitulo());
-				linha.setMt("-");
-				linha.setMc("-");
-				linha.setLc("-");
-				linha.setJo("-");
 				for (String pericope : titulo.getPericopes()) {
 					String sigla = pericope.split(" ")[0];
 					String texto = pericope.substring(sigla.length() + 1);

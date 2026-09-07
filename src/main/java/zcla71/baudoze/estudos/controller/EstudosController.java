@@ -1,11 +1,25 @@
 package zcla71.baudoze.estudos.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import zcla71.baudoze.common.controller.BauBaseController;
+import zcla71.baudoze.estudos.dto.concordancia.Concordancia;
+import zcla71.baudoze.estudos.dto.concordancia.Parte;
+import zcla71.baudoze.estudos.dto.concordancia.TabelaLinha;
+import zcla71.baudoze.estudos.dto.concordancia.Titulo;
 
 @Controller
 @RequestMapping("/estudos")
@@ -25,8 +39,64 @@ public class EstudosController extends BauBaseController {
 	// ----- /biblia/concordancia
 
 	@GetMapping("/biblia/concordancia")
-	public ModelAndView concordancia() {
-		return getModelAndView("/estudos/biblia/concordancia/index");
+	public ModelAndView concordancia() throws StreamReadException, DatabindException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		Concordancia concordancia = mapper.readValue(getClass().getResourceAsStream("/templates/estudos/biblia/concordancia/concordanciaDosSantosEvangelhos.json"), Concordancia.class);
+
+		List<TabelaLinha> tabela = new ArrayList<>();
+		for (Parte parte : concordancia.getPartes()) {
+			Map<String, Object> mapParte = new HashMap<>();
+			mapParte.put("texto", parte.getTitulo());
+			mapParte.put("rowspan", 0);
+			Map<String, Object> addParte = mapParte;
+
+			for (Titulo titulo : parte.getTitulos()) {
+				// TODO Tirar o if abaixo quando o estudo terminar
+				if (titulo.getTitulo().length() == 0) {
+					continue;
+				}
+
+				TabelaLinha linha = new TabelaLinha();
+
+				linha.setParte(addParte);
+				addParte = null;
+				mapParte.put("rowspan", ((Integer) mapParte.get("rowspan")) + 1);
+				linha.setTitulo(titulo.getTitulo());
+				linha.setMt("-");
+				linha.setMc("-");
+				linha.setLc("-");
+				linha.setJo("-");
+				for (String pericope : titulo.getPericopes()) {
+					String sigla = pericope.split(" ")[0];
+					String texto = pericope.substring(sigla.length() + 1);
+					switch (sigla) {
+						case "Mt":
+							linha.setMt(texto);
+							break;
+						case "Mc":
+							linha.setMc(texto);
+							break;
+						case "Lc":
+							linha.setLc(texto);
+							break;
+						case "Jo":
+							linha.setJo(texto);
+							break;
+						default:
+							throw new RuntimeException("Sigla desconhecida");
+					}
+				}
+
+				tabela.add(linha);
+			}
+		}
+
+		ModelAndView result = getModelAndView("/estudos/biblia/concordancia/index");
+		result.addObject("data", Map.of(
+			"concordancia", tabela
+		));
+
+		return result;
 	}
 
 	// ----- /biblia/estrutura

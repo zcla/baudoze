@@ -29,29 +29,21 @@
 					<thead>
 						<tr>
 							<th>Parte</th>
-							<th colspan="2">Título</th>
-							<th>Mt</th>
-							<th>Mc</th>
-							<th>Lc</th>
-							<th>Jo</th>
+							<th>Título</th>
+							<th style="text-align: center;">Mt</th>
+							<th style="text-align: center;">Mc</th>
+							<th style="text-align: center;">Lc</th>
+							<th style="text-align: center;">Jo</th>
 						</tr>
 					</thead>
 					<tbody>
-						<!-- TODO Montar a partir do JSON-->
-						<tr>
-							<td rowspan="16">Primeira parte: Infância de Jesus / Sua vida oculta</td>
-							<td colspan="2">I. Prólogo</td>
-							<td>-</td>
-							<td>-</td>
-							<td>1,1-4</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td colspan="2">II. Geração eterna do Verbo</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							<td>1,1-14</td>
+						<tr th:each="linha : ${data.concordancia}">
+							<td th:if="${linha.parte}" th:text="${linha.parte.texto}" th:rowspan="${linha.parte.rowspan}"></td>
+							<td th:text="${linha.titulo}"></td>
+							<td th:text="${linha.mt}" style="text-align: center;"></td>
+							<td th:text="${linha.mc}" style="text-align: center;"></td>
+							<td th:text="${linha.lc}" style="text-align: center;"></td>
+							<td th:text="${linha.jo}" style="text-align: center;"></td>
 						</tr>
 					</tbody>
 				</table>

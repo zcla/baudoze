@@ -33,6 +33,70 @@
 					]
 				},
 				{
+					"titulo": "V. A Anunciação",
+					"pagina": 47,
+					"pericopes": [
+						"Lc 1,26-38"
+					]
+				},
+				{
+					"titulo": "VI. A Visitação - O Magnificat",
+					"pagina": 49,
+					"pericopes": [
+						"Lc 1,39-56"
+					]
+				},
+				{
+					"titulo": "VII. Nascimento de São João - O Benedictus",
+					"pagina": 52,
+					"pericopes": [
+						"Lc 1,57-80"
+					]
+				},
+				{
+					"titulo": "VIII. Perplexidade de São José",
+					"pagina": 55,
+					"pericopes": [
+						"Mt 1,18-25"
+					]
+				},
+				{
+					"titulo": "IX. Nascimento de Jesus em Belém",
+					"pagina": 57,
+					"pericopes": [
+						"Lc 2,1-7"
+					]
+				},
+				{
+					"titulo": "X. Adoração dos pastores",
+					"pagina": 59,
+					"pericopes": [
+						"Lc 2,8-20"
+					]
+				},
+				{
+					"titulo": "XI. A Circuncisão",
+					"pagina": 61,
+					"pericopes": [
+						"Lc 2,21"
+					]
+				},
+				{
+					"titulo": "XII. A Adoração dos Magos",
+					"pagina": 61,
+					"pericopes": [
+						"Mt 2,1-12"
+					]
+				},
+				{
+					"titulo": "XIII. A Purificação - Simeão - O Nunc Dimittis",
+					"pagina": 64,
+					"pericopes": [
+						"Mt 2,13",
+						"Lc 2,22-39"
+					]
+				},
+				{
 					"titulo": "",
 					"pagina": 0,
 					"pericopes": [

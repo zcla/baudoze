@@ -20,6 +20,7 @@
     * restore
 
 * Colocar na internet
+  * https://hostingtutorials.dev/blog/free-spring-boot-host-with-render
 
 * Bíblia "padrão": Nova Vulgata:
   * Adaptar a importação já feita (tabela nova_vulgata em [schema.sql](src/main/resources/schema.sql)).

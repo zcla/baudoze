@@ -1,4 +1,4 @@
-package zcla71.baudoze.planodevida.entity;
+package zcla71.baudoze.planodevida.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

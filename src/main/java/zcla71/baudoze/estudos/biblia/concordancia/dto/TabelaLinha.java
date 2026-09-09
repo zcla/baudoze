@@ -1,4 +1,4 @@
-package zcla71.baudoze.estudos.dto.concordancia;
+package zcla71.baudoze.estudos.biblia.concordancia.dto;
 
 import lombok.Data;
 

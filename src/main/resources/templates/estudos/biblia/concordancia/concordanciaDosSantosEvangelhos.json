@@ -1,7 +1,7 @@
 {
 	"partes": [
 		{
-			"titulo": "Primeira parte: Infância de Jesus / Sua vida oculta",
+			"titulo": "I. Infância de Jesus / Sua vida oculta",
 			"pagina": 35,
 			"titulos": [
 				{
@@ -96,6 +96,131 @@
 						"Lc 2,22-39"
 					]
 				},
+				{
+					"titulo": "XIV. Fuga para o Egito - Morticínio dos inocentes",
+					"pagina": 67,
+					"pericopes": [
+						"Mt 2,13-18"
+					]
+				},
+				{
+					"titulo": "XV. Volta do Egito para Nazaré",
+					"pagina": 68,
+					"pericopes": [
+						"Mt 2,19-23",
+						"Lc 2,40"
+					]
+				},
+				{
+					"titulo": "XVI. Jesus Entre os doutores - Sua vida oculta em Nazaré",
+					"pagina": 69,
+					"pericopes": [
+						"Lc 2,41-52"
+					]
+				}
+			]
+		},
+		{
+			"titulo": "II. Começo da vida pública de Jesus",
+			"pagina": 73,
+			"titulos": [
+				{
+					"titulo": "I. Pregação e batismo de São João",
+					"pagina": 75,
+					"pericopes": [
+						"Mt 3,1-10",
+						"Mc 1,1-6",
+						"Lc 3,1-14"
+					]
+				},
+				{
+					"titulo": "II. Primeiro testemunho de João",
+					"pagina": 78,
+					"pericopes": [
+						"Mt 3,11-12",
+						"Mc 1,7-8",
+						"Lc 3,15-18"
+					]
+				},
+				{
+					"titulo": "III. Jesus é batizado por João",
+					"pagina": 79,
+					"pericopes": [
+						"Mt 3,13-17",
+						"Mc 1,9-11",
+						"Lc 3,21-22"
+					]
+				},
+				{
+					"titulo": "IV. Idade e genealogia de Jesus",
+					"pagina": 81,
+					"pericopes": [
+						"Lc 3,23-38"
+					]
+				},
+				{
+					"titulo": "V. Jejum e tentação de Jesus",
+					"pagina": 83,
+					"pericopes": [
+						"Mt 4,1-11",
+						"Mc 1,12-13",
+						"Lc 4,1-13"
+					]
+				},
+				{
+					"titulo": "VI. Segundo e terceiro testemunhos de São João",
+					"pagina": 86,
+					"pericopes": [
+						"Jo 1,15-34"
+					]
+				},
+				{
+					"titulo": "VII. Primeiros discípulos de Jesus",
+					"pagina": 89,
+					"pericopes": [
+						"Jo 1,35-51"
+					]
+				},
+				{
+					"titulo": "VIII. Núpcias de Caná",
+					"pagina": 92,
+					"pericopes": [
+						"Jo 2,1-12"
+					]
+				}
+			]
+		},
+		{
+			"titulo": "III. Da Primeira à Segunda Páscoa",
+			"pagina": 95,
+			"titulos": [
+				{
+					"titulo": "I. Jesus expulsa os vendilhões do Templo",
+					"pagina": 97,
+					"pericopes": [
+						"Jo 2,13-25"
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						""
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						""
+					]
+				}
+			]
+		},
+		{
+			"titulo": "",
+			"pagina": 0,
+			"titulos": [
 				{
 					"titulo": "",
 					"pagina": 0,

@@ -1,8 +1,6 @@
 package zcla71.baudoze.estudos.common.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -12,14 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.common.controller.BauBaseController;
-import zcla71.baudoze.estudos.biblia.concordancia.dto.Concordancia;
-import zcla71.baudoze.estudos.biblia.concordancia.dto.Parte;
-import zcla71.baudoze.estudos.biblia.concordancia.dto.TabelaLinha;
-import zcla71.baudoze.estudos.biblia.concordancia.dto.Titulo;
 import zcla71.baudoze.estudos.biblia.concordancia.service.ConcordanciaService;
 
 @RequiredArgsConstructor 

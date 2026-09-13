@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -68,14 +69,27 @@ public class EstudosController extends BauBaseController {
 		return result;
 	}
 
+	@Deprecated
 	@GetMapping("/biblia/minhas/CNBB2008")
 	public ModelAndView bibliaMinhasCNBB2008() {
 		return getModelAndView("/estudos/biblia/minhas/CNBB2008");
 	}
 
+	@Deprecated
 	@GetMapping("/biblia/minhas/NVETA1986")
 	public ModelAndView bibliaMinhasNVETA1986() {
 		return getModelAndView("/estudos/biblia/minhas/NVETA1986");
+	}
+
+	@GetMapping("/biblia/minhas/{codigo}")
+	public ModelAndView bibliaMinhasMostrar(@PathVariable String codigo) throws StreamReadException, DatabindException, IOException {
+		ModelAndView result = getModelAndView("/estudos/biblia/minhas/mostrar");
+
+		result.addObject("data", Map.of(
+			"biblia", minhasBibliasService.buscaPorCodigo(codigo)
+		));
+
+		return result;
 	}
 
 	// ----- /biblia/texto

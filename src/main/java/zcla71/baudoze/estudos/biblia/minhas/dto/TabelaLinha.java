@@ -7,8 +7,9 @@ import lombok.Data;
 @Data
 public class TabelaLinha {
 	private String codigo;
-	private Integer codigoRowspan = 1;
+	private Integer bibliaRowspan = 1;
 	private String nome;
+	private String nomeVolume;
 	private List<String> editoras;
 	private String edicao;
 	private String publicacao;

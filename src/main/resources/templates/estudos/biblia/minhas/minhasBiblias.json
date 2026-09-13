@@ -2,9 +2,9 @@
 	"biblias": [
 		{
 			"codigo": "NVETA1986",
+			"nome": "Nova Vulgata - Bibliorum Sacrorum Editio - Editio Typica Altera",
 			"volumes": [
 				{
-					"nome": "Nova Vulgata - Bibliorum Sacrorum Editio - Editio Typica Altera",
 					"editoras": [
 						"Libreria Editrice Vaticana"
 					],
@@ -86,9 +86,9 @@
 		},
 		{
 			"codigo": "CNBB2008",
+			"nome": "Bíblia Sagrada - Tradução da CNBB",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada - Tradução da CNBB",
 					"editoras": [
 						"CNBB", "Canção Nova"
 					],
@@ -165,9 +165,9 @@
 		},
 		{
 			"codigo": "CNBB2019",
+			"nome": "Bíblia Sagrada - Tradução Oficial da CNBB",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada - Tradução Oficial da CNBB",
 					"editoras": [
 						"CNBB"
 					],
@@ -183,9 +183,9 @@
 		},
 		{
 			"codigo": "PMS1932T",
+			"nome": "Bíblia Sagrada",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada",
 					"editoras": [
 						"Christus Regnat",
 						"Tradição"
@@ -201,9 +201,9 @@
 		},
 		{
 			"codigo": "PMS1932MBC",
+			"nome": "Bíblia - Tradução do Pe. Matos Soares a partir da Vulgata Clementina (1927-1932)",
 			"volumes": [
 				{
-					"nome": "Bíblia - Tradução do Pe. Matos Soares a partir da Vulgata Clementina (1927-1932)",
 					"editoras": [
 						"Minha Biblioteca Católica"
 					],
@@ -218,9 +218,9 @@
 		},
 		{
 			"codigo": "PMS1956E",
+			"nome": "Bíblia Sagrada",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada",
 					"editoras": [
 						"Ecclesiae"
 					],
@@ -236,9 +236,9 @@
 		},
 		{
 			"codigo": "PMSNT",
+			"nome": "Novo Testamento",
 			"volumes": [
 				{
-					"nome": "Novo Testamento",
 					"editoras": [
 						"Ecclesiae"
 					],
@@ -254,9 +254,9 @@
 		},
 		{
 			"codigo": "PAPF2025",
+			"nome": "Bíblia Católica Sagrada Família",
 			"volumes": [
 				{
-					"nome": "Bíblia Católica Sagrada Família",
 					"editoras": [
 						"PAE"
 					],
@@ -271,9 +271,9 @@
 		},
 		{
 			"codigo": "BSAM1987",
+			"nome": "Bíblia Sagrada",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada",
 					"editoras": [
 						"Ave-Maria"
 					],
@@ -288,9 +288,9 @@
 		},
 		{
 			"codigo": "BSAM2016",
+			"nome": "Bíblia Sagrada - Edição de Estudos",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada - Edição de Estudos",
 					"editoras": [
 						"Ave-Maria"
 					],
@@ -306,9 +306,9 @@
 		},
 		{
 			"codigo": "BJ1987",
+			"nome": "Bíblia de Jerusalém - Nova edição, revista",
 			"volumes": [
 				{
-					"nome": "Bíblia de Jerusalém - Nova edição, revista",
 					"editoras": [
 						"Paulinas"
 					],
@@ -322,9 +322,9 @@
 		},
 		{
 			"codigo": "BJ2002",
+			"nome": "Bíblia de Jerusalém - Nova edição, revista e ampliada",
 			"volumes": [
 				{
-					"nome": "Bíblia de Jerusalém - Nova edição, revista e ampliada",
 					"editoras": [
 						"Paulus"
 					],
@@ -339,9 +339,10 @@
 		},
 		{
 			"codigo": "BN1985",
+			"nome": "Bíblia Sagrada",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada - Santos Evangelhos",
+					"nome": "Santos Evangelhos",
 					"editoras": [
 						"Theologica"
 					],
@@ -354,7 +355,7 @@
 					"formato": "fisico"
 				},
 				{
-					"nome": "Bíblia Sagrada - Actos dos Apóstolos / Epístolas de São Paulo (1)",
+					"nome": "Actos dos Apóstolos / Epístolas de São Paulo (1)",
 					"editoras": [
 						"Theologica"
 					],
@@ -367,7 +368,7 @@
 					"formato": "fisico"
 				},
 				{
-					"nome": "Bíblia Sagrada - Epístolas de São Paulo (2) / Epístolas aos Hebreus / Epístolas Católicas / Apocalipse",
+					"nome": "Epístolas de São Paulo (2) / Epístolas aos Hebreus / Epístolas Católicas / Apocalipse",
 					"editoras": [
 						"Theologica"
 					],
@@ -383,9 +384,9 @@
 		},
 		{
 			"codigo": "BN2016",
+			"nome": "Sagrada Biblia Universidad de Navarra",
 			"volumes": [
 				{
-					"nome": "Sagrada Biblia Universidad de Navarra",
 					"editoras": [
 						"EUNSA"
 					],
@@ -400,9 +401,10 @@
 		},
 		{
 			"codigo": "BN2023",
+			"nome": "Bíblia de Navarra",
 			"volumes": [
 				{
-					"nome": "Bíblia de Navarra, Santos Evangelhos",
+					"nome": "Santos Evangelhos",
 					"editoras": [
 						"Quadrante"
 					],
@@ -415,7 +417,7 @@
 					"formato": "fisico"
 				},
 				{
-					"nome": "Bíblia de Navarra, Atos dos Apóstolos, Cartas Paulinas, Cartas Católicas, Apocalipse de São João",
+					"nome": "Atos dos Apóstolos, Cartas Paulinas, Cartas Católicas, Apocalipse de São João",
 					"editoras": [
 						"Quadrante"
 					],
@@ -431,9 +433,9 @@
 		},
 		{
 			"codigo": "AB2023",
+			"nome": "A Bíblia",
 			"volumes": [
 				{
-					"nome": "A Bíblia",
 					"editoras": [
 						"Paulinas"
 					],
@@ -449,9 +451,9 @@
 		},
 		{
 			"codigo": "BSEP1990",
+			"nome": "Bíblia Sagrada Edição Pastoral",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada Edição Pastoral",
 					"editoras": [
 						"Paulus"
 					],
@@ -466,9 +468,9 @@
 		},
 		{
 			"codigo": "BPas2015",
+			"nome": "Bíblia Pastoral",
 			"volumes": [
 				{
-					"nome": "Bíblia Pastoral",
 					"editoras": [
 						"Paulus"
 					],
@@ -483,9 +485,9 @@
 		},
 		{
 			"codigo": "BPer2017",
+			"nome": "Bíblia do Peregrino",
 			"volumes": [
 				{
-					"nome": "Bíblia do Peregrino",
 					"editoras": [
 						"Paulus"
 					],
@@ -501,9 +503,9 @@
 		},
 		{
 			"codigo": "BPV2022",
+			"nome": "Bíblia Palavra Viva",
 			"volumes": [
 				{
-					"nome": "Bíblia Palavra Viva",
 					"editoras": [
 						"Paulus"
 					],
@@ -518,9 +520,9 @@
 		},
 		{
 			"codigo": "BA2024",
+			"nome": "Bíblia de Aparecida",
 			"volumes": [
 				{
-					"nome": "Bíblia de Aparecida",
 					"editoras": [
 						"Santuário"
 					],
@@ -535,9 +537,9 @@
 		},
 		{
 			"codigo": "BMD2016",
+			"nome": "Bíblia Mensagem de Deus",
 			"volumes": [
 				{
-					"nome": "Bíblia Mensagem de Deus",
 					"editoras": [
 						"Loyola"
 					],
@@ -553,9 +555,9 @@
 		},
 		{
 			"codigo": "TEB2002",
+			"nome": "A Bíblia - Tradução Ecumênica",
 			"volumes": [
 				{
-					"nome": "A Bíblia - Tradução Ecumênica",
 					"editoras": [
 						"Loyola",
 						"Paulinas"
@@ -571,9 +573,9 @@
 		},
 		{
 			"codigo": "TEB2015",
+			"nome": "Bíblia - Tradução Ecumênica",
 			"volumes": [
 				{
-					"nome": "Bíblia - Tradução Ecumênica",
 					"editoras": [
 						"Loyola"
 					],
@@ -589,9 +591,9 @@
 		},
 		{
 			"codigo": "TEB2020",
+			"nome": "Bíblia TEB: notas integrais tradução ecumênica",
 			"volumes": [
 				{
-					"nome": "Bíblia TEB: notas integrais tradução ecumênica",
 					"editoras": [
 						"Loyola"
 					],
@@ -607,9 +609,9 @@
 		},
 		{
 			"codigo": "BSEF2012",
+			"nome": "Bíblia Sagrada Edição da Família",
 			"volumes": [
 				{
-					"nome": "Bíblia Sagrada Edição da Família",
 					"editoras": [
 						"Vozes"
 					],
@@ -625,9 +627,9 @@
 		},
 		{
 			"codigo": "Y2017",
+			"nome": "Bíblia Jovem",
 			"volumes": [
 				{
-					"nome": "Bíblia Jovem",
 					"editoras": [
 						"Paulus"
 					],
@@ -643,9 +645,9 @@
 		},
 		{
 			"codigo": "TICSB2024",
+			"nome": "The Ignatius Catholic Study Bible - Revised Standard Version - Second Catholic Edition",
 			"volumes": [
 				{
-					"nome": "The Ignatius Catholic Study Bible - Revised Standard Version - Second Catholic Edition",
 					"editoras": [
 						"Ignatius"
 					],
@@ -660,6 +662,7 @@
 		},
 		{
 			"codigo": "",
+			"nome": "",
 			"volumes": [
 				{
 					"nome": "",

@@ -19,10 +19,20 @@ import zcla71.baudoze.estudos.biblia.minhas.dto.Volume;
 
 @Service
 public class MinhasBibliasService {
-	public List<TabelaLinha> getTabela() throws StreamReadException, DatabindException, IOException {
+	private MinhasBiblias listaTodas() throws StreamReadException, DatabindException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); // TODO Remover depois de completar
-		MinhasBiblias minhasBiblias = mapper.readValue(getClass().getResourceAsStream("/templates/estudos/biblia/minhas/minhasBiblias.json"), MinhasBiblias.class);
+		return mapper.readValue(getClass().getResourceAsStream("/templates/estudos/biblia/minhas/minhasBiblias.json"), MinhasBiblias.class);
+	}
+
+	public MinhaBiblia buscaPorCodigo(String codigo) throws StreamReadException, DatabindException, IOException {
+		MinhasBiblias minhasBiblias = listaTodas();
+
+		return minhasBiblias.getBiblias().stream().filter(b -> b.getCodigo().equals(codigo)).findFirst().orElseThrow();
+	}
+
+	public List<TabelaLinha> getTabela() throws StreamReadException, DatabindException, IOException {
+		MinhasBiblias minhasBiblias = listaTodas();
 
 		MinhaBiblia ultBiblia = null;
 		TabelaLinha ultLinha = null;
@@ -36,13 +46,14 @@ public class MinhasBibliasService {
 				TabelaLinha linha = new TabelaLinha();
 
 				if (biblia == ultBiblia) {
-					Objects.requireNonNull(ultLinha).setCodigoRowspan(ultLinha.getCodigoRowspan() + 1);
+					Objects.requireNonNull(ultLinha).setBibliaRowspan(ultLinha.getBibliaRowspan() + 1);
 				} else {
 					linha.setCodigo(biblia.getCodigo());
+					linha.setNome(biblia.getNome());
 					ultBiblia = biblia;
 					ultLinha = linha;
 				}
-				linha.setNome(volume.getNome());
+				linha.setNomeVolume(volume.getNome());
 				linha.setEditoras(volume.getEditoras());
 				linha.setEdicao(volume.getEdicao());
 				linha.setPublicacao(volume.getPublicacao());

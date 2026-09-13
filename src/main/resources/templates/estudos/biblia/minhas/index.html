@@ -29,7 +29,7 @@
 					<thead>
 						<tr>
 							<th>Código</th>
-							<th>Nome</th>
+							<th colspan="2">Nome</th>
 							<th>Editora(s)</th>
 							<th>Edição</th>
 							<th>Publicação</th>
@@ -40,8 +40,9 @@
 					</thead>
 					<tbody>
 						<tr th:each="linha : ${data.biblias}">
-							<td th:if="${linha.codigo}" th:rowspan="${linha.codigoRowspan}"><a th:href="|/estudos/biblia/minhas/${linha.codigo}|" th:text="${linha.codigo}"></a></td>
-							<td th:text="${linha.nome}"></td>
+							<td th:if="${linha.codigo}" th:rowspan="${linha.bibliaRowspan}"><a th:href="|/estudos/biblia/minhas/${linha.codigo}|" th:text="${linha.codigo}"></a></td>
+							<td th:if="${linha.nome}" th:text="${linha.nome}" th:rowspan="${linha.bibliaRowspan}" th:colspan="|${linha.bibliaRowspan == 1 ? 2 : 1}|"></td>
+							<td th:if="${linha.nomeVolume}" th:text="${linha.nomeVolume}"></td>
 							<td class="tdWithHorizontalListGroup">
 								<ul class="list-group list-group-horizontal">
 									<li th:each="editora : ${linha.editoras}" class="list-group-item" th:text="${editora}"></li>

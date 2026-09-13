@@ -7,5 +7,6 @@ import lombok.Data;
 @Data
 public class MinhaBiblia {
 	private String codigo;
+	private String nome;
 	private List<Volume> volumes;
 }

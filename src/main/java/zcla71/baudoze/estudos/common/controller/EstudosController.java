@@ -14,12 +14,14 @@ import com.fasterxml.jackson.databind.DatabindException;
 import lombok.RequiredArgsConstructor;
 import zcla71.baudoze.common.controller.BauBaseController;
 import zcla71.baudoze.estudos.biblia.concordancia.service.ConcordanciaService;
+import zcla71.baudoze.estudos.biblia.minhas.service.MinhasBibliasService;
 
 @RequiredArgsConstructor 
 @Controller
 @RequestMapping("/estudos")
 public class EstudosController extends BauBaseController {
 	private final ConcordanciaService concordanciaService;
+	private final MinhasBibliasService minhasBibliasService;
 
 	@GetMapping({"", "/"})
 	public ModelAndView index() {
@@ -56,8 +58,14 @@ public class EstudosController extends BauBaseController {
 	// ----- /biblia/minhas
 
 	@GetMapping("/biblia/minhas")
-	public ModelAndView bibliaMinhas() {
-		return getModelAndView("/estudos/biblia/minhas/index");
+	public ModelAndView bibliaMinhas() throws StreamReadException, DatabindException, IOException {
+		ModelAndView result = getModelAndView("/estudos/biblia/minhas/index");
+
+		result.addObject("data", Map.of(
+			"biblias", minhasBibliasService.getTabela()
+		));
+
+		return result;
 	}
 
 	@GetMapping("/biblia/minhas/CNBB2008")

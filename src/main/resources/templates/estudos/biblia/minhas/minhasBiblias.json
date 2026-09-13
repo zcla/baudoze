@@ -1,0 +1,702 @@
+{
+	"biblias": [
+		{
+			"codigo": "NVETA1986",
+			"volumes": [
+				{
+					"nome": "Nova Vulgata - Bibliorum Sacrorum Editio - Editio Typica Altera",
+					"editoras": [
+						"Libreria Editrice Vaticana"
+					],
+					"publicacao": "1986",
+					"idiomas": [
+						"la-va"
+					],
+					"isbn": "88-209-1523-5",
+					"formato": "pdf",
+					"primeiraEdicao": {
+						"publicacao": "1979",
+						"referencia": "p. IV"
+					},
+					"nihilObstat": {
+						"pessoa": "Papa Ioannes Paulus II",
+						"link": "https://www.catholic-hierarchy.org/bishop/bwojtyla.html"
+					},
+					"textosReferenciados": [
+						{
+							"codigo": "BH",
+							"citacao": "Tamquam norma sumptus est Textus Masorericus ( = TM), critice editus in Bibliis Hebraicis Stutgardiensibus. (Wurttembergische Bibelanstalt, Stuttgart 1967 et deinceps.) Si a textu Masorerico interdum recessimus, in notis criticis rationem emendationis protulimus.",
+							"referencia": "p. XV"
+						},
+						{
+							"codigo": "LXX",
+							"citacao": "Sed etiam ad LXX Interpretum Graecam versionem (= Gr) spectatum est pro antiquitate eiusque acceptione apud Christianos sermonis Graeci. Huius autem versionis illam adhibuimus editionem, quam critice paravit Alfredus Rahlfs, quaeque Stutgardiae anno 1962 edita est. Haec editio, maxima ex parte solis codicibus B S A nixa, etiam Origenis et Ludani recensiones aliosque fontes minores admittit.",
+							"referencia": "p. XV"
+						},
+						{
+							"codigo": "Versões aramaicas",
+							"citacao": "Perpensae quoque et adhibitae sunt antiquae versiones Aramaica, seu quam vocant Targum (= Targ), Syriaca (= Syr), Aquilae (=Aq), Symmachi (= Sym) et Theodotionis (=Theod).",
+							"referencia": "p. XV"
+						},
+						{
+							"codigo": "Vg",
+							"citacao": "Textus Latinus invenitur in Bibliis Sacris iuxta Vulgatam Versionem (= Vg) a Societate Biblica Virtembergensi, Stutgardiae 1969 editis, quam R. Weber recensuit adiuvantibus B. Fischer, I. Gribomont, H. F. D. Sparks, W. Thiele (=ed. critica).",
+							"referencia": "p. XVI"
+						},
+						{
+							"codigo": "GNT",
+							"citacao": "Ut norma et archetypus sumptus est textus Graecus Novi Testamenti editus, inde ab anno 1966 cura nonnullarum Societatum biblicarum, a Conrado Aland, M. Black, C. Martini, B. Metzger, A. Wickgren, qui nostris temporibus, communi consensione, summam habet auctoritatem.",
+							"referencia": "p. XXV"
+						},
+						{
+							"codigo": "NV",
+							"citacao": "Ipse vero, qui recognitus est, textus Latinus continetur Bibliis Sacris iuxta Vulgatam Versionem estque anno 1969 a Sodalitate Biblica Virtembergensi, Stutgardiae sedem habente,(Wiirttembergische Bibelanstalt, Stuttgart.) foras datus, adiuvantibus B. Fischer, I. Gribomont, H.F.D. Sparks, W. Thiele et R. Weber",
+							"referencia": "p. XXV"
+						}
+					],
+					"citacoes": [
+						{
+							"grupo": "Ordem dos livros e numeração",
+							"citacao": "In Nova Vulgata editione idem ordo librorum servatur, qui proprius est editionis Xystinae-Clementinae. Ordo autem numerorum capitum et versiculorum conformatus est numerandi rationi, quae in quibusque textibus primigeniis invenitur. In Psalterio ergo ordo textus Masoretici servatur, ordine Vulgatae editionis intra parentheses posito.",
+							"referencia": "p. XIV"
+						},
+						{
+							"grupo": "Tradução",
+							"citacao": "In qua recognitione efficienda « ad verbum rado habita est veteris textus editionis Vulgatae, ubi videlicet primigenii textus accurate referuntur, quales in hodiernis editionibus, ad criticam rationem exactis, referuntur; prudenter vero ille est emendatus, ubi de iis deflectit vel minus recte eosdem interpretatur. [...] »",
+							"referencia": "p. VI"
+						},
+						{
+							"grupo": "Tradução",
+							"citacao": "Religiose servanda est littera Vulgatae versionis S. Hieronymi quoties haec sensum textus primigenii fideliter reddit et facile intellegitur, nec ansam praebet ad eum minus recte intellegendum vel perperam interpretandum.",
+							"referencia": "p. XI"
+						},
+						{
+							"grupo": "Tradução",
+							"citacao": "Si quando tamen vel in commentariis S. Hieronymi, ut non raro accidit, vel apud SS. Patres, vel in Vetere Latina versione textus primigenius verbis magis accommodatis et claris redditur quam in Vulgata editione, tunc hi modi eligendi esse videntur.",
+							"referencia": "p. XII"
+						},
+						{
+							"grupo": "Tradução",
+							"citacao": "Quod ad nomina propria personarum et locorum attinet, opera est data, praesertim in hac altera editione, ut saltem in eodem libro eademque significatione uniformitas servaretur, praelato, ut patet, scribendi modo certiore aut, in re dubia, editionis Xystinae-Clementinae ratione expressa, quae propius accedit ad formam Graecam, quae, ad hoc quod pertinet, est textu Masoretico antiquior.",
+							"referencia": "p. XIII"
+						}
+					]
+				}
+			]
+		},
+		{
+			"codigo": "CNBB2008",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada - Tradução da CNBB",
+					"editoras": [
+						"CNBB", "Canção Nova"
+					],
+					"edicao": "7ª",
+					"publicacao": "≥2008",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-60263-05-9",
+					"formato": "fisico",
+					"primeiraEdicao": {
+						"publicacao": "2001",
+						"referencia": "CNBB2019, p. 7"
+					},
+					"nihilObstat": {
+						"pessoa": "Dom Walmor Oliveira de Azevedo",
+						"link": "https://www.catholic-hierarchy.org/bishop/bolaz.html"
+					},
+					"imprimatur": {
+						"pessoa": "Dom Geraldo Lyrio Rocha",
+						"link": "https://www.catholic-hierarchy.org/bishop/blyro.html"
+					},
+					"textosReferenciados": [
+						{
+							"codigo": "BH",
+							"citacao": "texto hebraico massorético: Biblia Hebraica Stuttgartensia (ed. 1984)",
+							"referencia": "p. X"
+						},
+						{
+							"codigo": "GNT",
+							"citacao": "NT grego: Greek New Testament (4ª ed. 1994 = Novum Testamentum Graece, de Nestle-Aland, 27ª ed. 1994)",
+							"referencia": "p. X"
+						},
+						{
+							"codigo": "LXX",
+							"citacao": "tradução grega de Alexandria: Septuaginta (ed. A. Rahlfs, reimpr. Stuttgart 1979)",
+							"referencia": "p. X"
+						},
+						{
+							"codigo": "NV",
+							"citacao": "nova tradução latina: Nova Vulgata Bibliorum Sacrorum Editio (2ª ed. típica, 1986)",
+							"referencia": "p. X"
+						},
+						{
+							"codigo": "Vg",
+							"citacao": "antiga tradução \"Vulgata\": Biblia Sacra iuxta Vulgatam Versionem (Stuttgart 1983)",
+							"referencia": "p. X"
+						}
+					],
+					"citacoes": [
+						{
+							"grupo": "Numeração",
+							"citacao": "A numeração de capítulos e versículos seguem a NV, sendo indicadas em subscrito itálico as numerações divergentes encontradas em outras edições.",
+							"referencia": "p. XI"
+						},
+						{
+							"grupo": "Numeração",
+							"citacao": "Os Salmos são numerados conforme as atuais edições do texto hebraico e a Nova Vulgata, trazendo entre ( ) a numeração litúrgica (= antiga Vulgata).",
+							"referencia": "p. XI"
+						},
+						{
+							"grupo": "Tradução",
+							"citacao": "A presente tradução foi, de fato, traduzida destes idiomas originais.",
+							"referencia": "p. 6"
+						},
+						{
+							"grupo": "Tradução",
+							"citacao": "A Nova Vulgata [...] serviu de modelo da presente tradução [...]",
+							"referencia": "p. 8"
+						}
+					]
+				}
+			]
+		},
+		{
+			"codigo": "CNBB2019",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada - Tradução Oficial da CNBB",
+					"editoras": [
+						"CNBB"
+					],
+					"edicao": "2ª",
+					"publicacao": "2019",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-7972-696-5",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "PMS1932T",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada",
+					"editoras": [
+						"Christus Regnat",
+						"Tradição"
+					],
+					"publicacao": "2022",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-65-89613-29-9",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "PMS1932MBC",
+			"volumes": [
+				{
+					"nome": "Bíblia - Tradução do Pe. Matos Soares a partir da Vulgata Clementina (1927-1932)",
+					"editoras": [
+						"Minha Biblioteca Católica"
+					],
+					"publicacao": "2025",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-65-5301-000-0",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "PMS1956E",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada",
+					"editoras": [
+						"Ecclesiae"
+					],
+					"edicao": "1ª",
+					"publicacao": "2021-11",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-65-87135-44-1",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "PMSNT",
+			"volumes": [
+				{
+					"nome": "Novo Testamento",
+					"editoras": [
+						"Ecclesiae"
+					],
+					"edicao": "1ª",
+					"publicacao": "2019-10",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-8491-145-5",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "PAPF2025",
+			"volumes": [
+				{
+					"nome": "Bíblia Católica Sagrada Família",
+					"editoras": [
+						"PAE"
+					],
+					"publicacao": "2025",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-8555581984",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BSAM1987",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada",
+					"editoras": [
+						"Ave-Maria"
+					],
+					"edicao": "58ª",
+					"publicacao": "1987",
+					"idiomas": [
+						"pt-br"
+					],
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BSAM2016",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada - Edição de Estudos",
+					"editoras": [
+						"Ave-Maria"
+					],
+					"edicao": "7ª",
+					"publicacao": "2016",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-276-1302-6",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BJ1987",
+			"volumes": [
+				{
+					"nome": "Bíblia de Jerusalém - Nova edição, revista",
+					"editoras": [
+						"Paulinas"
+					],
+					"publicacao": "1987",
+					"idiomas": [
+						"pt-br"
+					],
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BJ2002",
+			"volumes": [
+				{
+					"nome": "Bíblia de Jerusalém - Nova edição, revista e ampliada",
+					"editoras": [
+						"Paulus"
+					],
+					"publicacao": "2002",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-349-2000-1",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BN1985",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada - Santos Evangelhos",
+					"editoras": [
+						"Theologica"
+					],
+					"publicacao": "1985",
+					"idiomas": [
+						"pt-pt",
+						"la-va"
+					],
+					"isbn": "9788574652108",
+					"formato": "fisico"
+				},
+				{
+					"nome": "Bíblia Sagrada - Actos dos Apóstolos / Epístolas de São Paulo (1)",
+					"editoras": [
+						"Theologica"
+					],
+					"publicacao": "1990",
+					"idiomas": [
+						"pt-pt",
+						"la-va"
+					],
+					"isbn": "9788574652115",
+					"formato": "fisico"
+				},
+				{
+					"nome": "Bíblia Sagrada - Epístolas de São Paulo (2) / Epístolas aos Hebreus / Epístolas Católicas / Apocalipse",
+					"editoras": [
+						"Theologica"
+					],
+					"publicacao": "1991",
+					"idiomas": [
+						"pt-pt",
+						"la-va"
+					],
+					"isbn": "9788574652122",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BN2016",
+			"volumes": [
+				{
+					"nome": "Sagrada Biblia Universidad de Navarra",
+					"editoras": [
+						"EUNSA"
+					],
+					"publicacao": "2016",
+					"idiomas": [
+						"es-es"
+					],
+					"isbn": "9788431355630",
+					"formato": "kindle"
+				}
+			]
+		},
+		{
+			"codigo": "BN2023",
+			"volumes": [
+				{
+					"nome": "Bíblia de Navarra, Santos Evangelhos",
+					"editoras": [
+						"Quadrante"
+					],
+					"edicao": "2ª",
+					"publicacao": "2023",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-7465-577-2",
+					"formato": "fisico"
+				},
+				{
+					"nome": "Bíblia de Navarra, Atos dos Apóstolos, Cartas Paulinas, Cartas Católicas, Apocalipse de São João",
+					"editoras": [
+						"Quadrante"
+					],
+					"edicao": "1ª",
+					"publicacao": "2024",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-7465-623-6",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "AB2023",
+			"volumes": [
+				{
+					"nome": "A Bíblia",
+					"editoras": [
+						"Paulinas"
+					],
+					"edicao": "1ª",
+					"publicacao": "2023",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-65-5808-213-2",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BSEP1990",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada Edição Pastoral",
+					"editoras": [
+						"Paulus"
+					],
+					"publicacao": "1990",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-349-1257-0",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BPas2015",
+			"volumes": [
+				{
+					"nome": "Bíblia Pastoral",
+					"editoras": [
+						"Paulus"
+					],
+					"publicacao": "2015",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-349-4672-8",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BPer2017",
+			"volumes": [
+				{
+					"nome": "Bíblia do Peregrino",
+					"editoras": [
+						"Paulus"
+					],
+					"edicao": "3ª",
+					"publicacao": "2017",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-349-2005-6",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BPV2022",
+			"volumes": [
+				{
+					"nome": "Bíblia Palavra Viva",
+					"editoras": [
+						"Paulus"
+					],
+					"publicacao": "2022",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-65-5562-686-5",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BA2024",
+			"volumes": [
+				{
+					"nome": "Bíblia de Aparecida",
+					"editoras": [
+						"Santuário"
+					],
+					"publicacao": "2024",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "9788536900759",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BMD2016",
+			"volumes": [
+				{
+					"nome": "Bíblia Mensagem de Deus",
+					"editoras": [
+						"Loyola"
+					],
+					"edicao": "3ª",
+					"publicacao": "2016-06",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-15-02449-0",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "TEB2002",
+			"volumes": [
+				{
+					"nome": "A Bíblia - Tradução Ecumênica",
+					"editoras": [
+						"Loyola",
+						"Paulinas"
+					],
+					"publicacao": "2002-03",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "85-15-01258-8",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "TEB2015",
+			"volumes": [
+				{
+					"nome": "Bíblia - Tradução Ecumênica",
+					"editoras": [
+						"Loyola"
+					],
+					"edicao": "2ª",
+					"publicacao": "2015",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-15-03016-3",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "TEB2020",
+			"volumes": [
+				{
+					"nome": "Bíblia TEB: notas integrais tradução ecumênica",
+					"editoras": [
+						"Loyola"
+					],
+					"edicao": "3ª",
+					"publicacao": "2020",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-15-03016-3",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "BSEF2012",
+			"volumes": [
+				{
+					"nome": "Bíblia Sagrada Edição da Família",
+					"editoras": [
+						"Vozes"
+					],
+					"edicao": "51ª",
+					"publicacao": "2012",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "9788532602985",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "Y2017",
+			"volumes": [
+				{
+					"nome": "Bíblia Jovem",
+					"editoras": [
+						"Paulus"
+					],
+					"edicao": "1ª",
+					"publicacao": "2017",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-349-4569-1",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "TICSB2024",
+			"volumes": [
+				{
+					"nome": "The Ignatius Catholic Study Bible - Revised Standard Version - Second Catholic Edition",
+					"editoras": [
+						"Ignatius"
+					],
+					"publicacao": "2024",
+					"idiomas": [
+						"en-us"
+					],
+					"isbn": "978-1-58617-613-6",
+					"formato": "fisico"
+				}
+			]
+		},
+		{
+			"codigo": "",
+			"volumes": [
+				{
+					"nome": "",
+					"editoras": [],
+					"edicao": "",
+					"publicacao": "",
+					"idiomas": [],
+					"isbn": "",
+					"formato": "",
+					"primeiraEdicao": {
+						"publicacao": "",
+						"referencia": ""
+					},
+					"nihilObstat": {
+						"pessoa": "",
+						"link": ""
+					},
+					"imprimatur": {
+						"pessoa": "",
+						"link": ""
+					},
+					"textosReferenciados": [
+						{
+							"codigo": "",
+							"citacao": "",
+							"referencia": ""
+						}
+					],
+					"citacoes": [
+						{
+							"grupo": "",
+							"citacao": "",
+							"referencia": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

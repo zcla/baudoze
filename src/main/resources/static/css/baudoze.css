@@ -34,3 +34,20 @@ footer p {
     padding-left: 1rem;
     font-style: italic;
 }
+
+/* Para usar em elementos td com <ul class="list-group list-group-horizontal">, para melhorar a aparência. */
+
+.tdWithHorizontalListGroup {
+    gap: 0.5rem;
+}
+
+.tdWithHorizontalListGroup li {
+    background-color: transparent;
+    border-style: none;
+    padding: 0;
+}
+
+.tdWithHorizontalListGroup ul > li + li {
+    border-left: 1px solid var(--bs-list-group-border-color) !important;
+    padding-left: 0.5rem;
+}

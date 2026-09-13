@@ -37,7 +37,7 @@ footer p {
 
 /* Para usar em elementos td com <ul class="list-group list-group-horizontal">, para melhorar a aparência. */
 
-.tdWithHorizontalListGroup {
+.tdWithHorizontalListGroup ul {
     gap: 0.5rem;
 }
 

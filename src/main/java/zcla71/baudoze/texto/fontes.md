@@ -45,6 +45,12 @@
 * biblia.com
   * `xhtml` [la] https://biblia.com/books/vulgataclem Vulgata Clementina (parece haver uma espécie de API)
 
+* newadvent.org
+  * `html` [el/en/la] https://www.newadvent.org/bible/ Greek + Knox + Latin, lado a lado
+
+* catholicbible.online
+  * `html` [la/en] https://catholicbible.online/ Vulgate + Douay-Rheims + Knox, lado a lado.
+
 * github.com/scrollmapper - dezenas de versões em dezenas de línguas; não sei se há católicas.
   * `json` [várias] https://github.com/scrollmapper/bible_databases/tree/master/sources
   * `json` [la] https://github.com/scrollmapper/bible_databases/tree/master/sources/la - várias versões da vulgata
@@ -117,9 +123,6 @@
 * bibliaonline.com.br
   * https://www.bibliaonline.com.br/vc/livros "Versão católica"
 
-* catholicbible.online
-  * https://catholicbible.online/ Vulgate + Douay-Rheims + Knox, lado a lado.
-
 * clerus.org https://www.clerus.org/bibliaclerusonline/pt/index.htm
   * [de] https://www.clerus.org/bibliaclerusonline/de/66c.htm
   * [en] https://www.clerus.org/bibliaclerusonline/en/66c.htm
@@ -143,9 +146,6 @@
 
 * liturgiacatolica.com
   * https://www.liturgiacatolica.com/ (só alguns livros, mas também Catecismo e alguns documentos oficiais da Igreja)
-
-* newadvent.org
-  * [el/en/la] https://www.newadvent.org/bible/ Greek + Knox + Latin, lado a lado
 
 * paroquiadasgracas.com
   * [pt-br] https://www.paroquiadasgracas.com/biblia Parece ser a CNBB antiga

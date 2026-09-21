@@ -202,17 +202,532 @@
 					]
 				},
 				{
+					"titulo": "II. Conferência com Nicodemus",
+					"pagina": 98,
+					"pericopes": [
+						"Jo 3,1-21"
+					]
+				},
+				{
+					"titulo": "III. Quarto testemunho de São João",
+					"pagina": 101,
+					"pericopes": [
+						"Jo 3,22-36"
+					]
+				},
+				{
+					"titulo": "IV. Herodes manda encarcerar a São João",
+					"pagina": 102,
+					"pericopes": [
+						"Mt 14,3-4",
+						"Mc 6,17-18",
+						"Lc 3,19-20"
+					]
+				},
+				{
+					"titulo": "V. Jesus volta para a Galileia",
+					"pagina": 103,
+					"pericopes": [
+						"Mt 4,12",
+						"Lc 3,14",
+						"Jo 4,4"
+					]
+				},
+				{
+					"titulo": "VI. A Samaritana",
+					"pagina": 103,
+					"pericopes": [
+						"Jo 4,5-42"
+					]
+				},
+				{
+					"titulo": "VII. Jesus na sinagoga - O filho do oficial",
+					"pagina": 110,
+					"pericopes": [
+						"Lc 4,14-15",
+						"Jo 4,43-54"
+					]
+				},
+				{
+					"titulo": "VIII. Jesus, expulso de Nazaré, vem a Cafarnaum",
+					"pagina": 112,
+					"pericopes": [
+						"Lc 4,16-32",
+						"Mt 4,13-16"
+					]
+				},
+				{
+					"titulo": "IX. Vocação de Pedro e André, de Tiago e João",
+					"pagina": 115,
+					"pericopes": [
+						"Mt 4,18-22",
+						"Mc 1,16-22",
+						"Lc 4,31"
+					]
+				},
+				{
+					"titulo": "X. O possesso de Cafarnaum",
+					"pagina": 116,
+					"pericopes": [
+						"Mc 1,23-28",
+						"Lc 4,33-35"
+					]
+				},
+				{
+					"titulo": "XI. A sogra de São Pedro - Curas diversas",
+					"pagina": 117,
+					"pericopes": [
+						"Mt 8,14-17",
+						"Mc 1,29-38",
+						"Lc 4,38-43"
+					]
+				},
+				{
+					"titulo": "XII. Pregação na Galileia - A pesca milagrosa",
+					"pagina": 119,
+					"pericopes": [
+						"Mt 4,23-25",
+						"Mc 1,39",
+						"Lc 5,1-11"
+					]
+				},
+				{
+					"titulo": "XIII. Cura de um leproso",
+					"pagina": 121,
+					"pericopes": [
+						"Mt 8,2-4",
+						"Mc 1,40-45",
+						"Lc 5,12-14"
+					]
+				},
+				{
+					"titulo": "XIV. O paralítico de Cafarnaum",
+					"pagina": 124,
+					"pericopes": [
+						"Mt 9,1-8",
+						"Mc 2,1-12",
+						"Lc 5,17-26"
+					]
+				},
+				{
+					"titulo": "XV. Vocação de São Mateus - O festim",
+					"pagina": 126,
+					"pericopes": [
+						"Mt 9,9-13",
+						"Mc 2,13-17",
+						"Lc 5,27-32"
+					]
+				},
+				{
+					"titulo": "XVI. O jejum - O vinho novo - Os odres",
+					"pagina": 127,
+					"pericopes": [
+						"Mt 9,14-17",
+						"Mc 2,18-22",
+						"Lc 5,33-39"
+					]
+				},
+				{
+					"titulo": "XVII. A Hemorroíssa - Ressurreição da filha de Jairo",
+					"pagina": 129,
+					"pericopes": [
+						"Mt 9,18-26",
+						"Mc 5,22-43",
+						"Lc 8,41-58"
+					]
+				}
+			]
+		},
+		{
+			"titulo": "IV. Da Segunda à Terceira Páscoa",
+			"pagina": 135,
+			"titulos": [
+				{
+					"titulo": "I. A piscina probática - O paralítico",
+					"pagina": 137,
+					"pericopes": [
+						"Jo 5,1-47"
+					]
+				},
+				{
+					"titulo": "II. As espigas de trigo",
+					"pagina": 142,
+					"pericopes": [
+						"Mt 12,1-8",
+						"Mc 2,23-28",
+						"Lc 6,1-5"
+					]
+				},
+				{
+					"titulo": "III. A mão seca - Bondade de Jesus - Numerosos milagres",
+					"pagina": 144,
+					"pericopes": [
+						"Mt 12,9-21",
+						"Lc 6,6-11",
+						"Mc 3,7-12"
+					]
+				},
+				{
+					"titulo": "IV. A eleição dos doze",
+					"pagina": 147,
+					"pericopes": [
+						"Mt 10,2-4",
+						"Mc 3,13-19",
+						"Lc 6,13-16"
+					]
+				},
+				{
+					"titulo": "V. O Sermão da montanha",
+					"pagina": 149,
+					"pericopes": [
+						"Mt 5",
+						"Lc 6"
+					]
+				},
+				{
+					"titulo": "VI. O Sermão da Montanha (continuação)",
+					"pagina": 161,
+					"pericopes": [
+						"Mt 6"
+					]
+				},
+				{
+					"titulo": "VII. O Sermão da Montanha (continuação)",
+					"pagina": 169,
+					"pericopes": [
+						"Mt 7",
+						"Lc 6"
+					]
+				},
+				{
+					"titulo": "VIII. O Centurião",
+					"pagina": 174,
+					"pericopes": [
+						"Mt 8,1,5-13",
+						"Lc 7,1-10"
+					]
+				},
+				{
+					"titulo": "IX. A Viúva de Naim",
+					"pagina": 175,
+					"pericopes": [
+						"Lc 7,11-18"
+					]
+				},
+				{
+					"titulo": "X. A Mensagem de João",
+					"pagina": 177,
+					"pericopes": [
+						"Mt 11,2-19",
+						"Lc 7,18-35"
+					]
+				},
+				{
+					"titulo": "XI. A Mulher pecadora",
+					"pagina": 180,
+					"pericopes": [
+						"Lc 7,36-50"
+					]
+				},
+				{
+					"titulo": "XII. As santas mulheres - Os parentes de Jesus",
+					"pagina": 184,
+					"pericopes": [
+						"Lc 8,1-3",
+						"Mc 3,20-21"
+					]
+				},
+				{
+					"titulo": "XIII. O demoníaco cego",
+					"pagina": 185,
+					"pericopes": [
+						"Mt 12,22-23"
+					]
+				},
+				{
+					"titulo": "XIV. A blasfêmia contra o Espírito Santo",
+					"pagina": 185,
+					"pericopes": [
+						"Mt 12,24-37",
+						"Mc 3,22-30"
+					]
+				},
+				{
+					"titulo": "XV. Jonas - Os ninivitas - A rainha de Sabá",
+					"pagina": 188,
+					"pericopes": [
+						"Mt 12,38-42",
+						"Lc 11,29-33"
+					]
+				},
+				{
+					"titulo": "XVI. O Espírito imundo",
+					"pagina": 189,
+					"pericopes": [
+						"Mt 12,43-45",
+						"Lc 11,24-26"
+					]
+				},
+				{
+					"titulo": "XVII. A mãe e os irmãos de Jesus",
+					"pagina": 190,
+					"pericopes": [
+						"Mt 12,46-50",
+						"Mc 3,31-35",
+						"Lc 8,19-21"
+					]
+				},
+				{
+					"titulo": "XVIII. Parábolas - O semeador",
+					"pagina": 192,
+					"pericopes": [
+						"Mt 13,1-9",
+						"Mc 4,3",
+						"Lc 8,8"
+					]
+				},
+				{
+					"titulo": "XIX. O joio",
+					"pagina": 193,
+					"pericopes": [
+						"Mt 13,24-30"
+					]
+				},
+				{
+					"titulo": "XX. O grão de mostarda - O fermento",
+					"pagina": 195,
+					"pericopes": [
+						"Mt 13,31-35",
+						"Mc 4,30-34"
+					]
+				},
+				{
+					"titulo": "XXI. Explicação da parábola do semeador",
+					"pagina": 196,
+					"pericopes": [
+						"Mt 13,10-23",
+						"Mc 4,10-20",
+						"Lc 8,9-15"
+					]
+				},
+				{
+					"titulo": "XXII. A luz sob o alqueire",
+					"pagina": 200,
+					"pericopes": [
+						"Mc 4,21-25",
+						"Lc 8,16-18"
+					]
+				},
+				{
+					"titulo": "XXIII. Como se desenvolve a semente",
+					"pagina": 201,
+					"pericopes": [
+						"Mc 4,26-29"
+					]
+				},
+				{
+					"titulo": "XXIV. Explicação da parábola do joio",
+					"pagina": 202,
+					"pericopes": [
+						"Mt 13,36-43"
+					]
+				},
+				{
+					"titulo": "XXV. O tesouro escondido - A pérola preciosa - A rede",
+					"pagina": 203,
+					"pericopes": [
+						"Mt 13,44-52"
+					]
+				},
+				{
+					"titulo": "XXVI. A tempestade aplacada",
+					"pagina": 205,
+					"pericopes": [
+						"Mt 8,23-27",
+						"Mc 4,36-40",
+						"Lc 8,22-25"
+					]
+				},
+				{
+					"titulo": "XXVII. A legião de demônios - A vara dos porcos",
+					"pagina": 206,
+					"pericopes": [
+						"Mt 8,28-34",
+						"Mc 5,1-20",
+						"Lc 8,27-33"
+					]
+				},
+				{
+					"titulo": "XXVIII. Jesus desprezado em Nazaré",
+					"pagina": 209,
+					"pericopes": [
+						"Mt 8,53-58",
+						"Mc 6,1-6"
+					]
+				},
+				{
+					"titulo": "XXIX. Missão na Galileia",
+					"pagina": 210,
+					"pericopes": [
+						"Mt 9,35-38"
+					]
+				},
+				{
+					"titulo": "XXX. Missão dos doze - Avisos de Jesus",
+					"pagina": 211,
+					"pericopes": [
+						"Mt 10,1-42;11,1",
+						"Mc 6,7-13",
+						"Lc 9,1-6"
+					]
+				},
+				{
+					"titulo": "XXXI. Martírio de João Batista",
+					"pagina": 216,
+					"pericopes": [
+						"Mt 14,1-12",
+						"Mc 6,14-29",
+						"Lc 9,2-9"
+					]
+				},
+				{
+					"titulo": "XXXII. A Primeira multiplicação dos pães",
+					"pagina": 220,
+					"pericopes": [
+						"Mt 14,13-24",
+						"Lc 9,10-17",
+						"Mc 6,30-46",
+						"Jo 6,1-15"
+					]
+				},
+				{
+					"titulo": "XXXIII. Jesus caminha sobre as ondas",
+					"pagina": 225,
+					"pericopes": [
+						"Mt 14,22-33",
+						"Mc 6,47-52",
+						"Jo 6,16-21"
+					]
+				},
+				{
+					"titulo": "XXXIV. Curas diversas em Genesaré",
+					"pagina": 228,
+					"pericopes": [
+						"Mt 14,34-36",
+						"Mc 6,53-56"
+					]
+				},
+				{
+					"titulo": "XXXV. Promessa da Instituição da S. Eucaristia",
+					"pagina": 229,
+					"pericopes": [
+						"Jo 6,22-72"
+					]
+				}
+			]
+		},
+		{
+			"titulo": "Quinta parte: Da Terceira Páscoa à Festa dos Tabernáculos",
+			"pagina": 237,
+			"titulos": [
+				{
 					"titulo": "",
 					"pagina": 0,
 					"pericopes": [
-						""
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
 					]
 				},
 				{
 					"titulo": "",
 					"pagina": 0,
 					"pericopes": [
-						""
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
 					]
 				}
 			]
@@ -225,7 +740,10 @@
 					"titulo": "",
 					"pagina": 0,
 					"pericopes": [
-						""
+						"Mt ",
+						"Lc ",
+						"Mc ",
+						"Jo "
 					]
 				}
 			]

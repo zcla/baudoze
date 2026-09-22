@@ -55,6 +55,11 @@
   * APIs ISBN (tem mais; buscar no Google):
     * https://brasilapi.com.br/api/isbn/v1/<isbn>
     * https://openlibrary.org/isbn/<isbn>.json
+* calendário litúrgico
+  * Atual
+    * https://zcla71.netlify.app/calendarioliturgico -> https://www.dropbox.com/home/Dropbox.old/zcla71
+  * Tradicional
+    * https://www.arsenalcatolico.com.br/calendario-liturgico-tradicional/
 * takeout (D:\dados\arquivo\takeout)
   * Google
   * Samsung Health

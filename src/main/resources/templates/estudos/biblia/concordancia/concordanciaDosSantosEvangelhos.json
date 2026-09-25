@@ -627,107 +627,137 @@
 			]
 		},
 		{
-			"titulo": "Quinta parte: Da Terceira Páscoa à Festa dos Tabernáculos",
+			"titulo": "V. Da Terceira Páscoa à Festa dos Tabernáculos",
 			"pagina": 237,
 			"titulos": [
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "I. Tradições farisaicas",
+					"pagina": 239,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 15,1-20",
+						"Mc 7,1-23",
+						"Jo 7,1"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "II. A cananeia",
+					"pagina": 244,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 15,21-28",
+						"Mc 7,24-30"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "III. O surdo-mudo",
+					"pagina": 246,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mc 7,31-37"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "IV. A Segunda multiplicação dos pães",
+					"pagina": 247,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 15,29-38",
+						"Mc 8,1-9"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "V. Jesus em Dalmanuta - O fermento",
+					"pagina": 248,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 15,39;16,1-12",
+						"Mc 8,10-21"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "VI. O cego de Betsaida",
+					"pagina": 250,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mc 8,22-26"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "VII. A confissão de S. Pedro e sua primazia",
+					"pagina": 251,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 16,13-19",
+						"Mc 8,27-29",
+						"Lc 9,18-20"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "VIII. Jesus profetiza, pela primeira vez, sua Paixão",
+					"pagina": 253,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 16,20-28",
+						"Mc 8,30-39",
+						"Lc 9,21-27"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "IX. A transfiguração",
+					"pagina": 256,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 17,1-13",
+						"Mc 9,1-12",
+						"Lc 9,28-36"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "X. O jovem lunático",
+					"pagina": 259,
 					"pericopes": [
-						"Mt ",
-						"Lc ",
-						"Mc ",
-						"Jo "
+						"Mt 17,14-21",
+						"Mc 9,13-29",
+						"Lc 9,37-44"
+					]
+				},
+				{
+					"titulo": "XI. Segunda profecia da Paixão",
+					"pagina": 262,
+					"pericopes": [
+						"Mt 18,21-23",
+						"Mc 9,30-31",
+						"Lc 9,44-45"
+					]
+				},
+				{
+					"titulo": "XII. O imposto do templo",
+					"pagina": 263,
+					"pericopes": [
+						"Mt 17,23-26"
+					]
+				},
+				{
+					"titulo": "XIII. Rivalidade dos Apóstolos",
+					"pagina": 264,
+					"pericopes": [
+						"Mt 18,1-5",
+						"Mc 9,32-40",
+						"Lc 9,46-50"
+					]
+				},
+				{
+					"titulo": "XIV. O escândalo - A Ovelha desgarrada",
+					"pagina": 266,
+					"pericopes": [
+						"Mt 18,6-14",
+						"Mc 9,41-49"
+					]
+				},
+				{
+					"titulo": "XV. A correção fraterna",
+					"pagina": 269,
+					"pericopes": [
+						"Mt 18,15-20"
+					]
+				},
+				{
+					"titulo": "XVI. O perdão das injúrias",
+					"pagina": 270,
+					"pericopes": [
+						"Mt 18,21-35"
 					]
 				}
 			]
@@ -741,8 +771,8 @@
 					"pagina": 0,
 					"pericopes": [
 						"Mt ",
-						"Lc ",
 						"Mc ",
+						"Lc ",
 						"Jo "
 					]
 				}

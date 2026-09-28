@@ -28,157 +28,106 @@
 			</h1>
 			<div id="anotacoes" class="mb-3">
 				<div class="row">
-					<div class="col">
+					<div th:each="volume : ${data.biblia.volumes}" class="col">
 						<div class="card">
 							<div class="card-header">
-								<h5 class="card-title">Detalhes</h5>
+								<h5 th:if="${volume.nome != null}" class="card-title" th:text="${volume.nome}"></h5>
+								<h5 th:if="${volume.nome == null}" class="card-title">Detalhes</h5>
 							</div>
 							<div class="card-body">
 								<table class="table table-sm table-borderless table-hover">
 									<tbody>
 										<tr>
-											<th>Código</th>
-											<td th:text="${data.biblia.codigo}"></td>
-										</tr>
-										<tr>
-											<th>Nome</th>
-											<td th:text="${data.biblia.nome}"></td>
-										</tr>
-										<tr>
 											<th>Editoras</th>
-											<td>CNBB, Canção Nova</td>
+											<td>
+												<div th:each="editora : ${volume.editoras}">
+													<span th:text="${editora}"></span>
+												</div>
+											</td>
 										</tr>
-										<tr>
+										<tr th:if="${volume.edicao}">
 											<th>Edição</th>
-											<td>7ª</td>
+											<td th:text="${volume.edicao}"></td>
 										</tr>
 										<tr>
 											<th>Publicação</th>
-											<td>≥2008</td>
+											<td th:text="${volume.publicacao}"></td>
 										</tr>
 										<tr>
-											<th>Idioma</th>
-											<td><span class="fi fi-br"></span> pt-br</td>
+											<th>Idiomas</th>
+											<td>
+												<div th:each="idioma : ${volume.idiomas}">
+													<span th:class="|fi fi-${#strings.arraySplit(idioma, '-')[1]}|"></span>
+													<span th:text="${idioma}"></span>
+												</div>
+											</td>
 										</tr>
 										<tr>
 											<th>ISBN</th>
-											<td>978-85-60263-05-9</td>
+											<td th:text="${volume.isbn}"></td>
 										</tr>
 										<tr>
 											<th>Formato</th>
-											<td>Física</td>
+											<td th:text="${volume.formatoDisplay}"></td>
 										</tr>
-										<tr>
+										<tr th:if="${volume.primeiraEdicao}">
 											<th>Primeira edição</th>
-											<!-- TODO href -->
-											<td>2001 <i>(<a href="/estudos/biblia/minhas/CNBB2019">CNBB2019</a>, p. 7)</i></td>
+											<td>
+												<span th:text="${volume.primeiraEdicao.publicacao}"></span>
+												<i th:if="${volume.primeiraEdicao.referencia}">
+													<span th:text="|(${volume.primeiraEdicao.referencia})|"></span>
+												</i>
+											</td>
 										</tr>
-										<tr>
+										<tr th:if="${volume.nihilObstat}">
 											<th>Nihil obstat</th>
-											<td>Dom <a href="https://www.catholic-hierarchy.org/bishop/bolaz.html" target="_blank">Walmor Oliveira de Azevedo</a></td>
+											<td><a th:href="${volume.nihilObstat.link}" target="_blank" th:text="${volume.nihilObstat.nome}"></a></td>
 										</tr>
-										<tr>
+										<tr th:if="${volume.imprimatur}">
 											<th>Imprimatur</th>
-											<td>Dom <a href="https://www.catholic-hierarchy.org/bishop/blyro.html" target="_blank">Geraldo Lyrio Rocha</a></td>
+											<td><a th:href="${volume.imprimatur.link}" target="_blank" th:text="${volume.imprimatur.nome}"></a></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
-					<div class="col">
+					<div th:if="${data.biblia.fontes}" class="col">
 						<div class="card">
 							<div class="card-header">
-								<h5 class="card-title">Textos referenciados</h5>
+								<h5 class="card-title">Fontes</h5>
 							</div>
 							<div class="card-body">
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item"><b>BH</b> texto hebraico massorético: <i>Biblia Hebraica Stuttgartensia</i> (ed. 1984) <i>(p. X)</i></li>
-									<li class="list-group-item"><b>GNT</b> NT grego: <i>Greek New Testament</i> (4ª ed. 1994 = <i>Novum Testamentum Graece</i>, de Nestle-Aland, 27ª ed. 1994) <i>(p. X)</i></li>
-									<li class="list-group-item"><b>LXX</b> tradução grega de Alexandria: <i>Septuaginta</i> (ed. A. Rahlfs, reimpr. Stuttgart 1979) <i>(p. X)</i></li>
-									<li class="list-group-item"><b>NV</b> nova tradução latina: <i>Nova Vulgata Bibliorum Sacrorum Editio</i> (2ª ed. típica, 1986) <i>(p. X)</i></li>
-									<li class="list-group-item"><b>Vg</b> antiga tradução "Vulgata": <i>Biblia Sacra iuxta Vulgatam Versionem</i> (Stuttgart 1983) <i>(p. X)</i></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="card-title">Numeração</h5>
-							</div>
-							<div class="card-body">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">
-										<blockquote class="blockquote">A numeração de capítulos e versículos seguem a NV, sendo indicadas em subscrito itálico as numerações divergentes encontradas em outras edições.</blockquote>
-										<figcaption class="blockquote-footer">p. XI</figcaption>
-									</li>
-									<li class="list-group-item">
-										<blockquote class="blockquote">Os Salmos são numerados conforme as atuais edições do texto hebraico e a Nova Vulgata, trazendo entre ( ) a numeração litúrgica (= antiga Vulgata).</blockquote>
-										<figcaption class="blockquote-footer">p. XI</figcaption>
+									<li th:each="fonte : ${data.biblia.fontes}" class="list-group-item">
+										<b th:text="${fonte.codigo}"></b>
+										<span th:text="${fonte.citacao}" class="formatarMarkDown"></span>
+										<i th:text="|(${fonte.referencia})|"></i>
 									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="col">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="card-title">Tradução</h5>
-							</div>
-							<div class="card-body">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">
-										<blockquote class="blockquote">A presente tradução foi, de fato, traduzida destes idiomas originais.</blockquote>
-										<figcaption class="blockquote-footer">p. 6</figcaption>
-									</li>
-									<li class="list-group-item">
-										<blockquote class="blockquote">A Nova Vulgata <i>[...]</i> serviu de modelo da presente tradução <i>[...]</i></blockquote>
-										<figcaption class="blockquote-footer">p. 8</figcaption>
-									</li>
-								</ul>
+					<th:block th:if="${data.biblia.citacaoGrupos}">
+						<div th:each="grupo : ${data.biblia.citacaoGrupos}" class="col">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title" th:text="${grupo.nome}"></h5>
+								</div>
+								<div class="card-body">
+									<ul class="list-group list-group-flush">
+										<li th:each="citacao : ${grupo.citacoes}" class="list-group-item">
+											<blockquote class="blockquote formatarMarkDown" th:text="${citacao.citacao}"></blockquote>
+											<figcaption class="blockquote-footer" th:text="${citacao.referencia}">p. XI</figcaption>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
-					</div>
+					</th:block>
 					<div class="col-auto">
 						<div class="card">
-							<img th:src=@{/estudos/biblia/minhas/img/CNBB2008.jpg}>
-						</div>
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="card-title">Organização <i>(Índice; p. IX)</i></h5>
-							</div>
-							<div class="card-body">
-								<table class="table table-sm table-bordered table-hover">
-									<tbody>
-										<tr>
-											<th rowspan="4">Antigo Testamento</th>
-											<th>Pentateuco</th>
-											<td>Gênesis &bull; Êxodo &bull; Levítico &bull; Números &bull; Deuteronômio</td>
-										</tr>
-										<tr>
-											<th>Livros históricos</th>
-											<td>Josué &bull; Juízes &bull; Rute &bull; 1 Samuel &bull; 2 Samuel &bull; 1 Reis &bull; 2 Reis &bull; 1 Crônicas &bull; 2 Crônicas &bull; Esdras &bull; Neemias &bull; Tobias &bull; Judite &bull; Ester &bull; 1 Macabeus &bull; 2 Macabeus</td>
-										</tr>
-										<tr>
-											<th>Livros sapienciais</th>
-											<td>Jó &bull; Salmos &bull; Provérbios &bull; Eclesiastes &bull; Cântico dos Cânticos &bull; Sabedoria &bull; Eclesiástico</td>
-										</tr>
-										<tr>
-											<th>Profetas</th>
-											<td>Isaías &bull; Jeremias &bull; Lamentações &bull; Baruc &bull; Ezequiel &bull; Daniel &bull; Oseias &bull; Joel &bull; Amós &bull; Abdias &bull; Jonas &bull; Miquéias &bull; Naum &bull; Habacuc &bull; Sofonias &bull; Ageu &bull; Zacarias &bull; Malaquias</td>
-										</tr>
-										<tr>
-											<th colspan="2">Novo Testamento</th>
-											<td>Mateus &bull; Marcos &bull; Lucas &bull; João &bull; Atos dos Apóstolos &bull; Romanos &bull; 1 Coríntios &bull; 2 Coríntios &bull; Gálatas &bull; Efésios &bull; Filipenses &bull; Colossenses &bull; 1 Tessalonicenses &bull; 2 Tessalonicenses &bull; 1 Timóteo &bull; 2 Timóteo &bull; Tito &bull; Filêmon &bull; Hebreus &bull; Tiago &bull; 1 Pedro &bull; 2 Pedro &bull; 1 João &bull; 2 João &bull; 3 João &bull; Judas &bull; Apocalipse</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+							<img th:src="|/estudos/biblia/minhas/img/${data.biblia.codigo}.jpg|">
 						</div>
 					</div>
 				</div>

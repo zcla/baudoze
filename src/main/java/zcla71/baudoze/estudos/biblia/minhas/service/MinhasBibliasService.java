@@ -59,12 +59,7 @@ public class MinhasBibliasService {
 				linha.setPublicacao(volume.getPublicacao());
 				linha.setIdiomas(volume.getIdiomas());
 				linha.setIsbn(volume.getIsbn());
-				linha.setFormato(switch (volume.getFormato()) {
-					case "fisico" -> "Física";
-					case "kindle" -> "Kindle";
-					case "pdf" -> "PDF";
-					default -> volume.getFormato();
-				});
+				linha.setFormato(volume.getFormatoDisplay());
 
 				result.add(linha);
 			}

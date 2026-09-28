@@ -146,3 +146,8 @@ class Ui {
 		document.body.style.overflow = "";
 	}
 }
+
+// Formatação MarkDown
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.formatarMarkDown').forEach(el => el.innerHTML = marked.parseInline(el.textContent));
+});

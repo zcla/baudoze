@@ -69,14 +69,15 @@ public class EstudosController extends BauBaseController {
 		return result;
 	}
 
+	// TODO Temporários, enquanto termino a /biblia/minhas/{codigo}
 	@Deprecated
-	@GetMapping("/biblia/minhas/CNBB2008")
+	@GetMapping("/biblia/minhas/CNBB2008x")
 	public ModelAndView bibliaMinhasCNBB2008() {
 		return getModelAndView("/estudos/biblia/minhas/CNBB2008");
 	}
 
 	@Deprecated
-	@GetMapping("/biblia/minhas/NVETA1986")
+	@GetMapping("/biblia/minhas/NVETA1986x")
 	public ModelAndView bibliaMinhasNVETA1986() {
 		return getModelAndView("/estudos/biblia/minhas/NVETA1986");
 	}

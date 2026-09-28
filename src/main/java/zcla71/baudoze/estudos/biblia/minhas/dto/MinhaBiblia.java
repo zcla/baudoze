@@ -9,4 +9,6 @@ public class MinhaBiblia {
 	private String codigo;
 	private String nome;
 	private List<Volume> volumes;
+	private List<Fonte> fontes;
+	private List<CitacaoGrupo> citacaoGrupos;
 }

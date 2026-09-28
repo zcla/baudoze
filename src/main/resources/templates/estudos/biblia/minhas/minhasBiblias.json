@@ -19,47 +19,56 @@
 						"referencia": "p. IV"
 					},
 					"nihilObstat": {
-						"pessoa": "Papa Ioannes Paulus II",
+						"nome": "Ioannes Paulus II",
 						"link": "https://www.catholic-hierarchy.org/bishop/bwojtyla.html"
-					},
-					"textosReferenciados": [
-						{
-							"codigo": "BH",
-							"citacao": "Tamquam norma sumptus est Textus Masorericus ( = TM), critice editus in Bibliis Hebraicis Stutgardiensibus. (Wurttembergische Bibelanstalt, Stuttgart 1967 et deinceps.) Si a textu Masorerico interdum recessimus, in notis criticis rationem emendationis protulimus.",
-							"referencia": "p. XV"
-						},
-						{
-							"codigo": "LXX",
-							"citacao": "Sed etiam ad LXX Interpretum Graecam versionem (= Gr) spectatum est pro antiquitate eiusque acceptione apud Christianos sermonis Graeci. Huius autem versionis illam adhibuimus editionem, quam critice paravit Alfredus Rahlfs, quaeque Stutgardiae anno 1962 edita est. Haec editio, maxima ex parte solis codicibus B S A nixa, etiam Origenis et Ludani recensiones aliosque fontes minores admittit.",
-							"referencia": "p. XV"
-						},
-						{
-							"codigo": "Versões aramaicas",
-							"citacao": "Perpensae quoque et adhibitae sunt antiquae versiones Aramaica, seu quam vocant Targum (= Targ), Syriaca (= Syr), Aquilae (=Aq), Symmachi (= Sym) et Theodotionis (=Theod).",
-							"referencia": "p. XV"
-						},
-						{
-							"codigo": "Vg",
-							"citacao": "Textus Latinus invenitur in Bibliis Sacris iuxta Vulgatam Versionem (= Vg) a Societate Biblica Virtembergensi, Stutgardiae 1969 editis, quam R. Weber recensuit adiuvantibus B. Fischer, I. Gribomont, H. F. D. Sparks, W. Thiele (=ed. critica).",
-							"referencia": "p. XVI"
-						},
-						{
-							"codigo": "GNT",
-							"citacao": "Ut norma et archetypus sumptus est textus Graecus Novi Testamenti editus, inde ab anno 1966 cura nonnullarum Societatum biblicarum, a Conrado Aland, M. Black, C. Martini, B. Metzger, A. Wickgren, qui nostris temporibus, communi consensione, summam habet auctoritatem.",
-							"referencia": "p. XXV"
-						},
-						{
-							"codigo": "NV",
-							"citacao": "Ipse vero, qui recognitus est, textus Latinus continetur Bibliis Sacris iuxta Vulgatam Versionem estque anno 1969 a Sodalitate Biblica Virtembergensi, Stutgardiae sedem habente,(Wiirttembergische Bibelanstalt, Stuttgart.) foras datus, adiuvantibus B. Fischer, I. Gribomont, H.F.D. Sparks, W. Thiele et R. Weber",
-							"referencia": "p. XXV"
-						}
-					],
+					}
+				}
+			],
+			"fontes": [
+				{
+					"codigo": "BH",
+					"citacao": "Tamquam norma sumptus est Textus Masorericus ( = TM), critice editus in Bibliis Hebraicis Stutgardiensibus. *(Wurttembergische Bibelanstalt, Stuttgart 1967 et deinceps.)* Si a textu Masorerico interdum recessimus, in notis criticis rationem emendationis protulimus.",
+					"referencia": "p. XV"
+				},
+				{
+					"codigo": "LXX",
+					"citacao": "Sed etiam ad LXX Interpretum Graecam versionem (= Gr) spectatum est pro antiquitate eiusque acceptione apud Christianos sermonis Graeci. Huius autem versionis illam adhibuimus editionem, quam critice paravit Alfredus Rahlfs, quaeque Stutgardiae anno 1962 edita est. Haec editio, maxima ex parte solis codicibus B S A nixa, etiam Origenis et Ludani recensiones aliosque fontes minores admittit.",
+					"referencia": "p. XV"
+				},
+				{
+					"codigo": "Versões aramaicas",
+					"citacao": "Perpensae quoque et adhibitae sunt antiquae versiones Aramaica, seu quam vocant Targum (= Targ), Syriaca (= Syr), Aquilae (=Aq), Symmachi (= Sym) et Theodotionis (=Theod).",
+					"referencia": "p. XV"
+				},
+				{
+					"codigo": "Vg",
+					"citacao": "Textus Latinus invenitur in Bibliis Sacris iuxta Vulgatam Versionem (= Vg) a Societate Biblica Virtembergensi, Stutgardiae 1969 editis, quam R. Weber recensuit adiuvantibus B. Fischer, I. Gribomont, H. F. D. Sparks, W. Thiele (=ed. critica).",
+					"referencia": "p. XVI"
+				},
+				{
+					"codigo": "GNT",
+					"citacao": "Ut norma et archetypus sumptus est textus Graecus Novi Testamenti editus, inde ab anno 1966 cura nonnullarum Societatum biblicarum, a Conrado Aland, M. Black, C. Martini, B. Metzger, A. Wickgren, qui nostris temporibus, communi consensione, summam habet auctoritatem.",
+					"referencia": "p. XXV"
+				},
+				{
+					"codigo": "NV",
+					"citacao": "Ipse vero, qui recognitus est, textus Latinus continetur Bibliis Sacris iuxta Vulgatam Versionem estque anno 1969 a Sodalitate Biblica Virtembergensi, Stutgardiae sedem habente,*(Wiirttembergische Bibelanstalt, Stuttgart.)* foras datus, adiuvantibus B. Fischer, I. Gribomont, H.F.D. Sparks, W. Thiele et R. Weber",
+					"referencia": "p. XXV"
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Ordem dos livros e numeração",
 					"citacoes": [
 						{
-							"grupo": "Ordem dos livros e numeração",
 							"citacao": "In Nova Vulgata editione idem ordo librorum servatur, qui proprius est editionis Xystinae-Clementinae. Ordo autem numerorum capitum et versiculorum conformatus est numerandi rationi, quae in quibusque textibus primigeniis invenitur. In Psalterio ergo ordo textus Masoretici servatur, ordine Vulgatae editionis intra parentheses posito.",
 							"referencia": "p. XIV"
-						},
+						}
+					]
+				},
+				{
+					"nome": "Tradução",
+					"citacoes": [
 						{
 							"grupo": "Tradução",
 							"citacao": "In qua recognitione efficienda « ad verbum rado habita est veteris textus editionis Vulgatae, ubi videlicet primigenii textus accurate referuntur, quales in hodiernis editionibus, ad criticam rationem exactis, referuntur; prudenter vero ille est emendatus, ubi de iis deflectit vel minus recte eosdem interpretatur. [...] »",
@@ -104,51 +113,59 @@
 						"referencia": "CNBB2019, p. 7"
 					},
 					"nihilObstat": {
-						"pessoa": "Dom Walmor Oliveira de Azevedo",
+						"nome": "Walmor Oliveira de Azevedo",
 						"link": "https://www.catholic-hierarchy.org/bishop/bolaz.html"
 					},
 					"imprimatur": {
-						"pessoa": "Dom Geraldo Lyrio Rocha",
+						"nome": "Geraldo Lyrio Rocha",
 						"link": "https://www.catholic-hierarchy.org/bishop/blyro.html"
-					},
-					"textosReferenciados": [
-						{
-							"codigo": "BH",
-							"citacao": "texto hebraico massorético: Biblia Hebraica Stuttgartensia (ed. 1984)",
-							"referencia": "p. X"
-						},
-						{
-							"codigo": "GNT",
-							"citacao": "NT grego: Greek New Testament (4ª ed. 1994 = Novum Testamentum Graece, de Nestle-Aland, 27ª ed. 1994)",
-							"referencia": "p. X"
-						},
-						{
-							"codigo": "LXX",
-							"citacao": "tradução grega de Alexandria: Septuaginta (ed. A. Rahlfs, reimpr. Stuttgart 1979)",
-							"referencia": "p. X"
-						},
-						{
-							"codigo": "NV",
-							"citacao": "nova tradução latina: Nova Vulgata Bibliorum Sacrorum Editio (2ª ed. típica, 1986)",
-							"referencia": "p. X"
-						},
-						{
-							"codigo": "Vg",
-							"citacao": "antiga tradução \"Vulgata\": Biblia Sacra iuxta Vulgatam Versionem (Stuttgart 1983)",
-							"referencia": "p. X"
-						}
-					],
+					}
+				}
+			],
+			"fontes": [
+				{
+					"codigo": "BH",
+					"citacao": "texto hebraico massorético: *Biblia Hebraica Stuttgartensia* (ed. 1984)",
+					"referencia": "p. X"
+				},
+				{
+					"codigo": "GNT",
+					"citacao": "NT grego: *Greek New Testament* (4ª ed. 1994 = *Novum Testamentum Graece*, de Nestle-Aland, 27ª ed. 1994)",
+					"referencia": "p. X"
+				},
+				{
+					"codigo": "LXX",
+					"citacao": "tradução grega de Alexandria: *Septuaginta* (ed. A. Rahlfs, reimpr. Stuttgart 1979)",
+					"referencia": "p. X"
+				},
+				{
+					"codigo": "NV",
+					"citacao": "nova tradução latina: *Nova Vulgata Bibliorum Sacrorum Editio* (2ª ed. típica, 1986)",
+					"referencia": "p. X"
+				},
+				{
+					"codigo": "Vg",
+					"citacao": "antiga tradução \"Vulgata\": *Biblia Sacra iuxta Vulgatam Versionem* (Stuttgart 1983)",
+					"referencia": "p. X"
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Numeração",
 					"citacoes": [
 						{
-							"grupo": "Numeração",
 							"citacao": "A numeração de capítulos e versículos seguem a NV, sendo indicadas em subscrito itálico as numerações divergentes encontradas em outras edições.",
 							"referencia": "p. XI"
 						},
 						{
-							"grupo": "Numeração",
 							"citacao": "Os Salmos são numerados conforme as atuais edições do texto hebraico e a Nova Vulgata, trazendo entre ( ) a numeração litúrgica (= antiga Vulgata).",
 							"referencia": "p. XI"
-						},
+						}
+					]
+				},
+				{
+					"nome": "Tradução",
+					"citacoes": [
 						{
 							"grupo": "Tradução",
 							"citacao": "A presente tradução foi, de fato, traduzida destes idiomas originais.",
@@ -677,14 +694,14 @@
 						"referencia": ""
 					},
 					"nihilObstat": {
-						"pessoa": "",
+						"nome": "",
 						"link": ""
 					},
 					"imprimatur": {
-						"pessoa": "",
+						"nome": "",
 						"link": ""
 					},
-					"textosReferenciados": [
+					"fontes": [
 						{
 							"codigo": "",
 							"citacao": "",

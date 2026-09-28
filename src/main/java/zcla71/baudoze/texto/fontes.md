@@ -30,8 +30,26 @@
 
 ### Candidatas
 
+* liriocatolico.com.br - Site FORA DE SÉRIE
+  * `html` [pt-br] https://www.liriocatolico.com.br/biblia_online/biblia_ave_maria/ Bíblia Católica Ave Maria
+  * `html` [pt-br] https://www.liriocatolico.com.br/biblia_online/biblia_matos_soares/ Bíblia Católica Matos Soares
+  * `html` [pt-br] https://www.liriocatolico.com.br/biblia_online/biblia_pastoral/ Bíblia Católica Pastoral
+  * `html` [la] https://www.liriocatolico.com.br/biblia_online/biblia_neovulgata/ Bíblia Católica Vulgata
+  * `html` [el] https://www.liriocatolico.com.br/biblia_online/biblia_septuaginta/ Bíblia Septuaginta (grego)
+  * `html` [el] https://www.liriocatolico.com.br/biblia_online/biblia_septuaginta_transliterado/ Bíblia Septuaginta (grego transliterado)
+  * Paralelos dos Evangelhos https://www.liriocatolico.com.br/paralelos_evangelho/
+  * Comparador de Versões Bíblicas https://www.liriocatolico.com.br/biblia_online/comparar_biblias/ mesmo com diferença de numeração entre bíblias; ex.: Jo 6
+  * Muito mais: catecismos, direito canônico, Catena Aurea, Suma Teológica, ...
+
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json
+
+* github.com/bbloomf/jgabc - Bíblias em formato TXT nas pastas (matos-soares, por exemplo)
+  * `txt` [várias] https://github.com/bbloomf/jgabc
+
+* github.com/edsonbittencourt
+  * **MUITA** coisa boa aqui.
+  * `json` [pt-br] https://github.com/edsonbittencourt/biblia-figueiredo Bíblia Pe. Antônio Pereira de Figueiredo
 
 * die-bibel.de German Bible Society (também há traduções)
   * `html` [he] https://www.die-bibel.de/en/bible/BHS Biblia Hebraica Stuttgartensia (BHS)

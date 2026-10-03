@@ -763,9 +763,434 @@
 			]
 		},
 		{
+			"titulo": "VI. Da Festa dos Tabernáculos à Festa da Dedicação",
+			"pagina": 273,
+			"titulos": [
+				{
+					"titulo": "I. Volta para a Judeia - Os Samaritanos - Vocações Diversas",
+					"pagina": 275,
+					"pericopes": [
+						"Mt 8,19-22",
+						"Lc 9,51-62"
+					]
+				},
+				{
+					"titulo": "II. Jesus no Templo - Seus inimigos",
+					"pagina": 277,
+					"pericopes": [
+						"Jo 7,1-53;8,1"
+					]
+				},
+				{
+					"titulo": "III. A mulher adúltera",
+					"pagina": 283,
+					"pericopes": [
+						"Jo 8,2-11"
+					]
+				},
+				{
+					"titulo": "IV. Jesus, luz do mundo",
+					"pagina": 285,
+					"pericopes": [
+						"Jo 8,12-59"
+					]
+				},
+				{
+					"titulo": "V. O cego de nascimento",
+					"pagina": 292,
+					"pericopes": [
+						"Jo 9,1-41"
+					]
+				},
+				{
+					"titulo": "VI. O Bom Pastor",
+					"pagina": 297,
+					"pericopes": [
+						"Jo 10,1-21"
+					]
+				},
+				{
+					"titulo": "VII. Missão dos setenta e dois discípulos",
+					"pagina": 301,
+					"pericopes": [
+						"Lc 10,1-12"
+					]
+				},
+				{
+					"titulo": "VIII. As cidades malditas",
+					"pagina": 304,
+					"pericopes": [
+						"Mt 11,20-24",
+						"Lc 10,13-20"
+					]
+				},
+				{
+					"titulo": "IX. Volta dos discípulos",
+					"pagina": 305,
+					"pericopes": [
+						"Mt 11,23-30",
+						"Lc 10,21-27"
+					]
+				},
+				{
+					"titulo": "X. O Bom Samaritano",
+					"pagina": 307,
+					"pericopes": [
+						"Lc 10,25-37"
+					]
+				},
+				{
+					"titulo": "XI. Marta e Maria",
+					"pagina": 310,
+					"pericopes": [
+						"Lc 10,38-42"
+					]
+				},
+				{
+					"titulo": "XII. A oração",
+					"pagina": 312,
+					"pericopes": [
+						"Lc 11,1-13"
+					]
+				},
+				{
+					"titulo": "XIII. Os dois cegos",
+					"pagina": 314,
+					"pericopes": [
+						"Mt 9,27-31"
+					]
+				},
+				{
+					"titulo": "XIV. O surdo-mudo - Murmurações",
+					"pagina": 315,
+					"pericopes": [
+						"Mt 4,32-34",
+						"Lc 6,14-26"
+					]
+				},
+				{
+					"titulo": "XV. A verdadeira felicidade - Jonas - Os ninivitas",
+					"pagina": 316,
+					"pericopes": [
+						"Mt 12,38-48",
+						"Lc 11,27-36"
+					]
+				},
+				{
+					"titulo": "XVI. Condenação dos fariseus",
+					"pagina": 318,
+					"pericopes": [
+						"Lc 9,37-54"
+					]
+				},
+				{
+					"titulo": "XVII. O fermento dos fariseus - A Providência",
+					"pagina": 322,
+					"pericopes": [
+						"Lc 12,1-12"
+					]
+				},
+				{
+					"titulo": "XVIII. A avareza",
+					"pagina": 324,
+					"pericopes": [
+						"Lc 12,13-21"
+					]
+				},
+				{
+					"titulo": "XIX. Abandono à Providência",
+					"pagina": 326,
+					"pericopes": [
+						"Lc 12,22-34"
+					]
+				},
+				{
+					"titulo": "XX. A vigilância",
+					"pagina": 328,
+					"pericopes": [
+						"Lc 12,35-48"
+					]
+				},
+				{
+					"titulo": "XXI. O fogo que Jesus veio trazer à terra",
+					"pagina": 330,
+					"pericopes": [
+						"Lc 12,49-59"
+					]
+				},
+				{
+					"titulo": "XXII. Os galileus massacrados - A figueira estéril",
+					"pagina": 332,
+					"pericopes": [
+						"Lc 13,1-9"
+					]
+				},
+				{
+					"titulo": "XXIII. A mulher corcunda",
+					"pagina": 333,
+					"pericopes": [
+						"Lc 13,10-17"
+					]
+				},
+				{
+					"titulo": "XXIV. O grão de mostarda - O fermento",
+					"pagina": 334,
+					"pericopes": [
+						"Lc 13,18-22"
+					]
+				},
+				{
+					"titulo": "XXV. A porta estreita - A estrada larga",
+					"pagina": 335,
+					"pericopes": [
+						"Lc 13,23-30"
+					]
+				},
+				{
+					"titulo": "XXVI. Laços de Herodes - Censuras a Jerusalém",
+					"pagina": 336,
+					"pericopes": [
+						"Lc 13,31-38"
+					]
+				}
+			]
+		},
+		{
+			"titulo": "VII. Da Festa da Dedicação ao dia de Ramos",
+			"pagina": 339,
+			"titulos": [
+				{
+					"titulo": "I. Jesus sob o pórtico de Salomão",
+					"pagina": 341,
+					"pericopes": [
+						"Jo 10,22-42"
+					]
+				},
+				{
+					"titulo": "II. Cura de um hidrópico",
+					"pagina": 344,
+					"pericopes": [
+						"Lc 14,1-6"
+					]
+				},
+				{
+					"titulo": "III. Refeição em casa de um fariseu",
+					"pagina": 0,
+					"pericopes": [
+						"Lc 14,7-24"
+					]
+				},
+				{
+					"titulo": "IV. A abnegação - O sal",
+					"pagina": 349,
+					"pericopes": [
+						"Lc 14,25-35"
+					]
+				},
+				{
+					"titulo": "V. A ovelha perdida",
+					"pagina": 351,
+					"pericopes": [
+						"Lc 15,1-10"
+					]
+				},
+				{
+					"titulo": "VI. O filho pródigo",
+					"pagina": 353,
+					"pericopes": [
+						"Lc 15,11-32"
+					]
+				},
+				{
+					"titulo": "VII. O ecônomo infiel - Os dois senhores",
+					"pagina": 357,
+					"pericopes": [
+						"Lc 16,1-17"
+					]
+				},
+				{
+					"titulo": "VIII. Lázaro e o mau rico",
+					"pagina": 362,
+					"pericopes": [
+						"Lc 16,19-31"
+					]
+				},
+				{
+					"titulo": "IX. O escândalo - O perdão",
+					"pagina": 366,
+					"pericopes": [
+						"Lc 17,1-10"
+					]
+				},
+				{
+					"titulo": "X. Morte e ressurreição de Lázaro - Profecia de Caifás",
+					"pagina": 367,
+					"pericopes": [
+						"Jo 11,1-54"
+					]
+				},
+				{
+					"titulo": "XI. Última viagem a Jerusalém - Os dez leprosos",
+					"pagina": 374,
+					"pericopes": [
+						"Mt 19,1-2",
+						"Mc 10,1",
+						"Lc 17,11-19"
+					]
+				},
+				{
+					"titulo": "XII. A vinda do filho do homem",
+					"pagina": 376,
+					"pericopes": [
+						"Lc 17,20-37"
+					]
+				},
+				{
+					"titulo": "XIII. A viúva e o mau Juiz - A oração",
+					"pagina": 378,
+					"pericopes": [
+						"Lc 18,1-8"
+					]
+				},
+				{
+					"titulo": "XIV. O fariseu e o publicano",
+					"pagina": 379,
+					"pericopes": [
+						"Lc 18,9-14"
+					]
+				},
+				{
+					"titulo": "XV. O divórcio",
+					"pagina": 381,
+					"pericopes": [
+						"Mt 19,3-12",
+						"Mc 10,1-12",
+						"Lc 16,18"
+					]
+				},
+				{
+					"titulo": "XVI. Jesus e as crianças",
+					"pagina": 385,
+					"pericopes": [
+						"Mt 19,13-15",
+						"Mc 10,13-16",
+						"Lc 18,15-17"
+					]
+				},
+				{
+					"titulo": "XVII. O perigo das riquezas",
+					"pagina": 386,
+					"pericopes": [
+						"Mt 19,16-30",
+						"Mc 10,17-31",
+						"Lc 18,18-30"
+					]
+				},
+				{
+					"titulo": "XVIII. Os operários da vinha",
+					"pagina": 391,
+					"pericopes": [
+						"Mt 20,1-16"
+					]
+				},
+				{
+					"titulo": "XIX. Terceira predição da Paixão",
+					"pagina": 392,
+					"pericopes": [
+						"Mt 20,17-19",
+						"Mc 10,32-34",
+						"Lc 18,31-34"
+					]
+				},
+				{
+					"titulo": "XX. Os filhos de Zebedeu",
+					"pagina": 393,
+					"pericopes": [
+						"Mt 20,20-28",
+						"Mc 10,35-45"
+					]
+				},
+				{
+					"titulo": "XXI. O cego de Jericó",
+					"pagina": 395,
+					"pericopes": [
+						"Lc 18,35-43"
+					]
+				},
+				{
+					"titulo": "XXII. Zaqueu",
+					"pagina": 396,
+					"pericopes": [
+						"Lc 19,1-10"
+					]
+				},
+				{
+					"titulo": "XXIII. Os dez marcos",
+					"pagina": 399,
+					"pericopes": [
+						"Lc 19,11-28"
+					]
+				},
+				{
+					"titulo": "XXIV. Os dois cegos",
+					"pagina": 402,
+					"pericopes": [
+						"Mt 20,29-34",
+						"Mc 10,46-52",
+						"Jo 11,55-56"
+					]
+				},
+				{
+					"titulo": "XXV. Jesus em Betânia",
+					"pagina": 404,
+					"pericopes": [
+						"Mt 26,6-13",
+						"Mc 14,3-9",
+						"Jo 12,1-11"
+					]
+				}
+			]
+		},
+		{
 			"titulo": "",
 			"pagina": 0,
 			"titulos": [
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Mc ",
+						"Lc ",
+						"Jo "
+					]
+				},
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Mc ",
+						"Lc ",
+						"Jo "
+					]
+				}
+			]
+		},
+		{
+			"titulo": "",
+			"pagina": 0,
+			"titulos": [
+				{
+					"titulo": "",
+					"pagina": 0,
+					"pericopes": [
+						"Mt ",
+						"Mc ",
+						"Lc ",
+						"Jo "
+					]
+				},
 				{
 					"titulo": "",
 					"pagina": 0,

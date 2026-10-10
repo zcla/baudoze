@@ -1152,27 +1152,320 @@
 			]
 		},
 		{
-			"titulo": "",
-			"pagina": 0,
+			"titulo": "VIII. A Semana Santa",
+			"pagina": 409,
 			"titulos": [
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "I. A Entrada triunfal em Jerusalém. Domingo de Ramos",
+					"pagina": 411,
 					"pericopes": [
-						"Mt ",
-						"Mc ",
-						"Lc ",
-						"Jo "
+						"Mt 21,1-17",
+						"Mc 11,1-11",
+						"Lc 19,29-46",
+						"Jo 11,55-56;12,12-19"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "II. A figueira amaldiçoada. Segunda-feira",
+					"pagina": 415,
 					"pericopes": [
-						"Mt ",
-						"Mc ",
-						"Lc ",
-						"Jo "
+						"Mt 21,18-19",
+						"Mc 11,12-14"
+					]
+				},
+				{
+					"titulo": "III. Os mercadores do Templo",
+					"pagina": 416,
+					"pericopes": [
+						"Mt 21,12-17",
+						"Mc 11,15-19",
+						"Lc 19,47-48"
+					]
+				},
+				{
+					"titulo": "IV. Os gentios querem ver a Jesus",
+					"pagina": 418,
+					"pericopes": [
+						"Jo 12,20-50"
+					]
+				},
+				{
+					"titulo": "V. A figueira seca - A Fé. Terça-feira",
+					"pagina": 423,
+					"pericopes": [
+						"Mt 21,20-22",
+						"Mc 11,20-26"
+					]
+				},
+				{
+					"titulo": "VI. Jesus confunde os seus inimigos",
+					"pagina": 424,
+					"pericopes": [
+						"Mt 21,23-27",
+						"Mc 11,27-37",
+						"Lc 20,1-8"
+					]
+				},
+				{
+					"titulo": "VII. Os dois filhos",
+					"pagina": 425,
+					"pericopes": [
+						"Mt 21,28-32"
+					]
+				},
+				{
+					"titulo": "VIII. Os locatários da vinha",
+					"pagina": 427,
+					"pericopes": [
+						"Mt 21,33-46",
+						"Mc 12,1-12",
+						"Lc 20,9-19"
+					]
+				},
+				{
+					"titulo": "IX. O festim das núpcias",
+					"pagina": 429,
+					"pericopes": [
+						"Mt 22,1-14"
+					]
+				},
+				{
+					"titulo": "X. O dinheiro de César",
+					"pagina": 431,
+					"pericopes": [
+						"Mt 22,15-22",
+						"Mc 12,13-27",
+						"Lc 20,20-26"
+					]
+				},
+				{
+					"titulo": "XI. Os saduceus e a Ressurreição",
+					"pagina": 434,
+					"pericopes": [
+						"Mt 22,23-33",
+						"Mc 12,18-27",
+						"Lc 20,27-39"
+					]
+				},
+				{
+					"titulo": "XII. O grande mandamento",
+					"pagina": 436,
+					"pericopes": [
+						"Mt 22,34-40",
+						"Mc 12,28-34",
+						"Lc 20,40"
+					]
+				},
+				{
+					"titulo": "XIII. O Cristo, Filho de Davi",
+					"pagina": 438,
+					"pericopes": [
+						"Mt 22,41-46",
+						"Mc 12,35-37",
+						"Lc 20,41-44"
+					]
+				},
+				{
+					"titulo": "XIV. Maldição dos fariseus",
+					"pagina": 439,
+					"pericopes": [
+						"Mt 23,1-36",
+						"Mc 12,38-40",
+						"Lc 15,45-47"
+					]
+				},
+				{
+					"titulo": "XV. O óbulo da viúva",
+					"pagina": 446,
+					"pericopes": [
+						"Mc 12,41-44",
+						"Lc 21,1-4"
+					]
+				},
+				{
+					"titulo": "XVI. A destruição do templo",
+					"pagina": 447,
+					"pericopes": [
+						"Mt 24,1-2",
+						"Mc 13,1-2",
+						"Lc 21,5-6"
+					]
+				},
+				{
+					"titulo": "XVII. A ruína de Jerusalém e o fim do mundo",
+					"pagina": 448,
+					"pericopes": [
+						"Mt 24,3-41",
+						"Mc 13,3-32",
+						"Lc 21,7-39"
+					]
+				},
+				{
+					"titulo": "XVIII. A vigilância",
+					"pagina": 454,
+					"pericopes": [
+						"Mt 24,42",
+						"Mc 13,33-37",
+						"Lc 21,34-36"
+					]
+				},
+				{
+					"titulo": "XIX. As dez virgens",
+					"pagina": 457,
+					"pericopes": [
+						"Mt 25,1-18"
+					]
+				},
+				{
+					"titulo": "XX. Os talentos",
+					"pagina": 459,
+					"pericopes": [
+						"Mt 25,14-30"
+					]
+				},
+				{
+					"titulo": "XXI. O Juízo final",
+					"pagina": 462,
+					"pericopes": [
+						"Mt 25,31-46"
+					]
+				},
+				{
+					"titulo": "XXII. A conjuração. Quarta-feira santa",
+					"pagina": 465,
+					"pericopes": [
+						"Mt 26,1-5;14-16",
+						"Mc 14,1-2;10-11",
+						"Lc 22,1-6;21,37-38"
+					]
+				},
+				{
+					"titulo": "XXIII. A ceia. Quinta-feira santa",
+					"pagina": 467,
+					"pericopes": [
+						"Mt 26,17-20",
+						"Mc 14,16-17",
+						"Lc 22,7-18"
+					]
+				},
+				{
+					"titulo": "XXIV. O Lava-pés",
+					"pagina": 469,
+					"pericopes": [
+						"Jo 13,1-20"
+					]
+				},
+				{
+					"titulo": "XXV. A traição denunciada",
+					"pagina": 473,
+					"pericopes": [
+						"Jo 13,21-22",
+						"Mt 26,21-25",
+						"Mc 14,18-21",
+						"Lc 22,21-23"
+					]
+				},
+				{
+					"titulo": "XXVI. Instituição da S. Eucaristia",
+					"pagina": 475,
+					"pericopes": [
+						"Mt 26,26-29",
+						"Mc 14,22-28",
+						"Lc 22,19-20"
+					]
+				},
+				{
+					"titulo": "XXVII. Judas outra vez denunciado",
+					"pagina": 477,
+					"pericopes": [
+						"Lc 22,21-23",
+						"Jo 13,23-38"
+					]
+				},
+				{
+					"titulo": "XXVIII. Discussão entre os Apóstolos",
+					"pagina": 481,
+					"pericopes": [
+						"Lc 22,24-30"
+					]
+				},
+				{
+					"titulo": "XXIX. Supremacia de S. Pedro e novo aviso da sua negação",
+					"pagina": 482,
+					"pericopes": [
+						"Lc 22,31-38"
+					]
+				},
+				{
+					"titulo": "XXX. Consola Jesus a seus discípulos",
+					"pagina": 484,
+					"pericopes": [
+						"Jo 14,1-31"
+					]
+				},
+				{
+					"titulo": "XXXI. Jesus é a verdadeira vide",
+					"pagina": 490,
+					"pericopes": [
+						"Jo 15,1-17"
+					]
+				},
+				{
+					"titulo": "XXXII. Perseguições futuras",
+					"pagina": 493,
+					"pericopes": [
+						"Jo 15,18-27; 16,1-6"
+					]
+				},
+				{
+					"titulo": "XXXIII. O Espírito Santo: força e consolação dos Apóstolos",
+					"pagina": 495,
+					"pericopes": [
+						"Jo 16,7-15"
+					]
+				},
+				{
+					"titulo": "XXXIV. O triunfo coroará a luta",
+					"pagina": 496,
+					"pericopes": [
+						"Jo 16,16-23"
+					]
+				},
+				{
+					"titulo": "XXXV. A eficácia da oração - A fé dos Apóstolos",
+					"pagina": 497,
+					"pericopes": [
+						"Jo 16,23-30"
+					]
+				},
+				{
+					"titulo": "XXXVI. Predição da fuga dos Apóstolos e da negação de Pedro",
+					"pagina": 498,
+					"pericopes": [
+						"Mt 26,31-35",
+						"Mc 14,27-34",
+						"Jo 16,31-33"
+					]
+				},
+				{
+					"titulo": "XXXVII. Jesus ora por si mesmo",
+					"pagina": 500,
+					"pericopes": [
+						"Jo 17,1-5"
+					]
+				},
+				{
+					"titulo": "XXXVIII. Jesus ora por seus discípulos",
+					"pagina": 501,
+					"pericopes": [
+						"Jo 17,6-19"
+					]
+				},
+				{
+					"titulo": "XXXIX. Jesus ora por todos os cristãos",
+					"pagina": 504,
+					"pericopes": [
+						"Jo 17,20-26"
 					]
 				}
 			]

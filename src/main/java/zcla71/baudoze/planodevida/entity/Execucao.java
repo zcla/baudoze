@@ -1,4 +1,4 @@
-package zcla71.baudoze.planodevida.dto;
+package zcla71.baudoze.planodevida.entity;
 
 import java.time.ZonedDateTime;
 

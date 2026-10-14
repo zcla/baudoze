@@ -1,18 +1,16 @@
 package zcla71.baudoze.anotacoes.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 
 @Data
 // Modelo inspirado no curso "Desafio Memorize com a Escrita", do Rodrigo Gurgel.
-public class Anotacao {
+public abstract class Anotacao {
 	private Long id;
-	private LocalDateTime dataInclusao;
-	private LocalDateTime dataUltimaAlteracao;
-	private AnotacaoTipo tipo;
+	private LocalDateTime dataInclusao; // Automática
+	private LocalDateTime dataUltimaAlteracao; // Automática
 	private Referencia referencia;
-	private String texto;
-	private String formato;
-	private LocalDateTime dataUltimaRevisao; // TODO PEnsar melhor; talvez seja melhor uma lista.
+	private List<Revisao> revisoes;
 }

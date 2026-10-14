@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public abstract class Referencia {
-	private String tipo;
+	Anotacao anotacao;
 }

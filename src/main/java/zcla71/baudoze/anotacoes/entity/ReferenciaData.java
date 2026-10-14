@@ -7,8 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-// TODO Só pode ser usada em Anotacao se tipo == DIARIO_DE_APRENDIZAGEM
-// TODO Não pode ser usada em Anotacao se tipo != DIARIO_DE_APRENDIZAGEM
+// Referência a uma data; criada para ser usada com DiarioDeAprendizagem
 public class ReferenciaData extends Referencia {
-	private LocalDate data;
+	private LocalDate data; // Eu poderia usar Anotacao.dataInclusao, mas manter aqui deixa mais flexível, especialmente pra quem escreve no papel.
 }

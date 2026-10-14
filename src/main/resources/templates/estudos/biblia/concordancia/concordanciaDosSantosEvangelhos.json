@@ -1471,27 +1471,245 @@
 			]
 		},
 		{
-			"titulo": "",
-			"pagina": 0,
+			"titulo": "IX. A Paixão",
+			"pagina": 507,
 			"titulos": [
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "I. O Getsêmani",
+					"pagina": 509,
 					"pericopes": [
-						"Mt ",
-						"Mc ",
-						"Lc ",
-						"Jo "
+						"Mt 26,30; 36-46",
+						"Mc 14,26; 32-42",
+						"Lc 22,39-46",
+						"Jo 18,1"
 					]
 				},
 				{
-					"titulo": "",
-					"pagina": 0,
+					"titulo": "II. A prisão",
+					"pagina": 513,
 					"pericopes": [
-						"Mt ",
-						"Mc ",
-						"Lc ",
-						"Jo "
+						"Mt 26,47-56",
+						"Mc 14,43-52",
+						"Lc 22,46-53",
+						"Jo 18,2-11"
+					]
+				},
+				{
+					"titulo": "III. Jesus diante de Anás e de Caifás",
+					"pagina": 517,
+					"pericopes": [
+						"Mt 26,57-66",
+						"Mc 14,53-64",
+						"Lc 22,54",
+						"Jo 18,12-24"
+					]
+				},
+				{
+					"titulo": "IV. A negação de S. Pedro",
+					"pagina": 521,
+					"pericopes": [
+						"Mt 26,69-75",
+						"Mc 14,66-72",
+						"Lc 22,55-62",
+						"Jo 18,18-27"
+					]
+				},
+				{
+					"titulo": "V. O grande Conselho - Remorso de Judas. Sexta-feira Santa",
+					"pagina": 523,
+					"pericopes": [
+						"Mt 27,1-10",
+						"Mc 15,1",
+						"Lc 22,66-71; 23,1",
+						"Jo 18,28"
+					]
+				},
+				{
+					"titulo": "VI. Jesus diante de Pilatos",
+					"pagina": 525,
+					"pericopes": [
+						"Mt 27,11-14",
+						"Mc 15,2-5",
+						"Lc 23,2-4",
+						"Jo 18,28-38"
+					]
+				},
+				{
+					"titulo": "VII. Jesus diante de Herodes",
+					"pagina": 529,
+					"pericopes": [
+						"Lc 23,5-12"
+					]
+				},
+				{
+					"titulo": "VIII. Barrabás",
+					"pagina": 530,
+					"pericopes": [
+						"Mt 27,15-23",
+						"Mc 15,6-14",
+						"Lc 23,13-23",
+						"Jo 18,39-40"
+					]
+				},
+				{
+					"titulo": "IX. A flagelação e a coroação de espinhos. O Ecce Homo",
+					"pagina": 532,
+					"pericopes": [
+						"Mt 27,27-30",
+						"Mc 15,16-19",
+						"Jo 19,1-11"
+					]
+				},
+				{
+					"titulo": "X. A condenação",
+					"pagina": 534,
+					"pericopes": [
+						"Mt 27,24-26",
+						"Mc 15,15-20",
+						"Lc 23,24-25,37",
+						"Jo 19,12-16"
+					]
+				},
+				{
+					"titulo": "XI. A via dolorosa",
+					"pagina": 536,
+					"pericopes": [
+						"Mt 27,32-33",
+						"Mc 15,21-22",
+						"Lc 23,26-32",
+						"Jo 19,17"
+					]
+				},
+				{
+					"titulo": "XII. Jesus morto na cruz",
+					"pagina": 540,
+					"pericopes": [
+						"Mt 17,33-50",
+						"Mc 15,23-37",
+						"Lc 23,33-46",
+						"Jo 19,18-30"
+					]
+				},
+				{
+					"titulo": "XIII. Depois da morte de Jesus",
+					"pagina": 549,
+					"pericopes": [
+						"Mt 25,51-56",
+						"Mc 15,38-41",
+						"Lc 23,47-49",
+						"Jo 19,31-37"
+					]
+				},
+				{
+					"titulo": "XIV. Jesus é descido da cruz e sepultado",
+					"pagina": 553,
+					"pericopes": [
+						"Mt 27,57-61",
+						"Mc 15,42-47",
+						"Lc 23,50-56",
+						"Jo 19,38-42"
+					]
+				},
+				{
+					"titulo": "XV. O Sábado Santo",
+					"pagina": 555,
+					"pericopes": [
+						"Mt 27,62-66"
+					]
+				}
+			]
+		},
+		{
+			"titulo": "X: A Ressurreição",
+			"pagina": 557,
+			"titulos": [
+				{
+					"titulo": "I. As santas mulheres - Pedro e João",
+					"pagina": 559,
+					"pericopes": [
+						"Mt 28,1-8",
+						"Mc 16,1-8",
+						"Lc 24,1-8",
+						"Jo 20,1-10"
+					]
+				},
+				{
+					"titulo": "II. Aparição à Madalena",
+					"pagina": 563,
+					"pericopes": [
+						"Mc 16,9",
+						"Jo 20,1-17"
+					]
+				},
+				{
+					"titulo": "III. Aparição às santas mulheres",
+					"pagina": 565,
+					"pericopes": [
+						"Mt 28,8-10",
+						"Mc 16,10-11",
+						"Lc 24,9-11",
+						"Jo 20,18"
+					]
+				},
+				{
+					"titulo": "IV. Os guardas subornados",
+					"pagina": 567,
+					"pericopes": [
+						"Mt 28,11-15"
+					]
+				},
+				{
+					"titulo": "V. Os discípulos de Emaús",
+					"pagina": 568,
+					"pericopes": [
+						"Mc 16,12-13",
+						"Lc 24,13-35"
+					]
+				},
+				{
+					"titulo": "VI. Aparição aos Apóstolos",
+					"pagina": 572,
+					"pericopes": [
+						"Lc 24,36-45",
+						"Jo 20,19-23"
+					]
+				},
+				{
+					"titulo": "VII. Nova aparição aos Apóstolos e a S. Tomé",
+					"pagina": 575,
+					"pericopes": [
+						"Jo 20,24-31"
+					]
+				},
+				{
+					"titulo": "VIII. Sobre o lago de Genezaré",
+					"pagina": 576,
+					"pericopes": [
+						"Jo 21,1-14"
+					]
+				},
+				{
+					"titulo": "IX. Primazia de S. Pedro - Predição do seu martírio",
+					"pagina": 580,
+					"pericopes": [
+						"Jo 21,15-24"
+					]
+				},
+				{
+					"titulo": "X. Missão dos Apóstolos",
+					"pagina": 583,
+					"pericopes": [
+						"Mt 28,16-20",
+						"Mc 16,15-18"
+					]
+				},
+				{
+					"titulo": "XI. Última aparição e Ascensão de Jesus",
+					"pagina": 584,
+					"pericopes": [
+						"Mc 16,14,19-20",
+						"Lc 24,46-53",
+						"Jo 21,25"
 					]
 				}
 			]

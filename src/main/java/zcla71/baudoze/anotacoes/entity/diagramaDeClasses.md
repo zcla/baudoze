@@ -24,7 +24,9 @@ classDiagram
     class EscritaAtiva
     class ResumoConectivo
 
-    class Referencia
+    class Referencia {
+        +Anotacao anotacao
+    }
     class ReferenciaLivre {
         +String referencia
     }
@@ -52,5 +54,6 @@ classDiagram
     Anotacao --> "0..1" Referencia : referencia
     Anotacao --> "0..*" Revisao : revisoes
     Revisao --> "1" Anotacao : anotacao
+    Referencia --> "0..1" Anotacao : anotacao
     DiarioDeAprendizagem ..> ReferenciaData : exige
 ```

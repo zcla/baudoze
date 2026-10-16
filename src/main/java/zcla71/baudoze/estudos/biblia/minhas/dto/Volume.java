@@ -16,6 +16,7 @@ public class Volume {
 	private PrimeiraEdicao primeiraEdicao;
 	private Pessoa nihilObstat;
 	private Pessoa imprimatur;
+	private List<Livro> livros;
 
 	public String getFormatoDisplay() {
 		return switch (formato) {

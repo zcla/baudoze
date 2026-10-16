@@ -21,7 +21,374 @@
 					"nihilObstat": {
 						"nome": "Ioannes Paulus II",
 						"link": "https://www.catholic-hierarchy.org/bishop/bwojtyla.html"
-					}
+					},
+					"livros": [
+						{
+							"nome": "Liber Genesis",
+							"sigla": "Gn",
+							"pagina": 3
+						},
+						{
+							"nome": "Liber Exodus",
+							"sigla": "Ex",
+							"pagina": 81
+						},
+						{
+							"nome": "Liber Leviticus",
+							"sigla": "Lv",
+							"pagina": 143
+						},
+						{
+							"nome": "Liber Numeri",
+							"sigla": "Nm",
+							"pagina": 187
+						},
+						{
+							"nome": "Liber Deuteronomii",
+							"sigla": "Dt",
+							"pagina": 249
+						},
+						{
+							"nome": "Liber Iosue",
+							"sigla": "Ios",
+							"pagina": 305
+						},
+						{
+							"nome": "Liber Iudicum",
+							"sigla": "Idc",
+							"pagina": 343
+						},
+						{
+							"nome": "Liber Ruth",
+							"sigla": "Rt",
+							"pagina": 383
+						},
+						{
+							"nome": "Liber I Samuelis",
+							"sigla": "1 Sam",
+							"pagina": 391
+						},
+						{
+							"nome": "Liber II Samuelis",
+							"sigla": "2 Sam",
+							"pagina": 447
+						},
+						{
+							"nome": "Liber I Regum",
+							"sigla": "1 Reg",
+							"pagina": 495
+						},
+						{
+							"nome": "Liber II Regum",
+							"sigla": "2 Reg",
+							"pagina": 547
+						},
+						{
+							"nome": "Liber I Paralipomenon",
+							"sigla": "1 Par",
+							"pagina": 597
+						},
+						{
+							"nome": "Liber II Paralipomenon",
+							"sigla": "2 Par",
+							"pagina": 643
+						},
+						{
+							"nome": "Liber Esdrae",
+							"sigla": "Esd",
+							"pagina": 697
+						},
+						{
+							"nome": "Liber Nehemiae",
+							"sigla": "Ne",
+							"pagina": 715
+						},
+						{
+							"nome": "Liber Thobis",
+							"sigla": "Tb",
+							"pagina": 739
+						},
+						{
+							"nome": "Liber Iudith",
+							"sigla": "Idt",
+							"pagina": 763
+						},
+						{
+							"nome": "Liber Esther",
+							"sigla": "Est",
+							"pagina": 793
+						},
+						{
+							"nome": "Liber Iob",
+							"sigla": "Iob",
+							"pagina": 813
+						},
+						{
+							"nome": "Liber Psalmorum",
+							"sigla": "Ps",
+							"pagina": 873
+						},
+						{
+							"nome": "Liber Proverbiorum",
+							"sigla": "Prv",
+							"pagina": 1041
+						},
+						{
+							"nome": "Liber Ecclesiastes",
+							"sigla": "Eccle",
+							"pagina": 1093
+						},
+						{
+							"nome": "Canticum Canticorum",
+							"sigla": "Ct",
+							"pagina": 1109
+						},
+						{
+							"nome": "Liber Sapientiae",
+							"sigla": "Sap",
+							"pagina": 1123
+						},
+						{
+							"nome": "Liber Ecclesiasticus",
+							"sigla": "Eccli",
+							"pagina": 1155
+						},
+						{
+							"nome": "Liber Isaiae",
+							"sigla": "Is",
+							"pagina": 1247
+						},
+						{
+							"nome": "Liber Ieremiae",
+							"sigla": "Ier",
+							"pagina": 1369
+						},
+						{
+							"nome": "Lamentationes",
+							"sigla": "Lam",
+							"pagina": 1483
+						},
+						{
+							"nome": "Liber Baruch",
+							"sigla": "Bar",
+							"pagina": 1499
+						},
+						{
+							"nome": "Prophetia Ezechielis",
+							"sigla": "Ez",
+							"pagina": 1513
+						},
+						{
+							"nome": "Prophetia Danielis",
+							"sigla": "Dn",
+							"pagina": 1599
+						},
+						{
+							"nome": "Prophetia Osee",
+							"sigla": "Os",
+							"pagina": 1633
+						},
+						{
+							"nome": "Prophetia Ioel",
+							"sigla": "Il",
+							"pagina": 1655
+						},
+						{
+							"nome": "Prophetia Amos",
+							"sigla": "Am",
+							"pagina": 1665
+						},
+						{
+							"nome": "Prophetia Abdiae",
+							"sigla": "Abd",
+							"pagina": 1683
+						},
+						{
+							"nome": "Prophetia Ionae",
+							"sigla": "Ion",
+							"pagina": 1689
+						},
+						{
+							"nome": "Prophetia Michaeae",
+							"sigla": "Mich",
+							"pagina": 1695
+						},
+						{
+							"nome": "Prophetia Nahum",
+							"sigla": "Nah",
+							"pagina": 1709
+						},
+						{
+							"nome": "Prophetia Habacuc",
+							"sigla": "Hab",
+							"pagina": 1717
+						},
+						{
+							"nome": "Prophetia Sophoniae",
+							"sigla": "Soph",
+							"pagina": 1725
+						},
+						{
+							"nome": "Prophetia Aggaei",
+							"sigla": "Ag",
+							"pagina": 1735
+						},
+						{
+							"nome": "Prophetia Zachariae",
+							"sigla": "Zach",
+							"pagina": 1741
+						},
+						{
+							"nome": "Prophetia Malachiae",
+							"sigla": "Mal",
+							"pagina": 1759
+						},
+						{
+							"nome": "Liber I Maccabaeorum",
+							"sigla": "1 Mac",
+							"pagina": 1765
+						},
+						{
+							"nome": "Liber II Maccabaeorum",
+							"sigla": "2 Mac",
+							"pagina": 1811
+						},
+						{
+							"nome": "Evangelium secundum Matthaeum",
+							"sigla": "Mt",
+							"pagina": 1847
+						},
+						{
+							"nome": "Evangelium secundum Marcum",
+							"sigla": "Mc",
+							"pagina": 1903
+						},
+						{
+							"nome": "Evangelium secundum Lucam",
+							"sigla": "Lc",
+							"pagina": 1941
+						},
+						{
+							"nome": "Evangelium secundum Ioannem",
+							"sigla": "Io",
+							"pagina": 2003
+						},
+						{
+							"nome": "Actus Apostolorum",
+							"sigla": "Act",
+							"pagina": 2049
+						},
+						{
+							"nome": "Epistula ad Romanos",
+							"sigla": "Rom",
+							"pagina": 2113
+						},
+						{
+							"nome": "Epistula I ad Corinthios",
+							"sigla": "1 Cor",
+							"pagina": 2137
+						},
+						{
+							"nome": "Epistula II ad Corinthios",
+							"sigla": "2 Cor",
+							"pagina": 2159
+						},
+						{
+							"nome": "Epistula ad Galatas",
+							"sigla": "Gal",
+							"pagina": 2173
+						},
+						{
+							"nome": "Epistula ad Ephesios",
+							"sigla": "Eph",
+							"pagina": 2181
+						},
+						{
+							"nome": "Epistula ad Philippenses",
+							"sigla": "Philp",
+							"pagina": 2189
+						},
+						{
+							"nome": "Epistula ad Colossenses",
+							"sigla": "Col",
+							"pagina": 2195
+						},
+						{
+							"nome": "Epistula I ad Thessalonicenses",
+							"sigla": "1 Thess",
+							"pagina": 2201
+						},
+						{
+							"nome": "Epistula II ad Thessalonicenses",
+							"sigla": "2 Thess",
+							"pagina": 2206
+						},
+						{
+							"nome": "Epistula I ad Timotheum",
+							"sigla": "1 Tim",
+							"pagina": 2209
+						},
+						{
+							"nome": "Epistula II ad Timotheum",
+							"sigla": "2 Tim",
+							"pagina": 2215
+						},
+						{
+							"nome": "Epistula ad Titum",
+							"sigla": "Tit",
+							"pagina": 2220
+						},
+						{
+							"nome": "Epistula ad Philemonem",
+							"sigla": "Philm",
+							"pagina": 2223
+						},
+						{
+							"nome": "Epistula ad Hebraeos",
+							"sigla": "Heb",
+							"pagina": 2225
+						},
+						{
+							"nome": "Epistula Iacobi",
+							"sigla": "Iac",
+							"pagina": 2247
+						},
+						{
+							"nome": "Epistula I Petri",
+							"sigla": "1 Pe",
+							"pagina": 2253
+						},
+						{
+							"nome": "Epistula II Petri",
+							"sigla": "2 Pe",
+							"pagina": 2260
+						},
+						{
+							"nome": "Epistula I Ioannis",
+							"sigla": "1 Io",
+							"pagina": 2265
+						},
+						{
+							"nome": "Epistula II Ioannis",
+							"sigla": "2 Io",
+							"pagina": 2272
+						},
+						{
+							"nome": "Epistula III Ioannis",
+							"sigla": "3 Io",
+							"pagina": 2273
+						},
+						{
+							"nome": "Epistula Iudae",
+							"sigla": "Ids",
+							"pagina": 2274
+						},
+						{
+							"nome": "Apocalypsis Ioannis",
+							"sigla": "Aps",
+							"pagina": 2277
+						}
+					]
 				}
 			],
 			"fontes": [
@@ -711,6 +1078,31 @@
 					"citacoes": [
 						{
 							"grupo": "",
+							"citacao": "",
+							"referencia": ""
+						}
+					],
+					"livros": [
+						{
+							"nome": "",
+							"sigla": "",
+							"pagina": 0
+						}
+					]
+				}
+			],
+			"fontes": [
+				{
+					"codigo": "",
+					"citacao": "",
+					"referencia": ""
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "",
+					"citacoes": [
+						{
 							"citacao": "",
 							"referencia": ""
 						}

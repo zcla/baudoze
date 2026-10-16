@@ -23,6 +23,7 @@ classDiagram
         +PrimeiraEdicao primeiraEdicao
         +Pessoa nihilObstat
         +Pessoa imprimatur
+        +List~Livro~ livros
         +String getFormatoDisplay()
     }
 
@@ -52,11 +53,18 @@ classDiagram
         +String link
     }
 
+    class Livro {
+        +String nome
+        +String sigla
+        +Integer pagina
+    }
+
     class TabelaLinha {
         +String codigo
         +Integer bibliaRowspan
         +String nome
         +String nomeVolume
+        +Integer qtdLivros
         +List~String~ editoras
         +String edicao
         +String publicacao
@@ -73,4 +81,5 @@ classDiagram
     Volume --> "0..1" PrimeiraEdicao : primeiraEdicao
     Volume --> "0..1" Pessoa : nihilObstat
     Volume --> "0..1" Pessoa : imprimatur
+    Volume "1" *-- "0..*" Livro : livros
 ```

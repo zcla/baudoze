@@ -10,6 +10,7 @@ public class TabelaLinha {
 	private Integer bibliaRowspan = 1;
 	private String nome;
 	private String nomeVolume;
+	private Integer qtdLivros;
 	private List<String> editoras;
 	private String edicao;
 	private String publicacao;

@@ -16,6 +16,11 @@ footer p {
     margin-right: 4px;
 }
 
+/* Mais de um título no mesmo card */
+.card .card-header:not(:first-child) {
+    border-top: var(--bs-card-border-width) solid var(--bs-card-border-color);
+}
+
 #crudLista .botoes {
     padding: 0;
     white-space: nowrap;

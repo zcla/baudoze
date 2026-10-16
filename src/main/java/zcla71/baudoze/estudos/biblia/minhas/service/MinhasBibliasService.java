@@ -54,6 +54,9 @@ public class MinhasBibliasService {
 					ultLinha = linha;
 				}
 				linha.setNomeVolume(volume.getNome());
+				if (volume.getLivros() != null) {
+					linha.setQtdLivros(volume.getLivros().size());
+				}
 				linha.setEditoras(volume.getEditoras());
 				linha.setEdicao(volume.getEdicao());
 				linha.setPublicacao(volume.getPublicacao());

@@ -76,12 +76,6 @@ public class EstudosController extends BauBaseController {
 		return getModelAndView("/estudos/biblia/minhas/CNBB2008");
 	}
 
-	@Deprecated
-	@GetMapping("/biblia/minhas/NVETA1986x")
-	public ModelAndView bibliaMinhasNVETA1986() {
-		return getModelAndView("/estudos/biblia/minhas/NVETA1986");
-	}
-
 	@GetMapping("/biblia/minhas/{codigo}")
 	public ModelAndView bibliaMinhasMostrar(@PathVariable String codigo) throws StreamReadException, DatabindException, IOException {
 		ModelAndView result = getModelAndView("/estudos/biblia/minhas/mostrar");

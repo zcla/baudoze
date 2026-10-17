@@ -93,7 +93,7 @@
 							<div th:if="${volume.livros != null}" class="card-header">
 								<h5 class="card-title">Livros</h5>
 							</div>
-							<div class="card-body">
+							<div th:if="${volume.livros != null}"  class="card-body">
 								<table class="table table-sm table-borderless table-hover">
 									<thead>
 										<tr>

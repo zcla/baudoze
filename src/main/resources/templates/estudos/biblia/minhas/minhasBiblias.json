@@ -486,7 +486,374 @@
 					"imprimatur": {
 						"nome": "Geraldo Lyrio Rocha",
 						"link": "https://www.catholic-hierarchy.org/bishop/blyro.html"
-					}
+					},
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 13
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 68
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 115
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 148
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 194
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Js",
+							"pagina": 239
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Jz",
+							"pagina": 266
+						},
+						{
+							"nome": "Rute",
+							"sigla": "Rt",
+							"pagina": 294
+						},
+						{
+							"nome": "1 Samuel",
+							"sigla": "1Sm",
+							"pagina": 300
+						},
+						{
+							"nome": "2 Samuel",
+							"sigla": "2Sm",
+							"pagina": 337
+						},
+						{
+							"nome": "1 Reis",
+							"sigla": "1Rs",
+							"pagina": 366
+						},
+						{
+							"nome": "2 Reis",
+							"sigla": "2Rs",
+							"pagina": 399
+						},
+						{
+							"nome": "1 Crônicas",
+							"sigla": "1Cr",
+							"pagina": 431
+						},
+						{
+							"nome": "2 Crônicas",
+							"sigla": "2Cr",
+							"pagina": 464
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 501
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 514
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tb",
+							"pagina": 530
+						},
+						{
+							"nome": "Judite",
+							"sigla": "Jt",
+							"pagina": 546
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 563
+						},
+						{
+							"nome": "1 Macabeus",
+							"sigla": "1Mc",
+							"pagina": 577
+						},
+						{
+							"nome": "2 Macabeus",
+							"sigla": "2Mc",
+							"pagina": 613
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 641
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 678
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Pr",
+							"pagina": 762
+						},
+						{
+							"nome": "Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 792
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 803
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sb",
+							"pagina": 810
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "Eclo",
+							"pagina": 833
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 898
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jr",
+							"pagina": 969
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lm",
+							"pagina": 1036
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Br",
+							"pagina": 1043
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1052
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dn",
+							"pagina": 1107
+						},
+						{
+							"nome": "Oseias",
+							"sigla": "Os",
+							"pagina": 1131
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 1142
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 1147
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 1156
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jn",
+							"pagina": 1158
+						},
+						{
+							"nome": "Miquéias",
+							"sigla": "Mq",
+							"pagina": 1161
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 1168
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 1171
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sf",
+							"pagina": 1175
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "ag",
+							"pagina": 1179
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zc",
+							"pagina": 1181
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 1193
+						},
+						{
+							"nome": "Mateus",
+							"sigla": "Mt",
+							"pagina": 1200
+						},
+						{
+							"nome": "Marcos",
+							"sigla": "Mc",
+							"pagina": 1241
+						},
+						{
+							"nome": "Lucas",
+							"sigla": "Lc",
+							"pagina": 1267
+						},
+						{
+							"nome": "João",
+							"sigla": "Jo",
+							"pagina": 1309
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 1341
+						},
+						{
+							"nome": "Romanos",
+							"sigla": "Rm",
+							"pagina": 1381
+						},
+						{
+							"nome": "1 Coríntios",
+							"sigla": "1Cor",
+							"pagina": 1399
+						},
+						{
+							"nome": "2 Coríntios",
+							"sigla": "2Cor",
+							"pagina": 1417
+						},
+						{
+							"nome": "Gálatas",
+							"sigla": "Gl",
+							"pagina": 1429
+						},
+						{
+							"nome": "Efésios",
+							"sigla": "Ef",
+							"pagina": 1436
+						},
+						{
+							"nome": "Filipenses",
+							"sigla": "Fl",
+							"pagina": 1443
+						},
+						{
+							"nome": "Colossenses",
+							"sigla": "Cl",
+							"pagina": 1448
+						},
+						{
+							"nome": "1 Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 1453
+						},
+						{
+							"nome": "2 Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 1457
+						},
+						{
+							"nome": "1 Timóteo",
+							"sigla": "1Tm",
+							"pagina": 1460
+						},
+						{
+							"nome": "2 Timóteo",
+							"sigla": "2Tm",
+							"pagina": 1466
+						},
+						{
+							"nome": "Tito",
+							"sigla": "Tt",
+							"pagina": 1470
+						},
+						{
+							"nome": "Filêmon",
+							"sigla": "Fm",
+							"pagina": 1473
+						},
+						{
+							"nome": "Hebreus",
+							"sigla": "Hb",
+							"pagina": 1475
+						},
+						{
+							"nome": "Tiago",
+							"sigla": "Tg",
+							"pagina": 1489
+						},
+						{
+							"nome": "1 Pedro",
+							"sigla": "1Pd",
+							"pagina": 1494
+						},
+						{
+							"nome": "2 Pedro",
+							"sigla": "2Pd",
+							"pagina": 1500
+						},
+						{
+							"nome": "1 João",
+							"sigla": "1Jo",
+							"pagina": 1504
+						},
+						{
+							"nome": "2 João",
+							"sigla": "2Jo",
+							"pagina": 1510
+						},
+						{
+							"nome": "3 João",
+							"sigla": "3Jo",
+							"pagina": 1511
+						},
+						{
+							"nome": "Judas",
+							"sigla": "Jd",
+							"pagina": 1512
+						},
+						{
+							"nome": "Apocalipse",
+							"sigla": "Ap",
+							"pagina": 1514
+						}
+					]
 				}
 			],
 			"fontes": [

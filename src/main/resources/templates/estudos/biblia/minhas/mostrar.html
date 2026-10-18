@@ -90,26 +90,6 @@
 									</tbody>
 								</table>
 							</div>
-							<div th:if="${volume.livros != null}" class="card-header">
-								<h5 class="card-title">Livros</h5>
-							</div>
-							<div th:if="${volume.livros != null}"  class="card-body">
-								<table class="table table-sm table-borderless table-hover">
-									<thead>
-										<tr>
-											<th>Nome</th>
-											<th>Sigla</th>
-											<th>Página</th>
-										</tr>
-									<tbody>
-										<tr th:each="livro : ${volume.livros}">
-											<td th:text="${livro.nome}"></td>
-											<td th:text="${livro.sigla}"></td>
-											<td th:text="${livro.pagina}" class="text-end"></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
 						</div>
 					</div>
 					<div th:if="${data.biblia.fontes}" class="col">
@@ -145,6 +125,33 @@
 							</div>
 						</div>
 					</th:block>
+					<div th:each="volume : ${data.biblia.volumes}" class="col">
+						<div class="card">
+							<div th:if="${volume.nome == null}" class="card-header">
+								<h5 class="card-title">Livros</h5>
+							</div>
+							<div th:if="${volume.nome != null}" class="card-header">
+								<h5 th:text="${volume.nome != null}" class="card-title"></h5>
+							</div>
+							<div th:if="${volume.livros != null}"  class="card-body">
+								<table class="table table-sm table-borderless table-hover">
+									<thead>
+										<tr>
+											<th>Nome</th>
+											<th>Sigla</th>
+											<th>Página</th>
+										</tr>
+									<tbody>
+										<tr th:each="livro : ${volume.livros}">
+											<td th:text="${livro.nome}"></td>
+											<td th:text="${livro.sigla}"></td>
+											<td th:text="${livro.pagina}" class="text-end"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 					<div class="col-auto">
 						<div class="card">
 							<img th:src="|/estudos/biblia/minhas/img/${data.biblia.codigo}.jpg|">

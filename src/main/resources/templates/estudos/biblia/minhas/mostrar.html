@@ -126,7 +126,7 @@
 						</div>
 					</th:block>
 					<div th:each="volume : ${data.biblia.volumes}" class="col">
-						<div class="card">
+						<div th:if="${volume.livros != null}" class="card">
 							<div th:if="${volume.nome == null}" class="card-header">
 								<h5 class="card-title">Livros</h5>
 							</div>

@@ -1380,7 +1380,385 @@
 						"pt-br"
 					],
 					"isbn": "978-65-89613-29-9",
-					"formato": "fisico"
+					"formato": "fisico",
+					"primeiraEdicao": {
+						"publicacao": "1927/1945/1950",
+						"referencia": "p. 6"
+					},
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 23
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 129
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 201
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 241
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 303
+						},
+						{
+							"nome": "Livro de Josué",
+							"sigla": "Js",
+							"pagina": 357
+						},
+						{
+							"nome": "Livro dos Juízes",
+							"sigla": "Jz",
+							"pagina": 399
+						},
+						{
+							"nome": "Livro de Rute",
+							"sigla": "Rt",
+							"pagina": 455
+						},
+						{
+							"nome": "Livro Primeiro dos Reis (1º livro de Samuel)",
+							"sigla": "1Rs",
+							"pagina": 463
+						},
+						{
+							"nome": "Livro Segundo dos Reis (2º livro de Samuel)",
+							"sigla": "2Rs",
+							"pagina": 523
+						},
+						{
+							"nome": "Livro Terceiro dos Reis (1º livro dos Reis)",
+							"sigla": "3Rs",
+							"pagina": 571
+						},
+						{
+							"nome": "Livro Quarto dos Reis (2º livro dos Reis)",
+							"sigla": "4Rs",
+							"pagina": 627
+						},
+						{
+							"nome": "Livro Primeiro dos Paralipômenos (1º livro das Crônicas)",
+							"sigla": "1Par",
+							"pagina": 679
+						},
+						{
+							"nome": "Livro Segundo dos Paralipômenos (2º livro das Crônicas)",
+							"sigla": "2Par",
+							"pagina": 723
+						},
+						{
+							"nome": "Livro Primeiro de Esdras (1º Esdras)",
+							"sigla": "1Es",
+							"pagina": 775
+						},
+						{
+							"nome": "Livro Segundo de Esdras (Neemias)",
+							"sigla": "2Es",
+							"pagina": 795
+						},
+						{
+							"nome": "Livro de Tobias",
+							"sigla": "Tb",
+							"pagina": 817
+						},
+						{
+							"nome": "Livro de Judite",
+							"sigla": "Jt",
+							"pagina": 835
+						},
+						{
+							"nome": "Livro de Ester",
+							"sigla": "Est",
+							"pagina": 857
+						},
+						{
+							"nome": "Livro de Jó",
+							"sigla": "Jó",
+							"pagina": 881
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 951
+						},
+						{
+							"nome": "Livro dos Provérbios",
+							"sigla": "Pr",
+							"pagina": 1123
+						},
+						{
+							"nome": "Livro do Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 1181
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 1197
+						},
+						{
+							"nome": "Livro da Sabedoria",
+							"sigla": "Sb",
+							"pagina": 1213
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "Eclo",
+							"pagina": 1251
+						},
+						{
+							"nome": "Profecia de Isaías",
+							"sigla": "Is",
+							"pagina": 1355
+						},
+						{
+							"nome": "Profecia de Jeremias",
+							"sigla": "Jr",
+							"pagina": 1445
+						},
+						{
+							"nome": "Trenos ou Lamentações de Jeremias Profeta",
+							"sigla": "Lm",
+							"pagina": 1533
+						},
+						{
+							"nome": "Profecia de Baruc",
+							"sigla": "Br",
+							"pagina": 1555
+						},
+						{
+							"nome": "Profecia de Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1567
+						},
+						{
+							"nome": "Profecia de Daniel",
+							"sigla": "Dn",
+							"pagina": 1649
+						},
+						{
+							"nome": "Oseias",
+							"sigla": "Os",
+							"pagina": 1693
+						},
+						{
+							"nome": "Profecia de Joel",
+							"sigla": "Jl",
+							"pagina": 1707
+						},
+						{
+							"nome": "Profecia de Amós",
+							"sigla": "Am",
+							"pagina": 1713
+						},
+						{
+							"nome": "Profecia de Abdias",
+							"sigla": "Ab",
+							"pagina": 1723
+						},
+						{
+							"nome": "Profecia de Jonas",
+							"sigla": "Jn",
+							"pagina": 1725
+						},
+						{
+							"nome": "Profecia de Miquéias",
+							"sigla": "Mq",
+							"pagina": 1729
+						},
+						{
+							"nome": "Profecia de Naum",
+							"sigla": "Na",
+							"pagina": 1737
+						},
+						{
+							"nome": "Profecia de Habacuc",
+							"sigla": "Hab",
+							"pagina": 1741
+						},
+						{
+							"nome": "Profecia de Sofonias",
+							"sigla": "Sf",
+							"pagina": 1747
+						},
+						{
+							"nome": "Profecia de Ageu",
+							"sigla": "Ag",
+							"pagina": 1751
+						},
+						{
+							"nome": "Profecia de Zacarias",
+							"sigla": "Zc",
+							"pagina": 1755
+						},
+						{
+							"nome": "Profecia de Malaquias",
+							"sigla": "Ml",
+							"pagina": 1771
+						},
+						{
+							"nome": "Livro Primeiro dos Macabeus",
+							"sigla": "1Mc",
+							"pagina": 1777
+						},
+						{
+							"nome": "Livro Segundo dos Macabeus",
+							"sigla": "2Mc",
+							"pagina": 1831
+						},
+						{
+							"nome": "Evangelho de Jesus Cristo segundo São Mateus",
+							"sigla": "Mt",
+							"pagina": 1877
+						},
+						{
+							"nome": "Evangelho de Jesus Cristo segundo São Marcos",
+							"sigla": "Mc",
+							"pagina": 1959
+						},
+						{
+							"nome": "Evangelho de Jesus Cristo segundo São Lucas",
+							"sigla": "Lc",
+							"pagina": 1997
+						},
+						{
+							"nome": "Evangelho de Jesus Cristo segundo São João",
+							"sigla": "Jo",
+							"pagina": 2067
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 2121
+						},
+						{
+							"nome": "Epístola de São Paulo aos Romanos",
+							"sigla": "Rm",
+							"pagina": 2183
+						},
+						{
+							"nome": "Primeira Epístola aos Coríntios",
+							"sigla": "1Cor",
+							"pagina": 2209
+						},
+						{
+							"nome": "Segunda Epístola aos Coríntios",
+							"sigla": "2Cor",
+							"pagina": 2233
+						},
+						{
+							"nome": "Epístola aos Gálatas",
+							"sigla": "Gl",
+							"pagina": 2249
+						},
+						{
+							"nome": "Epístola aos Efésios",
+							"sigla": "Ef",
+							"pagina": 2257
+						},
+						{
+							"nome": "Epístola aos Filipenses",
+							"sigla": "Fl",
+							"pagina": 2265
+						},
+						{
+							"nome": "Epístola aos Colossenses",
+							"sigla": "Cl",
+							"pagina": 2271
+						},
+						{
+							"nome": "Primeira Epístola aos Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 2277
+						},
+						{
+							"nome": "Segunda Epístola aos Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 2283
+						},
+						{
+							"nome": "Primeira Epístola a Timóteo",
+							"sigla": "1Tm",
+							"pagina": 2287
+						},
+						{
+							"nome": "Segunda Epístola a Timóteo",
+							"sigla": "2Tm",
+							"pagina": 2293
+						},
+						{
+							"nome": "Epístola a Tito",
+							"sigla": "Tt",
+							"pagina": 2299
+						},
+						{
+							"nome": "Epístola a Filêmon",
+							"sigla": "Fm",
+							"pagina": 2303
+						},
+						{
+							"nome": "Epístola aos Hebreus",
+							"sigla": "Hb",
+							"pagina": 2305
+						},
+						{
+							"nome": "Epístola Católica de São Tiago",
+							"sigla": "Tg",
+							"pagina": 2323
+						},
+						{
+							"nome": "Primeira Epístola de São Pedro",
+							"sigla": "1Pd",
+							"pagina": 2331
+						},
+						{
+							"nome": "Segunda Epístola de São Pedro",
+							"sigla": "2Pd",
+							"pagina": 2339
+						},
+						{
+							"nome": "Primeira Epístola de São João",
+							"sigla": "1Jo",
+							"pagina": 2345
+						},
+						{
+							"nome": "Segunda Epístola de São João",
+							"sigla": "2Jo",
+							"pagina": 2351
+						},
+						{
+							"nome": "Terceira Epístola de São João",
+							"sigla": "3Jo",
+							"pagina": 2352
+						},
+						{
+							"nome": "Epístola de São Judas",
+							"sigla": "Jd",
+							"pagina": 2353
+						},
+						{
+							"nome": "Apocalipse de São João",
+							"sigla": "Ap",
+							"pagina": 2357
+						}
+					]
+				}
+			],
+			"fontes": [
+				{
+					"codigo": "Vg",
+					"citacao": "[...], esta nova versão da Vulgata em língua portuguesa.",
+					"referencia": "p. 11"
 				}
 			]
 		},

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{_layouts/base}"
+		th:with="htmlTitle='Not Found ☠️'">
+	<head>
+		<title th:text="${htmlTitle}"></title>
+	</head>
+	<body>
+		<div layout:fragment="conteudo" class="container-fluid">
+			<h1 th:text="${htmlTitle}"></h1>
+		</div>
+	</body>
+</html>

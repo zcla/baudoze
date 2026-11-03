@@ -1,6 +1,7 @@
 package zcla71.baudoze.common.controller;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 
 import org.springframework.boot.web.error.ErrorAttributeOptions;
@@ -91,7 +92,6 @@ public class CustomErrorController implements ErrorController {
 }
      */
 
-    @SuppressWarnings("null")
     @GetMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
         model.addAttribute("statusCode", request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));
@@ -106,7 +106,7 @@ public class CustomErrorController implements ErrorController {
                     )
             );
             for (Entry<String, Object> error : errors.entrySet()) {
-                model.addAttribute(error.getKey(), error.getValue());
+                model.addAttribute(Objects.requireNonNull(error.getKey()), error.getValue());
             }
         }
         return "/_erro/erro";

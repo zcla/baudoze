@@ -1774,7 +1774,7 @@
 			]
 		},
 		{
-			"codigo": "PMS32_2022",
+			"codigo": "PMSV2022",
 			"nome": "Bíblia Sagrada",
 			"volumes": [
 				{
@@ -2174,7 +2174,7 @@
 			]
 		},
 		{
-			"codigo": "PMS32_2025",
+			"codigo": "PMSV2025",
 			"nome": "Bíblia - Tradução do Pe. Matos Soares a partir da Vulgata Clementina (1927-1932)",
 			"volumes": [
 				{
@@ -2577,7 +2577,7 @@
 			]
 		},
 		{
-			"codigo": "PMS56_2021",
+			"codigo": "PMSO2021",
 			"nome": "Bíblia Sagrada",
 			"volumes": [
 				{
@@ -2988,7 +2988,7 @@
 			]
 		},
 		{
-			"codigo": "PMS56NT2019",
+			"codigo": "PMSO2019NT",
 			"nome": "Novo Testamento",
 			"volumes": [
 				{

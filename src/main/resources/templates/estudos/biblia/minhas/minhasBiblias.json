@@ -2577,6 +2577,151 @@
 			]
 		},
 		{
+			"codigo": "PMSO2019NT",
+			"nome": "Novo Testamento",
+			"volumes": [
+				{
+					"editoras": [
+						"Ecclesiae"
+					],
+					"edicao": "1ª",
+					"publicacao": "2019-10",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-85-8491-145-5",
+					"formato": "fisico",
+					"livros": [
+						{
+							"nome": "Evangelho segundo São Mateus",
+							"sigla": "Mt",
+							"pagina": 7
+						},
+						{
+							"nome": "Evangelho segundo São Marcos",
+							"sigla": "Mc",
+							"pagina": 99
+						},
+						{
+							"nome": "Evangelho segundo São Lucas",
+							"sigla": "Lc",
+							"pagina": 151
+						},
+						{
+							"nome": "Evangelho segundo São João",
+							"pagina": 237
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"pagina": 305
+						},
+						{
+							"nome": "Epístola aos Romanos",
+							"sigla": "Rm",
+							"pagina": 389
+						},
+						{
+							"nome": "Primeira epístola aos Coríntios",
+							"pagina": 431
+						},
+						{
+							"nome": "Segunda epístola aos Coríntios",
+							"pagina": 469
+						},
+						{
+							"nome": "Epístola aos Gálatas",
+							"pagina": 493
+						},
+						{
+							"nome": "Epístola aos Efésios",
+							"pagina": 505
+						},
+						{
+							"nome": "Epístola aos Filipenses",
+							"pagina": 517
+						},
+						{
+							"nome": "Epístola aos Colossenses",
+							"pagina": 527
+						},
+						{
+							"nome": "Primeira epístola aos Tessalonicenses",
+							"pagina": 535
+						},
+						{
+							"nome": "Segunda epístola aos Tessalonicenses",
+							"pagina": 543
+						},
+						{
+							"nome": "Primeira epístola a Timóteo",
+							"pagina": 549
+						},
+						{
+							"nome": "Segunda epístola a Timóteo",
+							"pagina": 559
+						},
+						{
+							"nome": "Epístola a Tito",
+							"pagina": 567
+						},
+						{
+							"nome": "Epístola a Filêmon",
+							"pagina": 571
+						},
+						{
+							"nome": "Epístola aos Hebreus",
+							"sigla": "Hb",
+							"pagina": 573
+						},
+						{
+							"nome": "Epístola de São Tiago",
+							"pagina": 601
+						},
+						{
+							"nome": "Primeira epístola de São Pedro",
+							"pagina": 611
+						},
+						{
+							"nome": "Segunda epístola de São Pedro",
+							"sigla": "2Pe",
+							"pagina": 621
+						},
+						{
+							"nome": "Primeira epístola de São João",
+							"pagina": 629
+						},
+						{
+							"nome": "Segunda epístola de São João",
+							"pagina": 639
+						},
+						{
+							"nome": "Terceira epístola de São João",
+							"pagina": 641
+						},
+						{
+							"nome": "Epístola de São Judas",
+							"pagina": 643
+						},
+						{
+							"nome": "Apocalipse de São João",
+							"pagina": 647
+						}
+					]
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Tradução",
+					"citacoes": [
+						{
+							"citacao": "Esta edição tem como base a tradução da Vulgata Latina feita pelo Pe. Matos Soares, devidamente incorporadas, mediante revisão técnica, as alterações promovidas pela Nova Vulgata.",
+							"referencia": "4"
+						}
+					]
+				}
+			]
+		},
+		{
 			"codigo": "PMSO2021",
 			"nome": "Bíblia Sagrada",
 			"volumes": [
@@ -2982,151 +3127,6 @@
 						{
 							"citacao": "[...] quando as interpretações dos tradutores modernos são contraditórias, seguimos a Vulgata. Seguimo-la também na tradução de quase todos os nomes próprios.",
 							"referencia": ""
-						}
-					]
-				}
-			]
-		},
-		{
-			"codigo": "PMSO2019NT",
-			"nome": "Novo Testamento",
-			"volumes": [
-				{
-					"editoras": [
-						"Ecclesiae"
-					],
-					"edicao": "1ª",
-					"publicacao": "2019-10",
-					"idiomas": [
-						"pt-br"
-					],
-					"isbn": "978-85-8491-145-5",
-					"formato": "fisico",
-					"livros": [
-						{
-							"nome": "Evangelho segundo São Mateus",
-							"sigla": "Mt",
-							"pagina": 7
-						},
-						{
-							"nome": "Evangelho segundo São Marcos",
-							"sigla": "Mc",
-							"pagina": 99
-						},
-						{
-							"nome": "Evangelho segundo São Lucas",
-							"sigla": "Lc",
-							"pagina": 151
-						},
-						{
-							"nome": "Evangelho segundo São João",
-							"pagina": 237
-						},
-						{
-							"nome": "Atos dos Apóstolos",
-							"pagina": 305
-						},
-						{
-							"nome": "Epístola aos Romanos",
-							"sigla": "Rm",
-							"pagina": 389
-						},
-						{
-							"nome": "Primeira epístola aos Coríntios",
-							"pagina": 431
-						},
-						{
-							"nome": "Segunda epístola aos Coríntios",
-							"pagina": 469
-						},
-						{
-							"nome": "Epístola aos Gálatas",
-							"pagina": 493
-						},
-						{
-							"nome": "Epístola aos Efésios",
-							"pagina": 505
-						},
-						{
-							"nome": "Epístola aos Filipenses",
-							"pagina": 517
-						},
-						{
-							"nome": "Epístola aos Colossenses",
-							"pagina": 527
-						},
-						{
-							"nome": "Primeira epístola aos Tessalonicenses",
-							"pagina": 535
-						},
-						{
-							"nome": "Segunda epístola aos Tessalonicenses",
-							"pagina": 543
-						},
-						{
-							"nome": "Primeira epístola a Timóteo",
-							"pagina": 549
-						},
-						{
-							"nome": "Segunda epístola a Timóteo",
-							"pagina": 559
-						},
-						{
-							"nome": "Epístola a Tito",
-							"pagina": 567
-						},
-						{
-							"nome": "Epístola a Filêmon",
-							"pagina": 571
-						},
-						{
-							"nome": "Epístola aos Hebreus",
-							"sigla": "Hb",
-							"pagina": 573
-						},
-						{
-							"nome": "Epístola de São Tiago",
-							"pagina": 601
-						},
-						{
-							"nome": "Primeira epístola de São Pedro",
-							"pagina": 611
-						},
-						{
-							"nome": "Segunda epístola de São Pedro",
-							"sigla": "2Pe",
-							"pagina": 621
-						},
-						{
-							"nome": "Primeira epístola de São João",
-							"pagina": 629
-						},
-						{
-							"nome": "Segunda epístola de São João",
-							"pagina": 639
-						},
-						{
-							"nome": "Terceira epístola de São João",
-							"pagina": 641
-						},
-						{
-							"nome": "Epístola de São Judas",
-							"pagina": 643
-						},
-						{
-							"nome": "Apocalipse de São João",
-							"pagina": 647
-						}
-					]
-				}
-			],
-			"citacaoGrupos": [
-				{
-					"nome": "Tradução",
-					"citacoes": [
-						{
-							"citacao": "Esta edição tem como base a tradução da Vulgata Latina feita pelo Pe. Matos Soares, devidamente incorporadas, mediante revisão técnica, as alterações promovidas pela Nova Vulgata.",
-							"referencia": "4"
 						}
 					]
 				}

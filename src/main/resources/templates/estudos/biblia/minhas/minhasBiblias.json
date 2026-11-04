@@ -1367,6 +1367,413 @@
 			]
 		},
 		{
+			"codigo": "PAPF2025",
+			"nome": "Bíblia Católica Sagrada Família",
+			"volumes": [
+				{
+					"editoras": [
+						"PAE"
+					],
+					"publicacao": "2025",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-8555581984",
+					"formato": "fisico",
+					"nihilObstat": {
+						"nome": "Dom Pedro Luiz Stringhini",
+						"link": "https://www.catholic-hierarchy.org/bishop/bstri.html"
+					},
+					"imprimatur": {
+						"nome": "Dom Raymundo Damasceno Assis",
+						"link": "https://www.catholic-hierarchy.org/bishop/bdamass.html"
+					},
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gên",
+							"pagina": 3
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 35
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lev",
+							"pagina": 60
+						},
+						{
+							"nome": "Números",
+							"sigla": "Núm",
+							"pagina": 78
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 103
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Jos",
+							"pagina": 125
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Ju",
+							"pagina": 140
+						},
+						{
+							"nome": "Ruth",
+							"sigla": "Ru",
+							"pagina": 156
+						},
+						{
+							"nome": "Primeiro Livro de Samuel",
+							"sigla": "I Sam",
+							"pagina": 158
+						},
+						{
+							"nome": "Segundo Livro de Samuel",
+							"sigla": "II Sam",
+							"pagina": 179
+						},
+						{
+							"nome": "Primeiro Livro dos Reis",
+							"sigla": "I Rs",
+							"pagina": 196
+						},
+						{
+							"nome": "Segundo Livro dos Reis",
+							"sigla": "II Rs",
+							"pagina": 215
+						},
+						{
+							"nome": "Primeiro Livro das Crônicas",
+							"sigla": "I Crôn",
+							"pagina": 234
+						},
+						{
+							"nome": "Segundo Livro das Crônicas",
+							"sigla": "II Crôn",
+							"pagina": 252
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 273
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 280
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tob",
+							"pagina": 289
+						},
+						{
+							"nome": "Judith",
+							"sigla": "Jdt",
+							"pagina": 295
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 304
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 311
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sal",
+							"pagina": 329
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Prv",
+							"pagina": 375
+						},
+						{
+							"nome": "Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 390
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Cant",
+							"pagina": 396
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sab",
+							"pagina": 399
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "eCL",
+							"pagina": 409
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 439
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jer",
+							"pagina": 471
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lam",
+							"pagina": 506
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Bar",
+							"pagina": 510
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 514
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dan",
+							"pagina": 548
+						},
+						{
+							"nome": "Oséias",
+							"sigla": "Os",
+							"pagina": 562
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 567
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 569
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 572
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jon",
+							"pagina": 573
+						},
+						{
+							"nome": "Miquéias",
+							"sigla": "Miq",
+							"pagina": 574
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 577
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 578
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sof",
+							"pagina": 580
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "Ag",
+							"pagina": 581
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zac",
+							"pagina": 581
+						},
+						{
+							"nome": "Primeiro Livro dos Macabeus",
+							"sigla": "I Mac",
+							"pagina": 588
+						},
+						{
+							"nome": "Segundo Livro dos Macabeus",
+							"sigla": "I Mac",
+							"pagina": 609
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 625
+						},
+						{
+							"nome": "Mateus",
+							"sigla": "Mt",
+							"pagina": 629
+						},
+						{
+							"nome": "Marcos",
+							"sigla": "mc",
+							"pagina": 650
+						},
+						{
+							"nome": "Lucas",
+							"sigla": "Lc",
+							"pagina": 664
+						},
+						{
+							"nome": "João",
+							"sigla": "Jo",
+							"pagina": 687
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "Ats",
+							"pagina": 704
+						},
+						{
+							"nome": "Romanos",
+							"sigla": "Rom",
+							"pagina": 726
+						},
+						{
+							"nome": "Primeira Epístola aos Coríntios",
+							"sigla": "I Cor",
+							"pagina": 736
+						},
+						{
+							"nome": "Segunda Epístola aos Coríntios",
+							"sigla": "II Cor",
+							"pagina": 745
+						},
+						{
+							"nome": "Epístola aos Gálatas",
+							"sigla": "Gál",
+							"pagina": 751
+						},
+						{
+							"nome": "Epístola aos Efésios",
+							"sigla": "Ef",
+							"pagina": 754
+						},
+						{
+							"nome": "Epístola aos Filipenses",
+							"sigla": "Flp",
+							"pagina": 757
+						},
+						{
+							"nome": "Epístola aos Colossenses",
+							"sigla": "Col",
+							"pagina": 759
+						},
+						{
+							"nome": "Primeira Epístola aos Tessalonicenses",
+							"sigla": "I Tes",
+							"pagina": 761
+						},
+						{
+							"nome": "Segunda Epístola aos Tessalonicenses",
+							"sigla": "II Tes",
+							"pagina": 763
+						},
+						{
+							"nome": "Primeira Epístola a Timóteo",
+							"sigla": "I Tim",
+							"pagina": 765
+						},
+						{
+							"nome": "Segunda Epístola a Timóteo",
+							"sigla": "II Tim",
+							"pagina": 767
+						},
+						{
+							"nome": "Epístola a Tito",
+							"sigla": "Tit",
+							"pagina": 769
+						},
+						{
+							"nome": "Epístolaa Filémon",
+							"sigla": "Flm",
+							"pagina": 770
+						},
+						{
+							"nome": "Epístola aos Hebreus",
+							"sigla": "Hebreus",
+							"pagina": 770
+						},
+						{
+							"nome": "Epístola de S. Tiago Apóstolo",
+							"sigla": "Snt",
+							"pagina": 777
+						},
+						{
+							"nome": "Primeira Epístola de São Pedro",
+							"sigla": "I Pe",
+							"pagina": 780
+						},
+						{
+							"nome": "Segunda Epístola de São Pedro",
+							"sigla": "II Pe",
+							"pagina": 782
+						},
+						{
+							"nome": "Primeira Epístola de São João",
+							"sigla": "I Jo",
+							"pagina": 784
+						},
+						{
+							"nome": "Segunda Epístola de São João",
+							"sigla": "II Jo",
+							"pagina": 786
+						},
+						{
+							"nome": "Terceira Epístola de São João",
+							"sigla": "III Jo",
+							"pagina": 787
+						},
+						{
+							"nome": "Epístola de São Judas Apóstolos",
+							"sigla": "Jds",
+							"pagina": 787
+						},
+						{
+							"nome": "Apocalipsede São João",
+							"sigla": "Ap",
+							"pagina": 788
+						}
+					]
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Tradução",
+					"citacoes": [
+						{
+							"citacao": "Fiel ao texto da Vulgata Latina",
+							"referencia": "p. -15"
+						},
+						{
+							"citacao": "Tradução do Padre Antônio Pereira de Figueiredo",
+							"referencia": "p. -15"
+						}
+					]
+				}
+			]
+		},
+		{
 			"codigo": "PMS32_2022",
 			"nome": "Bíblia Sagrada",
 			"volumes": [
@@ -2720,413 +3127,6 @@
 						{
 							"citacao": "Esta edição tem como base a tradução da Vulgata Latina feita pelo Pe. Matos Soares, devidamente incorporadas, mediante revisão técnica, as alterações promovidas pela Nova Vulgata.",
 							"referencia": "4"
-						}
-					]
-				}
-			]
-		},
-		{
-			"codigo": "PAPF2025",
-			"nome": "Bíblia Católica Sagrada Família",
-			"volumes": [
-				{
-					"editoras": [
-						"PAE"
-					],
-					"publicacao": "2025",
-					"idiomas": [
-						"pt-br"
-					],
-					"isbn": "978-8555581984",
-					"formato": "fisico",
-					"nihilObstat": {
-						"nome": "Dom Pedro Luiz Stringhini",
-						"link": "https://www.catholic-hierarchy.org/bishop/bstri.html"
-					},
-					"imprimatur": {
-						"nome": "Dom Raymundo Damasceno Assis",
-						"link": "https://www.catholic-hierarchy.org/bishop/bdamass.html"
-					},
-					"livros": [
-						{
-							"nome": "Gênesis",
-							"sigla": "Gên",
-							"pagina": 3
-						},
-						{
-							"nome": "Êxodo",
-							"sigla": "Ex",
-							"pagina": 35
-						},
-						{
-							"nome": "Levítico",
-							"sigla": "Lev",
-							"pagina": 60
-						},
-						{
-							"nome": "Números",
-							"sigla": "Núm",
-							"pagina": 78
-						},
-						{
-							"nome": "Deuteronômio",
-							"sigla": "Dt",
-							"pagina": 103
-						},
-						{
-							"nome": "Josué",
-							"sigla": "Jos",
-							"pagina": 125
-						},
-						{
-							"nome": "Juízes",
-							"sigla": "Ju",
-							"pagina": 140
-						},
-						{
-							"nome": "Ruth",
-							"sigla": "Ru",
-							"pagina": 156
-						},
-						{
-							"nome": "Primeiro Livro de Samuel",
-							"sigla": "I Sam",
-							"pagina": 158
-						},
-						{
-							"nome": "Segundo Livro de Samuel",
-							"sigla": "II Sam",
-							"pagina": 179
-						},
-						{
-							"nome": "Primeiro Livro dos Reis",
-							"sigla": "I Rs",
-							"pagina": 196
-						},
-						{
-							"nome": "Segundo Livro dos Reis",
-							"sigla": "II Rs",
-							"pagina": 215
-						},
-						{
-							"nome": "Primeiro Livro das Crônicas",
-							"sigla": "I Crôn",
-							"pagina": 234
-						},
-						{
-							"nome": "Segundo Livro das Crônicas",
-							"sigla": "II Crôn",
-							"pagina": 252
-						},
-						{
-							"nome": "Esdras",
-							"sigla": "Esd",
-							"pagina": 273
-						},
-						{
-							"nome": "Neemias",
-							"sigla": "Ne",
-							"pagina": 280
-						},
-						{
-							"nome": "Tobias",
-							"sigla": "Tob",
-							"pagina": 289
-						},
-						{
-							"nome": "Judith",
-							"sigla": "Jdt",
-							"pagina": 295
-						},
-						{
-							"nome": "Ester",
-							"sigla": "Est",
-							"pagina": 304
-						},
-						{
-							"nome": "Jó",
-							"sigla": "Jó",
-							"pagina": 311
-						},
-						{
-							"nome": "Salmos",
-							"sigla": "Sal",
-							"pagina": 329
-						},
-						{
-							"nome": "Provérbios",
-							"sigla": "Prv",
-							"pagina": 375
-						},
-						{
-							"nome": "Eclesiastes",
-							"sigla": "Ecl",
-							"pagina": 390
-						},
-						{
-							"nome": "Cântico dos Cânticos",
-							"sigla": "Cant",
-							"pagina": 396
-						},
-						{
-							"nome": "Sabedoria",
-							"sigla": "Sab",
-							"pagina": 399
-						},
-						{
-							"nome": "Eclesiástico",
-							"sigla": "eCL",
-							"pagina": 409
-						},
-						{
-							"nome": "Isaías",
-							"sigla": "Is",
-							"pagina": 439
-						},
-						{
-							"nome": "Jeremias",
-							"sigla": "Jer",
-							"pagina": 471
-						},
-						{
-							"nome": "Lamentações",
-							"sigla": "Lam",
-							"pagina": 506
-						},
-						{
-							"nome": "Baruc",
-							"sigla": "Bar",
-							"pagina": 510
-						},
-						{
-							"nome": "Ezequiel",
-							"sigla": "Ez",
-							"pagina": 514
-						},
-						{
-							"nome": "Daniel",
-							"sigla": "Dan",
-							"pagina": 548
-						},
-						{
-							"nome": "Oséias",
-							"sigla": "Os",
-							"pagina": 562
-						},
-						{
-							"nome": "Joel",
-							"sigla": "Jl",
-							"pagina": 567
-						},
-						{
-							"nome": "Amós",
-							"sigla": "Am",
-							"pagina": 569
-						},
-						{
-							"nome": "Abdias",
-							"sigla": "Ab",
-							"pagina": 572
-						},
-						{
-							"nome": "Jonas",
-							"sigla": "Jon",
-							"pagina": 573
-						},
-						{
-							"nome": "Miquéias",
-							"sigla": "Miq",
-							"pagina": 574
-						},
-						{
-							"nome": "Naum",
-							"sigla": "Na",
-							"pagina": 577
-						},
-						{
-							"nome": "Habacuc",
-							"sigla": "Hab",
-							"pagina": 578
-						},
-						{
-							"nome": "Sofonias",
-							"sigla": "Sof",
-							"pagina": 580
-						},
-						{
-							"nome": "Ageu",
-							"sigla": "Ag",
-							"pagina": 581
-						},
-						{
-							"nome": "Zacarias",
-							"sigla": "Zac",
-							"pagina": 581
-						},
-						{
-							"nome": "Primeiro Livro dos Macabeus",
-							"sigla": "I Mac",
-							"pagina": 588
-						},
-						{
-							"nome": "Segundo Livro dos Macabeus",
-							"sigla": "I Mac",
-							"pagina": 609
-						},
-						{
-							"nome": "Malaquias",
-							"sigla": "Ml",
-							"pagina": 625
-						},
-						{
-							"nome": "Mateus",
-							"sigla": "Mt",
-							"pagina": 629
-						},
-						{
-							"nome": "Marcos",
-							"sigla": "mc",
-							"pagina": 650
-						},
-						{
-							"nome": "Lucas",
-							"sigla": "Lc",
-							"pagina": 664
-						},
-						{
-							"nome": "João",
-							"sigla": "Jo",
-							"pagina": 687
-						},
-						{
-							"nome": "Atos dos Apóstolos",
-							"sigla": "Ats",
-							"pagina": 704
-						},
-						{
-							"nome": "Romanos",
-							"sigla": "Rom",
-							"pagina": 726
-						},
-						{
-							"nome": "Primeira Epístola aos Coríntios",
-							"sigla": "I Cor",
-							"pagina": 736
-						},
-						{
-							"nome": "Segunda Epístola aos Coríntios",
-							"sigla": "II Cor",
-							"pagina": 745
-						},
-						{
-							"nome": "Epístola aos Gálatas",
-							"sigla": "Gál",
-							"pagina": 751
-						},
-						{
-							"nome": "Epístola aos Efésios",
-							"sigla": "Ef",
-							"pagina": 754
-						},
-						{
-							"nome": "Epístola aos Filipenses",
-							"sigla": "Flp",
-							"pagina": 757
-						},
-						{
-							"nome": "Epístola aos Colossenses",
-							"sigla": "Col",
-							"pagina": 759
-						},
-						{
-							"nome": "Primeira Epístola aos Tessalonicenses",
-							"sigla": "I Tes",
-							"pagina": 761
-						},
-						{
-							"nome": "Segunda Epístola aos Tessalonicenses",
-							"sigla": "II Tes",
-							"pagina": 763
-						},
-						{
-							"nome": "Primeira Epístola a Timóteo",
-							"sigla": "I Tim",
-							"pagina": 765
-						},
-						{
-							"nome": "Segunda Epístola a Timóteo",
-							"sigla": "II Tim",
-							"pagina": 767
-						},
-						{
-							"nome": "Epístola a Tito",
-							"sigla": "Tit",
-							"pagina": 769
-						},
-						{
-							"nome": "Epístolaa Filémon",
-							"sigla": "Flm",
-							"pagina": 770
-						},
-						{
-							"nome": "Epístola aos Hebreus",
-							"sigla": "Hebreus",
-							"pagina": 770
-						},
-						{
-							"nome": "Epístola de S. Tiago Apóstolo",
-							"sigla": "Snt",
-							"pagina": 777
-						},
-						{
-							"nome": "Primeira Epístola de São Pedro",
-							"sigla": "I Pe",
-							"pagina": 780
-						},
-						{
-							"nome": "Segunda Epístola de São Pedro",
-							"sigla": "II Pe",
-							"pagina": 782
-						},
-						{
-							"nome": "Primeira Epístola de São João",
-							"sigla": "I Jo",
-							"pagina": 784
-						},
-						{
-							"nome": "Segunda Epístola de São João",
-							"sigla": "II Jo",
-							"pagina": 786
-						},
-						{
-							"nome": "Terceira Epístola de São João",
-							"sigla": "III Jo",
-							"pagina": 787
-						},
-						{
-							"nome": "Epístola de São Judas Apóstolos",
-							"sigla": "Jds",
-							"pagina": 787
-						},
-						{
-							"nome": "Apocalipsede São João",
-							"sigla": "Ap",
-							"pagina": 788
-						}
-					]
-				}
-			],
-			"citacaoGrupos": [
-				{
-					"nome": "Tradução",
-					"citacoes": [
-						{
-							"citacao": "Fiel ao texto da Vulgata Latina",
-							"referencia": "p. -15"
-						},
-						{
-							"citacao": "Tradução do Padre Antônio Pereira de Figueiredo",
-							"referencia": "p. -15"
 						}
 					]
 				}

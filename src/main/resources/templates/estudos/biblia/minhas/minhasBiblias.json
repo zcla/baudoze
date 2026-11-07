@@ -4084,7 +4084,7 @@
 						{
 							"nome": "Livro dos Salmos",
 							"sigla": "Sl",
-							"pagina": 979
+							"pagina": 797
 						},
 						{
 							"nome": "Livro dos Provérbios",
@@ -4356,18 +4356,437 @@
 			]
 		},
 		{
-			"codigo": "BJ1987",
+			"codigo": "BJ1992",
 			"nome": "Bíblia de Jerusalém - Nova edição, revista",
 			"volumes": [
 				{
 					"editoras": [
 						"Paulinas"
 					],
-					"publicacao": "1987",
+					"publicacao": "1992",
 					"idiomas": [
 						"pt-br"
 					],
-					"formato": "fisico"
+					"isbn": "85-0501380-8",
+					"formato": "fisico",
+					"primeiraEdicao": {
+						"publicacao": "1987",
+						"referencia": "p. 2"
+					},
+					"imprimatur": {
+						"nome": "Paulo Evaristo Cardinal Arns",
+						"link": "https://www.catholic-hierarchy.org/bishop/barns.html"
+					},
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 31
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 106
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 168
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 213
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 274
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Js",
+							"pagina": 337
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Jz",
+							"pagina": 374
+						},
+						{
+							"nome": "Rute",
+							"sigla": "Rt",
+							"pagina": 414
+						},
+						{
+							"nome": "Primeiro Samuel",
+							"sigla": "1Sm",
+							"pagina": 419
+						},
+						{
+							"nome": "Segundo Samuel",
+							"sigla": "2Sm",
+							"pagina": 466
+						},
+						{
+							"nome": "Primeiro Reis",
+							"sigla": "1Rs",
+							"pagina": 506
+						},
+						{
+							"nome": "Segundo Reis",
+							"sigla": "2Rs",
+							"pagina": 550
+						},
+						{
+							"nome": "Primeiro Crônicas",
+							"sigla": "1Cr",
+							"pagina": 599
+						},
+						{
+							"nome": "Segundo Crônicas",
+							"sigla": "2Cr",
+							"pagina": 639
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 686
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 701
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tb",
+							"pagina": 727
+						},
+						{
+							"nome": "Judite",
+							"sigla": "Jt",
+							"pagina": 747
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 768
+						},
+						{
+							"nome": "Primeiro Macabeus",
+							"sigla": "1Mc",
+							"pagina": 788
+						},
+						{
+							"nome": "Segundo Macabeus",
+							"sigla": "2Mc",
+							"pagina": 838
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 882
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 948
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Pr",
+							"pagina": 1117
+						},
+						{
+							"nome": "Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 1167
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 1185
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sb",
+							"pagina": 1203
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "Eclo",
+							"pagina": 1242
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 1359
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jr",
+							"pagina": 1473
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lm",
+							"pagina": 1578
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Br",
+							"pagina": 1593
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1605
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dn",
+							"pagina": 1680
+						},
+						{
+							"nome": "Oséias",
+							"sigla": "Os",
+							"pagina": 1715
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 1736
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 1745
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 1762
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jn",
+							"pagina": 1765
+						},
+						{
+							"nome": "Miquéias",
+							"sigla": "Mq",
+							"pagina": 1768
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 1781
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 1787
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sf",
+							"pagina": 1794
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "Ag",
+							"pagina": 1802
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zc",
+							"pagina": 1805
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 1821
+						},
+						{
+							"nome": "Evangelho segundo São Mateus",
+							"sigla": "Mt",
+							"pagina": 1837
+						},
+						{
+							"nome": "Evangelho segundo São Marcos",
+							"sigla": "Mc",
+							"pagina": 1897
+						},
+						{
+							"nome": "Evangelho segundo São Lucas",
+							"sigla": "Lc",
+							"pagina": 1926
+						},
+						{
+							"nome": "Evangelho segundo São João",
+							"sigla": "Jo",
+							"pagina": 1985
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 2046
+						},
+						{
+							"nome": "Romanos",
+							"sigla": "Rm",
+							"pagina": 2118
+						},
+						{
+							"nome": "Primeira aos Coríntios",
+							"sigla": "1Cor",
+							"pagina": 2147
+						},
+						{
+							"nome": "Segunda aos Coríntios",
+							"sigla": "2Cor",
+							"pagina": 2173
+						},
+						{
+							"nome": "Gálatas",
+							"sigla": "Gl",
+							"pagina": 2188
+						},
+						{
+							"nome": "Efésios",
+							"sigla": "Ef",
+							"pagina": 2196
+						},
+						{
+							"nome": "Filipenses",
+							"sigla": "Fl",
+							"pagina": 2205
+						},
+						{
+							"nome": "Colossenses",
+							"sigla": "Cl",
+							"pagina": 2211
+						},
+						{
+							"nome": "Primeira aos Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 2217
+						},
+						{
+							"nome": "Segunda aos Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 2223
+						},
+						{
+							"nome": "Primeira a Timóteo",
+							"sigla": "1Tm",
+							"pagina": 2226
+						},
+						{
+							"nome": "Segunda a Timóteo",
+							"sigla": "2Tm",
+							"pagina": 2232
+						},
+						{
+							"nome": "Tito",
+							"sigla": "Tt",
+							"pagina": 2237
+						},
+						{
+							"nome": "Filêmon",
+							"sigla": "Fm",
+							"pagina": 2240
+						},
+						{
+							"nome": "Hebreus",
+							"sigla": "Hb",
+							"pagina": 2242
+						},
+						{
+							"nome": "Epístola de São Tiago",
+							"sigla": "Tg",
+							"pagina": 2264
+						},
+						{
+							"nome": "Primeira Epístola de São Pedro",
+							"sigla": "1Pd",
+							"pagina": 2270
+						},
+						{
+							"nome": "Segunda Epístola de São Pedro",
+							"sigla": "2Pd",
+							"pagina": 2278
+						},
+						{
+							"nome": "Primeira Epístola de São João",
+							"sigla": "1Jo",
+							"pagina": 2282
+						},
+						{
+							"nome": "Segunda Epístola de São João",
+							"sigla": "2Jo",
+							"pagina": 2294
+						},
+						{
+							"nome": "Terceira Epístola de São João",
+							"sigla": "3Jo",
+							"pagina": 2295
+						},
+						{
+							"nome": "Epístola de São Judas",
+							"sigla": "Jd",
+							"pagina": 2296
+						},
+						{
+							"nome": "Apocalipse",
+							"sigla": "Ap",
+							"pagina": 2301
+						}
+					]
+				}
+			],
+			"fontes": [
+				{
+					"codigo": "NV",
+					"citacao": "Edição em língua francesa: © Les Éditions Du Cerf, Paris, 1973, ed. revista e aumentada",
+					"referencia": "p. 4"
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Tradução",
+					"citacoes": [
+						{
+							"citacao": "Tradução do texto em língua portuguesa diretamente dos originais.",
+							"referencia": "p. 4"
+						},
+						{
+							"citacao": "A tradução foi feita a partir dos textos originais hebraicos, aramaicos e gregos.",
+							"referencia": "p. 13"
+						},
+						{
+							"citacao": "Para o Antigo Testamento utilizou-se o texto massorético, [...]. Quando esse texto apresenta dificuldades insuperáveis, recorre-se a outros manuscritos hebraicos ou a versões antigas, principalmente a grega, a siríaca e a latina.",
+							"referencia": "p. 13"
+						},
+						{
+							"citacao": "Para os livros gregos do Antigo Testamento (\"deuterocanônicos\") e para o Novo Testamento utilizou-se o texto estabelecido na época moderna por um trabalho crítico sobre as principais testemunhas manuscritas da tradição, também com o auxílio das versões antigas.",
+							"referencia": "p. 13"
+						},
+						{
+							"citacao": "A transcrição dos nomes próprios foi feita com a mediação do latim (Vulgata e Neovulgata).",
+							"referencia": "p. 13"
+						}
+					]
+				},
+				{
+					"nome": "Numeração",
+					"citacoes": [
+						{
+							"citacao": "No Antigo Testamento, a numeração dos capítulos e versículos segue sempre o hebraico.",
+							"referencia": "p. 13"
+						}
+					]
 				}
 			]
 		},

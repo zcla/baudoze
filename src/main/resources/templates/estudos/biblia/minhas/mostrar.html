@@ -85,7 +85,8 @@
 										</tr>
 										<tr th:if="${volume.imprimatur}">
 											<th>Imprimatur</th>
-											<td><a th:href="${volume.imprimatur.link}" target="_blank" th:text="${volume.imprimatur.nome}"></a></td>
+											<td th:if="${volume.imprimatur.link != null}"><a th:href="${volume.imprimatur.link}" target="_blank" th:text="${volume.imprimatur.nome}"></a></td>
+											<td th:if="${volume.imprimatur.link == null}" th:text="${volume.imprimatur.nome}"></td>
 										</tr>
 									</tbody>
 								</table>

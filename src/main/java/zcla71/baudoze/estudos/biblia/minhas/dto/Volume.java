@@ -14,8 +14,7 @@ public class Volume {
 	private String isbn;
 	private String formato;
 	private PrimeiraEdicao primeiraEdicao;
-	private Pessoa nihilObstat;
-	private Pessoa imprimatur;
+	private List<Aprovacao> aprovacoes;
 	private List<Livro> livros;
 
 	public String getFormatoDisplay() {

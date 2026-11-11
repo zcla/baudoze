@@ -79,15 +79,19 @@
 												</i>
 											</td>
 										</tr>
-										<tr th:if="${volume.nihilObstat}">
-											<th>Nihil obstat</th>
-											<td><a th:href="${volume.nihilObstat.link}" target="_blank" th:text="${volume.nihilObstat.nome}"></a></td>
-										</tr>
-										<tr th:if="${volume.imprimatur}">
-											<th>Imprimatur</th>
-											<td th:if="${volume.imprimatur.link != null}"><a th:href="${volume.imprimatur.link}" target="_blank" th:text="${volume.imprimatur.nome}"></a></td>
-											<td th:if="${volume.imprimatur.link == null}" th:text="${volume.imprimatur.nome}"></td>
-										</tr>
+										<th:block th:if="${volume.aprovacoes}">
+											<tr th:each="aprovacao : ${volume.aprovacoes}">
+												<th th:text="${aprovacao.tipo}"></th>
+												<td>
+													<span th:if="${aprovacao.data != null}" th:text="${aprovacao.data + ' &bull; '}"></span>
+													<a th:if="${aprovacao.link != null}" th:href="${aprovacao.link}" target="_blank" th:text="${aprovacao.nome}"></a>
+													<span th:if="${aprovacao.link == null}" th:text="${aprovacao.nome}"></span>
+													<i th:if="${aprovacao.referencia}">
+														<span th:text="|(${aprovacao.referencia})|"></span>
+													</i>
+												</td>
+											</tr>
+										</th:block>
 									</tbody>
 								</table>
 							</div>

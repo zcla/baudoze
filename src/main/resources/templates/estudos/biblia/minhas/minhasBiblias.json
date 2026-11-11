@@ -18,10 +18,14 @@
 						"publicacao": "1979",
 						"referencia": "p. IV"
 					},
-					"nihilObstat": {
-						"nome": "Ioannes Paulus II",
-						"link": "https://www.catholic-hierarchy.org/bishop/bwojtyla.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Ioannes Paulus II",
+							"link": "https://www.catholic-hierarchy.org/bishop/bwojtyla.html",
+							"data": "1979-04-25"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Liber Genesis",
@@ -479,14 +483,18 @@
 						"publicacao": "2001",
 						"referencia": "CNBB2019, p. 7"
 					},
-					"nihilObstat": {
-						"nome": "Walmor Oliveira de Azevedo",
-						"link": "https://www.catholic-hierarchy.org/bishop/bolaz.html"
-					},
-					"imprimatur": {
-						"nome": "Geraldo Lyrio Rocha",
-						"link": "https://www.catholic-hierarchy.org/bishop/blyro.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Walmor Oliveira de Azevedo",
+							"link": "https://www.catholic-hierarchy.org/bishop/bolaz.html"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Geraldo Lyrio Rocha",
+							"link": "https://www.catholic-hierarchy.org/bishop/blyro.html"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -933,14 +941,18 @@
 						"publicacao": "2018",
 						"referencia": "p. 5"
 					},
-					"nihilObstat": {
-						"nome": "Pedro Carlos Cipolini",
-						"link": "https://www.catholic-hierarchy.org/bishop/bcipol.html"
-					},
-					"imprimatur": {
-						"nome": "Sérgio da Rocha",
-						"link": "https://www.catholic-hierarchy.org/bishop/bdarocha.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Pedro Carlos Cipolini",
+							"link": "https://www.catholic-hierarchy.org/bishop/bcipol.html"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Sérgio da Rocha",
+							"link": "https://www.catholic-hierarchy.org/bishop/bdarocha.html"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -1380,14 +1392,20 @@
 					],
 					"isbn": "978-8555581984",
 					"formato": "fisico",
-					"nihilObstat": {
-						"nome": "Dom Pedro Luiz Stringhini",
-						"link": "https://www.catholic-hierarchy.org/bishop/bstri.html"
-					},
-					"imprimatur": {
-						"nome": "Dom Raymundo Damasceno Assis",
-						"link": "https://www.catholic-hierarchy.org/bishop/bdamass.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Dom Pedro Luiz Stringhini",
+							"link": "https://www.catholic-hierarchy.org/bishop/bstri.html",
+							"data": "2007-11-05"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Dom Raymundo Damasceno Assis",
+							"link": "https://www.catholic-hierarchy.org/bishop/bdamass.html",
+							"data": "2007-11-14"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -2187,14 +2205,19 @@
 					],
 					"isbn": "978-65-5301-000-0",
 					"formato": "fisico",
-					"nihilObstat": {
-						"nome": "Pe. Luiz Gonzaga da Fonseca",
-						"link": "https://www.wikidata.org/wiki/Q89187586"
-					},
-					"imprimatur": {
-						"nome": "Antonio, bispo do Porto",
-						"link": "https://www.catholic-hierarchy.org/bishop/bbarl.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Pe. Luiz Gonzaga da Fonseca",
+							"link": "https://www.wikidata.org/wiki/Q89187586",
+							"data": "1927-10-15"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Antonio, bispo do Porto",
+							"link": "https://www.catholic-hierarchy.org/bishop/bbarl.html"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -2736,14 +2759,20 @@
 					],
 					"isbn": "978-65-87135-44-1",
 					"formato": "fisico",
-					"nihilObstat": {
-						"nome": "Can. J. Valente",
-						"link": "https://app.parlamento.pt/PublicacoesOnLine/OsProcuradoresdaCamaraCorporativa/html/pdf/v/valente_joaquim_manuel.pdf"
-					},
-					"imprimatur": {
-						"nome": "Antonius, E. Portucalensis",
-						"link": "https://www.catholic-hierarchy.org/bishop/bferrgo.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Can. J. Valente",
+							"link": "https://app.parlamento.pt/PublicacoesOnLine/OsProcuradoresdaCamaraCorporativa/html/pdf/v/valente_joaquim_manuel.pdf",
+							"data": "1956-01-01"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Antonius, E. Portucalensis",
+							"link": "https://www.catholic-hierarchy.org/bishop/bferrgo.html",
+							"data": "1956?-01-07"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -3150,10 +3179,24 @@
 						"publicacao": "1959?",
 						"referencia": "p. 5"
 					},
-					"imprimatur": {
-						"nome": "Carolus, Card. Archiep.",
-						"link": "https://www.catholic-hierarchy.org/bishop/bvasm.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Imprimi potest",
+							"nome": "P. Gerardus Jarussi, C. M. F.",
+							"link": "https://www.jornalosemanario.com.br/figuras-ilustres-da-regiao-geraldo-jarussi-pe/",
+							"data": "1971-03-21"
+						},
+						{
+							"tipo": "Nihil obstat",
+							"nome": "cens. dep."
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Carolus, Card. Archiep.",
+							"link": "https://www.catholic-hierarchy.org/bishop/bvasm.html",
+							"data": "1957-12-26"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -3558,10 +3601,24 @@
 						"publicacao": "1959?",
 						"referencia": "p. 14"
 					},
-					"imprimatur": {
-						"nome": "Carolus, Card. Archiep.",
-						"link": "https://www.catholic-hierarchy.org/bishop/bvasm.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Imprimi potest",
+							"nome": "P. Gerardus Jarussi, CMF",
+							"link": "https://www.jornalosemanario.com.br/figuras-ilustres-da-regiao-geraldo-jarussi-pe/",
+							"data": "1971-03-21"
+						},
+						{
+							"tipo": "Nihil obstat",
+							"nome": "cens. dep."
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Carolus, Card. Archiep.",
+							"link": "https://www.catholic-hierarchy.org/bishop/bvasm.html",
+							"data": "1957-12-26"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -3966,10 +4023,24 @@
 						"publicacao": "1959?",
 						"referencia": "p. 5"
 					},
-					"imprimatur": {
-						"nome": "Carolus, Card. Archiep.",
-						"link": "https://www.catholic-hierarchy.org/bishop/bvasm.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Imprimi potest",
+							"nome": "P. Gerardus Jarussi, CMF",
+							"link": "https://www.jornalosemanario.com.br/figuras-ilustres-da-regiao-geraldo-jarussi-pe/",
+							"data": "1971-03-21"
+						},
+						{
+							"tipo": "Nihil obstat",
+							"nome": "cens. dep."
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Carolus, Card. Archiep.",
+							"link": "https://www.catholic-hierarchy.org/bishop/bvasm.html",
+							"data": "1957-12-26"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -4373,10 +4444,14 @@
 						"publicacao": "1987",
 						"referencia": "p. 2"
 					},
-					"imprimatur": {
-						"nome": "Paulo Evaristo Cardinal Arns",
-						"link": "https://www.catholic-hierarchy.org/bishop/barns.html"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Imprimatur",
+							"nome": "Paulo Evaristo Cardinal Arns",
+							"link": "https://www.catholic-hierarchy.org/bishop/barns.html",
+							"data": "1980-11-01"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -4808,9 +4883,13 @@
 						"publicacao": "2002",
 						"referencia": "p. 4"
 					},
-					"imprimatur": {
-						"nome": "Carta protocolar CNBB SG - nº 0051/03"
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Imprimatur",
+							"nome": "Carta protocolar CNBB SG - nº 0051/03",
+							"data": "2003"
+						}
+					],
 					"livros": [
 						{
 							"nome": "Gênesis",
@@ -5225,6 +5304,442 @@
 			]
 		},
 		{
+			"codigo": "AB2023",
+			"nome": "A Bíblia",
+			"volumes": [
+				{
+					"editoras": [
+						"Paulinas"
+					],
+					"edicao": "1ª",
+					"publicacao": "2023",
+					"idiomas": [
+						"pt-br"
+					],
+					"isbn": "978-65-5808-213-2",
+					"formato": "fisico",
+					"primeiraEdicao": {
+						"publicacao": "2023",
+						"referencia": "p. 4"
+					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Dom Pedro Carlos Cipollini",
+							"link": "https://www.catholic-hierarchy.org/bishop/bcipol.html",
+							"data": "2023-02-07",
+							"referencia": "p. 4"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Dom Walmor Oliveira de Azevedo",
+							"link": "https://www.catholic-hierarchy.org/bishop/bolaz.html",
+							"data": "2023-02-17",
+							"referencia": "p. 4"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Dom Joel Portella Amado",
+							"link": "https://www.catholic-hierarchy.org/bishop/bporama.html",
+							"data": "2023-02-17",
+							"referencia": "p. 4"
+						}
+					],
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 15
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 84
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 144
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 188
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 249
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Js",
+							"pagina": 296
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Jz",
+							"pagina": 331
+						},
+						{
+							"nome": "Rute",
+							"sigla": "Rt",
+							"pagina": 364
+						},
+						{
+							"nome": "1 Samuel",
+							"sigla": "1Sm",
+							"pagina": 371
+						},
+						{
+							"nome": "2 Samuel",
+							"sigla": "2Sm",
+							"pagina": 411
+						},
+						{
+							"nome": "1 Reis",
+							"sigla": "1Rs",
+							"pagina": 445
+						},
+						{
+							"nome": "2 Reis",
+							"sigla": "2Rs",
+							"pagina": 491
+						},
+						{
+							"nome": "1 Crônicas",
+							"sigla": "1Cr",
+							"pagina": 529
+						},
+						{
+							"nome": "2 Crônicas",
+							"sigla": "2Cr",
+							"pagina": 568
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 617
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 633
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tb",
+							"pagina": 654
+						},
+						{
+							"nome": "Judite",
+							"sigla": "Jt",
+							"pagina": 673
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 695
+						},
+						{
+							"nome": "1 Macabeus",
+							"sigla": "1Mc",
+							"pagina": 712
+						},
+						{
+							"nome": "2 Macabeus",
+							"sigla": "2Mc",
+							"pagina": 752
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 782
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 828
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Pr",
+							"pagina": 986
+						},
+						{
+							"nome": "Eclesiastes (Coélet)",
+							"sigla": "Ecl",
+							"pagina": 1028
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 1042
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sb",
+							"pagina": 1051
+						},
+						{
+							"nome": "Eclesiástico (Sirácida)",
+							"sigla": "Eclo",
+							"pagina": 1081
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 1150
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jr",
+							"pagina": 1240
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lm",
+							"pagina": 1328
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Br",
+							"pagina": 1340
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1352
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dn",
+							"pagina": 1416
+						},
+						{
+							"nome": "Oseias",
+							"sigla": "Os",
+							"pagina": 1445
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 1459
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 1466
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 1478
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jn",
+							"pagina": 1482
+						},
+						{
+							"nome": "Miqueias",
+							"sigla": "Mq",
+							"pagina": 1486
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 1495
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 1500
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sf",
+							"pagina": 1507
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "Ag",
+							"pagina": 1513
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zc",
+							"pagina": 1517
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 1530
+						},
+						{
+							"nome": "Mateus",
+							"sigla": "Mt",
+							"pagina": 1539
+						},
+						{
+							"nome": "Marcos",
+							"sigla": "Mc",
+							"pagina": 1596
+						},
+						{
+							"nome": "Lucas",
+							"sigla": "Lc",
+							"pagina": 1628
+						},
+						{
+							"nome": "João",
+							"sigla": "Jo",
+							"pagina": 1686
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 1733
+						},
+						{
+							"nome": "Romanos",
+							"sigla": "Rm",
+							"pagina": 1782
+						},
+						{
+							"nome": "1 Coríntios",
+							"sigla": "1Cor",
+							"pagina": 1803
+						},
+						{
+							"nome": "2 Coríntios",
+							"sigla": "2Cor",
+							"pagina": 1823
+						},
+						{
+							"nome": "Gálatas",
+							"sigla": "Gl",
+							"pagina": 1838
+						},
+						{
+							"nome": "Efésios",
+							"sigla": "Ef",
+							"pagina": 1847
+						},
+						{
+							"nome": "Filipenses",
+							"sigla": "Fl",
+							"pagina": 1855
+						},
+						{
+							"nome": "Colossenses",
+							"sigla": "Cl",
+							"pagina": 1861
+						},
+						{
+							"nome": "1 Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 1867
+						},
+						{
+							"nome": "2 Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 1873
+						},
+						{
+							"nome": "1 Timóteo",
+							"sigla": "1Tm",
+							"pagina": 1877
+						},
+						{
+							"nome": "2 Timóteo",
+							"sigla": "2Tm",
+							"pagina": 1884
+						},
+						{
+							"nome": "Tito",
+							"sigla": "Tt",
+							"pagina": 1889
+						},
+						{
+							"nome": "Filêmon",
+							"sigla": "Fm",
+							"pagina": 1893
+						},
+						{
+							"nome": "Hebreus",
+							"sigla": "Hb",
+							"pagina": 1895
+						},
+						{
+							"nome": "Tiago",
+							"sigla": "Tg",
+							"pagina": 1910
+						},
+						{
+							"nome": "1 Pedro",
+							"sigla": "1Pd",
+							"pagina": 1916
+						},
+						{
+							"nome": "2 Pedro",
+							"sigla": "2Pd",
+							"pagina": 1923
+						},
+						{
+							"nome": "1 João",
+							"sigla": "1Jo",
+							"pagina": 1928
+						},
+						{
+							"nome": "2 João",
+							"sigla": "2Jo",
+							"pagina": 1935
+						},
+						{
+							"nome": "3 João",
+							"sigla": "3Jo",
+							"pagina": 1937
+						},
+						{
+							"nome": "Judas",
+							"sigla": "Jd",
+							"pagina": 1938
+						},
+						{
+							"nome": "Apocalipse",
+							"sigla": "Ap",
+							"pagina": 1941
+						}
+					]
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Tradução",
+					"citacoes": [
+						{
+							"citacao": "A tradução de A Bíblia, feita diretamente do hebraico, aramaico e grego, [...].",
+							"referencia": "p. 5"
+						},
+						{
+							"citacao": "Nesta Bíblia, os livros não pertencentes à Bíblia Hebraica (Tb, Jt, 1Mc, 2Mc, Sb, Eclo, Br) foram traduzidos do grego.",
+							"referencia": "p. 14"
+						}
+					]
+				},
+				{
+					"nome": "Numeração",
+					"citacoes": [
+						{
+							"citacao": "As divisões de capítulos são atribuídas ao arcebispo Estêvão Langton (século XIII), enquanto os versículos procedem do editor Robert Estienne (1551).",
+							"referencia": "p. 7"
+						}
+					]
+				}
+			]
+		},
+		{
 			"codigo": "BN1985",
 			"nome": "Bíblia Sagrada",
 			"volumes": [
@@ -5314,24 +5829,6 @@
 						"pt-br"
 					],
 					"isbn": "978-85-7465-623-6",
-					"formato": "fisico"
-				}
-			]
-		},
-		{
-			"codigo": "AB2023",
-			"nome": "A Bíblia",
-			"volumes": [
-				{
-					"editoras": [
-						"Paulinas"
-					],
-					"edicao": "1ª",
-					"publicacao": "2023",
-					"idiomas": [
-						"pt-br"
-					],
-					"isbn": "978-65-5808-213-2",
 					"formato": "fisico"
 				}
 			]
@@ -5563,14 +6060,29 @@
 						"publicacao": "",
 						"referencia": ""
 					},
-					"nihilObstat": {
-						"nome": "",
-						"link": ""
-					},
-					"imprimatur": {
-						"nome": "",
-						"link": ""
-					},
+					"aprovacoes": [
+						{
+							"tipo": "Imprimi potest",
+							"nome": "",
+							"link": "",
+							"data": "",
+							"referencia": ""
+						},
+						{
+							"tipo": "Nihil obstat",
+							"nome": "",
+							"link": "",
+							"data": "",
+							"referencia": ""
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "",
+							"link": "",
+							"data": "",
+							"referencia": ""
+						}
+					],
 					"livros": [
 						{
 							"nome": "",

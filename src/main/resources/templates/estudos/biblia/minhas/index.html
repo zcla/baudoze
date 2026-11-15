@@ -50,7 +50,7 @@
 									<li th:each="editora : ${linha.editoras}" class="list-group-item" th:text="${editora}"></li>
 								</ul>
 							</td>
-							<td th:text="${linha.edicao}"></td>
+							<td th:text="${linha.edicao}" class="text-end"></td>
 							<td th:text="${linha.publicacao}"></td>
 							<td class="tdWithHorizontalListGroup">
 								<ul class="list-group list-group-horizontal">
@@ -60,7 +60,7 @@
 									</li>
 								</ul>
 							</td>
-							<td th:text="${linha.isbn}"></td>
+							<td th:text="${linha.isbn}" class="text-end"></td>
 							<td th:text="${linha.formato}"></td>
 						</tr>
 					</tbody>

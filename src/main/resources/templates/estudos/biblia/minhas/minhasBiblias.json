@@ -6628,7 +6628,381 @@
 						"pt-br"
 					],
 					"isbn": "978-85-349-2005-6",
-					"formato": "fisico"
+					"formato": "fisico",
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 16
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 94
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 156
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 198
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 253
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Js",
+							"pagina": 318
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Jz",
+							"pagina": 362
+						},
+						{
+							"nome": "Rute",
+							"sigla": "Rt",
+							"pagina": 407
+						},
+						{
+							"nome": "Primeiro livro de Samuel",
+							"sigla": "1Sm",
+							"pagina": 416
+						},
+						{
+							"nome": "Segundo livro de Samuel",
+							"sigla": "2Sm",
+							"pagina": 469
+						},
+						{
+							"nome": "Primeiro livro dos Reis",
+							"sigla": "1Rs",
+							"pagina": 519
+						},
+						{
+							"nome": "Segundo livro dos Reis",
+							"sigla": "2Rs",
+							"pagina": 564
+						},
+						{
+							"nome": "Primeiro livro das Crônicas",
+							"sigla": "1Cr",
+							"pagina": 614
+						},
+						{
+							"nome": "Segundo livro das Crônicas",
+							"sigla": "2Cr",
+							"pagina": 648
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 693
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 712
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tb",
+							"pagina": 738
+						},
+						{
+							"nome": "Judite",
+							"sigla": "Jt",
+							"pagina": 763
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 790
+						},
+						{
+							"nome": "Primeiro livro dos Macabeus",
+							"sigla": "1Mc",
+							"pagina": 812
+						},
+						{
+							"nome": "Segundo livro dos Macabeus",
+							"sigla": "2Mc",
+							"pagina": 867
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 906
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 981
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Pr",
+							"pagina": 1201
+						},
+						{
+							"nome": "Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 1266
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 1283
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sb",
+							"pagina": 1298
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "Eclo",
+							"pagina": 1341
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 1442
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jr",
+							"pagina": 1584
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lm",
+							"pagina": 1707
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Br",
+							"pagina": 1718
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1734
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dn",
+							"pagina": 1836
+						},
+						{
+							"nome": "Oseias",
+							"sigla": "Os",
+							"pagina": 1870
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 1893
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 1903
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 1919
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jn",
+							"pagina": 1923
+						},
+						{
+							"nome": "Miqueias",
+							"sigla": "Mq",
+							"pagina": 1929
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 1943
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 1950
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sf",
+							"pagina": 1957
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "Ag",
+							"pagina": 1965
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zc",
+							"pagina": 1969
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 1993
+						},
+						{
+							"nome": "Evangelho segundo Mateus",
+							"sigla": "Mt",
+							"pagina": 2003
+						},
+						{
+							"nome": "Evangelho segundo Marcos",
+							"sigla": "Mc",
+							"pagina": 2064
+						},
+						{
+							"nome": "Evangelho segundo Lucas",
+							"sigla": "Lc",
+							"pagina": 2109
+						},
+						{
+							"nome": "Evangelho segundo João",
+							"sigla": "Jo",
+							"pagina": 2186
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 2251
+						},
+						{
+							"nome": "Carta aos Romanos",
+							"sigla": "Rm",
+							"pagina": 2317
+						},
+						{
+							"nome": "Primeira carta aos Coríntios",
+							"sigla": "1Cor",
+							"pagina": 2344
+						},
+						{
+							"nome": "Segunda carta aos Coríntios",
+							"sigla": "2Cor",
+							"pagina": 2370
+						},
+						{
+							"nome": "Carta aos Gálatas",
+							"sigla": "Gl",
+							"pagina": 2388
+						},
+						{
+							"nome": "Carta aos Efésios",
+							"sigla": "Ef",
+							"pagina": 2398
+						},
+						{
+							"nome": "Carta aos Filipenses",
+							"sigla": "Fl",
+							"pagina": 2409
+						},
+						{
+							"nome": "Carta aos Colossenses",
+							"sigla": "Cl",
+							"pagina": 2417
+						},
+						{
+							"nome": "Primeira carta aos Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 2425
+						},
+						{
+							"nome": "Segunda carta aos Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 2430
+						},
+						{
+							"nome": "Primeira carta a Timóteo",
+							"sigla": "1Tm",
+							"pagina": 2436
+						},
+						{
+							"nome": "Segunda carta a Timóteo",
+							"sigla": "2Tm",
+							"pagina": 2443
+						},
+						{
+							"nome": "Carta a Tito",
+							"sigla": "Tt",
+							"pagina": 2448
+						},
+						{
+							"nome": "Carta a Filemon",
+							"sigla": "Fm",
+							"pagina": 2452
+						},
+						{
+							"nome": "Carta aos Hebreus",
+							"sigla": "Hb",
+							"pagina": 2456
+						},
+						{
+							"nome": "Carta de Tiago",
+							"sigla": "Tg",
+							"pagina": 2474
+						},
+						{
+							"nome": "Primeira carta de Pedro",
+							"sigla": "1Pd",
+							"pagina": 2483
+						},
+						{
+							"nome": "Segunda carta de Pedro",
+							"sigla": "2Pd",
+							"pagina": 2492
+						},
+						{
+							"nome": "Primeira carta de João",
+							"sigla": "1Jo",
+							"pagina": 2499
+						},
+						{
+							"nome": "Segunda carta de João",
+							"sigla": "2Jo",
+							"pagina": 2508
+						},
+						{
+							"nome": "Terceira carta de João",
+							"sigla": "3Jo",
+							"pagina": 2509
+						},
+						{
+							"nome": "Carta de Judas",
+							"sigla": "Jd",
+							"pagina": 2511
+						},
+						{
+							"nome": "Apocalipse",
+							"sigla": "Ap",
+							"pagina": 2517
+						}
+					]
+				}
+			],
+			"fontes": [
+				{
+					"codigo": "es",
+					"citacao": "Biblia del Peregrino - Edición de estudio - Ega - Mensajero - Verbo Divino, 1997",
+					"referencia": "p. 2"
 				}
 			]
 		},

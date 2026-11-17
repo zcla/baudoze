@@ -30,7 +30,7 @@
 
 ### Candidatas
 
-* liriocatolico.com.br - Site FORA DE SÉRIE
+* liriocatolico.com.br - Site muito promissor, mas parece feito com IA; achei incorreções no Catecismo
   * `html` [pt-br] https://www.liriocatolico.com.br/biblia_online/biblia_ave_maria/ Bíblia Católica Ave Maria
   * `html` [pt-br] https://www.liriocatolico.com.br/biblia_online/biblia_matos_soares/ Bíblia Católica Matos Soares
   * `html` [pt-br] https://www.liriocatolico.com.br/biblia_online/biblia_pastoral/ Bíblia Católica Pastoral
@@ -40,6 +40,9 @@
   * Paralelos dos Evangelhos https://www.liriocatolico.com.br/paralelos_evangelho/
   * Comparador de Versões Bíblicas https://www.liriocatolico.com.br/biblia_online/comparar_biblias/ mesmo com diferença de numeração entre bíblias; ex.: Jo 6
   * Muito mais: catecismos, direito canônico, Catena Aurea, Suma Teológica, ...
+
+* catolicaflix.com
+  * `html` [pt-br] https://www.catolicaflix.com/biblia Várias
 
 * github.com/Dancrf/biblia-db - Matos Soares 1956 em formato JSON
   * `json` [pt] https://github.com/Dancrf/biblia-db/raw/refs/heads/main/biblia.json

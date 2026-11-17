@@ -5769,7 +5769,6 @@
 					"editoras": [
 						"Paulus"
 					],
-					"edicao": "93ª",
 					"publicacao": "2022",
 					"idiomas": [
 						"pt-br"
@@ -6201,19 +6200,417 @@
 			]
 		},
 		{
-			"codigo": "BPas2015",
+			"codigo": "BPas2024",
 			"nome": "Bíblia Pastoral",
 			"volumes": [
 				{
 					"editoras": [
 						"Paulus"
 					],
-					"publicacao": "2015",
+					"publicacao": "2024",
 					"idiomas": [
 						"pt-br"
 					],
 					"isbn": "978-85-349-4672-8",
-					"formato": "fisico"
+					"formato": "fisico",
+					"primeiraEdicao": {
+						"publicacao": "2015",
+						"referencia": "pp. 2; 4"
+					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Dom Sérgio da Rocha",
+							"link": "https://www.catholic-hierarchy.org/bishop/bdarocha.html",
+							"data": "2013-09-18",
+							"referencia": "p. 4"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Dom Raymundo Card. Damasceno Assis",
+							"link": "https://www.catholic-hierarchy.org/bishop/bdamass.html",
+							"data": "2013-09-18",
+							"referencia": "p. 4"
+						}
+					],
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 21
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Ex",
+							"pagina": 95
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 159
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 205
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 265
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Js",
+							"pagina": 328
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Jz",
+							"pagina": 367
+						},
+						{
+							"nome": "Rute",
+							"sigla": "Rt",
+							"pagina": 409
+						},
+						{
+							"nome": "Primeiro Samuel",
+							"sigla": "1Sm",
+							"pagina": 416
+						},
+						{
+							"nome": "Segundo Samuel",
+							"sigla": "2Sm",
+							"pagina": 467
+						},
+						{
+							"nome": "Primeiro Reis",
+							"sigla": "1Rs",
+							"pagina": 510
+						},
+						{
+							"nome": "Segundo Reis",
+							"sigla": "2Rs",
+							"pagina": 558
+						},
+						{
+							"nome": "Primeiro livro das Crônicas",
+							"sigla": "1Cr",
+							"pagina": 607
+						},
+						{
+							"nome": "Segundo livro das Crônicas",
+							"sigla": "2Cr",
+							"pagina": 648
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 701
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 717
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tb",
+							"pagina": 741
+						},
+						{
+							"nome": "Judite",
+							"sigla": "Jt",
+							"pagina": 762
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 785
+						},
+						{
+							"nome": "Primeiro livro dos Macabeus",
+							"sigla": "1Mc",
+							"pagina": 803
+						},
+						{
+							"nome": "Segundo livro dos Macabeus",
+							"sigla": "2Mc",
+							"pagina": 853
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 892
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 934
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Pr",
+							"pagina": 1117
+						},
+						{
+							"nome": "Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 1153
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 1167
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sb",
+							"pagina": 1182
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "Eclo",
+							"pagina": 1206
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 1268
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jr",
+							"pagina": 1353
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lm",
+							"pagina": 1438
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Br",
+							"pagina": 1448
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1462
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dn",
+							"pagina": 1540
+						},
+						{
+							"nome": "Oseias",
+							"sigla": "Os",
+							"pagina": 1573
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 1587
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 1593
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 1605
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jn",
+							"pagina": 1608
+						},
+						{
+							"nome": "Miqueias",
+							"sigla": "Mq",
+							"pagina": 1612
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 1621
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 1626
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sf",
+							"pagina": 1631
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "Ag",
+							"pagina": 1637
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zc",
+							"pagina": 1641
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 1657
+						},
+						{
+							"nome": "Evangelho segundo Mateus",
+							"sigla": "Mt",
+							"pagina": 1672
+						},
+						{
+							"nome": "Evangelho segundo Marcos",
+							"sigla": "Mc",
+							"pagina": 1727
+						},
+						{
+							"nome": "Evangelho segundo Lucas",
+							"sigla": "Lc",
+							"pagina": 1764
+						},
+						{
+							"nome": "Evangelho segundo João",
+							"sigla": "Jo",
+							"pagina": 1823
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 1870
+						},
+						{
+							"nome": "Carta aos Romanos",
+							"sigla": "Rm",
+							"pagina": 1930
+						},
+						{
+							"nome": "Primeira carta aos Coríntios",
+							"sigla": "1Cor",
+							"pagina": 1956
+						},
+						{
+							"nome": "Segunda carta aos Coríntios",
+							"sigla": "2Cor",
+							"pagina": 1982
+						},
+						{
+							"nome": "Carta aos Gálatas",
+							"sigla": "Gl",
+							"pagina": 1999
+						},
+						{
+							"nome": "Carta aos Efésios",
+							"sigla": "Ef",
+							"pagina": 2009
+						},
+						{
+							"nome": "Carta aos Filipenses",
+							"sigla": "Fl",
+							"pagina": 2018
+						},
+						{
+							"nome": "Carta aos Colossenses",
+							"sigla": "Cl",
+							"pagina": 2025
+						},
+						{
+							"nome": "Primeira carta aos Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 2032
+						},
+						{
+							"nome": "Segunda carta aos Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 2039
+						},
+						{
+							"nome": "Primeira carta a Timóteo",
+							"sigla": "1Tm",
+							"pagina": 2043
+						},
+						{
+							"nome": "Segunda carta a Timóteo",
+							"sigla": "2Tm",
+							"pagina": 2051
+						},
+						{
+							"nome": "Carta a Tito",
+							"sigla": "Tt",
+							"pagina": 2057
+						},
+						{
+							"nome": "Carta a Filêmon",
+							"sigla": "Fm",
+							"pagina": 2061
+						},
+						{
+							"nome": "Carta aos Hebreus",
+							"sigla": "Hb",
+							"pagina": 2063
+						},
+						{
+							"nome": "Carta de Tiago",
+							"sigla": "Tg",
+							"pagina": 2082
+						},
+						{
+							"nome": "Primeira carta de Pedro",
+							"sigla": "1Pd",
+							"pagina": 2089
+						},
+						{
+							"nome": "Segunda carta de Pedro",
+							"sigla": "2Pd",
+							"pagina": 2098
+						},
+						{
+							"nome": "Primeira carta de João",
+							"sigla": "1Jo",
+							"pagina": 2103
+						},
+						{
+							"nome": "Segunda carta de João",
+							"sigla": "2Jo",
+							"pagina": 2110
+						},
+						{
+							"nome": "Terceira carta de João",
+							"sigla": "3Jo",
+							"pagina": 2112
+						},
+						{
+							"nome": "Carta de Judas",
+							"sigla": "Jd",
+							"pagina": 2114
+						},
+						{
+							"nome": "Apocalipse",
+							"sigla": "Ap",
+							"pagina": 2117
+						}
+					]
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Tradução",
+					"citacoes": [
+						{
+							"citacao": "A tradução, feita a partir das línguas originais, [...]",
+							"referencia": "p. 5"
+						}
+					]
 				}
 			]
 		},

@@ -7436,7 +7436,404 @@
 						"pt-br"
 					],
 					"isbn": "9788536900759",
-					"formato": "fisico"
+					"formato": "fisico",
+					"primeiraEdicao": {
+						"publicacao": "2006?",
+						"referencia": "p. 2"
+					},
+					"aprovacoes": [
+						{
+							"tipo": "Nihil obstat",
+							"nome": "Walmor Oliveira de Azevedo",
+							"link": "https://www.catholic-hierarchy.org/bishop/bolaz.html",
+							"data": "2006-04-25",
+							"referencia": "p. 2"
+						},
+						{
+							"tipo": "Imprimatur",
+							"nome": "Cardeal Geraldo Majella Agnelo",
+							"link": "https://www.catholic-hierarchy.org/bishop/bagnelo.html",
+							"referencia": "p. 2"
+						}
+					],
+					"livros": [
+						{
+							"nome": "Gênesis",
+							"sigla": "Gn",
+							"pagina": 7
+						},
+						{
+							"nome": "Êxodo",
+							"sigla": "Êx",
+							"pagina": 61
+						},
+						{
+							"nome": "Levítico",
+							"sigla": "Lv",
+							"pagina": 106
+						},
+						{
+							"nome": "Números",
+							"sigla": "Nm",
+							"pagina": 138
+						},
+						{
+							"nome": "Deuteronômio",
+							"sigla": "Dt",
+							"pagina": 183
+						},
+						{
+							"nome": "Josué",
+							"sigla": "Js",
+							"pagina": 223
+						},
+						{
+							"nome": "Juízes",
+							"sigla": "Jz",
+							"pagina": 249
+						},
+						{
+							"nome": "Rute",
+							"sigla": "Rt",
+							"pagina": 276
+						},
+						{
+							"nome": "Primeiro Samuel",
+							"sigla": "1Sm",
+							"pagina": 281
+						},
+						{
+							"nome": "Segundo Samuel",
+							"sigla": "2Sm",
+							"pagina": 315
+						},
+						{
+							"nome": "Primeiro Reis",
+							"sigla": "1Rs",
+							"pagina": 344
+						},
+						{
+							"nome": "Segundo Reis",
+							"sigla": "2Rs",
+							"pagina": 378
+						},
+						{
+							"nome": "Primeiro Crônicas",
+							"sigla": "1Cr",
+							"pagina": 410
+						},
+						{
+							"nome": "Segundo Crônicas",
+							"sigla": "2Cr",
+							"pagina": 440
+						},
+						{
+							"nome": "Esdras",
+							"sigla": "Esd",
+							"pagina": 477
+						},
+						{
+							"nome": "Neemias",
+							"sigla": "Ne",
+							"pagina": 489
+						},
+						{
+							"nome": "Tobias",
+							"sigla": "Tb",
+							"pagina": 506
+						},
+						{
+							"nome": "Judite",
+							"sigla": "Jt",
+							"pagina": 521
+						},
+						{
+							"nome": "Ester",
+							"sigla": "Est",
+							"pagina": 538
+						},
+						{
+							"nome": "Primeiro Macabeus",
+							"sigla": "1Mc",
+							"pagina": 551
+						},
+						{
+							"nome": "Segundo Macabeus",
+							"sigla": "2Mc",
+							"pagina": 585
+						},
+						{
+							"nome": "Jó",
+							"sigla": "Jó",
+							"pagina": 611
+						},
+						{
+							"nome": "Salmos",
+							"sigla": "Sl",
+							"pagina": 646
+						},
+						{
+							"nome": "Provérbios",
+							"sigla": "Pr",
+							"pagina": 731
+						},
+						{
+							"nome": "Eclesiastes",
+							"sigla": "Ecl",
+							"pagina": 765
+						},
+						{
+							"nome": "Cântico dos Cânticos",
+							"sigla": "Ct",
+							"pagina": 776
+						},
+						{
+							"nome": "Sabedoria",
+							"sigla": "Sb",
+							"pagina": 783
+						},
+						{
+							"nome": "Eclesiástico",
+							"sigla": "Eclo",
+							"pagina": 807
+						},
+						{
+							"nome": "Isaías",
+							"sigla": "Is",
+							"pagina": 871
+						},
+						{
+							"nome": "Jeremias",
+							"sigla": "Jr",
+							"pagina": 941
+						},
+						{
+							"nome": "Lamentações",
+							"sigla": "Lm",
+							"pagina": 1011
+						},
+						{
+							"nome": "Baruc",
+							"sigla": "Br",
+							"pagina": 1019
+						},
+						{
+							"nome": "Ezequiel",
+							"sigla": "Ez",
+							"pagina": 1028
+						},
+						{
+							"nome": "Daniel",
+							"sigla": "Dn",
+							"pagina": 1083
+						},
+						{
+							"nome": "Oseias",
+							"sigla": "Os",
+							"pagina": 1107
+						},
+						{
+							"nome": "Joel",
+							"sigla": "Jl",
+							"pagina": 1118
+						},
+						{
+							"nome": "Amós",
+							"sigla": "Am",
+							"pagina": 1123
+						},
+						{
+							"nome": "Abdias",
+							"sigla": "Ab",
+							"pagina": 1132
+						},
+						{
+							"nome": "Jonas",
+							"sigla": "Jn",
+							"pagina": 1134
+						},
+						{
+							"nome": "Miqueias",
+							"sigla": "Mq",
+							"pagina": 1137
+						},
+						{
+							"nome": "Naum",
+							"sigla": "Na",
+							"pagina": 1144
+						},
+						{
+							"nome": "Habacuc",
+							"sigla": "Hab",
+							"pagina": 1147
+						},
+						{
+							"nome": "Sofonias",
+							"sigla": "Sf",
+							"pagina": 1151
+						},
+						{
+							"nome": "Ageu",
+							"sigla": "Ag",
+							"pagina": 1155
+						},
+						{
+							"nome": "Zacarias",
+							"sigla": "Zc",
+							"pagina": 1158
+						},
+						{
+							"nome": "Malaquias",
+							"sigla": "Ml",
+							"pagina": 1169
+						},
+						{
+							"nome": "São Mateus",
+							"sigla": "Mt",
+							"pagina": 1175
+						},
+						{
+							"nome": "São Marcos",
+							"sigla": "Mc",
+							"pagina": 1214
+						},
+						{
+							"nome": "São Lucas",
+							"sigla": "Lc",
+							"pagina": 1239
+						},
+						{
+							"nome": "São João",
+							"sigla": "Jo",
+							"pagina": 1280
+						},
+						{
+							"nome": "Atos dos Apóstolos",
+							"sigla": "At",
+							"pagina": 1312
+						},
+						{
+							"nome": "Romanos",
+							"sigla": "Rm",
+							"pagina": 1352
+						},
+						{
+							"nome": "Primeira Coríntios",
+							"sigla": "1Cor",
+							"pagina": 1370
+						},
+						{
+							"nome": "Segunda Coríntios",
+							"sigla": "2Cor",
+							"pagina": 1387
+						},
+						{
+							"nome": "Gálatas",
+							"sigla": "Gl",
+							"pagina": 1399
+						},
+						{
+							"nome": "Efésios",
+							"sigla": "Ef",
+							"pagina": 1406
+						},
+						{
+							"nome": "Filipenses",
+							"sigla": "Fl",
+							"pagina": 1413
+						},
+						{
+							"nome": "Colossenses",
+							"sigla": "Cl",
+							"pagina": 1418
+						},
+						{
+							"nome": "Primeira Tessalonicenses",
+							"sigla": "1Ts",
+							"pagina": 1423
+						},
+						{
+							"nome": "Segunda Tessalonicenses",
+							"sigla": "2Ts",
+							"pagina": 1428
+						},
+						{
+							"nome": "Primeira a Timóteo",
+							"sigla": "1Tm",
+							"pagina": 1431
+						},
+						{
+							"nome": "Segunda a Timóteo",
+							"sigla": "2Tm",
+							"pagina": 1437
+						},
+						{
+							"nome": "Tito",
+							"sigla": "Tt",
+							"pagina": 1441
+						},
+						{
+							"nome": "Filêmon",
+							"sigla": "Fm",
+							"pagina": 1444
+						},
+						{
+							"nome": "Hebreus",
+							"sigla": "Hb",
+							"pagina": 1446
+						},
+						{
+							"nome": "São Tiago",
+							"sigla": "Tg",
+							"pagina": 1460
+						},
+						{
+							"nome": "Primeira de São Pedro",
+							"sigla": "1Pd",
+							"pagina": 1465
+						},
+						{
+							"nome": "Segunda de São Pedro",
+							"sigla": "2Pd",
+							"pagina": 1470
+						},
+						{
+							"nome": "Primeira de São João",
+							"sigla": "1Jo",
+							"pagina": 1474
+						},
+						{
+							"nome": "Segunda de São João",
+							"sigla": "2Jo",
+							"pagina": 1479
+						},
+						{
+							"nome": "Terceira de São João",
+							"sigla": "3Jo",
+							"pagina": 1480
+						},
+						{
+							"nome": "São Judas",
+							"sigla": "Jd",
+							"pagina": 1481
+						},
+						{
+							"nome": "Apocalipse",
+							"sigla": "Ap",
+							"pagina": 1483
+						}
+					]
+				}
+			],
+			"citacaoGrupos": [
+				{
+					"nome": "Tradução",
+					"citacoes": [
+						{
+							"citacao": "Tradução dos textos originais, [...]",
+							"referencia": "p. 2"
+						}
+					]
 				}
 			]
 		},
